@@ -11,8 +11,37 @@
 package vazkii.quark.base;
 
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.quark.base.lib.LibMisc;
+import vazkii.quark.base.proxy.CommonProxy;
 
-@Mod(modid="Quark")
+@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 public class Quark {
+
+	@Instance(LibMisc.MOD_ID)
+	public static Quark instance;
+
+	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
+	public static CommonProxy proxy;
+
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		proxy.preInit(event);
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init(event);
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		proxy.postInit(event);
+	}
 
 }
