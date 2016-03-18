@@ -8,7 +8,7 @@
  * 
  * File Created @ [17/03/2016, 18:35:05 (GMT)]
  */
-package vazkii.quark;
+package vazkii.quark.base;
 
 import net.minecraftforge.fml.common.Mod;
 
