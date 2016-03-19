@@ -9,7 +9,7 @@
 :: _make (item name 1) (item name 2) (item name x)
 ::
 :: Change this to your mod's ID
-set modid=psi
+set modid=quark
 
 setlocal enabledelayedexpansion
 
@@ -17,7 +17,7 @@ for %%x in (%*) do (
 	echo Making %%x.json
 	(
 		echo {
-		echo 	"parent": "item/item",
+		echo 	"parent": "item/generated",
 		echo 	"textures": { 
 		echo 		"layer0": "%modid%:items/%%x"
 		echo 	}

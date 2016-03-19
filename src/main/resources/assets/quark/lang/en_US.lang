@@ -16,3 +16,22 @@ tile.quark:stained_clay_tiles_red.name=Red Stained Clay Tiles
 tile.quark:stained_clay_tiles_silver.name=Light Blue Stained Clay Tiles
 tile.quark:stained_clay_tiles_white.name=White Stained Clay Tiles
 tile.quark:stained_clay_tiles_yellow.name=Yellow Stained Clay Tiles
+
+# ITEM NAMES
+item.quark:glass_shard.name=Glass Shard
+item.quark:glass_shard_black.name=Black Glass Shard
+item.quark:glass_shard_blue.name=Blue Glass Shard
+item.quark:glass_shard_brown.name=Brown Glass Shard
+item.quark:glass_shard_cyan.name=Cyan Glass Shard
+item.quark:glass_shard_gray.name=Gray Glass Shard
+item.quark:glass_shard_green.name=Green Glass Shard
+item.quark:glass_shard_light_blue.name=Light Blue Glass Shard
+item.quark:glass_shard_lime.name=Blue Glass Shard
+item.quark:glass_shard_magenta.name=Magenta Glass Shard
+item.quark:glass_shard_orange.name=Orange Glass Shard
+item.quark:glass_shard_pink.name=Pink Glass Shard
+item.quark:glass_shard_purple.name=Purple Glass Shard
+item.quark:glass_shard_red.name=Red Glass Shard
+item.quark:glass_shard_silver.name=Light Blue Glass Shard
+item.quark:glass_shard_white.name=White Glass Shard
+item.quark:glass_shard_yellow.name=Yellow Glass Shard
