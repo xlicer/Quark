@@ -11,7 +11,13 @@
 package vazkii.quark.exploration;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.exploration.feature.ShulkerShells;
 
 public class QuarkExploration extends Module {
 
+	@Override
+	public void addFeatures() {
+//		registerFeature(new ShulkerShells()); TODO: Broken until forge fixes potions
+	}
+	
 }
