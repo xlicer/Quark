@@ -62,7 +62,8 @@ public class Module {
 	}
 	
 	public void setupConfig() {
-		addFeatures();
+		if(features.isEmpty())
+			addFeatures();
 		forEachFeature(feature -> feature.setupConfig());
 	}
 	
