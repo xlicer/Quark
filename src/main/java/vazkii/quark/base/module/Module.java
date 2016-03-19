@@ -16,11 +16,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import org.apache.commons.lang3.text.WordUtils;
+
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.Char;
 
 public class Module {
 
@@ -34,16 +38,19 @@ public class Module {
 	}
 	
 	public void registerFeature(Feature feature) {
-		// This takes any capital letter that isn't the start of the string and adds a space behind it
-		// e.g. "StackableItems" -> "Stackable Items"
-		registerFeature(feature.getClass().getSimpleName().replaceAll("(?<=.)([A-Z])", " $1"), feature);
+		registerFeature(feature, convertName(feature.getClass().getSimpleName()));
 	}
 	
-	public void registerFeature(String name, Feature feature) {
-		registerFeature(name, feature, true);
+	public String convertName(String origName) {
+		String withSpaces = origName.replaceAll("(?<=.)([A-Z])", " $1").toLowerCase();
+		return Character.toUpperCase(withSpaces.charAt(0)) + withSpaces.substring(1);
 	}
 	
-	public void registerFeature(String name, Feature feature, boolean enabledByDefault) {
+	public void registerFeature(Feature feature, String name) {
+		registerFeature(feature, name, true);
+	}
+	
+	public void registerFeature(Feature feature, String name, boolean enabledByDefault) {
 		ModuleLoader.featureInstances.put(feature.getClass(), feature);
 		features.put(name, feature);
 		
@@ -52,6 +59,9 @@ public class Module {
 		feature.category = this.name + "." + name;
 		if(feature.enabled)
 			enabledFeatures.add(feature);
+		
+		if(feature.hasSubscriptions())
+			MinecraftForge.EVENT_BUS.register(feature);
 	}
 	
 	public void setupConfig() {

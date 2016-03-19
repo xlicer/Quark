@@ -53,6 +53,10 @@ public class Feature {
 		// NO-OP
 	}
 	
+	public boolean hasSubscriptions() {
+		return false;
+	}
+	
 	public final int loadPropInt(String propName, String desc, int default_) {
 		return ConfigHelper.loadPropInt(propName, category, desc, default_);
 	}
