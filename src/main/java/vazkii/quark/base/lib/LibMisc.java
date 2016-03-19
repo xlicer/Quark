@@ -25,5 +25,6 @@ public final class LibMisc {
 	// Proxy Constants
 	public static final String PROXY_COMMON = "vazkii.quark.base.proxy.CommonProxy";
 	public static final String PROXY_CLIENT = "vazkii.quark.base.proxy.ClientProxy";
+//	public static final String GUI_FACTORY = "vazkii.psi.client.core.proxy.GuiFactory";
 	
 }

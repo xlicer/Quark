@@ -12,6 +12,7 @@ package vazkii.quark.tweaks;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.LookDownLadders;
+import vazkii.quark.tweaks.feature.RightClickSignEdit;
 import vazkii.quark.tweaks.feature.StackableItems;
 
 public class QuarkTweaks extends Module {
@@ -20,6 +21,7 @@ public class QuarkTweaks extends Module {
 	public void addFeatures() {
 		registerFeature(new StackableItems());
 		registerFeature(new LookDownLadders(), "Look down on ladders to descend fast");
+//		registerFeature(new RightClickSignEdit()); TODO: Broken until forge fixes PlayerInteractEvent
 	}
 	
 }

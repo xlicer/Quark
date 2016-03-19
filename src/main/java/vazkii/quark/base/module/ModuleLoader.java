@@ -24,15 +24,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.automation.QuarkAutomation;
-import vazkii.quark.building.QuarkBuilding;
-import vazkii.quark.combat.QuarkCombat;
 import vazkii.quark.core.QuarkCore;
-import vazkii.quark.decoration.QuarkDecoration;
-import vazkii.quark.exploration.QuarkExploration;
 import vazkii.quark.tweaks.QuarkTweaks;
-import vazkii.quark.vanity.QuarkVanity;
-import vazkii.quark.world.QuarkWorld;
 
 public final class ModuleLoader {
 
