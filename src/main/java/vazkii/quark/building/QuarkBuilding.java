@@ -11,7 +11,13 @@
 package vazkii.quark.building;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.building.feature.HardenedClayTiles;
 
 public class QuarkBuilding extends Module {
 
+	@Override
+	public void addFeatures() {
+		registerFeature(new HardenedClayTiles());
+	}
+	
 }

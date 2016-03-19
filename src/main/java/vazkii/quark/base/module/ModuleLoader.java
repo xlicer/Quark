@@ -27,6 +27,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.lib.LibMisc;
+import vazkii.quark.building.QuarkBuilding;
 import vazkii.quark.tweaks.QuarkTweaks;
 
 public final class ModuleLoader {
@@ -40,7 +41,7 @@ public final class ModuleLoader {
 //		registerModule(QuarkCombat.class);
 //		registerModule(QuarkVanity.class);
 //		registerModule(QuarkDecoration.class);
-//		registerModule(QuarkBuilding.class);
+		registerModule(QuarkBuilding.class);	
 //		registerModule(QuarkAutomation.class);
 	}
 
@@ -58,7 +59,7 @@ public final class ModuleLoader {
 			} catch (Exception e) {
 				throw new RuntimeException("Can't initialize module " + clazz, e);
 			}
-		});
+		});	
 		
 		setupConfig(event);
 		
