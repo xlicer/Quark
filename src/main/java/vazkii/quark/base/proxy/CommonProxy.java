@@ -15,8 +15,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import vazkii.quark.base.Quark;
-import vazkii.quark.base.handler.GuiHandler;
 import vazkii.quark.base.module.ModuleLoader;
+import vazkii.quark.base.network.GuiHandler;
 
 public class CommonProxy {
 

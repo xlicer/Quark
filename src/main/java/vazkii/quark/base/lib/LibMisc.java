@@ -18,13 +18,11 @@ public final class LibMisc {
 	public static final String BUILD = "GRADLE:BUILD";
 	public static final String VERSION = "GRADLE:VERSION-" + BUILD;
 	public static final String DEPENDENCIES = "";
-
-	// Network Contants
-	public static final String NETWORK_CHANNEL = MOD_ID;
+	public static final String PREFIX_MOD = MOD_ID.toLowerCase() + ":";
 
 	// Proxy Constants
 	public static final String PROXY_COMMON = "vazkii.quark.base.proxy.CommonProxy";
 	public static final String PROXY_CLIENT = "vazkii.quark.base.proxy.ClientProxy";
-//	public static final String GUI_FACTORY = "vazkii.psi.client.core.proxy.GuiFactory";
+	public static final String GUI_FACTORY = "vazkii.quark.base.handler.GuiFactory";
 	
 }

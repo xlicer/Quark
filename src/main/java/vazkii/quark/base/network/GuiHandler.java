@@ -8,7 +8,7 @@
  * 
  * File Created @ [19/03/2016, 00:28:38 (GMT)]
  */
-package vazkii.quark.base.handler;
+package vazkii.quark.base.network;
 
 import net.minecraft.client.gui.inventory.GuiEditSign;
 import net.minecraft.entity.player.EntityPlayer;

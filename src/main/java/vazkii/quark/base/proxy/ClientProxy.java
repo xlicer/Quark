@@ -13,6 +13,7 @@ package vazkii.quark.base.proxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.quark.base.handler.ModelHandler;
 import vazkii.quark.base.module.ModuleLoader;
 
 public class ClientProxy extends CommonProxy {
@@ -21,12 +22,14 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 		ModuleLoader.preInitClient(event);
+		ModelHandler.preInit();
 	}
 	
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
 		ModuleLoader.initClient(event);
+		ModelHandler.init();
 	}
 	
 	@Override

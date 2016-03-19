@@ -16,15 +16,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.core.QuarkCore;
+import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.tweaks.QuarkTweaks;
 
 public final class ModuleLoader {
@@ -32,7 +34,6 @@ public final class ModuleLoader {
 	static {
 		moduleClasses = new ArrayList();
 		
-		registerModule(QuarkCore.class);
 		registerModule(QuarkTweaks.class);
 //		registerModule(QuarkWorld.class);
 //		registerModule(QuarkExploration.class);
@@ -49,7 +50,6 @@ public final class ModuleLoader {
 	public static List<Module> enabledModules;
 	
 	public static Configuration config;
-	public ConfigCategory configCategory = new ConfigCategory("_modules");
 
 	public static void preInit(FMLPreInitializationEvent event) {
 		moduleClasses.forEach(clazz -> {
@@ -92,20 +92,25 @@ public final class ModuleLoader {
 	
 	public static void setupConfig(FMLPreInitializationEvent event) {
 		config = new Configuration(event.getSuggestedConfigurationFile());
-		
 		config.load();
-
+		
 		forEachModule(module -> module.enabled = !module.canBeDisabled() || ConfigHelper.loadPropBool(module.name, "_modules", "", true));
 		
 		enabledModules = new ArrayList(moduleInstances.values());
 		enabledModules.removeIf(module -> !module.enabled);
 		
+		loadModuleConfigs();
+		
+		MinecraftForge.EVENT_BUS.register(new ChangeListener());
+	}
+
+	private static void loadModuleConfigs() {
 		forEachEnabled(module -> module.setupConfig());
 		
 		if(config.hasChanged())
 			config.save();
 	}
-
+	
 	public static boolean isModuleEnabled(Class<? extends Module> clazz) {
 		return moduleInstances.get(clazz).enabled;
 	}
@@ -125,6 +130,16 @@ public final class ModuleLoader {
 	private static void registerModule(Class<? extends Module> clazz) {
 		if(!moduleClasses.contains(clazz))
 			moduleClasses.add(clazz);
+	}
+	
+	public static class ChangeListener {
+
+		@SubscribeEvent
+		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+			if(eventArgs.modID.equals(LibMisc.MOD_ID))
+				loadModuleConfigs();
+		}
+
 	}
 
 }
