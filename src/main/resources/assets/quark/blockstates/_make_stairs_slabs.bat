@@ -40,8 +40,14 @@ for %%x in (%*) do (
 	echo Making %%x_slab_double.json
 	(
 		echo {
+		echo	"forge_marker": 1,
+		echo	"defaults": {
+		echo		"model": "minecraft:cube_all",
+		echo		"transform": "forge:default-block"
+		echo	},
 		echo 	"variants": {
-		echo 		"prop=blarg": { "model": "%modid%:%%x" }
+		echo 		"normal": [{ "textures": { "all": "%modid%:blocks/%%x" } }],
+		echo 		"prop=blarg": [{ "textures": { "all": "%modid%:blocks/%%x" } }]
 		echo 	}
 		echo }
 	) > %%x_slab_double.json

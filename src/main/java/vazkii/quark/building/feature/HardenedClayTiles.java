@@ -41,9 +41,9 @@ public class HardenedClayTiles extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		hardened_clay_tiles = new BlockHardenedClayTiles();
 
-		BlockModSlab.initSlab(hardened_clay_tiles, 0, new BlockHardenedClayTilesSlab(false), new BlockHardenedClayTilesSlab(true));
 		BlockModStairs.initStairs(hardened_clay_tiles, 0, new BlockHardenedClayTilesStairs());
-		
+		BlockModSlab.initSlab(hardened_clay_tiles, 0, new BlockHardenedClayTilesSlab(false), new BlockHardenedClayTilesSlab(true));
+
 		RecipeHandler.addOreDictRecipe(new ItemStack(hardened_clay_tiles, 4, 0), 
 				"BB", "BB",
 				'B', new ItemStack(Blocks.hardened_clay));

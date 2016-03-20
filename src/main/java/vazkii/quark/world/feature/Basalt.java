@@ -16,9 +16,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.block.BlockMod;
+import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.world.block.BlockBasalt;
+import vazkii.quark.world.block.BlockBasaltSlab;
+import vazkii.quark.world.block.BlockBasaltStairs;
 import vazkii.quark.world.world.BasaltGenerator;
 
 public class Basalt extends Feature {
@@ -28,7 +32,8 @@ public class Basalt extends Feature {
 	boolean nether, overworld;
 	int clusterSizeNether, clusterSizeOverworld;
 	int clusterCountNether, clusterCountOverworld;
-
+	boolean enableStairsAndSlabs;
+	
 	@Override
 	public void setupConfig() {
 		nether = loadPropBool("Generate in nether", "", true);
@@ -36,13 +41,19 @@ public class Basalt extends Feature {
 		clusterSizeNether = loadPropInt("Nether cluster size", "", 80);
 		clusterSizeOverworld = loadPropInt("Overworld cluster size", "", 33);
 		clusterCountNether = loadPropInt("Nether cluster count", "", 1);
-		clusterCountOverworld = loadPropInt("Overworld cluster count", "", 10);
+		clusterCountOverworld = loadPropInt("Overworld cluster count", "", 10);       
+		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
 	}
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		basalt = new BlockBasalt();
 		
+		if(enableStairsAndSlabs) {
+			BlockModSlab.initSlab(basalt, 0, new BlockBasaltSlab(false), new BlockBasaltSlab(true));
+			BlockModStairs.initStairs(basalt, 0, new BlockBasaltStairs());
+		}
+	
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 1),
 				"BB", "BB",
 				'B', new ItemStack(basalt, 1, 0));
