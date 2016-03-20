@@ -29,8 +29,6 @@ public class HardenedClayTiles extends Feature {
 		hardened_clay_tiles = new BlockHardenedClayTiles();
 		stained_clay_tiles = new BlockStainedClayTiles();
 
-		// TODO stairs and slabs
-
 		RecipeHandler.addOreDictRecipe(new ItemStack(hardened_clay_tiles, 4, 0), 
 				"BB", "BB",
 				'B', new ItemStack(Blocks.hardened_clay));
