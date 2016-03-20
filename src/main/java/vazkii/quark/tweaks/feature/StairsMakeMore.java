@@ -27,12 +27,11 @@ public class StairsMakeMore extends Feature {
 	@Override
 	public void setupConfig() {
 		targetSize = loadPropInt("Target stack size", "", 8);
-		originalSize = loadPropInt("Vanilla stack size", "", 4);
+		originalSize = loadPropInt("Vanilla stack size", "The stack size for the vanilla stair recipe, used for automatically detecting stair recipes", 4);
 	}
 	
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
-		super.postInit(event);
 		for(IRecipe recipe : CraftingManager.getInstance().getRecipeList()) {
 			ItemStack output = recipe.getRecipeOutput();
 			if(output != null && output.stackSize == originalSize) {

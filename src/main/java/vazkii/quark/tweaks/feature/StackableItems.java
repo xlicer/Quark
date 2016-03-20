@@ -30,8 +30,6 @@ public class StackableItems extends Feature {
 	
 	@Override
 	public void init(FMLInitializationEvent event) {
-		System.out.println("Init!!");
-		
 		ImmutableSet.<Item>of(Items.potionitem, Items.splash_potion, Items.lingering_potion)
 			.forEach(item -> item.setMaxStackSize(potions));
 		
