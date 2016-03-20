@@ -28,7 +28,7 @@ public class ChickensShedFeathers extends Feature {
 	
 	@Override
 	public void setupConfig() {
-		chicksDropFeathers = loadPropBool("Chicks drop Feathers", "", true);
+		chicksDropFeathers = loadPropBool("Chicks drop feathers", "", true);
 		dropAtLeastOne = loadPropBool("Force at least one feather on kill", "", true);
 		dropFreq = loadPropInt("Drop frequency (lower means more)", "", 28000);
 	}
