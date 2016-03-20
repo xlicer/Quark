@@ -16,6 +16,7 @@ import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.StackableItems;
+import vazkii.quark.tweaks.feature.StairsMakeMore;
 
 public class QuarkTweaks extends Module {
 
@@ -27,6 +28,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new ChickensShedFeathers());
 		registerFeature(new AngryCreepers(), "Creepers turn red when they're exploding");
 		registerFeature(new GlassShards());
+		registerFeature(new StairsMakeMore(), "Stair crafting makes more");
 	}
 	
 }
