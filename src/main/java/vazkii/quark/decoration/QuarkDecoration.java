@@ -11,7 +11,13 @@
 package vazkii.quark.decoration;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.decoration.feature.LitLamp;
 
 public class QuarkDecoration extends Module {
 
+	@Override
+	public void addFeatures() {
+		registerFeature(new LitLamp());
+	}
+	
 }
