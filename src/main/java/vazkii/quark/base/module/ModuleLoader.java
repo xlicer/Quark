@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.quark.automation.QuarkAutomation;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.building.QuarkBuilding;
 import vazkii.quark.tweaks.QuarkTweaks;
@@ -43,7 +44,7 @@ public final class ModuleLoader {
 //		registerModule(QuarkVanity.class);
 //		registerModule(QuarkDecoration.class);
 		registerModule(QuarkBuilding.class);	
-//		registerModule(QuarkAutomation.class);
+		registerModule(QuarkAutomation.class);
 	}
 
 	private static List<Class<? extends Module>> moduleClasses;

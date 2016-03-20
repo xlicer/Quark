@@ -81,6 +81,7 @@ tile.quark:stone_diorite_bricks_stairs.name=Diorite Bricks Stairs
 tile.quark:stone_granite_bricks_stairs.name=Granite Bricks Stairs
 tile.quark:stone_andesite_bricks_stairs.name=Andesite Bricks Stairs
 tile.quark:stone_basalt_bricks_stairs.name=Basalt Bricks Stairs
+tile.quark:obsidian_pressure_plate.name=Obsidian Pressure Plate
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
