@@ -12,12 +12,14 @@ package vazkii.quark.world;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.world.feature.Basalt;
+import vazkii.quark.world.feature.ClayGeneration;
 
 public class QuarkWorld extends Module {
 
 	@Override
 	public void addFeatures() {
 		registerFeature(new Basalt());
+		registerFeature(new ClayGeneration(), "Generate clay underground like dirt");
 	}
 	
 }
