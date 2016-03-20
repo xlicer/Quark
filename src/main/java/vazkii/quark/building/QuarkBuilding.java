@@ -12,6 +12,7 @@ package vazkii.quark.building;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.building.feature.HardenedClayTiles;
+import vazkii.quark.building.feature.ReedBlock;
 import vazkii.quark.building.feature.SandyBricks;
 import vazkii.quark.building.feature.Thatch;
 import vazkii.quark.building.feature.VanillaStairsAndSlabs;
@@ -26,6 +27,7 @@ public class QuarkBuilding extends Module {
 		registerFeature(new WorldStoneBricks());
 		registerFeature(new Thatch());
 		registerFeature(new SandyBricks());
+		registerFeature(new ReedBlock(), "Sugar cane blocks");
 	}
 	
 }
