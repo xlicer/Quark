@@ -58,6 +58,8 @@ for %%x in (%*) do (
 		echo     }
 		echo   },
 		echo   "variants": {
+		echo      "normal": { "model": "minecraft:stairs" },
+		echo      "inventory": { "model": "minecraft:stairs" },
 		echo     "facing=east,half=bottom,shape=straight":  { "model": "minecraft:stairs" },
 		echo     "facing=west,half=bottom,shape=straight":  { "model": "minecraft:stairs", "y": 180, "uvlock": true },
 		echo     "facing=south,half=bottom,shape=straight": { "model": "minecraft:stairs", "y": 90, "uvlock": true },
@@ -97,21 +99,7 @@ for %%x in (%*) do (
 		echo     "facing=east,half=top,shape=inner_left":  { "model": "minecraft:inner_stairs", "x": 180, "y": 90, "uvlock": true },
 		echo     "facing=west,half=top,shape=inner_left":  { "model": "minecraft:inner_stairs", "x": 180, "y": 270, "uvlock": true },
 		echo     "facing=south,half=top,shape=inner_left": { "model": "minecraft:inner_stairs", "x": 180, "y": 180, "uvlock": true },
-		echo     "facing=north,half=top,shape=inner_left": { "model": "minecraft:inner_stairs", "x": 180, "uvlock": true },
-		echo     "inventory": [{
-		echo       "model": "minecraft:stairs",
-		echo       "uvlock": true,
-		echo       "transform": {
-		echo         "thirdperson": {
-		echo           "rotation": [ {"x": 10}, {"y": -45}, {"z": 170} ],
-		echo           "translation": [ 0, 0.09375, -0.171875 ],
-		echo           "scale": [ 0.375, 0.375, 0.375 ]
-		echo         },
-		echo         "gui": {
-		echo           "rotation": { "y": 180 }
-		echo         }
-		echo       }
-		echo     }]
+		echo     "facing=north,half=top,shape=inner_left": { "model": "minecraft:inner_stairs", "x": 180, "uvlock": true }
 		echo   }
 		echo }
 	) > %%x_stairs.json

@@ -10,13 +10,12 @@
  */
 package vazkii.quark.world.feature;
 
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import vazkii.quark.base.block.BlockMod;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.world.block.BlockBasalt;
@@ -24,7 +23,7 @@ import vazkii.quark.world.world.BasaltGenerator;
 
 public class Basalt extends Feature {
 
-	public static Block basalt;
+	public static BlockMod basalt;
 	
 	boolean nether, overworld;
 	int clusterSizeNether, clusterSizeOverworld;

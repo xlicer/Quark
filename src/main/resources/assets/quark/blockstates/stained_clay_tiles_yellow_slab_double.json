@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"prop=blarg": { "model": "quark:stained_clay_tiles_yellow" }
+	}
+}
