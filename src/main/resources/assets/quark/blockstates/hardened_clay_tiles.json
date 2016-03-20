@@ -3,7 +3,6 @@
 	"variants": {
 		"normal": {
 			"model": "quark:hardened_clay_tiles"
-		},
-		"variant=stained_clay_tiles_black": [{ "textures": { "all": "quark:stained_clay_tiles_black" } }]
+		}
 	}
 }

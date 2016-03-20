@@ -1,0 +1,62 @@
+/**
+ * This class was created by <Vazkii>. It's distributed as
+ * part of the Quark Mod. Get the Source Code in github:
+ * https://github.com/Vazkii/Quark
+ * 
+ * Quark is Open Source and distributed under the
+ * [ADD-LICENSE-HERE]
+ * 
+ * File Created @ [20/03/2016, 15:05:14 (GMT)]
+ */
+package vazkii.quark.world.feature;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.quark.base.module.Feature;
+import vazkii.quark.world.block.BlockBasalt;
+import vazkii.quark.world.world.BasaltGenerator;
+
+public class Basalt extends Feature {
+
+	public static Block basalt;
+	
+	boolean nether, overworld;
+	int clusterSizeNether, clusterSizeOverworld;
+	int clusterCountNether, clusterCountOverworld;
+
+	@Override
+	public void setupConfig() {
+		nether = loadPropBool("Generate in nether", "", true);
+		overworld = loadPropBool("Generate in overworld", "", false);
+		clusterSizeNether = loadPropInt("Nether cluster size", "", 80);
+		clusterSizeOverworld = loadPropInt("Overworld cluster size", "", 33);
+		clusterCountNether = loadPropInt("Nether cluster count", "", 1);
+		clusterCountOverworld = loadPropInt("Overworld cluster count", "", 10);
+	}
+	
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		basalt = new BlockBasalt();
+		
+		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 1),
+				"BB", "BB",
+				'B', new ItemStack(basalt, 1, 0));
+		
+		ItemStack blackItem = new ItemStack(Items.coal);
+		// TODO replace this with biotite if available
+		
+		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 0), 
+				"BI", "IB",
+				'B', new ItemStack(Blocks.cobblestone, 1, 0),
+				'I', blackItem);
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.stone, 1, 5), new ItemStack(basalt), new ItemStack(Items.quartz));
+		
+		GameRegistry.registerWorldGenerator(new BasaltGenerator(nether, overworld, clusterSizeOverworld, clusterSizeNether, clusterCountOverworld, clusterCountNether), 0);
+	}
+	
+}

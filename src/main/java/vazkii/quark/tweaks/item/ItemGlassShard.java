@@ -11,6 +11,10 @@
 package vazkii.quark.tweaks.item;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import vazkii.quark.base.block.BlockMetaVariants.EnumBase;
 import vazkii.quark.base.item.ItemMod;
 

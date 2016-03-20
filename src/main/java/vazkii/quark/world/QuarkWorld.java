@@ -11,7 +11,13 @@
 package vazkii.quark.world;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.world.feature.Basalt;
 
 public class QuarkWorld extends Module {
 
+	@Override
+	public void addFeatures() {
+		registerFeature(new Basalt());
+	}
+	
 }

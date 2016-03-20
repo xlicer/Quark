@@ -29,6 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.building.QuarkBuilding;
 import vazkii.quark.tweaks.QuarkTweaks;
+import vazkii.quark.world.QuarkWorld;
 
 public final class ModuleLoader {
 
@@ -36,7 +37,7 @@ public final class ModuleLoader {
 		moduleClasses = new ArrayList();
 		
 		registerModule(QuarkTweaks.class);
-//		registerModule(QuarkWorld.class);
+		registerModule(QuarkWorld.class);
 //		registerModule(QuarkExploration.class);
 //		registerModule(QuarkCombat.class);
 //		registerModule(QuarkVanity.class);

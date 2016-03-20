@@ -16,6 +16,8 @@ tile.quark:stained_clay_tiles_red.name=Red Stained Clay Tiles
 tile.quark:stained_clay_tiles_silver.name=Light Blue Stained Clay Tiles
 tile.quark:stained_clay_tiles_white.name=White Stained Clay Tiles
 tile.quark:stained_clay_tiles_yellow.name=Yellow Stained Clay Tiles
+tile.quark:stone_basalt.name=Basalt
+tile.quark:stone_basalt_smooth.name=Polished Basalt
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
