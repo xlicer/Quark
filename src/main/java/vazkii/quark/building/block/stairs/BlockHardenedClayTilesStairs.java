@@ -8,7 +8,7 @@
  * 
  * File Created @ [20/03/2016, 18:05:24 (GMT)]
  */
-package vazkii.quark.building.block;
+package vazkii.quark.building.block.stairs;
 
 import net.minecraft.block.state.IBlockState;
 import vazkii.quark.base.block.BlockModStairs;

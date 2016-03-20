@@ -6,9 +6,9 @@
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
  * 
- * File Created @ [20/03/2016, 16:37:01 (GMT)]
+ * File Created @ [20/03/2016, 18:31:18 (GMT)]
  */
-package vazkii.quark.building.block;
+package vazkii.quark.building.block.slab;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -16,11 +16,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.building.block.BlockStainedClayTiles;
+import vazkii.quark.building.block.BlockStainedClayTiles.Variants;
 
-public class BlockHardenedClayTilesSlab extends BlockModSlab {
+public class BlockStainedClayTilesSlab extends BlockModSlab {
 
-	public BlockHardenedClayTilesSlab(boolean doubleSlab) {
-		super("hardened_clay_tiles_slab", Material.rock, doubleSlab);
+	public BlockStainedClayTilesSlab(BlockStainedClayTiles.Variants variant, boolean doubleSlab) {
+		super(variant.getName() + "_slab", Material.rock, doubleSlab);
 		setHardness(1.25F);
 		setResistance(7.0F);
 		setStepSound(SoundType.STONE);

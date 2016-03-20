@@ -19,11 +19,11 @@ import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockHardenedClayTiles;
-import vazkii.quark.building.block.BlockHardenedClayTilesSlab;
-import vazkii.quark.building.block.BlockHardenedClayTilesStairs;
 import vazkii.quark.building.block.BlockStainedClayTiles;
-import vazkii.quark.building.block.BlockStainedClayTilesSlab;
-import vazkii.quark.building.block.BlockStainedClayTilesStairs;
+import vazkii.quark.building.block.slab.BlockHardenedClayTilesSlab;
+import vazkii.quark.building.block.slab.BlockStainedClayTilesSlab;
+import vazkii.quark.building.block.stairs.BlockHardenedClayTilesStairs;
+import vazkii.quark.building.block.stairs.BlockStainedClayTilesStairs;
 
 public class HardenedClayTiles extends Feature {
 
@@ -31,18 +31,22 @@ public class HardenedClayTiles extends Feature {
 	public static BlockMod stained_clay_tiles;
 
 	boolean enableStainedClay;
+	boolean enableStairsAndSlabs;
 	
 	@Override
 	public void setupConfig() {
-		enableStainedClay = loadPropBool("Enable stained tiles", "(note: disable this if you run out of block IDs)", true);
+		enableStainedClay = loadPropBool("Enable stained tiles", "", true);
+		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
 	}
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		hardened_clay_tiles = new BlockHardenedClayTiles();
 
-		BlockModStairs.initStairs(hardened_clay_tiles, 0, new BlockHardenedClayTilesStairs());
-		BlockModSlab.initSlab(hardened_clay_tiles, 0, new BlockHardenedClayTilesSlab(false), new BlockHardenedClayTilesSlab(true));
+		if(enableStairsAndSlabs) {
+			BlockModStairs.initStairs(hardened_clay_tiles, 0, new BlockHardenedClayTilesStairs());
+			BlockModSlab.initSlab(hardened_clay_tiles, 0, new BlockHardenedClayTilesSlab(false), new BlockHardenedClayTilesSlab(true));
+		}
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(hardened_clay_tiles, 4, 0), 
 				"BB", "BB",
@@ -51,11 +55,13 @@ public class HardenedClayTiles extends Feature {
 		if(enableStainedClay) {
 			stained_clay_tiles = new BlockStainedClayTiles();
 			
-			for(BlockStainedClayTiles.Variants variant : BlockStainedClayTiles.Variants.class.getEnumConstants())
-				BlockModStairs.initStairs(stained_clay_tiles, variant.ordinal(), new BlockStainedClayTilesStairs(variant));
-			for(BlockStainedClayTiles.Variants variant : BlockStainedClayTiles.Variants.class.getEnumConstants())
-				BlockModSlab.initSlab(stained_clay_tiles, variant.ordinal(), new BlockStainedClayTilesSlab(variant, false), new BlockStainedClayTilesSlab(variant, true));
-				
+			if(enableStairsAndSlabs) {
+				for(BlockStainedClayTiles.Variants variant : BlockStainedClayTiles.Variants.class.getEnumConstants())
+					BlockModStairs.initStairs(stained_clay_tiles, variant.ordinal(), new BlockStainedClayTilesStairs(variant));
+				for(BlockStainedClayTiles.Variants variant : BlockStainedClayTiles.Variants.class.getEnumConstants())
+					BlockModSlab.initSlab(stained_clay_tiles, variant.ordinal(), new BlockStainedClayTilesSlab(variant, false), new BlockStainedClayTilesSlab(variant, true));
+			}
+	
 			for(int i = 0; i < 16; i++)
 				RecipeHandler.addOreDictRecipe(new ItemStack(stained_clay_tiles, 4, i), 
 						"BB", "BB",

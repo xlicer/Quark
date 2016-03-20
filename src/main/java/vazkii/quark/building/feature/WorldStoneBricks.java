@@ -21,10 +21,10 @@ import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.building.block.BlockVanillaSlab;
-import vazkii.quark.building.block.BlockVanillaStairs;
 import vazkii.quark.building.block.BlockWorldStoneBricks;
 import vazkii.quark.building.block.BlockWorldStoneBricks.Variants;
+import vazkii.quark.building.block.slab.BlockVanillaSlab;
+import vazkii.quark.building.block.stairs.BlockVanillaStairs;
 import vazkii.quark.world.feature.Basalt;
 
 public class WorldStoneBricks extends Feature {

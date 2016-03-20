@@ -8,7 +8,7 @@
  * 
  * File Created @ [20/03/2016, 19:31:28 (GMT)]
  */
-package vazkii.quark.building.block;
+package vazkii.quark.building.block.slab;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;

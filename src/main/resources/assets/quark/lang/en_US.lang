@@ -83,6 +83,13 @@ tile.quark:stone_andesite_bricks_stairs.name=Andesite Bricks Stairs
 tile.quark:stone_basalt_bricks_stairs.name=Basalt Bricks Stairs
 tile.quark:obsidian_pressure_plate.name=Obsidian Pressure Plate
 tile.quark:lit_lamp.name=Lit Redstone Lamp
+tile.quark:blaze_lantern.name=Blaze Lantern
+tile.quark:sandy_bricks.name=Sandy Bricks
+tile.quark:thatch.name=Thatch
+tile.quark:sandy_bricks_slab.name=Sandy Bricks Slab
+tile.quark:thatch_slab.name=Thatch Slab
+tile.quark:sandy_bricks_stairs.name=Sandy Bricks Stairs
+tile.quark:thatch_stairs.name=Thatch Stairs
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

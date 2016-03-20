@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.module.Feature;
-import vazkii.quark.building.block.BlockVanillaSlab;
+import vazkii.quark.building.block.slab.BlockVanillaSlab;
 
 public class VanillaStairsAndSlabs extends Feature {
 
