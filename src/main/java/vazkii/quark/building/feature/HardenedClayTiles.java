@@ -14,9 +14,11 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockHardenedClayTiles;
+import vazkii.quark.building.block.BlockHardenedClayTilesSlab;
 import vazkii.quark.building.block.BlockStainedClayTiles;
 
 public class HardenedClayTiles extends Feature {
@@ -29,6 +31,8 @@ public class HardenedClayTiles extends Feature {
 		hardened_clay_tiles = new BlockHardenedClayTiles();
 		stained_clay_tiles = new BlockStainedClayTiles();
 
+		BlockModSlab.initSlab(hardened_clay_tiles, 0, new BlockHardenedClayTilesSlab(false), new BlockHardenedClayTilesSlab(true));
+		
 		RecipeHandler.addOreDictRecipe(new ItemStack(hardened_clay_tiles, 4, 0), 
 				"BB", "BB",
 				'B', new ItemStack(Blocks.hardened_clay));

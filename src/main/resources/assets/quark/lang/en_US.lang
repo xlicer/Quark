@@ -1,5 +1,6 @@
 # BLOCK NAMES
 tile.quark:hardened_clay_tiles.name=Hardened Clay Tiles
+tile.quark:hardened_clay_tiles_slab.name=Hardened Clay Tiles Slab
 tile.quark:stained_clay_tiles_black.name=Black Stained Clay Tiles
 tile.quark:stained_clay_tiles_blue.name=Blue Stained Clay Tiles
 tile.quark:stained_clay_tiles_brown.name=Brown Stained Clay Tiles

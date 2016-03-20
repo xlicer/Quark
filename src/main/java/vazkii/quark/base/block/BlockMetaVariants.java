@@ -11,6 +11,7 @@
 package vazkii.quark.base.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -68,6 +69,11 @@ public class BlockMetaVariants<T extends Enum<T> & IStringSerializable> extends 
 	@Override
 	public Class<T> getVariantEnum() {
 		return variantsEnum;
+	}
+	
+	@Override
+	public IProperty getVariantProperty() {
+		return variantProp;
 	}
 
 	public static String[] asVariantArray(Class e) {

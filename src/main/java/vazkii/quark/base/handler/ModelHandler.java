@@ -69,17 +69,23 @@ public class ModelHandler {
 			IQuarkBlock quarkBlock = (IQuarkBlock) ((ItemBlock) item).getBlock();
 			Class clazz = quarkBlock.getVariantEnum();
 
+			IProperty variantProp = quarkBlock.getVariantProperty();
+			boolean ignoresVariant = false;
+			
 			IProperty[] ignored = quarkBlock.getIgnoredProperties();
 			if(ignored != null && ignored.length > 0) {
 				StateMap.Builder builder = new StateMap.Builder();
-				for(IProperty p : ignored)
+				for(IProperty p : ignored) {
+					if(p == variantProp)
+						ignoresVariant = true;
 					builder.ignore(p);
+				}
 
 				ModelLoader.setCustomStateMapper((Block) quarkBlock, builder.build());
 			}
 
-			if(clazz != null) {
-				registerVariantsDefaulted(item, (Block) quarkBlock, clazz, IVariantEnumHolder.HEADER);
+			if(clazz != null && !ignoresVariant) {
+				registerVariantsDefaulted(item, (Block) quarkBlock, clazz, variantProp.getName());
 				return;
 			}
 		}

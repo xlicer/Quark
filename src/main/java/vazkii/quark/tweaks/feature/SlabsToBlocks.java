@@ -21,6 +21,8 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 
@@ -37,8 +39,12 @@ public class SlabsToBlocks extends Feature {
 	public void postInit(FMLPostInitializationEvent event) {
 		List<IRecipe> recipeList = new ArrayList(CraftingManager.getInstance().getRecipeList());
 		for(IRecipe recipe : recipeList) {
-			if(recipe instanceof ShapedRecipes) {
-				ShapedRecipes shaped = (ShapedRecipes) recipe;
+			if(recipe instanceof ShapedRecipes || recipe instanceof ShapedOreRecipe) {
+				Object[] recipeItems;
+				if(recipe instanceof ShapedRecipes)
+					recipeItems = ((ShapedRecipes) recipe).recipeItems;
+				else recipeItems = ((ShapedOreRecipe) recipe).getInput();
+				
 				ItemStack output = recipe.getRecipeOutput();
 				if(output != null && output.stackSize == originalSize) {
 					Item outputItem = output.getItem();
@@ -46,10 +52,18 @@ public class SlabsToBlocks extends Feature {
 					if(outputBlock != null && outputBlock instanceof BlockSlab) {
 						ItemStack outStack = null;
 						
-						for(int i = 0; i < shaped.recipeItems.length; i++) {
-							outStack = shaped.recipeItems[i];
-							if(outStack != null)
+						for(int i = 0; i < recipeItems.length; i++) {
+							Object recipeItem = recipeItems[i];
+							if(recipeItem instanceof List) {
+								List<ItemStack> ores = (List<ItemStack>) recipeItem;
+								if(!ores.isEmpty())
+									recipeItem = ores.get(0);
+							}
+							
+							if(recipeItem != null) {
+								outStack = (ItemStack) recipeItem;
 								break;
+							}
 						}
 						
 						RecipeHandler.addOreDictRecipe(outStack.copy(),
