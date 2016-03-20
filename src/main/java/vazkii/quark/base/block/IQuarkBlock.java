@@ -25,4 +25,8 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
 
 	public EnumRarity getBlockRarity(ItemStack stack);
 
+	public default boolean shouldDisplayVariant(int variant) {
+		return true;
+	}
+	
 }

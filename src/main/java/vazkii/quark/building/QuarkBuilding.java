@@ -13,6 +13,7 @@ package vazkii.quark.building;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.building.feature.HardenedClayTiles;
 import vazkii.quark.building.feature.VanillaStairsAndSlabs;
+import vazkii.quark.building.feature.WorldStoneBricks;
 
 public class QuarkBuilding extends Module {
 
@@ -20,6 +21,7 @@ public class QuarkBuilding extends Module {
 	public void addFeatures() {
 		registerFeature(new HardenedClayTiles());
 		registerFeature(new VanillaStairsAndSlabs());
+		registerFeature(new WorldStoneBricks());
 	}
 	
 }

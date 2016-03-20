@@ -64,7 +64,8 @@ public class ItemModBlock extends ItemBlock implements IVariantHolder {
 	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
 		String[] variants = getVariants();
 		for(int i = 0; i < variants.length; i++)
-			subItems.add(new ItemStack(itemIn, 1, i));
+			if(quarkBlock.shouldDisplayVariant(i))
+				subItems.add(new ItemStack(itemIn, 1, i));
 	}
 
 	@Override

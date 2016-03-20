@@ -69,6 +69,18 @@ tile.quark:prismarine_bricks_slab.name=Prismarine Bricks Slab
 tile.quark:prismarine_bricks_stairs.name=Prismarine Bricks Stairs
 tile.quark:prismarine_dark_slab.name=Dark Prismarine Slab
 tile.quark:prismarine_dark_stairs.name=Dark Prismarine Stairs
+tile.quark:stone_diorite_bricks.name=Diorite Bricks
+tile.quark:stone_granite_bricks.name=Granite Bricks
+tile.quark:stone_andesite_bricks.name=Andesite Bricks
+tile.quark:stone_basalt_bricks.name=Basalt Bricks
+tile.quark:stone_diorite_bricks_slab.name=Diorite Bricks Slab
+tile.quark:stone_granite_bricks_slab.name=Granite Bricks Slab
+tile.quark:stone_andesite_bricks_slab.name=Andesite Bricks Slab
+tile.quark:stone_basalt_bricks_slab.name=Basalt Bricks Slab
+tile.quark:stone_diorite_bricks_stairs.name=Diorite Bricks Stairs
+tile.quark:stone_granite_bricks_stairs.name=Granite Bricks Stairs
+tile.quark:stone_andesite_bricks_stairs.name=Andesite Bricks Stairs
+tile.quark:stone_basalt_bricks_stairs.name=Basalt Bricks Stairs
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
