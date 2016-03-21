@@ -8,7 +8,7 @@
  * 
  * File Created @ [20/03/2016, 23:56:07 (GMT)]
  */
-package vazkii.quark.tweaks.feature;
+package vazkii.quark.automation.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;

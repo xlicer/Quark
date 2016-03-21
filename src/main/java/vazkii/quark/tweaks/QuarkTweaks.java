@@ -10,11 +10,11 @@
  */
 package vazkii.quark.tweaks;
 
+import vazkii.quark.automation.feature.DispensersPlaceSeeds;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.AngryCreepers;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
-import vazkii.quark.tweaks.feature.DispensersPlaceSeeds;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
@@ -34,7 +34,6 @@ public class QuarkTweaks extends Module {
 		registerFeature(new StairsMakeMore(), "Stair crafting makes more");
 		registerFeature(new SlabsToBlocks(), "Slabs to blocks recipe");
 		registerFeature(new ArrowSafeMobs(), "Ridable mobs are immune to rider's arrows");
-		registerFeature(new DispensersPlaceSeeds());
 	}
 	
 }
