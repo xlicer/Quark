@@ -13,6 +13,9 @@ package vazkii.quark.base.lib;
 public final class LibObfuscation {
 
 	// PotionHelper
-	public static final String[] POTION_ITEM_CONVERSIONS = new String[] {  "b", "field_185214_b", "POTION_ITEM_CONVERSIONS" };
+	public static final String[] POTION_ITEM_CONVERSIONS = new String[] { "b", "field_185214_b", "POTION_ITEM_CONVERSIONS" };
+	
+	// RenderLivingBase
+	public static final String[] LAYER_RENDERERS = new String[] { "i", "field_177097_h", "layerRenderers" };
 	
 }
