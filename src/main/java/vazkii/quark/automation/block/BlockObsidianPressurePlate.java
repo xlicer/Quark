@@ -95,7 +95,7 @@ public class BlockObsidianPressurePlate extends BlockPressurePlate implements IQ
 	}
 
 	@Override
-	public IProperty getVariantProperty() {
+	public IProperty getVariantProp() {
 		return null;
 	}
 

@@ -73,7 +73,7 @@ public class BlockModSlab extends BlockSlab implements IQuarkBlock {
 
 	@Override
 	public BlockStateContainer createBlockState() {
-		return tempDoubleSlab ? new BlockStateContainer(this, getVariantProperty()) : new BlockStateContainer(this, HALF, getVariantProperty());
+		return tempDoubleSlab ? new BlockStateContainer(this, getVariantProp()) : new BlockStateContainer(this, HALF, getVariantProp());
 	}
 
 	@Override
@@ -164,6 +164,11 @@ public class BlockModSlab extends BlockSlab implements IQuarkBlock {
 		return doubleSlab;
 	}
 
+	@Override
+	public IProperty<?> getVariantProp() {
+		return prop;
+	}
+	
 	@Override
 	public IProperty<?> getVariantProperty() {
 		return prop;

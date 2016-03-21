@@ -71,7 +71,7 @@ public class BlockModStairs extends BlockStairs implements IQuarkBlock {
 	}
 	
 	@Override
-	public IProperty getVariantProperty() {
+	public IProperty getVariantProp() {
 		return null;
 	}
 

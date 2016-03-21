@@ -72,7 +72,7 @@ public class BlockMetaVariants<T extends Enum<T> & IStringSerializable> extends 
 	}
 	
 	@Override
-	public IProperty getVariantProperty() {
+	public IProperty getVariantProp() {
 		return variantProp;
 	}
 

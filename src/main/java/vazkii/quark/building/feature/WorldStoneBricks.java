@@ -49,7 +49,7 @@ public class WorldStoneBricks extends Feature {
 				if(variant == Variants.STONE_BASALT_BRICKS && !basaltEnabled)
 					continue;
 				
-				IBlockState state = world_stone_bricks.getDefaultState().withProperty(world_stone_bricks.getVariantProperty(), variant);
+				IBlockState state = world_stone_bricks.getDefaultState().withProperty(world_stone_bricks.getVariantProp(), variant);
 				String name = variant.getName() + "_stairs";
 				BlockModStairs.initStairs(world_stone_bricks, variant.ordinal(), new BlockVanillaStairs(name, state));
 			}
@@ -58,7 +58,7 @@ public class WorldStoneBricks extends Feature {
 				if(variant == Variants.STONE_BASALT_BRICKS && !basaltEnabled)
 					continue;
 				
-				IBlockState state = world_stone_bricks.getDefaultState().withProperty(world_stone_bricks.getVariantProperty(), variant);
+				IBlockState state = world_stone_bricks.getDefaultState().withProperty(world_stone_bricks.getVariantProp(), variant);
 				String name = variant.getName() + "_slab";
 				BlockModSlab.initSlab(world_stone_bricks, variant.ordinal(), new BlockVanillaSlab(name , state, false), new BlockVanillaSlab(name, state, true));
 			}

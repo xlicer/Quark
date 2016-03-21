@@ -18,7 +18,7 @@ import vazkii.quark.building.feature.HardenedClayTiles;
 public class BlockStainedClayTilesStairs extends BlockModStairs {
 
 	public BlockStainedClayTilesStairs(BlockStainedClayTiles.Variants variant) {
-		super(variant.getName() + "_stairs", HardenedClayTiles.stained_clay_tiles.getDefaultState().withProperty(HardenedClayTiles.stained_clay_tiles.getVariantProperty(), variant));
+		super(variant.getName() + "_stairs", HardenedClayTiles.stained_clay_tiles.getDefaultState().withProperty(HardenedClayTiles.stained_clay_tiles.getVariantProp(), variant));
 	}
 
 }

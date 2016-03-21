@@ -19,7 +19,7 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
 
 	public String getBareName();
 
-	public IProperty getVariantProperty();
+	public IProperty getVariantProp();
 	
 	public IProperty[] getIgnoredProperties();
 

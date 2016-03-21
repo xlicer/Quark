@@ -69,7 +69,7 @@ public class ModelHandler {
 			IQuarkBlock quarkBlock = (IQuarkBlock) ((ItemBlock) item).getBlock();
 			Class clazz = quarkBlock.getVariantEnum();
 
-			IProperty variantProp = quarkBlock.getVariantProperty();
+			IProperty variantProp = quarkBlock.getVariantProp();
 			boolean ignoresVariant = false;
 			
 			IProperty[] ignored = quarkBlock.getIgnoredProperties();

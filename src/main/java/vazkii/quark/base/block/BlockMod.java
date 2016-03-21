@@ -70,7 +70,7 @@ public class BlockMod extends Block implements IQuarkBlock {
 	}
 	
 	@Override
-	public IProperty getVariantProperty() {
+	public IProperty getVariantProp() {
 		return null;
 	}
 
