@@ -12,12 +12,14 @@ package vazkii.quark.vanity;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.vanity.feature.DyableElytra;
+import vazkii.quark.vanity.feature.FireworkCloning;
 
 public class QuarkVanity extends Module {
 
 	@Override
 	public void addFeatures() {
 		registerFeature(new DyableElytra());
+		registerFeature(new FireworkCloning());
 	}
 	
 }
