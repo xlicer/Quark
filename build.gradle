@@ -12,12 +12,10 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-        classpath 'com.matthewprenger:CurseGradle:1.0-SNAPSHOT'
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'com.matthewprenger.cursegradle'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -25,36 +23,21 @@ targetCompatibility = JavaVersion.VERSION_1_8
 ext.configFile = file('build.properties')
 
 ext.config = parseConfig(configFile)
-ext.priv = parseConfig(file('private.properties'))
 
 version = "${config.version}-${config.build_number}"
 group = "vazkii.quark" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = config.mod_name
 
 minecraft {
-    version = "${config.mc_version}-${config.forge_version}"
+    version = "${config.mc_version}-${config.forge_version}-${config.mc_version}"
     runDir = "eclipse/assets"
 
-    mappings = "stable_22"
+    mappings = config.mc_mappings
     replace 'GRADLE:BUILD', config.build_number
     replace 'GRADLE:VERSION', config.version
 
     replaceIn 'LibMisc.java' //I may have missed another file, though I can only find it in here.
     makeObfSourceJar = false
-}
-
-//This here is for SCP
-repositories {
-    mavenCentral()
-}
-configurations {
-    sshAntTask
-}
-
-//End of the SCP config
-
-dependencies {
-    sshAntTask "org.apache.ant:ant-jsch:1.7.1", "jsch:jsch:0.1.29"
 }
 
 jar {
@@ -68,7 +51,7 @@ processResources {
         include 'mcmod.info'
 
         // replace version and mcversion
-        expand 'version': project.version, 'mcversion': project.minecraft.version
+        expand 'version': project.version, 'mcversion': config.mc_version
     }
 
     // copy everything else, thats not the mcmod.info
@@ -93,9 +76,6 @@ task incrementBuildNumber {
     configFile.withWriter {
         config.toProperties().store(it, "")
     }
-
-    file('web/versions.ini').append("\n${version}=${minecraft.version}")
-    file("${config.dir_repo}/version/${minecraft.version}.txt").write("${version}")
 }
 
 // I have no idea what I'm doing
@@ -124,14 +104,8 @@ task outputDeobf(type: Copy) {
     into file("${config.dir_output}/deobf")
 }
 
-task forgecraft(type: Copy) {
-    dependsOn "outputDeobf"
-    from "${config.dir_output}/wtf"
-    into file(priv.dir_forgecraft)
-}
-
 task sort(type: Delete) {
-    dependsOn "forgecraft"
+    dependsOn "outputDeobf"
     delete "${config.dir_output}/${deobfJar.archiveName}", "${config.dir_output}/wtf"
 }
 
@@ -143,67 +117,5 @@ def parseConfig(File config) {
     }
 }
 
-/**
- * This is the upload task from the build.xml
- */
-task upload() << {
-    scp('/files') {
-        fileset(file: jar.archivePath)
-    }
-    
-    scp('/files/deobf') {
-        fileset(file: deobfJar.archivePath)
-    }
 
-    scp('/') {
-        fileset(file: 'web/changelog.txt')
-        fileset(file: 'web/versions.ini')
-    }
-}
-
-/**
- * This is deply_web task
- */
-task deployWeb << {
-    scp('/') {
-        fileset(dir: 'web') //everything from the web directory
-    }
-}
-
-def scp(String dir, Closure antFileset = {}) {
-    ant {
-        taskdef(
-            name: 'scp',
-            classname: 'org.apache.tools.ant.taskdefs.optional.ssh.Scp',
-            classpath: configurations.sshAntTask.asPath)
-
-        String dirstr = priv.scp_dir + dir
-        Map scpArgs = [
-           todir  : dirstr,
-           password  : priv.scp_pass,
-           sftp: true,
-           trust: 'yes'
-        ]
-
-        delegate.scp(scpArgs) {
-            antFileset.delegate = delegate
-            antFileset()
-        }
-    }
-}
-
-
-curseforge {
-    apiKey = priv.cfkey
-    project {
-        id = "241665"
-        changelog = """
-            See http://quark.vazkii.us/changelog.php#${version}
-        """
-        releaseType = "alpha" // TODO change to release sometime
-    }
-}
-
-
-//defaultTasks 'clean', 'build', 'sort', 'forgecraft', 'incrementBuildNumber', 'curseforge', 'upload'
 defaultTasks 'clean', 'build', 'sort', 'incrementBuildNumber'
