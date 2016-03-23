@@ -1,0 +1,7 @@
+{
+	"id": "minecraft:end_bricks",
+	"blocks": {
+		"stairs": "quark:end_bricks_stairs",
+		"slab": "quark:end_bricks_slab"
+	}
+}
