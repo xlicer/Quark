@@ -1,0 +1,16 @@
+{
+	"name": "Sugar Cane Block",
+	"id": "quark:reed_block",
+	"type": "plant",
+	"hardness": 0.5,
+	"resistance": 0.8333333,
+	"textures": {
+		"top": "quark:blocks/reed_block_top",
+		"side": "quark:blocks/reed_block_side"
+	},
+	"blocks": {
+		"full": "quark:reed_block",
+		"stairs": "quark:reed_block_stairs",
+		"slab": { "id": "quark:reed_block_slab", "meta": 0 }
+	}
+}

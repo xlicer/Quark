@@ -1,0 +1,7 @@
+{
+    "id": "minecraft:prismarine_dark",
+    "blocks": {
+        "stairs": "quark:prismarine_dark_stairs",
+        "slab": "quark:prismarine_dark_slab"
+    }
+}
