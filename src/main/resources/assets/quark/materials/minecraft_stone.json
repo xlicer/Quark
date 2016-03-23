@@ -1,0 +1,6 @@
+{
+	"id": "minecraft:stone",
+	"blocks": {
+		"stairs": "quark:stone_stairs"
+	}
+}
