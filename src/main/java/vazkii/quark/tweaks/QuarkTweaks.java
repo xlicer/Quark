@@ -17,11 +17,11 @@ import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
+import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.StackableItems;
 import vazkii.quark.tweaks.feature.StairsMakeMore;
-import vazkii.quark.vanity.feature.DyableElytra;
 
 public class QuarkTweaks extends Module {
 
@@ -38,6 +38,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new ArrowSafeMobs(), "Ridable mobs are immune to rider's arrows");
 		registerFeature(new JumpBoostStepAssist(), "Jump boost allows to step up 1 block");
 		registerFeature(new DragonsBreathBottleless(), "Dragon's Breath doesn't leave a bottle behind");
+		registerFeature(new KnockOnDoors());
 	}
 	
 }
