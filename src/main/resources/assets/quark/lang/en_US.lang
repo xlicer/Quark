@@ -94,6 +94,12 @@ tile.quark:reed_block.name=Sugar Cane Block
 tile.quark:reed_block_slab.name=Sugar Cane Slab
 tile.quark:reed_block_stairs.name=Sugar Cane Stairs
 tile.quark:paper_wall.name=Paper Wall
+tile.quark:bark_oak.name=Oak Bark
+tile.quark:bark_spruce.name=Spruce Bark
+tile.quark:bark_birch.name=Birch Bark
+tile.quark:bark_jungle.name=Jungle Bark
+tile.quark:bark_acacia.name=Acacia Bark
+tile.quark:bark_dark_oak.name=Dark Oak Bark
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
