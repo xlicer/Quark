@@ -13,6 +13,7 @@ package vazkii.quark.world;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.world.feature.Basalt;
 import vazkii.quark.world.feature.ClayGeneration;
+import vazkii.quark.world.feature.OceanGuardians;
 
 public class QuarkWorld extends Module {
 
@@ -20,6 +21,7 @@ public class QuarkWorld extends Module {
 	public void addFeatures() {
 		registerFeature(new Basalt());
 		registerFeature(new ClayGeneration(), "Generate clay underground like dirt");
+		registerFeature(new OceanGuardians(), "Guardians spawn in oceans");
 	}
 	
 }
