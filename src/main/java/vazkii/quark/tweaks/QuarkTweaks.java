@@ -14,6 +14,7 @@ import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.AngryCreepers;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
+import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.LookDownLadders;
@@ -36,6 +37,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new SlabsToBlocks(), "Slabs to blocks recipe");
 		registerFeature(new ArrowSafeMobs(), "Ridable mobs are immune to rider's arrows");
 		registerFeature(new JumpBoostStepAssist(), "Jump boost allows to step up 1 block");
+		registerFeature(new DragonsBreathBottleless(), "Dragon's Breath doesn't leave a bottle behind");
 	}
 	
 }
