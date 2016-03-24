@@ -100,6 +100,12 @@ tile.quark:bark_birch.name=Birch Bark
 tile.quark:bark_jungle.name=Jungle Bark
 tile.quark:bark_acacia.name=Acacia Bark
 tile.quark:bark_dark_oak.name=Dark Oak Bark
+tile.quark:spruce_trapdoor.name=Spruce Trapdoor
+tile.quark:birch_trapdoor.name=Birch Trapdoor
+tile.quark:jungle_trapdoor.name=Jungle Trapdoor
+tile.quark:acacia_trapdoor.name=Acacia Trapdoor
+tile.quark:dark_oak_trapdoor.name=Dark Oak Trapdoor
+tile.oak_trapdoor.name=Oak Trapdoor
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

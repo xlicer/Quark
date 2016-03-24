@@ -14,6 +14,7 @@ import vazkii.quark.base.module.Module;
 import vazkii.quark.decoration.feature.BlazeLantern;
 import vazkii.quark.decoration.feature.LitLamp;
 import vazkii.quark.decoration.feature.PaperWall;
+import vazkii.quark.decoration.feature.VariedTrapdoors;
 
 public class QuarkDecoration extends Module {
 
@@ -22,6 +23,7 @@ public class QuarkDecoration extends Module {
 		registerFeature(new LitLamp());
 		registerFeature(new BlazeLantern());
 		registerFeature(new PaperWall());
+		registerFeature(new VariedTrapdoors());
 	}
 	
 }
