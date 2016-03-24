@@ -93,6 +93,7 @@ tile.quark:thatch_stairs.name=Thatch Stairs
 tile.quark:reed_block.name=Sugar Cane Block
 tile.quark:reed_block_slab.name=Sugar Cane Slab
 tile.quark:reed_block_stairs.name=Sugar Cane Stairs
+tile.quark:paper_wall.name=Paper Wall
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
