@@ -20,6 +20,7 @@ import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
+import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
 import vazkii.quark.tweaks.feature.StackableItems;
 import vazkii.quark.tweaks.feature.StairsMakeMore;
 
@@ -39,6 +40,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new JumpBoostStepAssist(), "Jump boost allows to step up 1 block");
 		registerFeature(new DragonsBreathBottleless(), "Dragon's Breath doesn't leave a bottle behind");
 		registerFeature(new KnockOnDoors());
+		registerFeature(new SnowGolemPlayerHeads(), "Named snow golems with pumpkins drop player heads if killed by a witch");
 	}
 	
 }
