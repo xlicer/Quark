@@ -24,11 +24,11 @@ public class KnockOnDoors extends Feature {
 
 	@SubscribeEvent
 	public void leftClick(PlayerInteractEvent event) {
-		if(event.action == Action.LEFT_CLICK_BLOCK && event.entityPlayer.getHeldItemMainhand() == null) {
-			IBlockState state = event.world.getBlockState(event.pos);
+		if(event.getAction() == Action.LEFT_CLICK_BLOCK && event.getEntityPlayer().getHeldItemMainhand() == null) {
+			IBlockState state = event.getWorld().getBlockState(event.getPos());
 			Block block = state.getBlock();
 			if(block instanceof BlockDoor && state.getMaterial() == Material.wood)
-				event.world.playSound(null, event.localPos.xCoord, event.localPos.yCoord, event.localPos.zCoord, block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
+				event.getWorld().playSound(null, event.getLocalPos().xCoord, event.getLocalPos().yCoord, event.getLocalPos().zCoord, block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
 		}
 	}
 	

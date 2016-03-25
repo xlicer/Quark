@@ -42,15 +42,15 @@ public class GlassShards extends Feature {
 	
 	@SubscribeEvent
 	public void onDrops(HarvestDropsEvent event) {
-		Block block = event.state.getBlock();
-		if(event.drops.isEmpty() && block == Blocks.glass || block == Blocks.stained_glass) {
+		Block block = event.getState().getBlock();
+		if(event.getDrops().isEmpty() && block == Blocks.glass || block == Blocks.stained_glass) {
 			int meta = 0;
 			if(block == Blocks.stained_glass)
-				meta = block.getMetaFromState(event.state) + 1;
+				meta = block.getMetaFromState(event.getState()) + 1;
 			
-			int quantity = MathHelper.clamp_int(2 + event.world.rand.nextInt(3) + event.world.rand.nextInt(event.fortuneLevel + 1), 1, 4);
+			int quantity = MathHelper.clamp_int(2 + event.getWorld().rand.nextInt(3) + event.getWorld().rand.nextInt(event.getFortuneLevel() + 1), 1, 4);
 			
-			event.drops.add(new ItemStack(glass_shard, quantity, meta));
+			event.getDrops().add(new ItemStack(glass_shard, quantity, meta));
 		}
 	}
 	

@@ -141,7 +141,7 @@ public final class ModuleLoader {
 
 		@SubscribeEvent
 		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-			if(eventArgs.modID.equals(LibMisc.MOD_ID))
+			if(eventArgs.getModID().equals(LibMisc.MOD_ID))
 				loadModuleConfigs();
 		}
 
