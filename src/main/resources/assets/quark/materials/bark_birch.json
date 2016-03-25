@@ -1,0 +1,11 @@
+{
+	"name": "Birch Bark",
+	"id": "quark:bark_birch",
+	"type": "wood",
+	"hardness": 2.0,
+	"resistance": 5.0,
+	"textures": "minecraft:blocks/log_birch",
+	"blocks": {
+		"full": { "id": "quark:bark", "meta": 2 },
+	}
+}
