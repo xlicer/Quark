@@ -18,6 +18,7 @@ import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
+import vazkii.quark.tweaks.feature.LessIntrusiveShields;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
@@ -41,6 +42,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new DragonsBreathBottleless(), "Dragon's Breath doesn't leave a bottle behind");
 		registerFeature(new KnockOnDoors());
 		registerFeature(new SnowGolemPlayerHeads(), "Named snow golems with pumpkins drop player heads if killed by a witch");
+		registerFeature(new LessIntrusiveShields());
 	}
 	
 }
