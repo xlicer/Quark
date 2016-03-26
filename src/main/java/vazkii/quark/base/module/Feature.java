@@ -13,6 +13,7 @@ package vazkii.quark.base.module;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -50,6 +51,10 @@ public class Feature {
 	
 	@SideOnly(Side.CLIENT)
 	public void postInitClient(FMLPostInitializationEvent event) {
+		// NO-OP
+	}
+	
+	public void serverStarting(FMLServerStartingEvent event) {
 		// NO-OP
 	}
 	

@@ -12,6 +12,7 @@ package vazkii.quark.vanity;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.vanity.feature.DyableElytra;
+import vazkii.quark.vanity.feature.EmoteSystem;
 import vazkii.quark.vanity.feature.FireworkCloning;
 
 public class QuarkVanity extends Module {
@@ -20,6 +21,7 @@ public class QuarkVanity extends Module {
 	public void addFeatures() {
 		registerFeature(new DyableElytra());
 		registerFeature(new FireworkCloning());
+		registerFeature(new EmoteSystem());
 	}
 	
 }

@@ -18,4 +18,8 @@ public final class LibObfuscation {
 	// RenderLivingBase
 	public static final String[] LAYER_RENDERERS = new String[] { "i", "field_177097_h", "layerRenderers" };
 	
+	// LayerArmorBase
+	public static final String[] MODEL_ARMOR = new String[] { "d", "field_177186_d", "modelArmor" };
+	public static final String[] MODEL_LEGGINGS = new String[] { "c", "field_177189_c", "modelLeggings" };
+	
 }

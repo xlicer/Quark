@@ -13,10 +13,12 @@ package vazkii.quark.base.proxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import vazkii.quark.base.Quark;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.GuiHandler;
+import vazkii.quark.base.network.NetworkHandler;
 
 public class CommonProxy {
 
@@ -24,6 +26,7 @@ public class CommonProxy {
 		ModuleLoader.preInit(event);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Quark.instance, new GuiHandler());
+		NetworkHandler.init();
 	}
 	
 	public void init(FMLInitializationEvent event) {
@@ -32,6 +35,14 @@ public class CommonProxy {
 	
 	public void postInit(FMLPostInitializationEvent event) {
 		ModuleLoader.postInit(event);
+	}
+	
+	public void serverStarting(FMLServerStartingEvent event) {
+		ModuleLoader.serverStarting(event);
+	}
+	
+	public void doEmote(String playerName, String emoteName) {
+		// proxy override
 	}
 	
 }

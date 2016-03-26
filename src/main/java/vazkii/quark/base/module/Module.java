@@ -20,6 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -94,6 +95,10 @@ public class Module {
 		forEachEnabled(feature -> feature.postInitClient(event));
 	}
 	
+	public void serverStarting(FMLServerStartingEvent event) {
+		forEachEnabled(feature -> feature.serverStarting(event));
+	}
+	 
 	public boolean canBeDisabled() {
 		return true;
 	}

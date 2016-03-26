@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import vazkii.quark.base.lib.LibMisc;
+import vazkii.quark.base.network.message.MessageDoEmote;
 
 public class NetworkHandler {
 
@@ -22,7 +23,7 @@ public class NetworkHandler {
 	private static int i = 0;
 
 	public static void init() {
-
+		register(MessageDoEmote.class, Side.CLIENT);
 	}
 
 	private static void register(Class clazz, Side handlerSide) {
