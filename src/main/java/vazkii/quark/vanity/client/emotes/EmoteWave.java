@@ -27,7 +27,7 @@ public class EmoteWave extends EmoteBase {
 	public Timeline getTimeline(EntityPlayer player, ModelBiped model) {
 		Timeline timeline = Timeline.createSequence()
 			.push(Tween.to(model, ModelAccessor.RIGHT_ARM_X, 200F).target(-PI_F * 0.9F))
-			.push(Tween.to(model, ModelAccessor.RIGHT_ARM_Z, 300F).target(PI_F * -0.3F).repeatYoyo(5, 0F))
+			.push(Tween.to(model, ModelAccessor.RIGHT_ARM_Z, 200F).target(PI_F * -0.3F).repeatYoyo(5, 0F))
 			.push(Tween.to(model, ModelAccessor.RIGHT_ARM_X, 200F).target(0F));
 	
 		return timeline;

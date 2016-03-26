@@ -18,7 +18,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.aurelienribon.tweenengine.Tween;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.vanity.client.emotes.EmoteCheer;
+import vazkii.quark.vanity.client.emotes.EmoteClap;
+import vazkii.quark.vanity.client.emotes.EmoteFacepalm;
+import vazkii.quark.vanity.client.emotes.EmoteHeadbang;
 import vazkii.quark.vanity.client.emotes.EmoteNo;
+import vazkii.quark.vanity.client.emotes.EmotePoint;
+import vazkii.quark.vanity.client.emotes.EmoteSalute;
+import vazkii.quark.vanity.client.emotes.EmoteShrug;
 import vazkii.quark.vanity.client.emotes.EmoteWave;
 import vazkii.quark.vanity.client.emotes.EmoteYes;
 import vazkii.quark.vanity.client.emotes.base.EmoteHandler;
@@ -37,6 +44,16 @@ public class EmoteSystem extends Feature {
 		EmoteHandler.emoteMap.put("wave", EmoteWave.class);
 		EmoteHandler.emoteMap.put("yes", EmoteYes.class);
 		EmoteHandler.emoteMap.put("no", EmoteNo.class);
+		
+		EmoteHandler.emoteMap.put("cheer", EmoteCheer.class);
+		EmoteHandler.emoteMap.put("clap", EmoteClap.class);
+		EmoteHandler.emoteMap.put("salute", EmoteSalute.class);
+		
+		EmoteHandler.emoteMap.put("facepalm", EmoteFacepalm.class);
+		EmoteHandler.emoteMap.put("shrug", EmoteShrug.class);
+		EmoteHandler.emoteMap.put("point", EmotePoint.class);
+
+		EmoteHandler.emoteMap.put("headbang", EmoteHeadbang.class);
 	}
 	
 	@Override

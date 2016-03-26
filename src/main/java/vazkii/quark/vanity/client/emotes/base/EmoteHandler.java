@@ -11,9 +11,9 @@
 package vazkii.quark.vanity.client.emotes.base;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.WeakHashMap;
 
 import net.minecraft.client.Minecraft;
@@ -35,7 +35,7 @@ import vazkii.quark.base.lib.LibObfuscation;
 
 public final class EmoteHandler {
 
-	public static Map<String, Class<? extends EmoteBase>> emoteMap = new TreeMap();
+	public static Map<String, Class<? extends EmoteBase>> emoteMap = new LinkedHashMap();
 	private static WeakHashMap<EntityPlayer, EmoteBase> playerEmotes = new WeakHashMap();
 	private static List<EntityPlayer> updatedPlayers = new ArrayList();
 	

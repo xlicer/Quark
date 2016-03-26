@@ -6,7 +6,7 @@
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
  * 
- * File Created @ [26/03/2016, 21:59:53 (GMT)]
+ * File Created @ [26/03/2016, 23:11:59 (GMT)]
  */
 package vazkii.quark.vanity.client.emotes;
 
@@ -17,9 +17,9 @@ import vazkii.aurelienribon.tweenengine.Tween;
 import vazkii.quark.vanity.client.emotes.base.EmoteBase;
 import vazkii.quark.vanity.client.emotes.base.ModelAccessor;
 
-public class EmoteNo extends EmoteBase {
+public class EmoteHeadbang extends EmoteBase {
 
-	public EmoteNo(EntityPlayer player, ModelBiped model, ModelBiped armorModel, ModelBiped armorLegsModel) {
+	public EmoteHeadbang(EntityPlayer player, ModelBiped model, ModelBiped armorModel, ModelBiped armorLegsModel) {
 		super(player, model, armorModel, armorLegsModel);
 	}
 
@@ -27,19 +27,23 @@ public class EmoteNo extends EmoteBase {
 	public Timeline getTimeline(EntityPlayer player, ModelBiped model) {
 		Timeline timeline = Timeline.createSequence()
 			.beginParallel()
-				.push(Tween.to(model, ModelAccessor.HEAD_X, 200F).target(0F))
-				.push(Tween.to(model, ModelAccessor.HEAD_Y, 200F).target(0.2F))
-				.push(Tween.to(model, ModelAccessor.HEAD_Z, 200F).target(0F))
+				.push(Tween.to(model, ModelAccessor.RIGHT_ARM_X, 400F).target(-PI_F))
+				.push(Tween.to(model, ModelAccessor.HEAD_X, 400F).target(0F))
+				.push(Tween.to(model, ModelAccessor.HEAD_Y, 400F).target(0F))
+				.push(Tween.to(model, ModelAccessor.HEAD_Z, 400F).target(0F))
 			.end()
-			.push(Tween.to(model, ModelAccessor.HEAD_Y, 200F).target(-0.2F).repeatYoyo(4, 0F))
-			.push(Tween.to(model, ModelAccessor.HEAD_Y, 200F).target(0F));
+			.beginParallel()
+				.push(Tween.to(model, ModelAccessor.RIGHT_ARM_X, 300F).target(-PI_F + 2F).repeatYoyo(11, 0F))
+				.push(Tween.to(model, ModelAccessor.HEAD_X, 300F).target(PI_F - 2F).repeatYoyo(11, 0F))
+			.end()
+			.push(Tween.to(model, ModelAccessor.RIGHT_ARM_X, 600F).target(0F));
 				
 		return timeline;
 	}
-
+	
 	@Override
 	public boolean usesBodyPart(int part) {
-		return part == ModelAccessor.HEAD;
+		return part == ModelAccessor.RIGHT_ARM || part == ModelAccessor.HEAD;
 	}
 
 }
