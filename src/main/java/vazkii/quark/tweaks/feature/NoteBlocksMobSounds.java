@@ -10,11 +10,12 @@
  */
 package vazkii.quark.tweaks.feature;
 
-import com.jcraft.jorbis.Block;
-
+import net.minecraft.block.BlockSkull;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -28,20 +29,24 @@ public class NoteBlocksMobSounds extends Feature {
 	public void noteBlockPlayed(NoteBlockEvent.Play event) {
 		BlockPos pos = event.getPos();
 		
-		BlockPos[] adj = new BlockPos[] {
-				pos.north(),
-				pos.south(),
-				pos.east(),
-				pos.west()
+		EnumFacing[] facings = new EnumFacing[] {
+				EnumFacing.NORTH,
+				EnumFacing.SOUTH,
+				EnumFacing.EAST,
+				EnumFacing.WEST
 		};
 		
 		TileEntity tile = null;
 		boolean can = false;
-		for(BlockPos apos : adj) {
+		for(EnumFacing face : facings) {
+			BlockPos apos = pos.offset(face);
 			tile = event.getWorld().getTileEntity(apos);
 			if(tile != null && tile instanceof TileEntitySkull) {
-				can = true;
-				break;
+				IBlockState state = event.getWorld().getBlockState(apos);
+				if(state.getValue(BlockSkull.FACING) == face) {
+					can = true;
+					break;
+				}
 			}
 		}
 		
