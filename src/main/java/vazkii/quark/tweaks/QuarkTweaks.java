@@ -12,6 +12,7 @@ package vazkii.quark.tweaks;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.AngryCreepers;
+import vazkii.quark.tweaks.feature.ArmedArmorStands;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
@@ -45,6 +46,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new SnowGolemPlayerHeads(), "Named snow golems with pumpkins drop player heads if killed by a witch");
 		registerFeature(new LessIntrusiveShields());
 		registerFeature(new NoteBlocksMobSounds(), "Note blocks play mob sounds if there's a head attached");
+		registerFeature(new ArmedArmorStands());
 	}
 	
 }
