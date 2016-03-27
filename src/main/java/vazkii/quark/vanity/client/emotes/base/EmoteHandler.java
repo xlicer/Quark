@@ -18,6 +18,7 @@ import java.util.WeakHashMap;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -39,7 +40,7 @@ public final class EmoteHandler {
 	private static WeakHashMap<EntityPlayer, EmoteBase> playerEmotes = new WeakHashMap();
 	private static List<EntityPlayer> updatedPlayers = new ArrayList();
 	
-	public static float time, delta;
+	public static float time, partialTicks, total, delta;
 	
 	public static void putEmote(AbstractClientPlayer player, String emoteName) {
 		if(emoteMap.containsKey(emoteName))
@@ -113,22 +114,34 @@ public final class EmoteHandler {
 	
 	public static class TickHandler {
 		
+		private void calcDelta() {
+			float oldTotal = total;
+			total = time + partialTicks;
+			delta = (total - oldTotal) * 50F;
+		}
+
 		@SubscribeEvent
-		public void onRenderStart(RenderTickEvent event) {
+		public void renderTick(RenderTickEvent event) {
 			if(event.phase == Phase.START) {
-				float ctime = (float) Math.floor(time) + event.renderTickTime;
-				delta = (ctime - time) * 50;
-				time = ctime;
+				partialTicks = event.renderTickTime;
 				EmoteHandler.clearPlayerList();
+			} else calcDelta();
+		}
+
+		@SubscribeEvent
+		public void clientTickEnd(ClientTickEvent event) {
+			if(event.phase == Phase.END) {
+				Minecraft mc = Minecraft.getMinecraft();
+
+				GuiScreen gui = mc.currentScreen;
+				if(gui == null || !gui.doesGuiPauseGame()) {
+					time++;
+					partialTicks = 0;
+				}
+
+				calcDelta();
 			}
 		}
-		
-		@SubscribeEvent
-		public void onTick(ClientTickEvent event) {
-			if(event.phase == Phase.START)
-				time = (float) Math.ceil(time);
-		}
-		
 	}
 	
 }
