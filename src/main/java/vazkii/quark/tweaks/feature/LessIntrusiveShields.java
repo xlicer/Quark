@@ -16,12 +16,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.handler.ModelHandler;
 import vazkii.quark.base.module.Feature;
 
 public class LessIntrusiveShields extends Feature {
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
 		ModelHandler.registerModels(Items.shield, new String[] { "shield_override" }, true);
 		
