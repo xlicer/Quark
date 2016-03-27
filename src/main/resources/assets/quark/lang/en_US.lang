@@ -126,6 +126,19 @@ item.quark:glass_shard_silver.name=Light Blue Glass Shard
 item.quark:glass_shard_white.name=White Glass Shard
 item.quark:glass_shard_yellow.name=Yellow Glass Shard
 
+# GUI STUFF
+quark.gui.emotes=Emotes
+quark.emote.wave=Wave
+quark.emote.yes=Yes
+quark.emote.no=No
+quark.emote.cheer=Cheer
+quark.emote.clap=Clap
+quark.emote.salute=Salute
+quark.emote.facepalm=Facepalm
+quark.emote.shrug=Shrug
+quark.emote.point=Point
+quark.emote.headbang=Headbang
+
 # BANNER NAMES
 item.banner.quark_dragon.black=Black Dragon
 item.banner.quark_dragon.red=Red Dragon
