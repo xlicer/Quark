@@ -34,7 +34,7 @@ public class ClassTransformer implements IClassTransformer {
 			String funcName = "setRotationAngles";
 			String obfName = "a";
 			String funcDesc = "(FFFFFFLnet/minecraft/entity/Entity;)V";
-			String obfDesc = "(FFFFFFLsa;)V";
+			String obfDesc = "(FFFFFFLrr;)V";
 			
 			if(LoadingPlugin.runtimeDeobfEnabled)
 				funcName = "func_78087_a";
