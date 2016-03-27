@@ -20,6 +20,7 @@ import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
 import vazkii.quark.tweaks.feature.LookDownLadders;
+import vazkii.quark.tweaks.feature.NoteBlocksMobSounds;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
 import vazkii.quark.tweaks.feature.StackableItems;
@@ -43,6 +44,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new KnockOnDoors());
 		registerFeature(new SnowGolemPlayerHeads(), "Named snow golems with pumpkins drop player heads if killed by a witch");
 		registerFeature(new LessIntrusiveShields());
+		registerFeature(new NoteBlocksMobSounds(), "Note blocks play mob sounds if there's a head attached");
 	}
 	
 }
