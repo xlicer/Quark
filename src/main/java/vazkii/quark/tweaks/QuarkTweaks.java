@@ -26,6 +26,7 @@ import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
 import vazkii.quark.tweaks.feature.StackableItems;
 import vazkii.quark.tweaks.feature.StairsMakeMore;
+import vazkii.quark.tweaks.feature.StoreToChests;
 
 public class QuarkTweaks extends Module {
 
@@ -47,6 +48,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new LessIntrusiveShields());
 		registerFeature(new NoteBlocksMobSounds(), "Note blocks play mob sounds if there's a head attached");
 		registerFeature(new ArmedArmorStands());
+		registerFeature(new StoreToChests());
 	}
 	
 }

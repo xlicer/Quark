@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.base.network.message.MessageDoEmote;
+import vazkii.quark.base.network.message.MessageDropoff;
 
 public class NetworkHandler {
 
@@ -24,6 +25,7 @@ public class NetworkHandler {
 
 	public static void init() {
 		register(MessageDoEmote.class, Side.CLIENT);
+		register(MessageDropoff.class, Side.SERVER);
 	}
 
 	private static void register(Class clazz, Side handlerSide) {
