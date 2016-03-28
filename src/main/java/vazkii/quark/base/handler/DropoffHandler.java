@@ -52,8 +52,10 @@ public final class DropoffHandler {
             return null;
         
         boolean accept = te instanceof IDropoffManager && ((IDropoffManager) te).acceptsDropoff();
-        if(!accept)
-        	accept = te instanceof TileEntityChest || te.getClass().getSimpleName().toLowerCase().contains("chest");
+        if(!accept) {
+        	String name = te.getClass().getSimpleName().toLowerCase();
+        	accept = (name.contains("chest") || te instanceof TileEntityChest) && !name.contains("void") && !name.contains("trash");
+        }
         
         IItemHandler ret = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         
