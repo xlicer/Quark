@@ -14,6 +14,7 @@ import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.AngryCreepers;
 import vazkii.quark.tweaks.feature.ArmedArmorStands;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
+import vazkii.quark.tweaks.feature.BabyZombiesBurn;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.GlassShards;
@@ -49,6 +50,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new NoteBlocksMobSounds(), "Note blocks play mob sounds if there's a head attached");
 		registerFeature(new ArmedArmorStands());
 		registerFeature(new StoreToChests());
+		registerFeature(new BabyZombiesBurn());
 	}
 	
 }
