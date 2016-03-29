@@ -6,6 +6,6 @@
 	"resistance": 5.0,
 	"textures": "minecraft:blocks/log_birch",
 	"blocks": {
-		"full": { "id": "quark:bark", "meta": 2 },
+		"full": { "id": "quark:bark", "meta": 2 }
 	}
 }
