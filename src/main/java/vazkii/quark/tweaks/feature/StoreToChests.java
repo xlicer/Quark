@@ -58,7 +58,7 @@ public class StoreToChests extends Feature {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void performAction(GuiScreenEvent.ActionPerformedEvent.Pre event) {
-		if(event.getButton() instanceof GuiButton) {
+		if(event.getButton() instanceof GuiButtonStore) {
 			boolean smart = GuiScreen.isShiftKeyDown() != StoreToChests.invert;
 			NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(smart));
 		}
