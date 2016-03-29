@@ -55,11 +55,12 @@ public class Module {
 		feature.enabled = loadPropBool(name, "", enabledByDefault);
 		feature.module = this;
 		feature.category = this.name + "." + name;
-		if(feature.enabled)
+		if(feature.enabled) {
 			enabledFeatures.add(feature);
-		
-		if(feature.hasSubscriptions())
-			MinecraftForge.EVENT_BUS.register(feature);
+			
+			if(feature.hasSubscriptions())
+				MinecraftForge.EVENT_BUS.register(feature);
+		}
 	}
 	
 	public void setupConfig() {
