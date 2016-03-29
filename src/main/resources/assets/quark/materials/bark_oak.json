@@ -6,6 +6,6 @@
 	"resistance": 5.0,
 	"textures": "minecraft:blocks/log_oak",
 	"blocks": {
-		"full": { "id": "quark:bark", "meta": 0 },
+		"full": { "id": "quark:bark", "meta": 0 }
 	}
 }
