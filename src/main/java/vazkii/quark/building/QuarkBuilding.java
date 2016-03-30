@@ -17,6 +17,7 @@ import vazkii.quark.building.feature.ReedBlock;
 import vazkii.quark.building.feature.SandyBricks;
 import vazkii.quark.building.feature.Thatch;
 import vazkii.quark.building.feature.VanillaStairsAndSlabs;
+import vazkii.quark.building.feature.VanillaWalls;
 import vazkii.quark.building.feature.WorldStoneBricks;
 
 public class QuarkBuilding extends Module {
@@ -30,6 +31,7 @@ public class QuarkBuilding extends Module {
 		registerFeature(new SandyBricks());
 		registerFeature(new ReedBlock(), "Sugar cane blocks");
 		registerFeature(new BarkBlocks());
+		registerFeature(new VanillaWalls());
 	}
 	
 }

@@ -107,6 +107,21 @@ tile.quark:acacia_trapdoor.name=Acacia Trapdoor
 tile.quark:dark_oak_trapdoor.name=Dark Oak Trapdoor
 tile.oak_trapdoor.name=Oak Trapdoor
 
+tile.quark:end_bricks_wall.name=End Brick Wall
+tile.quark:purpur_block_wall.name=Purpur Wall
+tile.quark:stone_wall.name=Stone Wall
+tile.quark:stone_granite_wall.name=Granite Wall
+tile.quark:stone_diorite_wall.name=Diorite Wall
+tile.quark:stone_andesite_wall.name=Andesite Wall
+tile.quark:sandstone_wall.name=Sandstone Wall
+tile.quark:red_sandstone_wall.name=Red Sandstone Wall
+tile.quark:stonebrick_wall.name=Stone Brick Wall
+tile.quark:brick_wall.name=Brick Wall
+tile.quark:quartz_wall.name=Quartz Wall
+tile.quark:prismarine_rough_wall.name=Prismarine Wall
+tile.quark:prismarine_bricks_wall.name=Prismarine Brick Wall
+tile.quark:dark_prismarine_wall.name=Dark Prismarine Wall
+
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
 item.quark:glass_shard_black.name=Black Glass Shard
