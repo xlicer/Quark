@@ -133,6 +133,7 @@ tile.quark:stone_basalt_bricks_wall.name=Basalt Brick Wall
 tile.quark:sandy_bricks_wall.name=Sandy Brick Wall
 tile.quark:reed_block_wall.name=Sugar Cane Wall
 tile.quark:basalt_wall.name=Basalt Wall
+tile.quark:polished_stone.name=Polished Stone
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
