@@ -8,6 +8,7 @@
 	"blocks": {
 		"full": { "id": "quark:basalt", "meta": 0 },
 		"stairs": "quark:stone_basalt_stairs",
-		"slab": { "id": "quark:stone_basalt_slab", "meta": 0 }
+		"slab": { "id": "quark:stone_basalt_slab", "meta": 0 },
+		"wall": { "id": "quark:stone_basalt_wall", "meta": 0 }
 	}
 }

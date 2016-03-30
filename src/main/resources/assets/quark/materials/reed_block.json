@@ -11,6 +11,7 @@
 	"blocks": {
 		"full": "quark:reed_block",
 		"stairs": "quark:reed_block_stairs",
-		"slab": { "id": "quark:reed_block_slab", "meta": 0 }
+		"slab": { "id": "quark:reed_block_slab", "meta": 0 },
+		"wall": { "id": "quark:reed_block_wall", "meta": 0 }
 	}
 }

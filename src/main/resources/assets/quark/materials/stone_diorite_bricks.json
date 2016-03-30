@@ -8,6 +8,7 @@
 	"blocks": {
 		"full": { "id": "quark:world_stone_bricks", "meta": 1 },
 		"stairs": "quark:stone_diorite_bricks_stairs",
-		"slab": { "id": "quark:stone_diorite_bricks_slab", "meta": 0 }
+		"slab": { "id": "quark:stone_diorite_bricks_slab", "meta": 0 },
+		"wall": { "id": "quark:stone_diorite_bricks_wall", "meta": 0 }
 	}
 }

@@ -1,0 +1,6 @@
+{
+	"id": "minecraft:brick_block",
+	"blocks": {
+		"wall": { "id": "quark:brick_wall", "meta": 0 }
+	}
+}

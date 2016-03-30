@@ -6,6 +6,7 @@
 	"resistance": 5.0,
 	"textures": "minecraft:blocks/log_spruce",
 	"blocks": {
-		"full": { "id": "quark:bark", "meta": 1 }
+		"full": { "id": "quark:bark", "meta": 1 },
+		"wall": { "id": "quark:bark_spruce_wall", "meta": 0 }
 	}
 }

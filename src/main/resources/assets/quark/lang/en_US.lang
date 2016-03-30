@@ -134,6 +134,12 @@ tile.quark:sandy_bricks_wall.name=Sandy Brick Wall
 tile.quark:reed_block_wall.name=Sugar Cane Wall
 tile.quark:basalt_wall.name=Basalt Wall
 tile.quark:polished_stone.name=Polished Stone
+tile.quark:carved_oak_wood.name=Carved Oak Wood
+tile.quark:carved_spruce_wood.name=Carved Spruce Wood
+tile.quark:carved_birch_wood.name=Carved Birch Wood
+tile.quark:carved_jungle_wood.name=Carved Jungle Wood
+tile.quark:carved_acacia_wood.name=Carved Acacia Wood
+tile.quark:carved_dark_oak_wood.name=Carved Dark Oak Wood
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

@@ -8,6 +8,7 @@
 	"blocks": {
 		"full": "quark:sandy_bricks",
 		"stairs": "quark:sandy_bricks_stairs",
-		"slab": { "id": "quark:sandy_bricks_slab", "meta": 0 }
+		"slab": { "id": "quark:sandy_bricks_slab", "meta": 0 },
+		"wall": { "id": "quark:sandy_bricks_wall", "meta": 0 }
 	}
 }
