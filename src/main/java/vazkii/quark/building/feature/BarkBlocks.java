@@ -10,17 +10,25 @@
  */
 package vazkii.quark.building.feature;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.quark.base.block.BlockMod;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockBark;
 
 public class BarkBlocks extends Feature {
 
-	public static Block bark;
+	public static BlockMod bark;
+
+	boolean enableWalls;
+	
+	@Override
+	public void setupConfig() {
+		enableWalls = loadPropBool("Enable walls", "", true);
+	}
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
@@ -32,7 +40,13 @@ public class BarkBlocks extends Feature {
 			RecipeHandler.addOreDictRecipe(new ItemStack(bark, 4, i), 
 					"WW", "WW",
 					'W', log);
-			RecipeHandler.addShapelessOreDictRecipe(log, new ItemStack(bark, 1, i)); 
+			RecipeHandler.addShapelessOreDictRecipe(log, new ItemStack(bark, 1, i));
+		}
+		
+		for(BlockBark.Variants variant : BlockBark.Variants.class.getEnumConstants()) {
+			IBlockState state = bark.getDefaultState().withProperty(bark.getVariantProp(), variant);
+			String name = variant.getName();
+			VanillaWalls.add(name, bark, variant.ordinal(), enableWalls);
 		}
 	}
 	

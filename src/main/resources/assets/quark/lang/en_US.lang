@@ -106,7 +106,6 @@ tile.quark:jungle_trapdoor.name=Jungle Trapdoor
 tile.quark:acacia_trapdoor.name=Acacia Trapdoor
 tile.quark:dark_oak_trapdoor.name=Dark Oak Trapdoor
 tile.oak_trapdoor.name=Oak Trapdoor
-
 tile.quark:end_bricks_wall.name=End Brick Wall
 tile.quark:purpur_block_wall.name=Purpur Wall
 tile.quark:stone_wall.name=Stone Wall
@@ -121,6 +120,19 @@ tile.quark:quartz_wall.name=Quartz Wall
 tile.quark:prismarine_rough_wall.name=Prismarine Wall
 tile.quark:prismarine_bricks_wall.name=Prismarine Brick Wall
 tile.quark:dark_prismarine_wall.name=Dark Prismarine Wall
+tile.quark:bark_oak_wall.name=Oak Bark Wall
+tile.quark:bark_spruce_wall.name=Spruce Bark Wall
+tile.quark:bark_birch_wall.name=Birch Bark Wall
+tile.quark:bark_jungle_wall.name=Jungle Bark Wall
+tile.quark:bark_acacia_wall.name=Acacia Bark Wall
+tile.quark:bark_dark_oak_wall.name=Dark Oak Bark Wall
+tile.quark:stone_granite_bricks_wall.name=Granite Brick Wall
+tile.quark:stone_diorite_bricks_wall.name=Diorite Brick Wall
+tile.quark:stone_andesite_bricks_wall.name=Andesite Brick Wall
+tile.quark:stone_basalt_bricks_wall.name=Basalt Brick Wall
+tile.quark:sandy_bricks_wall.name=Sandy Brick Wall
+tile.quark:reed_block_wall.name=Sugar Cane Wall
+tile.quark:basalt_wall.name=Basalt Wall
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

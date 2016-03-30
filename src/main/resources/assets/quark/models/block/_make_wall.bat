@@ -10,7 +10,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "minecraft:block/wall_post",
 		echo 	"textures": {
-		echo 		"all": "%modid%:blocks/%%x"
+		echo 		"wall": "%modid%:blocks/%%x"
 		echo 	}
 		echo }
 	) > %%x_wall_post.json
@@ -20,7 +20,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "minecraft:block/wall_side",
 		echo 	"textures": {
-		echo 		"all": "%modid%:blocks/%%x"
+		echo 		"wall": "%modid%:blocks/%%x"
 		echo 	}
 		echo }
 	) > %%x_wall_side.json
@@ -30,7 +30,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "minecraft:block/wall_inventory",
 		echo 	"textures": {
-		echo 		"all": "%modid%:blocks/%%x"
+		echo 		"wall": "%modid%:blocks/%%x"
 		echo 	}
 		echo }
 	) > %%x_wall_inventory.json

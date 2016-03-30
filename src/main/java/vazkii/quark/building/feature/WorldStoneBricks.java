@@ -32,19 +32,21 @@ public class WorldStoneBricks extends Feature {
 	public static BlockMod world_stone_bricks;
 	
 	boolean enableStairsAndSlabs;
-	
+	boolean enableWalls;
+
 	@Override
 	public void setupConfig() {
 		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
+		enableWalls = loadPropBool("Enable walls", "", true);
 	}
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		world_stone_bricks = new BlockWorldStoneBricks();
 		
+		boolean basaltEnabled = ModuleLoader.isFeatureEnabled(Basalt.class);
+		
 		if(enableStairsAndSlabs) {
-			boolean basaltEnabled = ModuleLoader.isFeatureEnabled(Basalt.class);
-			
 			for(BlockWorldStoneBricks.Variants variant : BlockWorldStoneBricks.Variants.class.getEnumConstants()) {
 				if(variant == Variants.STONE_BASALT_BRICKS && !basaltEnabled)
 					continue;
@@ -63,6 +65,15 @@ public class WorldStoneBricks extends Feature {
 				BlockModSlab.initSlab(world_stone_bricks, variant.ordinal(), new BlockVanillaSlab(name , state, false), new BlockVanillaSlab(name, state, true));
 			}
 		}
+		
+		for(BlockWorldStoneBricks.Variants variant : BlockWorldStoneBricks.Variants.class.getEnumConstants()) {
+			if(variant == Variants.STONE_BASALT_BRICKS && !basaltEnabled)
+				continue;
+			
+			IBlockState state = world_stone_bricks.getDefaultState().withProperty(world_stone_bricks.getVariantProp(), variant);
+			String name = variant.getName();
+			VanillaWalls.add(name, world_stone_bricks, variant.ordinal(), enableWalls);
+		}
 	}
 	
 	@Override
@@ -75,9 +86,9 @@ public class WorldStoneBricks extends Feature {
 					'S', new ItemStack(Blocks.stone, 1, i * 2 + 2));
 		
 		if(basaltEnabled)
-		RecipeHandler.addOreDictRecipe(new ItemStack(world_stone_bricks, 4, 3), 
-				"SS", "SS",
-				'S', new ItemStack(Basalt.basalt, 1, 1));
+			RecipeHandler.addOreDictRecipe(new ItemStack(world_stone_bricks, 4, 3), 
+					"SS", "SS",
+					'S', new ItemStack(Basalt.basalt, 1, 1));
 	}
 	
 }

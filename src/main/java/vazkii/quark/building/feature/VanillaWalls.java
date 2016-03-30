@@ -57,7 +57,7 @@ public class VanillaWalls extends Feature {
 		add("end_bricks", Blocks.end_bricks, 0, endBricks);
 	}
 	
-	public void add(String name, Block block, int meta, boolean doit) {
+	public static void add(String name, Block block, int meta, boolean doit) {
 		if(!doit)
 			return;
 		

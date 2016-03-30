@@ -27,10 +27,12 @@ public class ReedBlock extends Feature {
 	public static Block reed_block;
 	
 	boolean enableStairsAndSlabs;
+	boolean enableWalls;
 
 	@Override
 	public void setupConfig() {
 		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
+		enableWalls = loadPropBool("Enable walls", "", true);
 	}
 	
 	@Override
@@ -41,6 +43,7 @@ public class ReedBlock extends Feature {
 			BlockModStairs.initStairs(reed_block, 0, new BlockReedStairs());
 			BlockModSlab.initSlab(reed_block, 0, new BlockReedSlab(false), new BlockReedSlab(true));
 		}
+		VanillaWalls.add("reed_block", reed_block, 0, enableWalls);
 		
 		RecipeHandler.addOreDictRecipe(new ItemStack(reed_block), 
 				"RRR", "RRR", "RRR",

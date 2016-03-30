@@ -20,6 +20,7 @@ import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.building.feature.VanillaWalls;
 import vazkii.quark.world.block.BlockBasalt;
 import vazkii.quark.world.block.BlockBasaltSlab;
 import vazkii.quark.world.block.BlockBasaltStairs;
@@ -33,6 +34,7 @@ public class Basalt extends Feature {
 	int clusterSizeNether, clusterSizeOverworld;
 	int clusterCountNether, clusterCountOverworld;
 	boolean enableStairsAndSlabs;
+	boolean enableWalls;
 	
 	@Override
 	public void setupConfig() {
@@ -43,6 +45,7 @@ public class Basalt extends Feature {
 		clusterCountNether = loadPropInt("Nether cluster count", "", 1);
 		clusterCountOverworld = loadPropInt("Overworld cluster count", "", 10);       
 		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
+		enableWalls = loadPropBool("Enable walls", "", true);
 	}
 	
 	@Override
@@ -53,13 +56,14 @@ public class Basalt extends Feature {
 			BlockModSlab.initSlab(basalt, 0, new BlockBasaltSlab(false), new BlockBasaltSlab(true));
 			BlockModStairs.initStairs(basalt, 0, new BlockBasaltStairs());
 		}
+		VanillaWalls.add("basalt", basalt, 0, enableWalls);
 	
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 1),
 				"BB", "BB",
 				'B', new ItemStack(basalt, 1, 0));
 		
 		ItemStack blackItem = new ItemStack(Items.coal);
-		// TODO replace this with biotite if available
+		// replace this with biotite if available
 		
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 0), 
 				"BI", "IB",

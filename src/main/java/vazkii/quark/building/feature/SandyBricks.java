@@ -27,10 +27,12 @@ public class SandyBricks extends Feature {
 	public static Block sandy_bricks;
 	
 	boolean enableStairsAndSlabs;
-
+	boolean enableWalls;
+	
 	@Override
 	public void setupConfig() {
 		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
+		enableWalls = loadPropBool("Enable walls", "", true);
 	}
 	
 	@Override
@@ -41,6 +43,7 @@ public class SandyBricks extends Feature {
 			BlockModStairs.initStairs(sandy_bricks, 0, new BlockSandyBricksStairs());
 			BlockModSlab.initSlab(sandy_bricks, 0, new BlockSandyBricksSlab(false), new BlockSandyBricksSlab(true));
 		}
+		VanillaWalls.add("sandy_bricks", sandy_bricks, 0, enableWalls);
 		
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(sandy_bricks), new ItemStack(Blocks.brick_block), new ItemStack(Blocks.sand));
 	}
