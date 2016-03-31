@@ -17,6 +17,7 @@ import vazkii.quark.tweaks.feature.ArrowSafeMobs;
 import vazkii.quark.tweaks.feature.BabyZombiesBurn;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
+import vazkii.quark.tweaks.feature.FToSwitchItems;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
@@ -51,6 +52,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new ArmedArmorStands());
 		registerFeature(new StoreToChests());
 		registerFeature(new BabyZombiesBurn());
+		registerFeature(new FToSwitchItems(), "Press F in the inventory to switch item to main hand");
 	}
 	
 }

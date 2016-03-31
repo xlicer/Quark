@@ -39,7 +39,7 @@ import vazkii.quark.tweaks.feature.StoreToChests;
 public final class DropoffHandler {
 
 	public static void dropoff(EntityPlayer player, boolean smart) {
-		if (!ModuleLoader.isFeatureEnabled(StoreToChests.class))
+		if(!ModuleLoader.isFeatureEnabled(StoreToChests.class))
 			return;
 
 		new Dropoff(player, smart).execute();
