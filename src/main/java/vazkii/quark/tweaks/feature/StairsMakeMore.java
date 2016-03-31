@@ -22,6 +22,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
@@ -73,6 +74,9 @@ public class StairsMakeMore extends Feature {
 						}
 
 						ItemStack outCopy = outStack.copy();
+						if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
+							outCopy.setItemDamage(0);
+						
 						outCopy.stackSize = 24 / targetSize; 
 						RecipeHandler.addOreDictRecipe(outCopy,
 								"BB", "BB",

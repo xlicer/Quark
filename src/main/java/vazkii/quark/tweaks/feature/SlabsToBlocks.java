@@ -66,7 +66,11 @@ public class SlabsToBlocks extends Feature {
 							}
 						}
 						
-						RecipeHandler.addOreDictRecipe(outStack.copy(),
+						ItemStack outCopy = outStack.copy();
+						if(outCopy.getItemDamage() == -1)
+							outCopy.setItemDamage(0);
+						
+						RecipeHandler.addOreDictRecipe(outCopy,
 								"B", "B",
 								'B', output.copy());
 					}
