@@ -6,31 +6,22 @@
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
  * 
- * File Created @ [28/03/2016, 16:32:34 (GMT)]
+ * File Created @ [02/04/2016, 17:44:30 (GMT)]
  */
 package vazkii.quark.base.network.message;
 
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import vazkii.quark.base.handler.DropoffHandler;
 import vazkii.quark.base.network.Message;
 
-public class MessageDropoff extends Message {
+public class MessageRestock extends Message {
 
-	public boolean smart;
-	public boolean useContainer;
-	
-	public MessageDropoff() { }
-	
-	public MessageDropoff(boolean smart, boolean useContainer) {
-		this.smart = smart;
-		this.useContainer = useContainer;
-	}
+	public MessageRestock() { }
 	
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		DropoffHandler.dropoff(context.getServerHandler().playerEntity, smart, useContainer);
+		DropoffHandler.restock(context.getServerHandler().playerEntity);
 		return null;
 	}
 	

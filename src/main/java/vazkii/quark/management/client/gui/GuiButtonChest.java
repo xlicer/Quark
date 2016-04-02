@@ -14,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import vazkii.quark.management.feature.StoreToChests;
 
@@ -52,14 +53,17 @@ public class GuiButtonChest extends GuiButton {
 				if(k == 2)
 					u = 16;
 				else u = 0;
+				break;
 			case SMART_DEPOSIT:
 				if(k == 2)
 					u = 48;
 				else u = 32;
+				break;
 			case RESTOCK:
 				if(k == 2)
 					u = 80;
 				else u = 64;
+				break;
 			}
 			
 			par1Minecraft.renderEngine.bindTexture(chest_icons);

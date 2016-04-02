@@ -11,6 +11,7 @@
 package vazkii.quark.management;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.management.feature.ChestButtons;
 import vazkii.quark.management.feature.FToSwitchItems;
 import vazkii.quark.management.feature.StoreToChests;
 
@@ -20,6 +21,7 @@ public class QuarkManagement extends Module {
 	public void addFeatures() {
 		registerFeature(new StoreToChests());
 		registerFeature(new FToSwitchItems(), "Press F in the inventory to switch item to main hand");
+		registerFeature(new ChestButtons());
 	}
 	
 }
