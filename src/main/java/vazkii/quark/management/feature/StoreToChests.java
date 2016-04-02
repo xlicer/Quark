@@ -26,7 +26,8 @@ import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDropoff;
-import vazkii.quark.management.client.gui.GuiButtonStore;
+import vazkii.quark.management.client.gui.GuiButtonChest;
+import vazkii.quark.management.client.gui.GuiButtonChest.Action;
 
 public class StoreToChests extends Feature {
 
@@ -49,7 +50,7 @@ public class StoreToChests extends Feature {
 			Container container = guiInv.inventorySlots;
 			for(Slot s : container.inventorySlots)
 				if(s instanceof SlotCrafting) {
-					event.getButtonList().add(new GuiButtonStore(13211, guiLeft + s.xDisplayPosition, guiTop + s.yDisplayPosition + 30));
+					event.getButtonList().add(new GuiButtonChest(Action.DROPOFF, 13211, guiLeft + s.xDisplayPosition, guiTop + s.yDisplayPosition + 30));
 					break;
 				}
 		}
@@ -58,7 +59,7 @@ public class StoreToChests extends Feature {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void performAction(GuiScreenEvent.ActionPerformedEvent.Pre event) {
-		if(event.getButton() instanceof GuiButtonStore) {
+		if(event.getButton() instanceof GuiButtonChest) {
 			boolean smart = GuiScreen.isShiftKeyDown() != StoreToChests.invert;
 			NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(smart));
 		}
