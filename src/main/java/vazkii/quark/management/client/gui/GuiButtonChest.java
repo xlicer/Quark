@@ -16,11 +16,12 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
 public class GuiButtonChest extends GuiButton {
 
-	private static ResourceLocation chest_icons = new ResourceLocation("quark", "textures/misc/chest_icons.png"); 
+	public static ResourceLocation chest_icons = new ResourceLocation("quark", "textures/misc/chest_icons.png"); 
 	public final Action action;
 	
 	public GuiButtonChest(Action action, int id, int par2, int par3) {
@@ -36,6 +37,9 @@ public class GuiButtonChest extends GuiButton {
 
 			int u = 0;
 			int v = 0;
+			
+			if(k == 2 && action != Action.RESTOCK)
+				FavoriteItems.hovering = true;
 			
 			switch(action) {
 			case DROPOFF:

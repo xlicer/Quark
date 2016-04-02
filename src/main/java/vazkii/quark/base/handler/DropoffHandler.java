@@ -34,6 +34,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import vazkii.quark.base.module.ModuleLoader;
+import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
 public final class DropoffHandler {
@@ -199,7 +200,8 @@ public final class DropoffHandler {
 			
 			for(int i = InventoryPlayer.getHotbarSize(); i < inv.mainInventory.length; i++) {
 				ItemStack stackAt = inv.getStackInSlot(i);
-				if(stackAt != null) {
+				
+				if(stackAt != null && !FavoriteItems.isItemFavorited(stackAt)) {
 					ItemStack ret = insert(stackAt, pred);
 					if(!ItemStack.areItemsEqual(stackAt, ret))
 						inv.setInventorySlotContents(i, ret);
@@ -233,6 +235,7 @@ public final class DropoffHandler {
 			
 			return stack;
 		}
+
 	}
 	
 	public static class Restock extends Dropoff {

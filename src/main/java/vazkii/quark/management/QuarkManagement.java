@@ -13,6 +13,7 @@ package vazkii.quark.management;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.management.feature.ChestButtons;
 import vazkii.quark.management.feature.FToSwitchItems;
+import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
 public class QuarkManagement extends Module {
@@ -22,6 +23,7 @@ public class QuarkManagement extends Module {
 		registerFeature(new StoreToChests());
 		registerFeature(new FToSwitchItems(), "Press F in the inventory to switch item to main hand");
 		registerFeature(new ChestButtons());
+		registerFeature(new FavoriteItems(), "Ctrl-click an item to favorite it. Favorited items aren't stored by the other features here");
 	}
 	
 }
