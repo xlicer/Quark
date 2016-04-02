@@ -29,10 +29,6 @@ public class ItemModBlock extends ItemBlock implements IVariantHolder {
 	private IQuarkBlock quarkBlock;
 	
 	public ItemModBlock(Block block) {
-		this(block, null);
-	}
-	
-	public ItemModBlock(Block block, ResourceLocation res) {
 		super(block);
 		quarkBlock = (IQuarkBlock) block;
 
@@ -48,7 +44,7 @@ public class ItemModBlock extends ItemBlock implements IVariantHolder {
 
 	@Override
 	public ItemBlock setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.register(this);
 		return super.setUnlocalizedName(par1Str);
 	}
 
