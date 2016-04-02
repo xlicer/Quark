@@ -249,16 +249,13 @@ public final class DropoffHandler {
 			IItemHandler inv = itemHandlers.get(0).getLeft();
 			IItemHandler playerInv = new InvWrapper(player.inventory);
 			
-			for(int i = 0; i < inv.getSlots(); i++) {
+			for(int i = inv.getSlots() - 1; i >= 0; i--) {
 				ItemStack stackAt = inv.getStackInSlot(i);
 				
 				if(stackAt != null) {
 					ItemStack ret = insertInHandler(playerInv, stackAt, pred);
-					if(!ItemStack.areItemsEqual(stackAt, ret)) {
-						inv.extractItem(i, 64, false);
-						if(ret != null)
-							inv.insertItem(i, ret, false);
-					}
+					inv.extractItem(i, 64, false);
+					inv.insertItem(i, ret, false);
 				}
 			}
 		}
