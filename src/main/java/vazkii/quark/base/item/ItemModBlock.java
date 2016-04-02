@@ -19,6 +19,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.base.lib.LibMisc;
@@ -26,8 +27,12 @@ import vazkii.quark.base.lib.LibMisc;
 public class ItemModBlock extends ItemBlock implements IVariantHolder {
 
 	private IQuarkBlock quarkBlock;
-
+	
 	public ItemModBlock(Block block) {
+		this(block, null);
+	}
+	
+	public ItemModBlock(Block block, ResourceLocation res) {
 		super(block);
 		quarkBlock = (IQuarkBlock) block;
 

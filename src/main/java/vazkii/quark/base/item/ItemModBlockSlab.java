@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.IQuarkBlock;
@@ -30,6 +31,10 @@ public class ItemModBlockSlab extends ItemSlab implements IVariantHolder {
 	private IQuarkBlock quarkBlock;
 
 	public ItemModBlockSlab(Block block) {
+		this(block, null);
+	}
+	
+	public ItemModBlockSlab(Block block, ResourceLocation res) {
 		super(block, ((BlockModSlab) block).getSingleBlock(), ((BlockModSlab) block).getFullBlock());
 		quarkBlock = (IQuarkBlock) block;
 
