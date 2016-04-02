@@ -13,7 +13,7 @@ package vazkii.quark.base.network.message;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import vazkii.quark.base.network.Message;
-import vazkii.quark.tweaks.feature.FToSwitchItems;
+import vazkii.quark.management.feature.FToSwitchItems;
 
 public class MessageSwapItems extends Message {
 

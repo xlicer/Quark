@@ -8,7 +8,7 @@
  * 
  * File Created @ [28/03/2016, 15:59:35 (GMT)]
  */
-package vazkii.quark.tweaks.client.gui;
+package vazkii.quark.management.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -17,7 +17,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
-import vazkii.quark.tweaks.feature.StoreToChests;
+import vazkii.quark.management.feature.StoreToChests;
 
 public class GuiButtonStore extends GuiButton {
 

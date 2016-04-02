@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import vazkii.quark.base.handler.DropoffHandler;
 import vazkii.quark.base.network.Message;
-import vazkii.quark.tweaks.feature.StoreToChests;
+import vazkii.quark.management.feature.StoreToChests;
 
 public class MessageDropoff extends Message {
 

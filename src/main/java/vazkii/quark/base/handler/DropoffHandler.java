@@ -34,7 +34,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.tweaks.feature.StoreToChests;
+import vazkii.quark.management.feature.StoreToChests;
 
 public final class DropoffHandler {
 

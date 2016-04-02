@@ -8,7 +8,7 @@
  * 
  * File Created @ [28/03/2016, 15:57:43 (GMT)]
  */
-package vazkii.quark.tweaks.feature;
+package vazkii.quark.management.feature;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -26,7 +26,7 @@ import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDropoff;
-import vazkii.quark.tweaks.client.gui.GuiButtonStore;
+import vazkii.quark.management.client.gui.GuiButtonStore;
 
 public class StoreToChests extends Feature {
 
