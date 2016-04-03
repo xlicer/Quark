@@ -247,7 +247,7 @@ public final class DropoffHandler {
 		@Override
 		public void dropoff(DropoffPredicate pred) {
 			IItemHandler inv = itemHandlers.get(0).getLeft();
-			IItemHandler playerInv = new InvWrapper(player.inventory);
+			IItemHandler playerInv = new PlayerInvWrapper(player.inventory);
 			
 			for(int i = inv.getSlots() - 1; i >= 0; i--) {
 				ItemStack stackAt = inv.getStackInSlot(i);
@@ -259,6 +259,19 @@ public final class DropoffHandler {
 				}
 			}
 		}
+	}
+	
+	public static class PlayerInvWrapper extends InvWrapper {
+
+		public PlayerInvWrapper(IInventory inv) {
+			super(inv);
+		}
+		
+		@Override
+		public int getSlots() {
+			return super.getSlots() - 5;
+		}
+		
 	}
 	
 	public static interface DropoffPredicate {

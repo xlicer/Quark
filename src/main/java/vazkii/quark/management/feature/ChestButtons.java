@@ -54,7 +54,7 @@ public class ChestButtons extends Feature {
 			
 			for(Slot s : container.inventorySlots) {
 				IInventory inv = s.inventory;
-				if(DropoffHandler.isValidChest(player, inv) && inv instanceof TileEntity) {
+				if(inv != null && DropoffHandler.isValidChest(player, inv)) {
 					accept = true;
 					break;
 				}
