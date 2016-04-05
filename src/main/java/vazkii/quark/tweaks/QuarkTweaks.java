@@ -11,8 +11,6 @@
 package vazkii.quark.tweaks;
 
 import vazkii.quark.base.module.Module;
-import vazkii.quark.management.feature.FToSwitchItems;
-import vazkii.quark.management.feature.StoreToChests;
 import vazkii.quark.tweaks.feature.AngryCreepers;
 import vazkii.quark.tweaks.feature.ArmedArmorStands;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
@@ -25,6 +23,7 @@ import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
 import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.NoteBlocksMobSounds;
+import vazkii.quark.tweaks.feature.RightClickSignEdit;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
 import vazkii.quark.tweaks.feature.StackableItems;
@@ -36,7 +35,7 @@ public class QuarkTweaks extends Module {
 	public void addFeatures() {
 		registerFeature(new StackableItems());
 		registerFeature(new LookDownLadders(), "Look down on ladders to descend fast");
-//		registerFeature(new RightClickSignEdit()); TODO: Broken until forge fixes PlayerInteractEvent
+		registerFeature(new RightClickSignEdit());
 		registerFeature(new ChickensShedFeathers());
 		registerFeature(new AngryCreepers(), "Creepers turn red when they're exploding");
 		registerFeature(new GlassShards());

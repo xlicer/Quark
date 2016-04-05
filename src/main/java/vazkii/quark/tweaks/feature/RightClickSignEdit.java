@@ -28,9 +28,9 @@ public class RightClickSignEdit extends Feature {
 	}
 	
 	@SubscribeEvent
-	public void onInteract(PlayerInteractEvent event) {
+	public void onInteract(PlayerInteractEvent.RightClickBlock event) {
 		TileEntity tile = event.getWorld().getTileEntity(event.getPos()); 
-		if(tile instanceof TileEntitySign)
+		if(tile instanceof TileEntitySign && (!emptyHand || event.getEntityPlayer().getHeldItemMainhand() == null))
 			event.getEntityPlayer().openGui(Quark.instance, LibGuiIDs.SIGN, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
 	}
 	
