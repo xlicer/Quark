@@ -21,9 +21,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.handler.DropoffHandler;
+import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDropoff;
@@ -63,17 +65,17 @@ public class ChestButtons extends Feature {
 			if(!accept)
 				return;
 			
-	        int guiLeft = (guiInv.width - 176) / 2;
-	        int guiTop = (guiInv.height - 166) / 2;
+	        int guiLeft = ReflectionHelper.getPrivateValue(GuiContainer.class, guiInv, LibObfuscation.GUI_LEFT);
+	        int guiTop = ReflectionHelper.getPrivateValue(GuiContainer.class, guiInv, LibObfuscation.GUI_TOP);
 			
 			for(Slot s : container.inventorySlots)
 				if(s.inventory == player.inventory && s.getSlotIndex() == 9) {
 					if(restock)
-						event.getButtonList().add(new GuiButtonChest(Action.RESTOCK, 13211, guiLeft + s.xDisplayPosition - 25, guiTop + s.yDisplayPosition));
+						event.getButtonList().add(new GuiButtonChest(Action.RESTOCK, 13211, guiLeft - 18, guiTop + s.yDisplayPosition));
 					if(deposit)
-						event.getButtonList().add(new GuiButtonChest(Action.DEPOSIT, 13212, guiLeft + s.xDisplayPosition - 25, guiTop + s.yDisplayPosition + 18));
+						event.getButtonList().add(new GuiButtonChest(Action.DEPOSIT, 13212, guiLeft - 18, guiTop + s.yDisplayPosition + 18));
 					if(smartDeposit)
-						event.getButtonList().add(new GuiButtonChest(Action.SMART_DEPOSIT, 13213, guiLeft + s.xDisplayPosition - 25, guiTop + s.yDisplayPosition + 36));
+						event.getButtonList().add(new GuiButtonChest(Action.SMART_DEPOSIT, 13213, guiLeft - 18, guiTop + s.yDisplayPosition + 36));
 					
 					break;
 				}
