@@ -16,19 +16,18 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import vazkii.quark.base.module.Feature;
 
 public class KnockOnDoors extends Feature {
 
 	@SubscribeEvent
-	public void leftClick(PlayerInteractEvent event) {
-		if(event.getAction() == Action.LEFT_CLICK_BLOCK && event.getEntityPlayer().getHeldItemMainhand() == null) {
+	public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
+		if(event.getEntityPlayer().getHeldItemMainhand() == null) {
 			IBlockState state = event.getWorld().getBlockState(event.getPos());
 			Block block = state.getBlock();
 			if(block instanceof BlockDoor && state.getMaterial() == Material.wood)
-				event.getWorld().playSound(null, event.getLocalPos().xCoord, event.getLocalPos().yCoord, event.getLocalPos().zCoord, block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
+				event.getWorld().playSound(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
 		}
 	}
 	
