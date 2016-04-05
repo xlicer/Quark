@@ -10,27 +10,40 @@
  */
 package vazkii.quark.management.client.gui;
 
+import com.google.common.base.Predicate;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
-public class GuiButtonChest extends GuiButton {
+public class GuiButtonChest<T extends GuiScreen> extends GuiButton {
 
 	public static ResourceLocation chest_icons = new ResourceLocation("quark", "textures/misc/chest_icons.png"); 
 	public final Action action;
+	public final T parent;
 	
-	public GuiButtonChest(Action action, int id, int par2, int par3) {
+	Predicate<T> enabledPredicate = null;
+	
+	public GuiButtonChest(T parent, Action action, int id, int par2, int par3) {
 		super(id, par2, par3, 16, 16, "");
 		this.action = action;
+		this.parent = parent;
+	}
+	
+	public GuiButtonChest(T parent, Action action, int id, int par2, int par3, Predicate<T> enabledPredicate) {
+		this(parent, action, id, par2, par3);
+		this.enabledPredicate = enabledPredicate;
 	}
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
+		if(enabledPredicate != null)
+			enabled = enabledPredicate.apply(parent);
+		
 		if(enabled) {
 			hovered = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
 			int k = getHoverState(hovered);

@@ -71,11 +71,11 @@ public class ChestButtons extends Feature {
 			for(Slot s : container.inventorySlots)
 				if(s.inventory == player.inventory && s.getSlotIndex() == 9) {
 					if(restock)
-						event.getButtonList().add(new GuiButtonChest(Action.RESTOCK, 13211, guiLeft - 18, guiTop + s.yDisplayPosition));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.RESTOCK, 13211, guiLeft - 18, guiTop + s.yDisplayPosition));
 					if(deposit)
-						event.getButtonList().add(new GuiButtonChest(Action.DEPOSIT, 13212, guiLeft - 18, guiTop + s.yDisplayPosition + 18));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.DEPOSIT, 13212, guiLeft - 18, guiTop + s.yDisplayPosition + 18));
 					if(smartDeposit)
-						event.getButtonList().add(new GuiButtonChest(Action.SMART_DEPOSIT, 13213, guiLeft - 18, guiTop + s.yDisplayPosition + 36));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.SMART_DEPOSIT, 13213, guiLeft - 18, guiTop + s.yDisplayPosition + 36));
 					
 					break;
 				}
