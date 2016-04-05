@@ -99,6 +99,8 @@ public class ChestButtons extends Feature {
 				NetworkHandler.INSTANCE.sendToServer(new MessageRestock());
 				break;
 			}
+			
+			event.setCanceled(true);
 		}
 	}
 	
