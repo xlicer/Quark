@@ -28,9 +28,6 @@ public class DefaultWorldOptions extends Feature {
 	
 	@Override
 	public void setupConfig() {
-		if(!enabled)
-			return;
-		
 		config = "{";
 		
 		for(String s : intProps.keySet()) {
@@ -49,7 +46,6 @@ public class DefaultWorldOptions extends Feature {
 		}
 		
 		config = config.replaceAll(",$", "}");
-		System.out.println("JSON IS " + config);
 	}
 	
 	@SubscribeEvent
