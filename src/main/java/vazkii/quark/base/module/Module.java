@@ -128,4 +128,8 @@ public class Module {
 		return ConfigHelper.loadPropBool(propName, name, desc, default_);
 	}
 	
+	public final String loadPropString(String propName, String desc, String default_) {
+		return ConfigHelper.loadPropString(propName, name, desc, default_);
+	}
+	
 }

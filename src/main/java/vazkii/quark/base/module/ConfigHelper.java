@@ -35,4 +35,11 @@ public class ConfigHelper {
 		return prop.getBoolean(default_);
 	}	
 	
+	public static String loadPropString(String propName, String category, String desc, String default_) {
+		Property prop = ModuleLoader.config.get(category, propName, default_);
+		prop.setComment(desc);
+
+		return prop.getString();
+	}	
+	
 }
