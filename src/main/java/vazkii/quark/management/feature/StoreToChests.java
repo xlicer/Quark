@@ -80,7 +80,7 @@ public class StoreToChests extends Feature {
 	
 	@Override
 	public boolean hasSubscriptions() {
-		return FMLCommonHandler.instance().getSide().isClient();
+		return isClient();
 	}
 	
 }

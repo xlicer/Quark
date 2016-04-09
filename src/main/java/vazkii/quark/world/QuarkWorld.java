@@ -13,9 +13,9 @@ package vazkii.quark.world;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.world.feature.Basalt;
 import vazkii.quark.world.feature.ClayGeneration;
+import vazkii.quark.world.feature.DefaultWorldOptions;
 import vazkii.quark.world.feature.MushroomsInSwamps;
 import vazkii.quark.world.feature.OceanGuardians;
-import vazkii.quark.world.world.DefaultWorldOptions;
 
 public class QuarkWorld extends Module {
 

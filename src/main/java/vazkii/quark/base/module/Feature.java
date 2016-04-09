@@ -10,6 +10,7 @@
  */
 package vazkii.quark.base.module;
 
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -60,6 +61,10 @@ public class Feature {
 	
 	public boolean hasSubscriptions() {
 		return false;
+	}
+	
+	public final boolean isClient() {
+		return FMLCommonHandler.instance().getSide().isClient();
 	}
 	
 	public final int loadPropInt(String propName, String desc, int default_) {

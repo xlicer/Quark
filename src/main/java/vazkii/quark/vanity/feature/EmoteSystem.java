@@ -120,7 +120,7 @@ public class EmoteSystem extends Feature {
 	
 	@Override
 	public boolean hasSubscriptions() {
-		return FMLCommonHandler.instance().getSide().isClient();
+		return isClient();
 	}
 	
 }

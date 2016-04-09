@@ -8,7 +8,7 @@
  * 
  * File Created @ [05/04/2016, 20:01:35 (GMT)]
  */
-package vazkii.quark.world.world;
+package vazkii.quark.world.feature;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +16,8 @@ import java.util.Map;
 import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.module.Feature;
 
 public class DefaultWorldOptions extends Feature {
@@ -49,6 +51,7 @@ public class DefaultWorldOptions extends Feature {
 	}
 	
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void guiOpenEvent(InitGuiEvent.Post event) {
 		if(event.getGui() instanceof GuiCreateWorld) {
 			GuiCreateWorld create = (GuiCreateWorld) event.getGui();
@@ -59,7 +62,7 @@ public class DefaultWorldOptions extends Feature {
 	
 	@Override
 	public boolean hasSubscriptions() {
-		return true;
+		return isClient();
 	}
 	
 	static {
