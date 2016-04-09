@@ -18,6 +18,7 @@ import vazkii.quark.tweaks.feature.BabyZombiesBurn;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.GlassShards;
+import vazkii.quark.tweaks.feature.GreenerGrass;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
@@ -50,6 +51,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new NoteBlocksMobSounds(), "Note blocks play mob sounds if there's a head attached");
 		registerFeature(new ArmedArmorStands());
 		registerFeature(new BabyZombiesBurn());
+		registerFeature(new GreenerGrass());
 	}
 
 }
