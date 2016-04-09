@@ -221,16 +221,16 @@ public final class DropoffHandler {
 			return ret;
 		}
 		
-		public ItemStack insertInHandler(IItemHandler handler, ItemStack stack, DropoffPredicate pred) {
+		public ItemStack insertInHandler(IItemHandler handler, final ItemStack stack, DropoffPredicate pred) {
 			if(pred.apply(stack, handler)) {
-				stack = ItemHandlerHelper.insertItemStacked(handler, stack, false);
-				if(stack != null)
-					stack = stack.copy();
+				ItemStack retStack = ItemHandlerHelper.insertItemStacked(handler, stack, false);
+				if(retStack != null)
+					retStack = retStack.copy();
 				
-				if(stack == null || stack.stackSize == 0)
+				if(retStack == null || retStack.stackSize == 0)
 					return null;
 				
-				return stack;
+				return retStack;
 			}
 			
 			return stack;
@@ -254,8 +254,10 @@ public final class DropoffHandler {
 				
 				if(stackAt != null) {
 					ItemStack ret = insertInHandler(playerInv, stackAt, pred);
-					inv.extractItem(i, 64, false);
-					inv.insertItem(i, ret, false);
+					if(ret != stackAt) {
+						inv.extractItem(i, 64, false);
+						inv.insertItem(i, ret, false);
+					}
 				}
 			}
 		}
