@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
- * 
+ *
  * File Created @ [05/04/2016, 20:01:35 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -25,31 +25,31 @@ public class DefaultWorldOptions extends Feature {
 	private static Map<String, Integer> intProps = new HashMap();
 	private static Map<String, Double> doubleProps = new HashMap();
 	private static Map<String, Boolean> boolProps = new HashMap();
-	
+
 	String config;
-	
+
 	@Override
 	public void setupConfig() {
 		config = "{";
-		
+
 		for(String s : intProps.keySet()) {
 			int i = loadPropInt(s, "", intProps.get(s));
 			config += "\"" + s + "\":" + i + ",";
 		}
-		
+
 		for(String s : doubleProps.keySet()) {
-			double d = loadPropDouble(s, "", doubleProps.get(s)); 
+			double d = loadPropDouble(s, "", doubleProps.get(s));
 			config += "\"" + s + "\":" + d + ",";
 		}
-		
+
 		for(String s : boolProps.keySet()) {
 			boolean b = loadPropBool(s, "", boolProps.get(s));
 			config += "\"" + s + "\":" + b + ",";
 		}
-		
+
 		config = config.replaceAll(",$", "}");
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void guiOpenEvent(InitGuiEvent.Post event) {
@@ -59,12 +59,12 @@ public class DefaultWorldOptions extends Feature {
 				create.chunkProviderSettingsJson = config;
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return isClient();
 	}
-	
+
 	static {
 		intProps.put("seaLevel", 63);
 		intProps.put("dungeonChance", 8);
@@ -117,7 +117,7 @@ public class DefaultWorldOptions extends Feature {
 		intProps.put("lapisCount", 1);
 		intProps.put("lapisCenterHeight", 16);
 		intProps.put("lapisSpread", 16);
-		
+
 		doubleProps.put("coordinateScale", 684.412);
 		doubleProps.put("heightScale", 684.412);
 		doubleProps.put("lowerLimitScale", 512.0);
@@ -134,7 +134,7 @@ public class DefaultWorldOptions extends Feature {
 		doubleProps.put("biomeDepthOffset", 0.0);
 		doubleProps.put("biomeScaleWeight", 1.0);
 		doubleProps.put("biomeScaleOffset", 0.0);
-		
+
 		boolProps.put("useCaves", true);
 		boolProps.put("useDungeons", true);
 		boolProps.put("useStrongholds", true);
@@ -147,5 +147,5 @@ public class DefaultWorldOptions extends Feature {
 		boolProps.put("useLavaLakes", true);
 		boolProps.put("useLavaOceans", false);
 	}
-	
+
 }

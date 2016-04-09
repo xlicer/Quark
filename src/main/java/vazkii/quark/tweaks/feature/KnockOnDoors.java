@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
- * 
+ *
  * File Created @ [24/03/2016, 04:28:00 (GMT)]
  */
 package vazkii.quark.tweaks.feature;
@@ -30,10 +30,10 @@ public class KnockOnDoors extends Feature {
 				event.getWorld().playSound(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 }

@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
- * 
+ *
  * File Created @ [28/03/2016, 15:57:43 (GMT)]
  */
 package vazkii.quark.management.feature;
@@ -19,7 +19,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraftforge.client.event.GuiScreenEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -32,24 +31,24 @@ import vazkii.quark.management.client.gui.GuiButtonChest.Action;
 public class StoreToChests extends Feature {
 
 	public static boolean invert;
-	
+
 	@Override
 	public void setupConfig() {
 		invert = loadPropBool("Invert button", "", false);
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void initGui(GuiScreenEvent.InitGuiEvent.Post event) {
 		if(event.getGui() instanceof GuiInventory || event.getGui() instanceof GuiContainerCreative) {
 			GuiContainer guiInv = (GuiContainer) event.getGui();
-			GuiContainerCreative creativeInv = null; 
+			GuiContainerCreative creativeInv = null;
 			if(guiInv instanceof GuiContainerCreative)
 				creativeInv = (GuiContainerCreative) guiInv;
-			
-	        int guiLeft = (guiInv.width - 176) / 2;
-	        int guiTop = (guiInv.height - 166) / 2;
-			
+
+			int guiLeft = (guiInv.width - 176) / 2;
+			int guiTop = (guiInv.height - 166) / 2;
+
 			Container container = guiInv.inventorySlots;
 			for(Slot s : container.inventorySlots)
 				if(creativeInv != null || s instanceof SlotCrafting) {
@@ -58,16 +57,16 @@ public class StoreToChests extends Feature {
 					else {
 						if(s.getSlotIndex() != 15)
 							continue;
-						
+
 						event.getButtonList().add(new GuiButtonChest<GuiContainerCreative>(creativeInv, Action.DROPOFF, 13211, guiLeft + s.xDisplayPosition + 8, guiTop + s.yDisplayPosition - 20,
-							(gui) -> gui.getSelectedTabIndex() == CreativeTabs.tabInventory.getTabIndex()));
+								(gui) -> gui.getSelectedTabIndex() == CreativeTabs.tabInventory.getTabIndex()));
 					}
-						
+
 					break;
 				}
 		}
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void performAction(GuiScreenEvent.ActionPerformedEvent.Pre event) {
@@ -77,10 +76,10 @@ public class StoreToChests extends Feature {
 			event.setCanceled(true);
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return isClient();
 	}
-	
+
 }

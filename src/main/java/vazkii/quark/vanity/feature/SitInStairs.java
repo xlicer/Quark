@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
- * 
+ *
  * File Created @ [05/04/2016, 22:55:30 (GMT)]
  */
 package vazkii.quark.vanity.feature;
@@ -34,15 +34,15 @@ public class SitInStairs extends Feature {
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
 		IBlockState state = world.getBlockState(pos);
-		
+
 		ItemStack stack1 = player.getHeldItemMainhand();
 		ItemStack stack2 = player.getHeldItemOffhand();
 		if(stack1 != null || stack2 != null)
 			return;
-		
+
 		if(state.getBlock() instanceof BlockStairs && state.getValue(BlockStairs.HALF) == EnumHalf.BOTTOM) {
 			List<Seat> seats = world.getEntitiesWithinAABB(Seat.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
-			
+
 			if(seats.isEmpty()) {
 				Seat seat = new Seat(world, pos.getX(), pos.getY(), pos.getZ());
 				world.spawnEntityInWorld(seat);
@@ -50,12 +50,12 @@ public class SitInStairs extends Feature {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 
 	public static class Seat extends Entity {
 
@@ -82,10 +82,10 @@ public class SitInStairs extends Feature {
 				if(e.isSneaking())
 					setDead();
 		}
-		
+
 		@Override protected void entityInit() { }
 		@Override protected void readEntityFromNBT(NBTTagCompound nbttagcompound) { }
 		@Override protected void writeEntityToNBT(NBTTagCompound nbttagcompound) { }
 	}
-	
+
 }

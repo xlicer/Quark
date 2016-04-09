@@ -20,7 +20,7 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
 	public String getBareName();
 
 	public IProperty getVariantProp();
-	
+
 	public IProperty[] getIgnoredProperties();
 
 	public EnumRarity getBlockRarity(ItemStack stack);
@@ -28,5 +28,5 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
 	public default boolean shouldDisplayVariant(int variant) {
 		return true;
 	}
-	
+
 }

@@ -27,7 +27,6 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameData;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.block.IVariantEnumHolder;
 import vazkii.quark.base.item.IColorProvider;
 import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.IVariantHolder;
@@ -37,12 +36,12 @@ import vazkii.quark.base.lib.LibMisc;
 public class ModelHandler {
 
 	public static HashMap<String, ModelResourceLocation> resourceLocations = new HashMap();
-	
+
 	public static void preInit() {
 		for(IVariantHolder holder : ItemMod.variantHolders)
 			registerModels(holder);
 	}
-	
+
 	public static void init() {
 		ItemColors colors = Minecraft.getMinecraft().getItemColors();
 		for(IVariantHolder holder : ItemMod.variantHolders)
@@ -62,7 +61,7 @@ public class ModelHandler {
 				registerModels(i, extra.getExtraVariants(), true);
 			}
 		}
-	} 
+	}
 
 	public static void registerModels(Item item, String[] variants, boolean extra) {
 		if(item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof IQuarkBlock) {
@@ -71,7 +70,7 @@ public class ModelHandler {
 
 			IProperty variantProp = quarkBlock.getVariantProp();
 			boolean ignoresVariant = false;
-			
+
 			IProperty[] ignored = quarkBlock.getIgnoredProperties();
 			if(ignored != null && ignored.length > 0) {
 				StateMap.Builder builder = new StateMap.Builder();
