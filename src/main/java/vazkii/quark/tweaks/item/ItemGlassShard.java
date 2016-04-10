@@ -11,6 +11,7 @@
 package vazkii.quark.tweaks.item;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.quark.base.item.ItemMod;
 
 public class ItemGlassShard extends ItemMod {
@@ -38,6 +39,7 @@ public class ItemGlassShard extends ItemMod {
 	public ItemGlassShard() {
 		super("glass_shards", VARIANTS);
 		setCreativeTab(CreativeTabs.tabMaterials);
+		OreDictionary.registerOre("shardGlass", this);
 	}
 
 }
