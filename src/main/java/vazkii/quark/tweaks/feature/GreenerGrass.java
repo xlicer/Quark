@@ -10,6 +10,7 @@
  */
 package vazkii.quark.tweaks.feature;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,6 @@ import net.minecraftforge.fml.common.registry.RegistryDelegate;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.actors.threadpool.Arrays;
 import vazkii.quark.base.module.Feature;
 
 public class GreenerGrass extends Feature {
