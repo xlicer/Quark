@@ -10,6 +10,7 @@
  */
 package vazkii.quark.tweaks.feature;
 
+import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.Block;
@@ -18,6 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.common.registry.RegistryDelegate;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.actors.threadpool.Arrays;
 import vazkii.quark.base.module.Feature;
 
 public class GreenerGrass extends Feature {
@@ -34,14 +37,24 @@ public class GreenerGrass extends Feature {
 	boolean absoluteValues;
 	int redShift, greenShift, blueShift;
 	
+	List<String> extraBlocks;
+	
 	@Override
 	public void setupConfig() {
 		affectFolliage = loadPropBool("Should affect folliage", "", true);
 		alphaGrass = loadPropBool("Alpha grass (will override manual values)", "", false);
 		absoluteValues = loadPropBool("Treat shifts as absolute and ignore biome colors", "", false);
-		redShift = loadPropInt("Shift red by", "", -30);
-		greenShift = loadPropInt("Shift green by", "", 30);
+		redShift = loadPropInt("Shift reds by", "", -30);
+		greenShift = loadPropInt("Shift greens by", "", 30);
 		blueShift = loadPropInt("Shift blues by", "", -30);
+		
+		extraBlocks = Arrays.asList(loadPropStringList("Extra blocks", "", new String[] {
+			"buildingbrickscompatvanilla:grass_slab",
+			"buildingbrickscompatvanilla:grass_step",
+			"buildingbrickscompatvanilla:grass_corner",
+			"buildingbrickscompatvanilla:grass_vertical_slab",
+			"buildingbrickscompatvanilla:grass_stairs"
+		}));
 	}
 	
 	@Override
@@ -50,6 +63,12 @@ public class GreenerGrass extends Feature {
 		registerGreenerColor(Blocks.grass, Blocks.tallgrass, Blocks.double_plant, Blocks.reeds);
 		if(affectFolliage)
 			registerGreenerColor(Blocks.leaves, Blocks.leaves2, Blocks.vine);
+		
+		for(String s : extraBlocks) {
+			Block b = Block.blockRegistry.getObject(new ResourceLocation(s));
+			if(b != null)
+				registerGreenerColor(b);
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

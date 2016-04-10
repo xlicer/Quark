@@ -82,4 +82,8 @@ public class Feature {
 	public final String loadPropString(String propName, String desc, String default_) {
 		return ConfigHelper.loadPropString(propName, category, desc, default_);
 	}
+	
+	public final String[] loadPropStringList(String propName, String desc, String[] default_) {
+		return ConfigHelper.loadPropStringList(propName, category, desc, default_);
+	}
 }
