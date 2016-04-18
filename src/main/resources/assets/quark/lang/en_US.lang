@@ -149,6 +149,10 @@ tile.quark:biotite_stairs.name=Biotite Stairs
 tile.quark:biotite_wall.name=Biotite Wall
 tile.quark:rain_detector.name=Weather Sensor
 tile.quark:ender_watcher.name=Ender Watcher
+tile.quark:snow_bricks.name=Snow Bricks
+tile.quark:snow_bricks_slab.name=Snow Brick Slab
+tile.quark:snow_bricks_stairs.name=Snow Brick Stairs
+tile.quark:snow_bricks_wall.name=Snow Brick Wall
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

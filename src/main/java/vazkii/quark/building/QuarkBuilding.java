@@ -17,6 +17,7 @@ import vazkii.quark.building.feature.HardenedClayTiles;
 import vazkii.quark.building.feature.PolishedStone;
 import vazkii.quark.building.feature.ReedBlock;
 import vazkii.quark.building.feature.SandyBricks;
+import vazkii.quark.building.feature.SnowBricks;
 import vazkii.quark.building.feature.Thatch;
 import vazkii.quark.building.feature.VanillaStairsAndSlabs;
 import vazkii.quark.building.feature.VanillaWalls;
@@ -36,6 +37,7 @@ public class QuarkBuilding extends Module {
 		registerFeature(new VanillaWalls());
 		registerFeature(new PolishedStone());
 		registerFeature(new CarvedWood());
+		registerFeature(new SnowBricks());
 	}
 
 }
