@@ -89,8 +89,8 @@ public class GreenerGrass extends Feature {
 			
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos, int tintIndex) {
-				
 				int originalColor = color.colorMultiplier(state, world, pos, tintIndex);
+				
 				int r = (originalColor >> 16) & 0xFF;
 				int g = (originalColor >> 8) & 0xFF;
 				int b = originalColor & 0xFF;
@@ -98,13 +98,10 @@ public class GreenerGrass extends Feature {
 				int shiftRed = alphaGrass ? 30 : redShift;
 				int shiftGreen = alphaGrass ? 120 : greenShift;
 				int shiftBlue = alphaGrass ? 30 : blueShift;
-				if(g > r && g > b) {
-					if(absoluteValues)
-						return (Math.max(0, Math.min(0xFF, redShift)) << 16) + (Math.max(0, Math.min(0xFF, greenShift) << 8)) + Math.max(0, Math.min(0xFF, blueShift));
-					return (Math.max(0, Math.min(0xFF, r + shiftRed)) << 16) + (Math.max(0, Math.min(0xFF, g + shiftGreen) << 8)) + Math.max(0, Math.min(0xFF, b + shiftBlue));
-				}
-
-				return originalColor;
+				
+				if(absoluteValues)
+					return (Math.max(0, Math.min(0xFF, redShift)) << 16) + (Math.max(0, Math.min(0xFF, greenShift) << 8)) + Math.max(0, Math.min(0xFF, blueShift));
+				return (Math.max(0, Math.min(0xFF, r + shiftRed)) << 16) + (Math.max(0, Math.min(0xFF, g + shiftGreen) << 8)) + Math.max(0, Math.min(0xFF, b + shiftBlue));
 			}
 		};
 	}
