@@ -11,12 +11,14 @@
 package vazkii.quark.world.item;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.quark.base.item.ItemMod;
 
 public class ItemBiotite extends ItemMod {
 
 	public ItemBiotite() {
 		super("biotite");
+		OreDictionary.registerOre("gemEnderBiotite", this);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 

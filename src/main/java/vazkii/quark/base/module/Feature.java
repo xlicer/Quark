@@ -10,13 +10,16 @@
  */
 package vazkii.quark.base.module;
 
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.quark.base.lib.LibMisc;
 
 public class Feature {
 
@@ -61,6 +64,10 @@ public class Feature {
 
 	public boolean hasSubscriptions() {
 		return false;
+	}
+	
+	public static void registerTile(Class<? extends TileEntity> clazz, String key) {
+		GameRegistry.registerTileEntity(clazz, LibMisc.PREFIX_MOD + key);
 	}
 
 	public final boolean isClient() {

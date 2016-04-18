@@ -11,7 +11,9 @@
 package vazkii.quark.automation;
 
 import vazkii.quark.automation.feature.DispensersPlaceSeeds;
+import vazkii.quark.automation.feature.EnderWatcher;
 import vazkii.quark.automation.feature.ObsidianPressurePlate;
+import vazkii.quark.automation.feature.RainDetector;
 import vazkii.quark.base.module.Module;
 
 public class QuarkAutomation extends Module {
@@ -20,6 +22,8 @@ public class QuarkAutomation extends Module {
 	public void addFeatures() {
 		registerFeature(new ObsidianPressurePlate());
 		registerFeature(new DispensersPlaceSeeds());
+		registerFeature(new RainDetector());
+		registerFeature(new EnderWatcher());
 	}
 
 }

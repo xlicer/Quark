@@ -147,6 +147,8 @@ tile.quark:pillar_biotite_block.name=Pillar Biotite Block
 tile.quark:biotite_slab.name=Biotite Slab
 tile.quark:biotite_stairs.name=Biotite Stairs
 tile.quark:biotite_wall.name=Biotite Wall
+tile.quark:rain_detector.name=Weather Sensor
+tile.quark:ender_watcher.name=Ender Watcher
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
