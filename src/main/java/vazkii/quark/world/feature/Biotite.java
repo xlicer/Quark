@@ -88,7 +88,7 @@ public class Biotite extends Feature {
 	
 	@SubscribeEvent
 	public void onEntityTick(LivingUpdateEvent event) {
-		if(generateByDragon && event.getEntityLiving() instanceof EntityDragon) {
+		if(generateByDragon && event.getEntityLiving() instanceof EntityDragon && !event.getEntity().worldObj.isRemote) {
 			EntityDragon dragon = (EntityDragon) event.getEntity();
 			
 			if(dragon.deathTicks > 0 && dragon.deathTicks % generationDelay == 0) {
