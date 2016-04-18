@@ -11,11 +11,13 @@
 package vazkii.quark.base.block;
 
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import vazkii.quark.base.item.IStateMapperProvider;
 import vazkii.quark.base.item.IVariantHolder;
 
-public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
+public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder, IStateMapperProvider {
 
 	public String getBareName();
 
@@ -27,6 +29,10 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder {
 
 	public default boolean shouldDisplayVariant(int variant) {
 		return true;
+	}
+	
+	public default IStateMapper getStateMapper() {
+		return null;
 	}
 
 }

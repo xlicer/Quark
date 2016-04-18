@@ -12,6 +12,7 @@ package vazkii.quark.world;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.world.feature.Basalt;
+import vazkii.quark.world.feature.Biotite;
 import vazkii.quark.world.feature.ClayGeneration;
 import vazkii.quark.world.feature.DefaultWorldOptions;
 import vazkii.quark.world.feature.MushroomsInSwamps;
@@ -25,6 +26,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new ClayGeneration(), "Generate clay underground like dirt");
 		registerFeature(new OceanGuardians(), "Guardians spawn in oceans");
 		registerFeature(new MushroomsInSwamps(), "Big mushrooms generate in swamps");
+		registerFeature(new Biotite());
 		registerFeature(new DefaultWorldOptions());
 	}
 

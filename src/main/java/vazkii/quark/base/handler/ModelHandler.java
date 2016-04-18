@@ -18,6 +18,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.Item;
@@ -71,16 +72,21 @@ public class ModelHandler {
 			IProperty variantProp = quarkBlock.getVariantProp();
 			boolean ignoresVariant = false;
 
+			IStateMapper mapper = quarkBlock.getStateMapper();
 			IProperty[] ignored = quarkBlock.getIgnoredProperties();
-			if(ignored != null && ignored.length > 0) {
-				StateMap.Builder builder = new StateMap.Builder();
-				for(IProperty p : ignored) {
-					if(p == variantProp)
-						ignoresVariant = true;
-					builder.ignore(p);
-				}
+			if(mapper != null || (ignored != null && ignored.length > 0)) {
+				if(mapper != null)
+					ModelLoader.setCustomStateMapper((Block) quarkBlock, mapper);
+				else {
+					StateMap.Builder builder = new StateMap.Builder();
+					for(IProperty p : ignored) {
+						if(p == variantProp)
+							ignoresVariant = true;
+						builder.ignore(p);
+					}
 
-				ModelLoader.setCustomStateMapper((Block) quarkBlock, builder.build());
+					ModelLoader.setCustomStateMapper((Block) quarkBlock, builder.build());
+				}
 			}
 
 			if(clazz != null && !ignoresVariant) {

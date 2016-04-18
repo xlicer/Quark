@@ -20,6 +20,7 @@ import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.building.feature.VanillaWalls;
 import vazkii.quark.world.block.BlockBasalt;
 import vazkii.quark.world.block.BlockBasaltSlab;
@@ -63,7 +64,8 @@ public class Basalt extends Feature {
 				'B', new ItemStack(basalt, 1, 0));
 
 		ItemStack blackItem = new ItemStack(Items.coal);
-		// replace this with biotite if available
+		if(ModuleLoader.isFeatureEnabled(Biotite.class))
+			blackItem = new ItemStack(Biotite.biotite); 
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 0),
 				"BI", "IB",
