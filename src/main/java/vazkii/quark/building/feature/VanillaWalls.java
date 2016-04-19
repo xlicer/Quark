@@ -58,12 +58,19 @@ public class VanillaWalls extends Feature {
 	}
 
 	public static void add(String name, Block block, int meta, boolean doit) {
+		add(name, block, meta, doit, (wallName, state) -> new BlockModWall(wallName, state));
+	}
+
+	public static void add(String name, Block block, int meta, boolean doit, WallSupplier supplier) {
 		if(!doit)
 			return;
 
 		IBlockState state = block.getStateFromMeta(meta);
 		String wallName = name + "_wall";
-		BlockModWall.initWall(block, meta, new BlockModWall(wallName, state));
+		BlockModWall.initWall(block, meta, supplier.supply(wallName, state));
 	}
-
+	
+	public static interface WallSupplier {
+		public BlockModWall supply(String wallName, IBlockState state);
+	}
 }

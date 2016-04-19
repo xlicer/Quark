@@ -6,31 +6,25 @@
  * Quark is Open Source and distributed under the
  * [ADD-LICENSE-HERE]
  * 
- * File Created @ [18/04/2016, 22:56:01 (GMT)]
+ * File Created @ [19/04/2016, 16:59:04 (GMT)]
  */
-package vazkii.quark.building.block.slab;
+package vazkii.quark.building.block.wall;
 
 import java.util.Random;
 
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockModWall;
 
-public class BlockSnowBricksSlab extends BlockModSlab {
+public class BlockSnowBricksWall extends BlockModWall {
 
-	public BlockSnowBricksSlab(boolean doubleSlab) {
-		super("snow_bricks_slab", Material.craftedSnow, doubleSlab);
-		setHardness(0.2F);
-		setStepSound(SoundType.SNOW);
-		setCreativeTab(CreativeTabs.tabBlock);
+	public BlockSnowBricksWall(String name, IBlockState state) {
+		super(name, state);
 	}
-	
+
 	@Override
 	public boolean isToolEffective(String type, IBlockState state) {
 		return type.equals("shovel");
@@ -40,5 +34,10 @@ public class BlockSnowBricksSlab extends BlockModSlab {
 	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
 		return true;
 	}
-
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(this);
+	}
+	
 }

@@ -21,6 +21,7 @@ import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockSnowBricks;
 import vazkii.quark.building.block.slab.BlockSnowBricksSlab;
 import vazkii.quark.building.block.stairs.BlockSnowBricksStairs;
+import vazkii.quark.building.block.wall.BlockSnowBricksWall;
 
 public class SnowBricks extends Feature {
 
@@ -43,7 +44,7 @@ public class SnowBricks extends Feature {
 			BlockModStairs.initStairs(snow_bricks, 0, new BlockSnowBricksStairs());
 			BlockModSlab.initSlab(snow_bricks, 0, new BlockSnowBricksSlab(false), new BlockSnowBricksSlab(true));
 		}
-		VanillaWalls.add("snow_bricks", snow_bricks, 0, enableWalls);
+		VanillaWalls.add("snow_bricks", snow_bricks, 0, enableWalls, (name, state) -> new BlockSnowBricksWall(name, state));
 		
 		RecipeHandler.addOreDictRecipe(new ItemStack(snow_bricks, 4), 
 				"SS", "SS",
