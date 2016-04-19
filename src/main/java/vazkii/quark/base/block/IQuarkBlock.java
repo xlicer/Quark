@@ -14,6 +14,8 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.item.IStateMapperProvider;
 import vazkii.quark.base.item.IVariantHolder;
 
@@ -31,6 +33,7 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder, IStateM
 		return true;
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public default IStateMapper getStateMapper() {
 		return null;
 	}

@@ -13,7 +13,6 @@ package vazkii.quark.world.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockQuartz;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -24,6 +23,8 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
@@ -89,6 +90,7 @@ public class BlockBiotite extends BlockQuartz implements IQuarkBlock {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IStateMapper getStateMapper() {
 		return new StateMapperBase() {
 			
