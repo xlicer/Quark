@@ -18,7 +18,7 @@ public class NoPotionShift extends Feature {
 
 	@Override
 	public boolean hasSubscriptions() {
-		return true;
+		return isClient();
 	}
 	
 	@SubscribeEvent
