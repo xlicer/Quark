@@ -13,6 +13,7 @@ package vazkii.quark.world.feature;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.block.BlockMod;
@@ -63,6 +64,11 @@ public class Basalt extends Feature {
 				"BB", "BB",
 				'B', new ItemStack(basalt, 1, 0));
 
+		GameRegistry.registerWorldGenerator(new BasaltGenerator(nether, overworld, clusterSizeOverworld, clusterSizeNether, clusterCountOverworld, clusterCountNether), 0);
+	}
+	
+	@Override
+	public void init(FMLInitializationEvent event) {
 		ItemStack blackItem = new ItemStack(Items.COAL);
 		if(ModuleLoader.isFeatureEnabled(Biotite.class))
 			blackItem = new ItemStack(Biotite.biotite); 
@@ -72,8 +78,6 @@ public class Basalt extends Feature {
 				'B', new ItemStack(Blocks.COBBLESTONE, 1, 0),
 				'I', blackItem);
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.STONE, 1, 5), new ItemStack(basalt), new ItemStack(Items.QUARTZ));
-
-		GameRegistry.registerWorldGenerator(new BasaltGenerator(nether, overworld, clusterSizeOverworld, clusterSizeNether, clusterCountOverworld, clusterCountNether), 0);
 	}
 
 }
