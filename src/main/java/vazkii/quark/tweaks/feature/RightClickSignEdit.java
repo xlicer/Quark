@@ -14,8 +14,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import vazkii.quark.base.Quark;
 import vazkii.quark.base.lib.LibGuiIDs;
+import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
 
 public class RightClickSignEdit extends Feature {
@@ -30,8 +32,13 @@ public class RightClickSignEdit extends Feature {
 	@SubscribeEvent
 	public void onInteract(PlayerInteractEvent.RightClickBlock event) {
 		TileEntity tile = event.getWorld().getTileEntity(event.getPos());
-		if(tile instanceof TileEntitySign && (!emptyHand || event.getEntityPlayer().getHeldItemMainhand() == null))
+		if(tile instanceof TileEntitySign && (!emptyHand || event.getEntityPlayer().getHeldItemMainhand() == null)) {
+			TileEntitySign sign = (TileEntitySign) tile;
+			sign.setPlayer(event.getEntityPlayer());
+			ReflectionHelper.setPrivateValue(TileEntitySign.class, sign, true, LibObfuscation.IS_EDITABLE);
+			
 			event.getEntityPlayer().openGui(Quark.instance, LibGuiIDs.SIGN, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
+		}
 	}
 
 	@Override
