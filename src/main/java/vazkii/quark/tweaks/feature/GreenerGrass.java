@@ -60,12 +60,12 @@ public class GreenerGrass extends Feature {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void postInitClient(FMLPostInitializationEvent event) {
-		registerGreenerColor(Blocks.grass, Blocks.tallgrass, Blocks.double_plant, Blocks.reeds);
+		registerGreenerColor(Blocks.GRASS, Blocks.TALLGRASS, Blocks.DOUBLE_PLANT, Blocks.REEDS);
 		if(affectFolliage)
-			registerGreenerColor(Blocks.leaves, Blocks.leaves2, Blocks.vine);
+			registerGreenerColor(Blocks.LEAVES, Blocks.LEAVES2, Blocks.VINE);
 		
 		for(String s : extraBlocks) {
-			Block b = Block.blockRegistry.getObject(new ResourceLocation(s));
+			Block b = Block.REGISTRY.getObject(new ResourceLocation(s));
 			if(b != null)
 				registerGreenerColor(b);
 		}

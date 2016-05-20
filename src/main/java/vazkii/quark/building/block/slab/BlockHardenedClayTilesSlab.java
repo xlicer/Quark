@@ -20,16 +20,16 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockHardenedClayTilesSlab extends BlockModSlab {
 
 	public BlockHardenedClayTilesSlab(boolean doubleSlab) {
-		super("hardened_clay_tiles_slab", Material.rock, doubleSlab);
+		super("hardened_clay_tiles_slab", Material.ROCK, doubleSlab);
 		setHardness(1.25F);
 		setResistance(7.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	@Override
 	public MapColor getMapColor(IBlockState state) {
-		return MapColor.adobeColor;
+		return MapColor.ADOBE;
 	}
 
 }

@@ -18,7 +18,7 @@ public class BlockVanillaStairs extends BlockModStairs {
 
 	public BlockVanillaStairs(String name, IBlockState state) {
 		super(name, state);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

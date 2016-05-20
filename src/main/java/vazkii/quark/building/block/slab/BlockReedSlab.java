@@ -18,10 +18,10 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockReedSlab extends BlockModSlab {
 
 	public BlockReedSlab(boolean doubleSlab) {
-		super("reed_block_slab", Material.wood, doubleSlab);
+		super("reed_block_slab", Material.WOOD, doubleSlab);
 		setHardness(0.5F);
-		setStepSound(SoundType.WOOD);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.WOOD);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

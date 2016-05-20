@@ -59,7 +59,7 @@ public class StoreToChests extends Feature {
 							continue;
 
 						event.getButtonList().add(new GuiButtonChest<GuiContainerCreative>(creativeInv, Action.DROPOFF, 13211, guiLeft + s.xDisplayPosition + 8, guiTop + s.yDisplayPosition - 20,
-								(gui) -> gui.getSelectedTabIndex() == CreativeTabs.tabInventory.getTabIndex()));
+								(gui) -> gui.getSelectedTabIndex() == CreativeTabs.INVENTORY.getTabIndex()));
 					}
 
 					break;

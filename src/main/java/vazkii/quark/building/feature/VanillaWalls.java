@@ -41,20 +41,20 @@ public class VanillaWalls extends Feature {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
-		add("stone", Blocks.stone, 0, stone);
-		add("stone_granite", Blocks.stone, 1, granite);
-		add("stone_diorite", Blocks.stone, 3, diorite);
-		add("stone_andesite", Blocks.stone, 5, andesite);
-		add("sandstone", Blocks.sandstone, 0, sandstone);
-		add("red_sandstone", Blocks.red_sandstone, 0, redSandstone);
-		add("stonebrick", Blocks.stonebrick, 0, stoneBricks);
-		add("brick", Blocks.brick_block, 0, bricks);
-		add("quartz", Blocks.quartz_block, 0, quartz);
-		add("prismarine_rough", Blocks.prismarine, 0, prismarine);
-		add("prismarine_bricks", Blocks.prismarine, 1, prismarineBricks);
-		add("dark_prismarine", Blocks.prismarine, 2, darkPrismarine);
-		add("purpur_block", Blocks.purpur_block, 0, purpurBlock);
-		add("end_bricks", Blocks.end_bricks, 0, endBricks);
+		add("stone", Blocks.STONE, 0, stone);
+		add("stone_granite", Blocks.STONE, 1, granite);
+		add("stone_diorite", Blocks.STONE, 3, diorite);
+		add("stone_andesite", Blocks.STONE, 5, andesite);
+		add("sandstone", Blocks.SANDSTONE, 0, sandstone);
+		add("red_sandstone", Blocks.RED_SANDSTONE, 0, redSandstone);
+		add("stonebrick", Blocks.STONEBRICK, 0, stoneBricks);
+		add("brick", Blocks.BRICK_BLOCK, 0, bricks);
+		add("quartz", Blocks.QUARTZ_BLOCK, 0, quartz);
+		add("prismarine_rough", Blocks.PRISMARINE, 0, prismarine);
+		add("prismarine_bricks", Blocks.PRISMARINE, 1, prismarineBricks);
+		add("dark_prismarine", Blocks.PRISMARINE, 2, darkPrismarine);
+		add("purpur_block", Blocks.PURPUR_BLOCK, 0, purpurBlock);
+		add("end_bricks", Blocks.END_BRICKS, 0, endBricks);
 	}
 
 	public static void add(String name, Block block, int meta, boolean doit) {

@@ -30,12 +30,12 @@ public class GlassShards extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		glass_shard = new ItemGlassShard();
 
-		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.glass),
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.GLASS),
 				"SS", "SS",
 				'S', new ItemStack(glass_shard, 1, 0));
 
 		for(int i = 0; i < 16; i++)
-			RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.stained_glass, 1, i),
+			RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.STAINED_GLASS, 1, i),
 					"SS", "SS",
 					'S', new ItemStack(glass_shard, 1, i + 1));
 	}
@@ -43,9 +43,9 @@ public class GlassShards extends Feature {
 	@SubscribeEvent
 	public void onDrops(HarvestDropsEvent event) {
 		Block block = event.getState().getBlock();
-		if(event.getDrops().isEmpty() && block == Blocks.glass || block == Blocks.stained_glass) {
+		if(event.getDrops().isEmpty() && block == Blocks.GLASS || block == Blocks.STAINED_GLASS) {
 			int meta = 0;
-			if(block == Blocks.stained_glass)
+			if(block == Blocks.STAINED_GLASS)
 				meta = block.getMetaFromState(event.getState()) + 1;
 
 			int quantity = MathHelper.clamp_int(2 + event.getWorld().rand.nextInt(3) + event.getWorld().rand.nextInt(event.getFortuneLevel() + 1), 1, 4);

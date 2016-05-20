@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMod;
 public class BlockLitLamp extends BlockMod {
 
 	public BlockLitLamp() {
-		super("lit_lamp", Material.glass);
+		super("lit_lamp", Material.GLASS);
 		setHardness(0.3F);
 		setLightLevel(1F);
-		setStepSound(SoundType.GLASS);
-		setCreativeTab(CreativeTabs.tabRedstone);
+		setSoundType(SoundType.GLASS);
+		setCreativeTab(CreativeTabs.REDSTONE);
 	}
 
 }

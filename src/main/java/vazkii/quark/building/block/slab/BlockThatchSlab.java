@@ -18,10 +18,10 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockThatchSlab extends BlockModSlab {
 
 	public BlockThatchSlab(boolean doubleSlab) {
-		super("thatch_slab", Material.plants, doubleSlab);
+		super("thatch_slab", Material.PLANTS, doubleSlab);
 		setHardness(0.5F);
-		setStepSound(SoundType.PLANT);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.PLANT);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

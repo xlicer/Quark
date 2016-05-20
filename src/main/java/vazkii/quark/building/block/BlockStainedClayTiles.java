@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMetaVariants;
 public class BlockStainedClayTiles extends BlockMetaVariants {
 
 	public BlockStainedClayTiles() {
-		super("stained_clay_tiles", Material.rock, Variants.class);
+		super("stained_clay_tiles", Material.ROCK, Variants.class);
 		setHardness(1.25F);
 		setResistance(7.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	public static enum Variants implements EnumBase {

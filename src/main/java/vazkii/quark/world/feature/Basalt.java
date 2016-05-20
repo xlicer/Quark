@@ -63,15 +63,15 @@ public class Basalt extends Feature {
 				"BB", "BB",
 				'B', new ItemStack(basalt, 1, 0));
 
-		ItemStack blackItem = new ItemStack(Items.coal);
+		ItemStack blackItem = new ItemStack(Items.COAL);
 		if(ModuleLoader.isFeatureEnabled(Biotite.class))
 			blackItem = new ItemStack(Biotite.biotite); 
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 0),
 				"BI", "IB",
-				'B', new ItemStack(Blocks.cobblestone, 1, 0),
+				'B', new ItemStack(Blocks.COBBLESTONE, 1, 0),
 				'I', blackItem);
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.stone, 1, 5), new ItemStack(basalt), new ItemStack(Items.quartz));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.STONE, 1, 5), new ItemStack(basalt), new ItemStack(Items.QUARTZ));
 
 		GameRegistry.registerWorldGenerator(new BasaltGenerator(nether, overworld, clusterSizeOverworld, clusterSizeNether, clusterCountOverworld, clusterCountNether), 0);
 	}

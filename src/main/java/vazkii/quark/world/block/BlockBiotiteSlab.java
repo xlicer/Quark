@@ -18,10 +18,10 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockBiotiteSlab extends BlockModSlab {
 
 	public BlockBiotiteSlab(boolean doubleSlab) {
-		super("biotite_slab", Material.rock, doubleSlab);
-		setStepSound(SoundType.STONE);
+		super("biotite_slab", Material.ROCK, doubleSlab);
+		setSoundType(SoundType.STONE);
 		setHardness(0.8F);	
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

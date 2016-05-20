@@ -28,7 +28,7 @@ public class ObsidianPressurePlate extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(obsidian_pressure_plate),
 				"OO",
-				'O', new ItemStack(Blocks.obsidian));
+				'O', new ItemStack(Blocks.OBSIDIAN));
 	}
 
 }

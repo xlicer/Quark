@@ -37,10 +37,10 @@ public class BlockObsidianPressurePlate extends BlockPressurePlate implements IQ
 	private final String bareName;
 
 	public BlockObsidianPressurePlate() {
-		super(Material.rock, Sensitivity.MOBS);
+		super(Material.ROCK, Sensitivity.MOBS);
 		setHardness(50.0F);
 		setResistance(2000.0F);
-		setStepSound(SoundType.STONE);
+		setSoundType(SoundType.STONE);
 
 		bareName = "obsidian_pressure_plate";
 		variants = new String[] { bareName };

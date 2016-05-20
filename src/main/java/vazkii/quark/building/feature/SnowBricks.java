@@ -48,7 +48,7 @@ public class SnowBricks extends Feature {
 		
 		RecipeHandler.addOreDictRecipe(new ItemStack(snow_bricks, 4), 
 				"SS", "SS",
-				'S', new ItemStack(Blocks.snow));
+				'S', new ItemStack(Blocks.SNOW));
 	}
 	
 }

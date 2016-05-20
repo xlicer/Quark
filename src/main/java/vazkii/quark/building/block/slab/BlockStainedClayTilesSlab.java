@@ -21,16 +21,16 @@ import vazkii.quark.building.block.BlockStainedClayTiles;
 public class BlockStainedClayTilesSlab extends BlockModSlab {
 
 	public BlockStainedClayTilesSlab(BlockStainedClayTiles.Variants variant, boolean doubleSlab) {
-		super(variant.getName() + "_slab", Material.rock, doubleSlab);
+		super(variant.getName() + "_slab", Material.ROCK, doubleSlab);
 		setHardness(1.25F);
 		setResistance(7.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	@Override
 	public MapColor getMapColor(IBlockState state) {
-		return MapColor.adobeColor;
+		return MapColor.ADOBE;
 	}
 
 }

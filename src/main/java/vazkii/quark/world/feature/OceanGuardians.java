@@ -17,8 +17,8 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.init.Biomes;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import vazkii.quark.base.module.Feature;
 
@@ -37,9 +37,9 @@ public class OceanGuardians extends Feature {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		Set<BiomeGenBase> set = deepOceanOnly ? ImmutableSet.of(Biomes.deepOcean) : ImmutableSet.of(Biomes.ocean, Biomes.deepOcean);
+		Set<Biome> set = deepOceanOnly ? ImmutableSet.of(Biomes.DEEP_OCEAN) : ImmutableSet.of(Biomes.OCEAN, Biomes.DEEP_OCEAN);
 
-		for(BiomeGenBase b : set)
+		for(Biome b : set)
 			b.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(new SpawnListEntry(EntityGuardian.class, weight, min, max));
 	}
 

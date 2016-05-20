@@ -30,12 +30,12 @@ public class BlockEnderWatcher extends BlockModContainer {
 	public static PropertyBool WATCHED = PropertyBool.create("watched");
 	
 	public BlockEnderWatcher() {
-		super("ender_watcher", Material.iron);
+		super("ender_watcher", Material.IRON);
 		setHardness(3F);
 		setResistance(10F);
-		setStepSound(SoundType.METAL);
+		setSoundType(SoundType.METAL);
 		setDefaultState(blockState.getBaseState().withProperty(WATCHED, false));
-		setCreativeTab(CreativeTabs.tabRedstone);
+		setCreativeTab(CreativeTabs.REDSTONE);
 	}
 	
 	@Override

@@ -28,8 +28,8 @@ public class PaperWall extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(paper_wall, 6),
 				"SSS", "PPP", "SSS",
-				'S', new ItemStack(Items.stick),
-				'P', new ItemStack(Items.paper));
+				'S', new ItemStack(Items.STICK),
+				'P', new ItemStack(Items.PAPER));
 	}
 
 }

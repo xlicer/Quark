@@ -27,10 +27,11 @@ public class TileMod extends TileEntity {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
-		super.writeToNBT(par1nbtTagCompound);
+	public NBTTagCompound writeToNBT(NBTTagCompound par1nbtTagCompound) {
+		NBTTagCompound cmp = super.writeToNBT(par1nbtTagCompound);
 
 		writeSharedNBT(par1nbtTagCompound);
+		return cmp;
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class TileMod extends TileEntity {
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeSharedNBT(nbttagcompound);
 		return new SPacketUpdateTileEntity(pos, -999, nbttagcompound);

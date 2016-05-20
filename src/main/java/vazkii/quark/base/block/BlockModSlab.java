@@ -64,7 +64,7 @@ public class BlockModSlab extends BlockSlab implements IQuarkBlock {
 			setDefaultState(blockState.getBaseState().withProperty(HALF, EnumBlockHalf.BOTTOM).withProperty(prop, DummyEnum.BLARG));
 		}
 
-		setCreativeTab(doubleSlab ? null : CreativeTabs.tabBlock);
+		setCreativeTab(doubleSlab ? null : CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	public static Material hacky(Material m, boolean doubleSlab) {

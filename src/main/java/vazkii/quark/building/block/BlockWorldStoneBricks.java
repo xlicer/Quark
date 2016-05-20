@@ -20,11 +20,11 @@ import vazkii.quark.world.feature.Basalt;
 public class BlockWorldStoneBricks extends BlockMetaVariants {
 
 	public BlockWorldStoneBricks() {
-		super("world_stone_bricks", Material.rock, Variants.class);
+		super("world_stone_bricks", Material.ROCK, Variants.class);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	@Override

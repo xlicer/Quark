@@ -20,8 +20,8 @@ import vazkii.quark.base.block.BlockModPane;
 public class BlockPaperWall extends BlockModPane {
 
 	public BlockPaperWall() {
-		super("paper_wall", Material.cloth);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		super("paper_wall", Material.CLOTH);
+		setCreativeTab(CreativeTabs.DECORATIONS);
 	}
 
 	@Override

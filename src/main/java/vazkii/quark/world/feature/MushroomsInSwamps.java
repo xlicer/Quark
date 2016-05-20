@@ -25,7 +25,7 @@ public class MushroomsInSwamps extends Feature {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		Biomes.swampland.theBiomeDecorator.bigMushroomsPerChunk = bigMushroomsPerChunk;
+		Biomes.SWAMPLAND.theBiomeDecorator.bigMushroomsPerChunk = bigMushroomsPerChunk;
 	}
 
 }

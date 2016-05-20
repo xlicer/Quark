@@ -28,8 +28,8 @@ public class PolishedStone extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(polished_stone, 2),
 				"SS", "SS",
-				'S', new ItemStack(Blocks.stone_slab));
-		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.stone_slab, 6),
+				'S', new ItemStack(Blocks.STONE_SLAB));
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.STONE_SLAB, 6),
 				"SSS",
 				'S', new ItemStack(polished_stone));
 	}

@@ -83,7 +83,7 @@ public class WorldStoneBricks extends Feature {
 		for(int i = 0; i < 3; i++)
 			RecipeHandler.addOreDictRecipe(new ItemStack(world_stone_bricks, 4, i),
 					"SS", "SS",
-					'S', new ItemStack(Blocks.stone, 1, i * 2 + 2));
+					'S', new ItemStack(Blocks.STONE, 1, i * 2 + 2));
 
 		if(basaltEnabled)
 			RecipeHandler.addOreDictRecipe(new ItemStack(world_stone_bricks, 4, 3),

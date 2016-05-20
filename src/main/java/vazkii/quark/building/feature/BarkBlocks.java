@@ -34,7 +34,7 @@ public class BarkBlocks extends Feature {
 		bark = new BlockBark();
 
 		for(int i = 0; i < 6; i++) {
-			ItemStack log = new ItemStack(i > 3 ? Blocks.log2 : Blocks.log, 1, i % 4);
+			ItemStack log = new ItemStack(i > 3 ? Blocks.LOG2 : Blocks.LOG, 1, i % 4);
 
 			RecipeHandler.addOreDictRecipe(new ItemStack(bark, 4, i),
 					"WW", "WW",

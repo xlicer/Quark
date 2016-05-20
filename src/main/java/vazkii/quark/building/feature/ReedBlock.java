@@ -47,8 +47,8 @@ public class ReedBlock extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(reed_block),
 				"RRR", "RRR", "RRR",
-				'R', new ItemStack(Items.reeds));
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.reeds, 9), new ItemStack(reed_block));
+				'R', new ItemStack(Items.REEDS));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.REEDS, 9), new ItemStack(reed_block));
 	}
 
 }

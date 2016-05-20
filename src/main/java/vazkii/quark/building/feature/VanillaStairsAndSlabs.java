@@ -37,14 +37,14 @@ public class VanillaStairsAndSlabs extends Feature {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
-		add("stone", Blocks.stone, 0, false, true, stone);
-		add("stone_granite", Blocks.stone, 1, granite);
-		add("stone_diorite", Blocks.stone, 3, diorite);
-		add("stone_andesite", Blocks.stone, 5, andesite);
-		add("end_bricks", Blocks.end_bricks, 0, endBricks);
-		add("prismarine", Blocks.prismarine, 0, prismarine);
-		add("prismarine_bricks", Blocks.prismarine, 1, prismarineBricks);
-		add("prismarine_dark", Blocks.prismarine, 2, darkPrismarine);
+		add("stone", Blocks.STONE, 0, false, true, stone);
+		add("stone_granite", Blocks.STONE, 1, granite);
+		add("stone_diorite", Blocks.STONE, 3, diorite);
+		add("stone_andesite", Blocks.STONE, 5, andesite);
+		add("end_bricks", Blocks.END_BRICKS, 0, endBricks);
+		add("prismarine", Blocks.PRISMARINE, 0, prismarine);
+		add("prismarine_bricks", Blocks.PRISMARINE, 1, prismarineBricks);
+		add("prismarine_dark", Blocks.PRISMARINE, 2, darkPrismarine);
 	}
 
 	public void add(String name, Block block, int meta, boolean doit) {

@@ -38,7 +38,7 @@ public class ItemGlassShard extends ItemMod {
 
 	public ItemGlassShard() {
 		super("glass_shards", VARIANTS);
-		setCreativeTab(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.MATERIALS);
 		OreDictionary.registerOre("shardGlass", this);
 	}
 

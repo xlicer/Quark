@@ -59,7 +59,7 @@ public class JumpBoostStepAssist extends Feature {
 	}
 
 	private boolean shouldPlayerHaveStepup(EntityPlayer player) {
-		PotionEffect jumpBoost = player.getActivePotionEffect(MobEffects.jump);
+		PotionEffect jumpBoost = player.getActivePotionEffect(MobEffects.JUMP_BOOST);
 		return jumpBoost != null && jumpBoost.getAmplifier() >= minimumLevel;
 	}
 

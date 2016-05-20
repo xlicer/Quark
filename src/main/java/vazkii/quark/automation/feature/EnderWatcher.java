@@ -34,8 +34,8 @@ public class EnderWatcher extends Feature {
 		RecipeHandler.addOreDictRecipe(new ItemStack(ender_watcher),
 			"BRB", "RER", "BRB",
 			'R', "dustRedstone",
-			'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.obsidian)),
-			'E', new ItemStack(Items.ender_eye));
+			'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN)),
+			'E', new ItemStack(Items.ENDER_EYE));
 	}
 	
 }

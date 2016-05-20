@@ -28,14 +28,14 @@ public class DispensersPlaceSeeds extends Feature {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.wheat_seeds, new BehaviourSeeds(Blocks.wheat));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.potato, new BehaviourSeeds(Blocks.potatoes));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.carrot, new BehaviourSeeds(Blocks.carrots));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.nether_wart, new BehaviourSeeds(Blocks.nether_wart));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.pumpkin_seeds, new BehaviourSeeds(Blocks.pumpkin_stem));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.melon_seeds, new BehaviourSeeds(Blocks.melon_stem));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Items.beetroot_seeds, new BehaviourSeeds(Blocks.beetroots));
-		BlockDispenser.dispenseBehaviorRegistry.putObject(Item.getItemFromBlock(Blocks.chorus_flower), new BehaviourSeeds(Blocks.chorus_flower));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.WHEAT_SEEDS, new BehaviourSeeds(Blocks.WHEAT));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.POTATO, new BehaviourSeeds(Blocks.POTATOES));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.CARROT, new BehaviourSeeds(Blocks.CARROTS));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.NETHER_WART, new BehaviourSeeds(Blocks.NETHER_WART));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.PUMPKIN_SEEDS, new BehaviourSeeds(Blocks.PUMPKIN_STEM));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.MELON_SEEDS, new BehaviourSeeds(Blocks.MELON_STEM));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.BEETROOT_SEEDS, new BehaviourSeeds(Blocks.BEETROOTS));
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Item.getItemFromBlock(Blocks.CHORUS_FLOWER), new BehaviourSeeds(Blocks.CHORUS_FLOWER));
 	}
 
 	public class BehaviourSeeds extends BehaviorDefaultDispenseItem {

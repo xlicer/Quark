@@ -26,9 +26,9 @@ public class LessIntrusiveShields extends Feature {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
-		ModelHandler.registerModels(Items.shield, new String[] { "shield_override" }, true);
+		ModelHandler.registerModels(Items.SHIELD, new String[] { "shield_override" }, true);
 
-		ModelLoader.setCustomMeshDefinition(Items.shield, new ItemMeshDefinition() {
+		ModelLoader.setCustomMeshDefinition(Items.SHIELD, new ItemMeshDefinition() {
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
 				return new ModelResourceLocation("quark:shield_override", "inventory");

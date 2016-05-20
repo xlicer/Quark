@@ -26,7 +26,7 @@ public class LitLamp extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		lit_lamp = new BlockLitLamp();
 
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(lit_lamp), new ItemStack(Blocks.redstone_lamp), new ItemStack(Blocks.redstone_torch));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(lit_lamp), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.REDSTONE_TORCH));
 	}
 
 }

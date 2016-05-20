@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockBasaltSlab extends BlockModSlab {
 
 	public BlockBasaltSlab(boolean doubleSlab) {
-		super("stone_basalt_slab", Material.rock, doubleSlab);
+		super("stone_basalt_slab", Material.ROCK, doubleSlab);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

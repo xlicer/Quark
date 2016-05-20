@@ -29,11 +29,11 @@ import vazkii.quark.world.feature.Biotite;
 public class BlockBiotiteOre extends BlockMod {
 
 	public BlockBiotiteOre() {
-		super("biotite_ore", Material.rock);
+		super("biotite_ore", Material.ROCK);
 		setHardness(3.2F);
 		setResistance(15.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {

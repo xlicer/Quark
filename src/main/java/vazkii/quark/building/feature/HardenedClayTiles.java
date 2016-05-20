@@ -50,7 +50,7 @@ public class HardenedClayTiles extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(hardened_clay_tiles, 4, 0),
 				"BB", "BB",
-				'B', new ItemStack(Blocks.hardened_clay));
+				'B', new ItemStack(Blocks.HARDENED_CLAY));
 
 		if(enableStainedClay) {
 			stained_clay_tiles = new BlockStainedClayTiles();
@@ -65,7 +65,7 @@ public class HardenedClayTiles extends Feature {
 			for(int i = 0; i < 16; i++)
 				RecipeHandler.addOreDictRecipe(new ItemStack(stained_clay_tiles, 4, i),
 						"BB", "BB",
-						'B', new ItemStack(Blocks.stained_hardened_clay, 1, i));
+						'B', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i));
 		}
 	}
 

@@ -37,8 +37,8 @@ public class ShulkerShells extends Feature {
 		shulker_shell = new ItemShulkerShell();
 
 		if(brewable) {
-			levitation = new PotionType(new PotionEffect(MobEffects.levitation, 0, 100));
-			long_levitation = new PotionType(new PotionEffect(MobEffects.levitation, 0, 160));
+			levitation = new PotionType(new PotionEffect(MobEffects.LEVITATION, 0, 100));
+			long_levitation = new PotionType(new PotionEffect(MobEffects.LEVITATION, 0, 160));
 		}
 	}
 

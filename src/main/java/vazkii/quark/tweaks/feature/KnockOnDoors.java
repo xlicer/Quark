@@ -26,8 +26,8 @@ public class KnockOnDoors extends Feature {
 		if(event.getEntityPlayer().getHeldItemMainhand() == null) {
 			IBlockState state = event.getWorld().getBlockState(event.getPos());
 			Block block = state.getBlock();
-			if(block instanceof BlockDoor && state.getMaterial() == Material.wood)
-				event.getWorld().playSound(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), block.getStepSound().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
+			if(block instanceof BlockDoor && state.getMaterial() == Material.WOOD)
+				event.getWorld().playSound(null, event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), block.getSoundType().getPlaceSound(), SoundCategory.PLAYERS, 1F, 1F);
 		}
 	}
 

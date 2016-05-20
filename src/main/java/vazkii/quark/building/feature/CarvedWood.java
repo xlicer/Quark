@@ -29,7 +29,7 @@ public class CarvedWood extends Feature {
 		for(int i = 0; i < 6; i++)
 			RecipeHandler.addOreDictRecipe(new ItemStack(carvedWood, 2, i),
 					"WW", "WW",
-					'W', new ItemStack(Blocks.wooden_slab, 1, i));
+					'W', new ItemStack(Blocks.WOODEN_SLAB, 1, i));
 	}
 
 }

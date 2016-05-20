@@ -33,7 +33,7 @@ public class StackableItems extends Feature {
 		//		ImmutableSet.<Item>of(Items.potionitem, Items.splash_potion, Items.lingering_potion)
 		//			.forEach(item -> item.setMaxStackSize(potions));
 
-		ImmutableSet.<Item>of(Items.minecart, Items.chest_minecart, Items.command_block_minecart, Items.furnace_minecart, Items.hopper_minecart, Items.tnt_minecart)
+		ImmutableSet.<Item>of(Items.MINECART, Items.CHEST_MINECART, Items.COMMAND_BLOCK_MINECART, Items.FURNACE_MINECART, Items.HOPPER_MINECART, Items.TNT_MINECART)
 		.forEach(item -> item.setMaxStackSize(minecarts));
 	}
 

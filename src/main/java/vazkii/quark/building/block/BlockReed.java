@@ -18,10 +18,10 @@ import vazkii.quark.base.block.BlockModPillar;
 public class BlockReed extends BlockModPillar {
 
 	public BlockReed() {
-		super("reed_block", Material.wood);
+		super("reed_block", Material.WOOD);
 		setHardness(0.5F);
-		setStepSound(SoundType.WOOD);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.WOOD);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

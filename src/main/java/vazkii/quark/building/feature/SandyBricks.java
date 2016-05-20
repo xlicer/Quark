@@ -45,7 +45,7 @@ public class SandyBricks extends Feature {
 		}
 		VanillaWalls.add("sandy_bricks", sandy_bricks, 0, enableWalls);
 
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(sandy_bricks), new ItemStack(Blocks.brick_block), new ItemStack(Blocks.sand));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(sandy_bricks), new ItemStack(Blocks.BRICK_BLOCK), new ItemStack(Blocks.SAND));
 	}
 
 }

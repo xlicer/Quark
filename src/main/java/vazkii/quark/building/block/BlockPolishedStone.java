@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMod;
 public class BlockPolishedStone extends BlockMod {
 
 	public BlockPolishedStone() {
-		super("polished_stone", Material.rock);
+		super("polished_stone", Material.ROCK);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

@@ -39,10 +39,10 @@ public class BlockRainDetector extends BlockModContainer {
     private static final PropertyBool INVERTED = PropertyBool.create("inverted");
 
 	public BlockRainDetector() {
-		super("rain_detector", Material.rock);
-        setCreativeTab(CreativeTabs.tabRedstone);
+		super("rain_detector", Material.ROCK);
+        setCreativeTab(CreativeTabs.REDSTONE);
         setHardness(1.5F);
-        setStepSound(SoundType.STONE);
+        setSoundType(SoundType.STONE);
         
         setDefaultState(blockState.getBaseState().withProperty(POWER, false).withProperty(INVERTED, false));
     }

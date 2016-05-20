@@ -18,7 +18,7 @@ public class DragonsBreathBottleless extends Feature {
 
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
-		Items.dragon_breath.setContainerItem(null);
+		Items.DRAGON_BREATH.setContainerItem(null);
 	}
 
 }

@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockSandyBricksSlab extends BlockModSlab {
 
 	public BlockSandyBricksSlab(boolean doubleSlab) {
-		super("sandy_bricks_slab", Material.rock, doubleSlab);
+		super("sandy_bricks_slab", Material.ROCK, doubleSlab);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

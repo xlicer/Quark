@@ -34,12 +34,12 @@ public class BuriedTreasure extends Feature {
 	
 	@SubscribeEvent
 	public void debug(PlayerInteractEvent.RightClickItem event) {
-		if(event.getItemStack() != null && event.getItemStack().getItem() == Items.compass) {
+		if(event.getItemStack() != null && event.getItemStack().getItem() == Items.COMPASS) {
 			int steps = event.getWorld().rand.nextInt(2) + 3;
 			ItemStack stack = makeMap(event.getWorld(), event.getEntityPlayer().getPosition(), steps);
 			
 			if(!event.getEntityPlayer().inventory.addItemStackToInventory(stack))
-				event.getEntityPlayer().dropPlayerItemWithRandomChoice(stack, false);
+				event.getEntityPlayer().dropItem(stack, false);
 		}
 	}
 	
@@ -77,7 +77,7 @@ public class BuriedTreasure extends Feature {
 	}
 	
 	public ItemStack makeMap(World world, BlockPos sourcePos, int stepsRemaining) {
-		ItemStack itemstack = new ItemStack(Items.filled_map, 1, world.getUniqueDataId("map"));
+		ItemStack itemstack = new ItemStack(Items.FILLED_MAP, 1, world.getUniqueDataId("map"));
 		Random r = world.rand;
 		
 		BlockPos treasurePos;
@@ -94,7 +94,7 @@ public class BuriedTreasure extends Feature {
 			int z = (int) (sourcePos.getZ() + Math.sin(angle) * distance);
 			treasurePos = world.getTopSolidOrLiquidBlock(new BlockPos(x, 255, z)).add(0, -4, 0);
 			IBlockState state = world.getBlockState(treasurePos);
-			if(state.getBlock() == Blocks.dirt)
+			if(state.getBlock() == Blocks.DIRT)
 				validPos = true;
 			tries++;
 		} while(!validPos);
@@ -109,15 +109,15 @@ public class BuriedTreasure extends Feature {
         mapdata.trackingPosition = true;
         mapdata.markDirty();
         
-		world.setBlockState(treasurePos, Blocks.chest.getDefaultState());
+		world.setBlockState(treasurePos, Blocks.CHEST.getDefaultState());
         TileEntityChest chest = (TileEntityChest) world.getTileEntity(treasurePos);
         if(stepsRemaining > 0) {
         	ItemStack map = makeMap(world, treasurePos, stepsRemaining - 1);
         	
         	if(map != null)
         		chest.setInventorySlotContents(r.nextInt(chest.getSizeInventory()), map);
-        	else chest.setLoot(LootTableList.CHESTS_SIMPLE_DUNGEON, r.nextLong());
-       } else chest.setLoot(LootTableList.CHESTS_SIMPLE_DUNGEON, r.nextLong());
+        	else chest.setLootTable(LootTableList.CHESTS_SIMPLE_DUNGEON, r.nextLong());
+       } else chest.setLootTable(LootTableList.CHESTS_SIMPLE_DUNGEON, r.nextLong());
 		
         ItemNBTHelper.setBoolean(itemstack, TAG_TREASURE_MAP, true);
         

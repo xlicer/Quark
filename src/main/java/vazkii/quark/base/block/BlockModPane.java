@@ -114,7 +114,7 @@ public class BlockModPane extends BlockMod {
 	}
 
 	public final boolean canPaneConnectToBlock(Block blockIn) {
-		return blockIn.getDefaultState().isFullCube() || blockIn == this || blockIn == Blocks.glass || blockIn == Blocks.stained_glass || blockIn == Blocks.stained_glass_pane || blockIn instanceof BlockPane;
+		return blockIn.getDefaultState().isFullCube() || blockIn == this || blockIn == Blocks.GLASS || blockIn == Blocks.STAINED_GLASS || blockIn == Blocks.STAINED_GLASS_PANE || blockIn instanceof BlockPane;
 	}
 
 	@SideOnly(Side.CLIENT)

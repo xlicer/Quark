@@ -22,8 +22,8 @@ public class BlockVanillaSlab extends BlockModSlab {
 
 		setHardness(state.getBlockHardness(null, new BlockPos(0, 0, 0)));
 		setResistance(state.getBlock().getExplosionResistance(null) * 5F / 3F);
-		setStepSound(state.getBlock().getStepSound());
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(state.getBlock().getSoundType());
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

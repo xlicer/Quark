@@ -49,9 +49,9 @@ public class BlockModWall extends BlockMod {
 
 		setHardness(state.getBlockHardness(null, new BlockPos(0, 0, 0)));
 		setResistance(state.getBlock().getExplosionResistance(null) * 5F / 3F);
-		setStepSound(state.getBlock().getStepSound());
+		setSoundType(state.getBlock().getSoundType());
 		setDefaultState(blockState.getBaseState().withProperty(UP, Boolean.valueOf(false)).withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class BlockModWall extends BlockMod {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 		Block block = iblockstate.getBlock();
 		Material material = iblockstate.getMaterial();
-		return block == Blocks.barrier ? false : block != this && !(block instanceof BlockFenceGate) ? material.isOpaque() && iblockstate.isFullCube() ? material != Material.gourd : block instanceof BlockModWall ? true : false : true;
+		return block == Blocks.BARRIER ? false : block != this && !(block instanceof BlockFenceGate) ? material.isOpaque() && iblockstate.isFullCube() ? material != Material.GOURD : block instanceof BlockModWall ? true : false : true;
 	}
 
 	@Override

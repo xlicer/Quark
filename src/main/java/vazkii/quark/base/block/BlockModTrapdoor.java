@@ -29,10 +29,10 @@ public class BlockModTrapdoor extends BlockTrapDoor implements IQuarkBlock {
 	private final String bareName;
 
 	public BlockModTrapdoor(String name) {
-		super(Material.wood);
+		super(Material.WOOD);
 
 		setHardness(3.0F);
-		setStepSound(SoundType.WOOD);
+		setSoundType(SoundType.WOOD);
 
 		variants = new String[] { name };
 		bareName = name;

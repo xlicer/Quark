@@ -27,10 +27,10 @@ import vazkii.quark.base.block.BlockMod;
 public class BlockSnowBricks extends BlockMod {
 
 	public BlockSnowBricks() {
-		super("snow_bricks", Material.craftedSnow);
+		super("snow_bricks", Material.CRAFTED_SNOW);
 		setHardness(0.2F);
-		setStepSound(SoundType.SNOW);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.SNOW);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	@Override

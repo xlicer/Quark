@@ -44,8 +44,8 @@ public class Thatch extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(thatch),
 				"WW", "WW",
-				'W', new ItemStack(Items.wheat));
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.wheat, 4), new ItemStack(thatch));
+				'W', new ItemStack(Items.WHEAT));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.WHEAT, 4), new ItemStack(thatch));
 	}
 
 }

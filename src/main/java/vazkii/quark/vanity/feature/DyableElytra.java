@@ -63,10 +63,10 @@ public class DyableElytra extends Feature {
 				if(color == -1 || color == 15)
 					return -1;
 
-				return ItemDye.dyeColors[color];
+				return ItemDye.DYE_COLORS[color];
 			}
 
-		}, Items.elytra);
+		}, Items.ELYTRA);
 	}
 
 	@SideOnly(Side.CLIENT)

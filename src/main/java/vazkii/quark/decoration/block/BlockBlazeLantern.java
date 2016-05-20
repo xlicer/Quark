@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMod;
 public class BlockBlazeLantern extends BlockMod {
 
 	public BlockBlazeLantern() {
-		super("blaze_lantern", Material.glass);
+		super("blaze_lantern", Material.GLASS);
 		setHardness(0.3F);
-		setStepSound(SoundType.GLASS);
+		setSoundType(SoundType.GLASS);
 		setLightLevel(1.0F);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 }

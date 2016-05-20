@@ -28,8 +28,8 @@ public class BlazeLantern extends Feature {
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(blaze_lantern),
 				"BPB", "PPP", "BPB",
-				'B', new ItemStack(Items.blaze_rod),
-				'P', new ItemStack(Items.blaze_powder));
+				'B', new ItemStack(Items.BLAZE_ROD),
+				'P', new ItemStack(Items.BLAZE_POWDER));
 	}
 
 }

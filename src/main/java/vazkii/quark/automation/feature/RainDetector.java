@@ -32,9 +32,9 @@ public class RainDetector extends Feature {
 		
 		RecipeHandler.addOreDictRecipe(new ItemStack(rain_detector), 
 				"GGG", "BBB", "PPP",
-				'G', new ItemStack(Blocks.glass),
-				'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? "gemEnderBiotite" : new ItemStack(Blocks.obsidian)),
-				'P', new ItemStack(Blocks.purpur_slab));
+				'G', new ItemStack(Blocks.GLASS),
+				'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? "gemEnderBiotite" : new ItemStack(Blocks.OBSIDIAN)),
+				'P', new ItemStack(Blocks.PURPUR_SLAB));
 	}
 	
 }

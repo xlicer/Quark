@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMetaVariants;
 public class BlockBasalt extends BlockMetaVariants {
 
 	public BlockBasalt() {
-		super("basalt", Material.rock, Variants.class);
+		super("basalt", Material.ROCK, Variants.class);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setStepSound(SoundType.STONE);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.STONE);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	public enum Variants implements EnumBase {

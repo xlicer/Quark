@@ -35,7 +35,7 @@ public class BlockBiotite extends BlockQuartz implements IQuarkBlock {
 	private final String bareName;
 
 	public BlockBiotite() {
-		setStepSound(SoundType.STONE);
+		setSoundType(SoundType.STONE);
 		setHardness(0.8F);
 
 		String name = "biotite_block";

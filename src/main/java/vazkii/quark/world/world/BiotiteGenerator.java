@@ -34,7 +34,7 @@ public class BiotiteGenerator implements IWorldGenerator {
 	public BiotiteGenerator(int clusterSize, int clusterCount) {
 		this.clusterCount = clusterCount;
 
-		generator = new WorldGenMinable(Biotite.biotite_ore.getDefaultState(), clusterSize, BlockMatcher.forBlock(Blocks.end_stone));
+		generator = new WorldGenMinable(Biotite.biotite_ore.getDefaultState(), clusterSize, BlockMatcher.forBlock(Blocks.END_STONE));
 	}
 
 	@Override

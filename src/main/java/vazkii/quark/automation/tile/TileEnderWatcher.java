@@ -43,7 +43,7 @@ public class TileEnderWatcher extends TileMod implements ITickable {
 		boolean looking = false;
 		for(EntityPlayer player : players) {
 			ItemStack helm = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-			if(helm != null && helm.getItem() == Item.getItemFromBlock(Blocks.pumpkin))
+			if(helm != null && helm.getItem() == Item.getItemFromBlock(Blocks.PUMPKIN))
 				continue;
 
 			RayTraceResult pos = raytraceFromEntity(worldObj, player, true, 64);

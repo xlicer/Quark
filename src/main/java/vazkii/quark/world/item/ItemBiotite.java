@@ -19,7 +19,7 @@ public class ItemBiotite extends ItemMod {
 	public ItemBiotite() {
 		super("biotite");
 		OreDictionary.registerOre("gemEnderBiotite", this);
-		setCreativeTab(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.MATERIALS);
 	}
 
 }

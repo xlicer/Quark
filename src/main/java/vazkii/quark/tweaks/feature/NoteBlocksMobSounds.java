@@ -59,16 +59,16 @@ public class NoteBlocksMobSounds extends Feature {
 				switch(type) {
 				case 0:
 				case 1:
-					sound = SoundEvents.entity_skeleton_ambient;
+					sound = SoundEvents.ENTITY_SKELETON_AMBIENT;
 					break;
 				case 2:
-					sound = SoundEvents.entity_zombie_ambient;
+					sound = SoundEvents.ENTITY_ZOMBIE_AMBIENT;
 					break;
 				case 4:
-					sound = SoundEvents.entity_creeper_primed;
+					sound = SoundEvents.ENTITY_CREEPER_PRIMED;
 					break;
 				case 5:
-					sound = SoundEvents.entity_enderdragon_ambient;
+					sound = SoundEvents.ENTITY_ENDERDRAGON_AMBIENT;
 					break;
 				}
 

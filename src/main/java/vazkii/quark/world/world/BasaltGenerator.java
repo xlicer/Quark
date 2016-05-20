@@ -38,7 +38,7 @@ public class BasaltGenerator implements IWorldGenerator {
 		this.clusterCountOverworld = clusterCountOverworld;
 
 		generatorOverworld = new WorldGenMinable(Basalt.basalt.getDefaultState(), clusterSizeOverworld);
-		generatorNether = new WorldGenMinable(Basalt.basalt.getDefaultState(), clusterSizeNether, BlockMatcher.forBlock(Blocks.netherrack));
+		generatorNether = new WorldGenMinable(Basalt.basalt.getDefaultState(), clusterSizeNether, BlockMatcher.forBlock(Blocks.NETHERRACK));
 	}
 
 	@Override

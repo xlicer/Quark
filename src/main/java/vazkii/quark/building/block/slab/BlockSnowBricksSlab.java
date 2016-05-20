@@ -25,10 +25,10 @@ import vazkii.quark.base.block.BlockModSlab;
 public class BlockSnowBricksSlab extends BlockModSlab {
 
 	public BlockSnowBricksSlab(boolean doubleSlab) {
-		super("snow_bricks_slab", Material.craftedSnow, doubleSlab);
+		super("snow_bricks_slab", Material.CRAFTED_SNOW, doubleSlab);
 		setHardness(0.2F);
-		setStepSound(SoundType.SNOW);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.SNOW);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 	
 	@Override

@@ -44,13 +44,13 @@ public class LayerBetterElytra implements LayerRenderer<AbstractClientPlayer> {
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		ItemStack itemstack = entitylivingbaseIn.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 
-		if(itemstack != null && itemstack.getItem() == Items.elytra) {
+		if(itemstack != null && itemstack.getItem() == Items.ELYTRA) {
 			int colorIndex = ItemNBTHelper.getInt(itemstack, DyableElytra.TAG_ELYTRA_DYE, -1);
 
 			if(colorIndex == -1 || colorIndex == 15)
 				GlStateManager.color(1F, 1F, 1F);
 			else {
-				Color color = new Color(ItemDye.dyeColors[colorIndex]);
+				Color color = new Color(ItemDye.DYE_COLORS[colorIndex]);
 				float r = color.getRed() / 255F;
 				float g = color.getGreen() / 255F;
 				float b = color.getBlue() / 255F;

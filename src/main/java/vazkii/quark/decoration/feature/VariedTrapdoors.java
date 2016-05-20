@@ -56,31 +56,31 @@ public class VariedTrapdoors extends Feature {
 		List<IRecipe> recipeList = new ArrayList(CraftingManager.getInstance().getRecipeList());
 		for(IRecipe recipe : recipeList) {
 			ItemStack out = recipe.getRecipeOutput();
-			if(out != null && out.getItem() == Item.getItemFromBlock(Blocks.trapdoor))
+			if(out != null && out.getItem() == Item.getItemFromBlock(Blocks.TRAPDOOR))
 				CraftingManager.getInstance().getRecipeList().remove(recipe);
 		}
 
-		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.trapdoor, recipeOutput),
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.TRAPDOOR, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks));
+				'W', new ItemStack(Blocks.PLANKS));
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(spruce_trapdoor, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks, 1, 1));
+				'W', new ItemStack(Blocks.PLANKS, 1, 1));
 		RecipeHandler.addOreDictRecipe(new ItemStack(birch_trapdoor, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks, 1, 2));
+				'W', new ItemStack(Blocks.PLANKS, 1, 2));
 		RecipeHandler.addOreDictRecipe(new ItemStack(jungle_trapdoor, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks, 1, 3));
+				'W', new ItemStack(Blocks.PLANKS, 1, 3));
 		RecipeHandler.addOreDictRecipe(new ItemStack(acacia_trapdoor, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks, 1, 4));
+				'W', new ItemStack(Blocks.PLANKS, 1, 4));
 		RecipeHandler.addOreDictRecipe(new ItemStack(dark_oak_trapdoor, recipeOutput),
 				"WWW", "WWW",
-				'W', new ItemStack(Blocks.planks, 1, 5));
+				'W', new ItemStack(Blocks.PLANKS, 1, 5));
 
 		if(renameVanillaTrapdoor)
-			Blocks.trapdoor.setUnlocalizedName("oak_trapdoor");
+			Blocks.TRAPDOOR.setUnlocalizedName("oak_trapdoor");
 	}
 }

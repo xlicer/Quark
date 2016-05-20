@@ -39,7 +39,7 @@ public class ChickensShedFeathers extends Feature {
 
 		EntityChicken chicken = (EntityChicken) event.getEntity();
 		if((chicksDropFeathers || !chicken.isChild()) && chicken.worldObj.rand.nextInt(dropFreq) == 0)
-			chicken.dropItem(Items.feather, 1);
+			chicken.dropItem(Items.FEATHER, 1);
 	}
 
 	@SubscribeEvent
@@ -51,13 +51,13 @@ public class ChickensShedFeathers extends Feature {
 		boolean hasFeather = false;
 
 		for(EntityItem item : event.getDrops())
-			if(item != null && item.getEntityItem().getItem().equals(Items.feather)) {
+			if(item != null && item.getEntityItem().getItem().equals(Items.FEATHER)) {
 				hasFeather = true;
 				break;
 			}
 
 		if(!hasFeather)
-			event.getDrops().add(new EntityItem(event.getEntity().worldObj, chicken.posX, chicken.posY, chicken.posZ, new ItemStack(Items.feather, 1)));
+			event.getDrops().add(new EntityItem(event.getEntity().worldObj, chicken.posX, chicken.posY, chicken.posZ, new ItemStack(Items.FEATHER, 1)));
 	}
 
 	@Override

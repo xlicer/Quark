@@ -28,7 +28,7 @@ public class ClayGenerator implements IWorldGenerator {
 	public ClayGenerator(int clusterSize, int clusterCount) {
 		this.clusterCount = clusterCount;
 
-		generator = new WorldGenMinable(Blocks.clay.getDefaultState(), clusterSize);
+		generator = new WorldGenMinable(Blocks.CLAY.getDefaultState(), clusterSize);
 	}
 
 	@Override

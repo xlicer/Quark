@@ -18,11 +18,11 @@ import vazkii.quark.base.block.BlockMetaVariants;
 public class BlockCarvedWood extends BlockMetaVariants {
 
 	public BlockCarvedWood() {
-		super("carved_wood", Material.wood, Variants.class);
+		super("carved_wood", Material.WOOD, Variants.class);
 		setHardness(2.0F);
 		setResistance(5.0F);
-		setStepSound(SoundType.WOOD);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setSoundType(SoundType.WOOD);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
 	public enum Variants implements EnumBase {
