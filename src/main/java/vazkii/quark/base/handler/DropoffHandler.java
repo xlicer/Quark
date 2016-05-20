@@ -103,7 +103,7 @@ public final class DropoffHandler {
 			accept = (name.contains("chest") || te instanceof TileEntityChest) && !name.contains("void") && !name.contains("trash");
 		}
 
-		accept &= te.isUseableByPlayer(player);
+		accept &= (te != null && te.isUseableByPlayer(player));
 
 		return accept;
 	}
