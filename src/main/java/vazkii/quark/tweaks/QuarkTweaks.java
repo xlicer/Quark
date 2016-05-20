@@ -23,6 +23,7 @@ import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
 import vazkii.quark.tweaks.feature.LookDownLadders;
+import vazkii.quark.tweaks.feature.NoPotionShift;
 import vazkii.quark.tweaks.feature.NoteBlocksMobSounds;
 import vazkii.quark.tweaks.feature.RightClickSignEdit;
 import vazkii.quark.tweaks.feature.SlabsToBlocks;
@@ -52,6 +53,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new ArmedArmorStands());
 		registerFeature(new BabyZombiesBurn());
 		registerFeature(new GreenerGrass());
+		registerFeature(new NoPotionShift());
 	}
 
 }
