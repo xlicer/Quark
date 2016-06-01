@@ -12,10 +12,17 @@ package vazkii.quark.automation.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockOldLog;
+import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
+import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -36,6 +43,8 @@ public class DispensersPlaceSeeds extends Feature {
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.MELON_SEEDS, new BehaviourSeeds(Blocks.MELON_STEM));
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.BEETROOT_SEEDS, new BehaviourSeeds(Blocks.BEETROOTS));
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Item.getItemFromBlock(Blocks.CHORUS_FLOWER), new BehaviourSeeds(Blocks.CHORUS_FLOWER));
+		
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.DYE, new BehaviourCocoaBeans(BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.DYE)));
 	}
 
 	public class BehaviourSeeds extends BehaviorDefaultDispenseItem {
@@ -62,5 +71,34 @@ public class DispensersPlaceSeeds extends Feature {
 		}
 
 	}
+	
+	public class BehaviourCocoaBeans extends BehaviorDefaultDispenseItem {
 
+		IBehaviorDispenseItem vanillaBehaviour;
+		public BehaviourCocoaBeans(IBehaviorDispenseItem vanilla) {
+			vanillaBehaviour = vanilla;
+		}
+		
+		@Override
+		public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
+			if(par2ItemStack.getItemDamage() == EnumDyeColor.BROWN.getDyeDamage()) {
+				Block block = Blocks.COCOA;
+				EnumFacing facing = BlockDispenser.getFacing(par1IBlockSource.getBlockMetadata());
+				BlockPos pos = par1IBlockSource.getBlockPos().offset(facing);
+				World world = par1IBlockSource.getWorld();
+
+				BlockPos logPos = pos.offset(facing);
+				IBlockState logState = world.getBlockState(logPos);
+				if(logState.getBlock() == Blocks.LOG && logState.getValue(BlockOldLog.VARIANT) == BlockPlanks.EnumType.JUNGLE && world.isAirBlock(pos) && block.canPlaceBlockAt(world, pos)) {
+					world.setBlockState(pos, block.getDefaultState().withProperty(BlockHorizontal.FACING, facing));
+					par2ItemStack.stackSize--;
+					return par2ItemStack;
+				}
+			}
+
+			return vanillaBehaviour.dispense(par1IBlockSource, par2ItemStack);
+		}
+
+	}
+	
 }
