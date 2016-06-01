@@ -23,6 +23,7 @@ import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
 import vazkii.quark.tweaks.feature.LookDownLadders;
+import vazkii.quark.tweaks.feature.MinecartInteraction;
 import vazkii.quark.tweaks.feature.NoPotionShift;
 import vazkii.quark.tweaks.feature.NoteBlocksMobSounds;
 import vazkii.quark.tweaks.feature.RightClickSignEdit;
@@ -56,6 +57,8 @@ public class QuarkTweaks extends Module {
 		registerFeature(new GreenerGrass());
 		registerFeature(new NoPotionShift());
 		registerFeature(new ShearableChickens());
+		registerFeature(new MinecartInteraction(), "Right click minecarts to add blocks to them");
+
 	}
 
 }
