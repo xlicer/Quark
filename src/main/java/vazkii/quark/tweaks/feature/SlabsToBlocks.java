@@ -21,6 +21,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
@@ -66,7 +67,7 @@ public class SlabsToBlocks extends Feature {
 						}
 
 						ItemStack outCopy = outStack.copy();
-						if(outCopy.getItemDamage() == -1)
+						if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
 							outCopy.setItemDamage(0);
 
 						RecipeHandler.addOreDictRecipe(outCopy,
