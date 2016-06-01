@@ -12,6 +12,8 @@ package vazkii.quark.base.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.BlockWall;
@@ -58,7 +60,7 @@ public class BlockModWall extends BlockMod {
 	public int getMetaFromState(IBlockState state) {
 		return 0;
 	}
-
+	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		state = getActualState(state, source, pos);
@@ -71,6 +73,12 @@ public class BlockModWall extends BlockMod {
 		return field_185750_B[func_185749_i(blockState)];
 	}
 
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+        blockState = this.getActualState(blockState, worldIn, pos);
+        return field_185750_B[func_185749_i(blockState)];
+    }
+	
 	private static int func_185749_i(IBlockState p_185749_0_) {
 		int i = 0;
 
@@ -89,6 +97,11 @@ public class BlockModWall extends BlockMod {
 		return i;
 	}
 
+	@Override
+	public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return true;
+	}
+	
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
