@@ -11,6 +11,7 @@
 package vazkii.quark.world;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.world.feature.AncientTomes;
 import vazkii.quark.world.feature.Basalt;
 import vazkii.quark.world.feature.Biotite;
 import vazkii.quark.world.feature.BuriedTreasure;
@@ -29,6 +30,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new MushroomsInSwamps(), "Big mushrooms generate in swamps");
 		registerFeature(new Biotite());
 		registerFeature(new BuriedTreasure());
+		registerFeature(new AncientTomes());
 		registerFeature(new DefaultWorldOptions());
 	}
 

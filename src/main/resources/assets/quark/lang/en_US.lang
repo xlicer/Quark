@@ -173,6 +173,7 @@ item.quark:glass_shard_silver.name=Light Gray Glass Shard
 item.quark:glass_shard_white.name=White Glass Shard
 item.quark:glass_shard_yellow.name=Yellow Glass Shard
 item.quark:biotite.name=Ender Biotite
+item.quark:ancient_tome.name=Ancient Tome
 
 # GUI STUFF
 quark.gui.emotes=Emotes
