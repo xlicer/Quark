@@ -78,13 +78,13 @@ public class EmoteSystem extends Feature {
 		GuiScreen gui = event.getGui();
 		if(gui instanceof GuiChat) {
 			List<GuiButton> list = event.getButtonList();
-			list.add(new GuiButtonTranslucent(EMOTE_BUTTON_START, gui.width - 105, gui.height - 40, 105, 20, I18n.format("quark.gui.emotes")));
+			list.add(new GuiButtonTranslucent(EMOTE_BUTTON_START, gui.width - 100, gui.height - 40, 100, 20, I18n.format("quark.gui.emotes")));
 
 			int size = EmoteHandler.emoteMap.size() - 1;
 			int i = 0;
 			for(String key : EmoteHandler.emoteMap.keySet()) {
-				int x = gui.width - 105 + i % 2 * 55;
-				int y = gui.height - 105 - 55 * (size / 2 - i / 2);
+				int x = gui.width - 100;
+				int y = gui.height - 61 - 21 * (size - i);
 
 				GuiButton button = new GuiButtonEmote(EMOTE_BUTTON_START + i + 1, x, y, key);
 				button.visible = emotesVisible;

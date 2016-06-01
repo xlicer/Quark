@@ -10,6 +10,8 @@
  */
 package vazkii.quark.vanity.client.gui;
 
+import org.lwjgl.opengl.GLSync;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -23,7 +25,7 @@ public class GuiButtonEmote extends GuiButtonTranslucent {
 	private ResourceLocation resource;
 
 	public GuiButtonEmote(int buttonId, int x, int y, String emote) {
-		super(buttonId, x, y, 50, 50, I18n.format("quark.emote." + emote));
+		super(buttonId, x, y, 100, 18, I18n.format("quark.emote." + emote));
 		this.emote = emote;
 		resource = new ResourceLocation("quark", "textures/emotes/" + emote + ".png");
 	}
@@ -33,15 +35,18 @@ public class GuiButtonEmote extends GuiButtonTranslucent {
 		super.drawButton(mc, mouseX, mouseY);
 
 		if(visible) {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(0.5, 0.5, 0.5);
 			GlStateManager.color(1F, 1F, 1F);
 			mc.getTextureManager().bindTexture(resource);
-			drawTexturedModalRect(xPosition + 9, yPosition + 4, 32, 32);
+			drawTexturedModalRect((xPosition + 9) * 2, (yPosition + 2) * 2, 32, 32);
+			GlStateManager.popMatrix();
 		}
 	}
 
 	@Override
 	public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color) {
-		super.drawCenteredString(fontRendererIn, text, x, y + 16, color);
+		fontRendererIn.drawStringWithShadow(text, x - 20, y, color);
 	}
 
 }
