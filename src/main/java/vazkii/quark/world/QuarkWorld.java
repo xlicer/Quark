@@ -18,6 +18,7 @@ import vazkii.quark.world.feature.BuriedTreasure;
 import vazkii.quark.world.feature.ClayGeneration;
 import vazkii.quark.world.feature.DefaultWorldOptions;
 import vazkii.quark.world.feature.MushroomsInSwamps;
+import vazkii.quark.world.feature.NaturalBlazesInNether;
 import vazkii.quark.world.feature.OceanGuardians;
 
 public class QuarkWorld extends Module {
@@ -27,6 +28,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new Basalt());
 		registerFeature(new ClayGeneration(), "Generate clay underground like dirt");
 		registerFeature(new OceanGuardians(), "Guardians spawn in oceans");
+		registerFeature(new NaturalBlazesInNether(), "Blazes spawn naturally in the nether");
 		registerFeature(new MushroomsInSwamps(), "Big mushrooms generate in swamps");
 		registerFeature(new Biotite());
 		registerFeature(new BuriedTreasure());
