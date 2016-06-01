@@ -188,6 +188,23 @@ quark.emote.facepalm=Facepalm
 quark.emote.shrug=Shrug
 quark.emote.point=Point
 quark.emote.headbang=Headbang
+quark.dyedElytra=Dyed %s
+quark.dye.white=White
+quark.dye.orange=Orange
+quark.dye.magenta=Magenta
+quark.dye.lightBlue=Light Blue
+quark.dye.yellow=Yellow
+quark.dye.lime=Lime
+quark.dye.pink=Pink
+quark.dye.gray=Gray
+quark.dye.silver=Light Gray
+quark.dye.cyan=Cyan
+quark.dye.purple=Purple
+quark.dye.blue=Blue
+quark.dye.brown=Brown
+quark.dye.green=Green
+quark.dye.red=Red
+quark.dye.black=Black
 
 # BANNER NAMES
 item.banner.quark_dragon.black=Black Dragon
