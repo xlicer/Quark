@@ -42,11 +42,18 @@ public class BuriedTreasure extends Feature {
 	public static String TAG_TREASURE_MAP_DELEGATE = "Quark:TreasureMapDelegate";
 
 	ImmutableSet<ResourceLocation> tablesToEdit = ImmutableSet.of(LootTableList.CHESTS_DESERT_PYRAMID, LootTableList.CHESTS_JUNGLE_TEMPLE, LootTableList.CHESTS_STRONGHOLD_CORRIDOR);
+	int rarity, quality;
+	
+	@Override
+	public void setupConfig() {
+		rarity = loadPropInt("Treasure map Rarity", "", 10);
+		quality = loadPropInt("Treasure map item quality", "This is used for the luck attribute in loot tables. It doesn't affect the loot you get from the map itself.", 2);
+	}
 	
 	@SubscribeEvent
 	public void onLootTableLoad(LootTableLoadEvent event) {
 		if(tablesToEdit.contains(event.getName()))
-			event.getTable().getPool("main").addEntry(new LootEntryItem(Items.FILLED_MAP, 10, 2, new LootFunction[] { new SetAsTreasureFunction() }, new LootCondition[0], "quark:treasure_map"));
+			event.getTable().getPool("main").addEntry(new LootEntryItem(Items.FILLED_MAP, rarity, quality, new LootFunction[] { new SetAsTreasureFunction() }, new LootCondition[0], "quark:treasure_map"));
 	}
 
 	@SubscribeEvent
