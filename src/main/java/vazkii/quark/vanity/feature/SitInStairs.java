@@ -44,7 +44,7 @@ public class SitInStairs extends Feature {
 			List<Seat> seats = world.getEntitiesWithinAABB(Seat.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
 
 			if(seats.isEmpty()) {
-				Seat seat = new Seat(world, pos.getX(), pos.getY(), pos.getZ());
+				Seat seat = new Seat(world, pos);
 				world.spawnEntityInWorld(seat);
 				event.getEntityPlayer().startRiding(seat);
 			}
@@ -59,10 +59,10 @@ public class SitInStairs extends Feature {
 
 	public static class Seat extends Entity {
 
-		public Seat(World world, int x, int y, int z) {
+		public Seat(World world, BlockPos pos) {
 			this(world);
 
-			setPosition(x + 0.5, y + 0.25, z + 0.5);
+			setPosition(pos.getX() + 0.5, pos.getY() + 0.25, pos.getZ() + 0.5);
 		}
 
 		public Seat(World par1World) {
@@ -75,6 +75,12 @@ public class SitInStairs extends Feature {
 		public void onUpdate() {
 			super.onUpdate();
 
+			BlockPos pos = getPosition();
+			if(pos != null && !(worldObj.getBlockState(pos).getBlock() instanceof BlockStairs)) {
+				setDead();
+				return;
+			}
+			
 			List<Entity> passangers = getPassengers();
 			if(passangers.isEmpty())
 				setDead();
