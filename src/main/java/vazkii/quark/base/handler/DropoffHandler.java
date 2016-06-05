@@ -18,6 +18,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -34,14 +35,22 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import vazkii.quark.base.module.ModuleLoader;
+import vazkii.quark.base.network.NetworkHandler;
+import vazkii.quark.base.network.message.MessageDisableDropoffClient;
+import vazkii.quark.management.feature.ChestButtons;
 import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
 public final class DropoffHandler {
 
 	public static void dropoff(EntityPlayer player, boolean smart, boolean useContainer) {
-		if(!ModuleLoader.isFeatureEnabled(StoreToChests.class))
+		if(!ModuleLoader.isFeatureEnabled(useContainer ? ChestButtons.class : StoreToChests.class))
 			return;
+		
+		if(!useContainer && !player.worldObj.getWorldInfo().getGameRulesInstance().getBoolean(StoreToChests.GAME_RULE)) {
+			disableClientDropoff(player);
+			return;
+		}
 
 		new Dropoff(player, smart, useContainer).execute();
 	}
@@ -53,6 +62,11 @@ public final class DropoffHandler {
 		new Restock(player).execute();
 	}
 
+	public static void disableClientDropoff(EntityPlayer player) {
+		if(player instanceof EntityPlayerMP)
+			NetworkHandler.INSTANCE.sendTo(new MessageDisableDropoffClient(), (EntityPlayerMP) player);
+	}
+	
 	public static IItemHandler getInventory(EntityPlayer player, World world, BlockPos pos) {
 		TileEntity te = world.getTileEntity(pos);
 

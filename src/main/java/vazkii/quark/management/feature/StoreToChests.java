@@ -10,6 +10,7 @@
  */
 package vazkii.quark.management.feature;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
@@ -18,10 +19,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.world.GameRules;
+import net.minecraft.world.GameRules.ValueType;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.quark.base.handler.DropoffHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDropoff;
@@ -30,6 +36,9 @@ import vazkii.quark.management.client.gui.GuiButtonChest.Action;
 
 public class StoreToChests extends Feature {
 
+	public static final String GAME_RULE = "quark_allowDropoff";
+	
+	public static boolean clientDisabled;
 	public static boolean invert;
 
 	@Override
@@ -40,7 +49,13 @@ public class StoreToChests extends Feature {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void initGui(GuiScreenEvent.InitGuiEvent.Post event) {
+		if(Minecraft.getMinecraft().theWorld == null)
+			clientDisabled = false;
+		
 		if(event.getGui() instanceof GuiInventory || event.getGui() instanceof GuiContainerCreative) {
+			if(clientDisabled)
+				return;
+			
 			GuiContainer guiInv = (GuiContainer) event.getGui();
 			GuiContainerCreative creativeInv = null;
 			if(guiInv instanceof GuiContainerCreative)
@@ -75,6 +90,19 @@ public class StoreToChests extends Feature {
 			NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(smart, false));
 			event.setCanceled(true);
 		}
+	}
+	
+	@SubscribeEvent
+	public void worldLoad(WorldEvent.Load event) {
+		GameRules rules = event.getWorld().getGameRules();
+		if(!rules.hasRule(GAME_RULE))
+			rules.addGameRule(GAME_RULE, "true", ValueType.BOOLEAN_VALUE);
+	}
+	
+	@SubscribeEvent
+	public void login(PlayerLoggedInEvent event) {
+		if(!event.player.worldObj.getGameRules().getBoolean(GAME_RULE))
+			DropoffHandler.disableClientDropoff(event.player);
 	}
 
 	@Override
