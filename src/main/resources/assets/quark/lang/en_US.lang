@@ -175,6 +175,8 @@ item.quark:glass_shard_yellow.name=Yellow Glass Shard
 item.quark:biotite.name=Ender Biotite
 item.quark:ancient_tome.name=Ancient Tome
 item.quark:witch_hat.name=Witch Hat
+item.quark:slime_bucket_normal.name=Slime in a Bucket
+item.quark:slime_bucket_excited.name=Slime in a Bucket
 
 # GUI STUFF
 quark.gui.emotes=Emotes
