@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.tools.nsc.settings.Milestone;
 
 public class Module {
 
@@ -60,6 +61,10 @@ public class Module {
 
 			if(feature.hasSubscriptions())
 				MinecraftForge.EVENT_BUS.register(feature);
+			if(feature.hasTerrainSubscriptions())
+				MinecraftForge.TERRAIN_GEN_BUS.register(feature);
+			if(feature.hasOreGenSubscriptions())
+				MinecraftForge.ORE_GEN_BUS.register(feature);
 		}
 	}
 

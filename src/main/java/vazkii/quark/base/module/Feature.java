@@ -66,6 +66,14 @@ public class Feature {
 		return false;
 	}
 	
+	public boolean hasTerrainSubscriptions() {
+		return false;
+	}
+	
+	public boolean hasOreGenSubscriptions() {
+		return false;
+	}
+	
 	public static void registerTile(Class<? extends TileEntity> clazz, String key) {
 		GameRegistry.registerTileEntity(clazz, LibMisc.PREFIX_MOD + key);
 	}
