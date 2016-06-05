@@ -10,14 +10,19 @@
  */
 package vazkii.quark.vanity.client.model;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.datafix.fixes.EntityArmorAndHeld;
 
 public class ModelWitchHat extends ModelBiped {
 
@@ -61,12 +66,18 @@ public class ModelWitchHat extends ModelBiped {
 	
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		// Fixes rendering on armor stands
 		bipedHead.showModel = false;
-		bipedHeadwear.showModel = true;
-
-		setModelParts();
+		bipedHeadwear = witchHat;
+		
+		GlStateManager.pushMatrix();
+		if(entity instanceof EntityArmorStand) {
+			f3 = 0;
+			GlStateManager.translate(0F, 0.15F, 0F);
+		}
 		prepareForRender(entity, f5);
 		super.render(entity, f, f1, f2, f3, f4, f5);
+		GlStateManager.popMatrix();
 	}
 	
 	public void prepareForRender(Entity entity, float pticks) {
