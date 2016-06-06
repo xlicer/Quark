@@ -10,12 +10,15 @@
  */
 package vazkii.quark.world.item;
 
+import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -40,6 +43,11 @@ public class ItemSlimeBucket extends ItemMod {
 		setCreativeTab(CreativeTabs.MISC);
 		setContainerItem(Items.BUCKET);
 		OreDictionary.registerOre("slimeball", this);
+	}
+	
+	@Override
+	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+		subItems.add(new ItemStack(itemIn));
 	}
 	
 	@Override
