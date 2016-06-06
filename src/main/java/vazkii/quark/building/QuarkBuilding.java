@@ -13,6 +13,7 @@ package vazkii.quark.building;
 import vazkii.quark.base.module.Module;
 import vazkii.quark.building.feature.BarkBlocks;
 import vazkii.quark.building.feature.CarvedWood;
+import vazkii.quark.building.feature.CharredNetherBricks;
 import vazkii.quark.building.feature.HardenedClayTiles;
 import vazkii.quark.building.feature.PolishedStone;
 import vazkii.quark.building.feature.ReedBlock;
@@ -38,6 +39,7 @@ public class QuarkBuilding extends Module {
 		registerFeature(new PolishedStone());
 		registerFeature(new CarvedWood());
 		registerFeature(new SnowBricks());
+		registerFeature(new CharredNetherBricks());
 	}
 
 }

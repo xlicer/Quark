@@ -153,6 +153,9 @@ tile.quark:snow_bricks.name=Snow Bricks
 tile.quark:snow_bricks_slab.name=Snow Brick Slab
 tile.quark:snow_bricks_stairs.name=Snow Brick Stairs
 tile.quark:snow_bricks_wall.name=Snow Brick Wall
+tile.quark:charred_nether_bricks.name=Charred Nether Brick
+tile.quark:charred_nether_brick_slab.name=Charred Nether Brick Slab
+tile.quark:charred_nether_brick_stairs.name=Charred Nether Brick Stairs
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
