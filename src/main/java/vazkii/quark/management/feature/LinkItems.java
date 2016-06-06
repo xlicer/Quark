@@ -19,12 +19,15 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.NetworkHandler;
@@ -58,13 +61,22 @@ public class LinkItems extends Feature {
 		
 		ItemStack item = player.inventory.getStackInSlot(slot);
 		
-		if(item != null) {
+		if(item != null && player instanceof EntityPlayerMP) {
 			ITextComponent comp = new TextComponentString("<");
 			comp.appendSibling(player.getDisplayName());
 			comp.appendSibling(new TextComponentString("> "));
 			comp.appendSibling(item.getTextComponent());
 			
 			player.getServer().getPlayerList().sendChatMsgImpl(comp, false);
+			
+			NetHandlerPlayServer handler = ((EntityPlayerMP) player).connection;
+			int treshold = ReflectionHelper.getPrivateValue(NetHandlerPlayServer.class, handler, LibObfuscation.CHAT_SPAM_TRESHOLD_COUNT);
+			treshold += 20;
+			
+            if(treshold > 200 && player.getServer().getPlayerList().canSendCommands(player.getGameProfile()))
+            	handler.kickPlayerFromServer("disconnect.spam");
+            
+            ReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, handler, treshold, LibObfuscation.CHAT_SPAM_TRESHOLD_COUNT);
 		}
 
 	}

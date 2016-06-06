@@ -29,4 +29,7 @@ public final class LibObfuscation {
 	// TileEntitySign
 	public static final String[] IS_EDITABLE = new String[] { "g", "field_145916_j", "isEditable" };
 	
+	// NetHandlerPlayServer
+	public static final String[] CHAT_SPAM_TRESHOLD_COUNT = new String[] { "i", "field_147374_l", "chatSpamThresholdCount" };
+	
 }
