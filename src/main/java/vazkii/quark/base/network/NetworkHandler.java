@@ -18,6 +18,7 @@ import vazkii.quark.base.network.message.MessageDisableDropoffClient;
 import vazkii.quark.base.network.message.MessageDoEmote;
 import vazkii.quark.base.network.message.MessageDropoff;
 import vazkii.quark.base.network.message.MessageFavoriteItem;
+import vazkii.quark.base.network.message.MessageLinkItem;
 import vazkii.quark.base.network.message.MessageRestock;
 import vazkii.quark.base.network.message.MessageSwapItems;
 
@@ -34,6 +35,7 @@ public class NetworkHandler {
 		register(MessageRestock.class, Side.SERVER);
 		register(MessageFavoriteItem.class, Side.SERVER);
 		register(MessageDisableDropoffClient.class, Side.CLIENT);
+		register(MessageLinkItem.class, Side.SERVER);
 	}
 
 	private static void register(Class clazz, Side handlerSide) {
