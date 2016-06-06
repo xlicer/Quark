@@ -11,19 +11,17 @@
 package vazkii.quark.management.feature;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -37,29 +35,22 @@ public class LinkItems extends Feature {
 
 	@SubscribeEvent
 	public void keyboardEvent(GuiScreenEvent.KeyboardInputEvent.Post event) {
-		if(GameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindChat) && event.getGui() instanceof GuiContainer) {
+		if(GameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindChat) && event.getGui() instanceof GuiContainer && GuiScreen.isShiftKeyDown()) {
 			GuiContainer gui = (GuiContainer) event.getGui();
+			
 			Slot slot = gui.getSlotUnderMouse();
-			if(slot != null) {
-				IInventory inv = slot.inventory;
-				if(inv instanceof InventoryPlayer) {
-					int index = slot.getSlotIndex();
-
-					if(Minecraft.getMinecraft().thePlayer.capabilities.isCreativeMode && index >= 36)
-						index -= 36; // Creative mode messes with the indexes for some reason
-
-					if(index < ((InventoryPlayer) inv).mainInventory.length)
-						NetworkHandler.INSTANCE.sendToServer(new MessageLinkItem(index));
-				}
+			if(slot != null && !slot.inventory.getName().equals("tmp")) { // "tmp" checks for a creative inventory
+				ItemStack stack = slot.getStack();
+				
+				if(stack != null)
+					NetworkHandler.INSTANCE.sendToServer(new MessageLinkItem(stack));
 			}
 		}
 	}	
 	
-	public static void linkItem(EntityPlayer player, int slot) {
-		if(!ModuleLoader.isFeatureEnabled(LinkItems.class) || slot >= player.inventory.mainInventory.length)
+	public static void linkItem(EntityPlayer player, ItemStack item) {
+		if(!ModuleLoader.isFeatureEnabled(LinkItems.class))
 			return;
-		
-		ItemStack item = player.inventory.getStackInSlot(slot);
 		
 		if(item != null && player instanceof EntityPlayerMP) {
 			ITextComponent comp = new TextComponentString("<");

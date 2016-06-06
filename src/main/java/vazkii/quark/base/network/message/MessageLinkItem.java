@@ -10,25 +10,25 @@
  */
 package vazkii.quark.base.network.message;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import vazkii.quark.base.network.Message;
-import vazkii.quark.management.feature.FToSwitchItems;
 import vazkii.quark.management.feature.LinkItems;
 
 public class MessageLinkItem  extends Message {
 
-	public int index;
+	public ItemStack stack;
 
 	public MessageLinkItem() { }
 
-	public MessageLinkItem(int index) {
-		this.index = index;
+	public MessageLinkItem(ItemStack stack) {
+		this.stack = stack;
 	}
 
 	@Override
 	public IMessage handleMessage(MessageContext context) {
-		LinkItems.linkItem(context.getServerHandler().playerEntity, index);
+		LinkItems.linkItem(context.getServerHandler().playerEntity, stack);
 		return null;
 	}
 
