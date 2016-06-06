@@ -21,6 +21,7 @@ import vazkii.quark.world.feature.MushroomsInSwamps;
 import vazkii.quark.world.feature.NaturalBlazesInNether;
 import vazkii.quark.world.feature.OceanGuardians;
 import vazkii.quark.world.feature.SlimeBucket;
+import vazkii.quark.world.feature.TreesInPlains;
 
 public class QuarkWorld extends Module {
 
@@ -31,6 +32,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new OceanGuardians(), "Guardians spawn in oceans");
 		registerFeature(new NaturalBlazesInNether(), "Blazes spawn naturally in the nether");
 		registerFeature(new MushroomsInSwamps(), "Big mushrooms generate in swamps");
+		registerFeature(new TreesInPlains(), "Big trees generate in plains");
 		registerFeature(new Biotite());
 		registerFeature(new BuriedTreasure());
 		registerFeature(new AncientTomes());
