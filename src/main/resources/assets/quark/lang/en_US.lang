@@ -156,6 +156,16 @@ tile.quark:snow_bricks_wall.name=Snow Brick Wall
 tile.quark:charred_nether_bricks.name=Charred Nether Brick
 tile.quark:charred_nether_brick_slab.name=Charred Nether Brick Slab
 tile.quark:charred_nether_brick_stairs.name=Charred Nether Brick Stairs
+tile.quark:sandstone_smooth.name=Polished Sandstone
+tile.quark:sandstone_bricks.name=Sandstone Bricks
+tile.quark:red_sandstone_smooth.name=Polished Red Sandstone
+tile.quark:red_sandstone_bricks.name=Red Sandstone Bricks
+tile.quark:sandstone_smooth_slab.name=Polished Sandstone Slab
+tile.quark:sandstone_bricks_slab.name=Sandstone Brick Slab
+tile.quark:red_sandstone_smooth_slab.name=Polished Red Sandstone Slab
+tile.quark:red_sandstone_bricks_slab.name=Red Sandstone Brick Slab
+tile.quark:sandstone_bricks_stairs.name=Sandstone Brick Stairs
+tile.quark:red_sandstone_bricks_stairs.name=Red Sandstone Brick Slab
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
