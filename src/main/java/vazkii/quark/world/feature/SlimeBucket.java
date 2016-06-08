@@ -34,28 +34,31 @@ public class SlimeBucket extends Feature {
 	
 	@SubscribeEvent
 	public void entityInteract(PlayerInteractEvent.EntityInteract event) {
-		if(EntityList.getEntityString(event.getTarget()).equals("Slime") && ((EntitySlime) event.getTarget()).getSlimeSize() == 1) {
-			EntityPlayer player = event.getEntityPlayer();
-			EnumHand hand = EnumHand.MAIN_HAND;
-			ItemStack stack = player.getHeldItemMainhand();
-			if(stack == null || stack.getItem() != Items.BUCKET) {
-				stack = player.getHeldItemOffhand();
-				hand = EnumHand.OFF_HAND;
-			}
-			
-			if(stack != null && stack.getItem() == Items.BUCKET) {
-				ItemStack outStack = new ItemStack(slime_bucket);
-				if(stack.stackSize == 1)
-					player.setHeldItem(hand, outStack);
-				else {
-					stack.stackSize--;
-					if(stack.stackSize == 0)
-						player.setHeldItem(hand, outStack);
-					else if(!player.inventory.addItemStackToInventory(outStack))
-						player.dropItem(outStack, false);
+		if(event.getTarget() != null) {
+			String name = EntityList.getEntityString(event.getTarget());
+			if(name != null && name.equals("Slime") && ((EntitySlime) event.getTarget()).getSlimeSize() == 1) {
+				EntityPlayer player = event.getEntityPlayer();
+				EnumHand hand = EnumHand.MAIN_HAND;
+				ItemStack stack = player.getHeldItemMainhand();
+				if(stack == null || stack.getItem() != Items.BUCKET) {
+					stack = player.getHeldItemOffhand();
+					hand = EnumHand.OFF_HAND;
 				}
 				
-				event.getTarget().setDead();
+				if(stack != null && stack.getItem() == Items.BUCKET) {
+					ItemStack outStack = new ItemStack(slime_bucket);
+					if(stack.stackSize == 1)
+						player.setHeldItem(hand, outStack);
+					else {
+						stack.stackSize--;
+						if(stack.stackSize == 0)
+							player.setHeldItem(hand, outStack);
+						else if(!player.inventory.addItemStackToInventory(outStack))
+							player.dropItem(outStack, false);
+					}
+					
+					event.getTarget().setDead();
+				}
 			}
 		}
 	}
