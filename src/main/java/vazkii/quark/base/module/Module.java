@@ -39,6 +39,10 @@ public class Module {
 	public void registerFeature(Feature feature) {
 		registerFeature(feature, convertName(feature.getClass().getSimpleName()));
 	}
+	
+	public void registerFeature(Feature feature, boolean enabledByDefault) {
+		registerFeature(feature, convertName(feature.getClass().getSimpleName()), enabledByDefault);
+	}
 
 	public String convertName(String origName) {
 		String withSpaces = origName.replaceAll("(?<=.)([A-Z])", " $1").toLowerCase();
@@ -108,9 +112,17 @@ public class Module {
 	public boolean canBeDisabled() {
 		return true;
 	}
+	
+	public boolean isEnabledByDefault() {
+		return true;
+	}
 
 	String makeName() {
 		return getClass().getSimpleName().replaceAll("Quark", "").toLowerCase();
+	}
+	
+	public String getModuleDescription() {
+		return "";
 	}
 
 	public final void forEachFeature(Consumer<Feature> consumer) {

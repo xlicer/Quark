@@ -31,6 +31,7 @@ import vazkii.quark.automation.QuarkAutomation;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.building.QuarkBuilding;
 import vazkii.quark.decoration.QuarkDecoration;
+import vazkii.quark.experimental.QuarkExperimental;
 import vazkii.quark.management.QuarkManagement;
 import vazkii.quark.tweaks.QuarkTweaks;
 import vazkii.quark.vanity.QuarkVanity;
@@ -48,6 +49,8 @@ public final class ModuleLoader {
 		registerModule(QuarkBuilding.class);
 		registerModule(QuarkAutomation.class);
 		registerModule(QuarkManagement.class);
+		
+		registerModule(QuarkExperimental.class);
 	}
 
 	private static List<Class<? extends Module>> moduleClasses;
@@ -104,7 +107,7 @@ public final class ModuleLoader {
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 
-		forEachModule(module -> module.enabled = !module.canBeDisabled() || ConfigHelper.loadPropBool(module.name, "_modules", "", true));
+		forEachModule(module -> module.enabled = !module.canBeDisabled() || ConfigHelper.loadPropBool(module.name, "_modules", module.getModuleDescription(), module.isEnabledByDefault()));
 
 		enabledModules = new ArrayList(moduleInstances.values());
 		enabledModules.removeIf(module -> !module.enabled);
