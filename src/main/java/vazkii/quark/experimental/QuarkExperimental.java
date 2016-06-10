@@ -17,7 +17,7 @@ public class QuarkExperimental extends Module {
 
 	@Override
 	public void addFeatures() {
-		registerFeature(new PanoramaMaker(), false);
+		registerFeature(new PanoramaMaker());
 	}
 	
 	@Override
