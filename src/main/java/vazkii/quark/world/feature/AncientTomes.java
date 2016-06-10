@@ -31,6 +31,7 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import vazkii.quark.base.module.Feature;
@@ -40,12 +41,13 @@ public class AncientTomes extends Feature {
 
 	public static Item ancient_tome;
 	public static List<Enchantment> validEnchants = new ArrayList();
-
+	private String[] enchantNames;
+	
 	int dungeonWeight, libraryWeight, itemQuality;
 
 	@Override
 	public void setupConfig() {
-		String[] enchantNames = loadPropStringList("Valid Enchantments", "", new String[] {
+		enchantNames = loadPropStringList("Valid Enchantments", "", new String[] {
 				Enchantments.FEATHER_FALLING.getRegistryName().toString(),
 				Enchantments.RESPIRATION.getRegistryName().toString(),
 				Enchantments.THORNS.getRegistryName().toString(),
@@ -65,14 +67,6 @@ public class AncientTomes extends Feature {
 				Enchantments.LURE.getRegistryName().toString(),
 		});
 
-		validEnchants.clear();
-		for(String s : enchantNames) {
-			ResourceLocation r = new ResourceLocation(s);
-			Enchantment e = Enchantment.REGISTRY.getObject(r);
-			if(e != null)
-				validEnchants.add(e);
-		}
-
 		dungeonWeight = loadPropInt("Dungeon loot weight", "", 8);
 		libraryWeight = loadPropInt("Stronghold Library loot weight", "", 12);
 		itemQuality = loadPropInt("Item quality for loot", "", 2);
@@ -81,6 +75,17 @@ public class AncientTomes extends Feature {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		ancient_tome = new ItemAncientTome();
+	}
+	
+	@Override
+	public void postInit(FMLPostInitializationEvent event) {
+		validEnchants.clear();
+		for(String s : enchantNames) {
+			ResourceLocation r = new ResourceLocation(s);
+			Enchantment e = Enchantment.REGISTRY.getObject(r);
+			if(e != null)
+				validEnchants.add(e);
+		}
 	}
 
 	@Override
