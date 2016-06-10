@@ -57,7 +57,7 @@ public class Module {
 		ModuleLoader.featureInstances.put(feature.getClass(), feature);
 		features.put(name, feature);
 
-		feature.enabled = loadPropBool(name, "", enabledByDefault) && enabled;
+		feature.enabled = loadPropBool(name, feature.getFeatureDescription(), enabledByDefault) && enabled;
 		feature.module = this;
 		feature.category = this.name + "." + name;
 		if(feature.enabled) {

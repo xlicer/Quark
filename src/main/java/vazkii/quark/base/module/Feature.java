@@ -74,6 +74,10 @@ public class Feature {
 		return false;
 	}
 	
+	public String getFeatureDescription() {
+		return "";
+	}
+	
 	public static void registerTile(Class<? extends TileEntity> clazz, String key) {
 		GameRegistry.registerTileEntity(clazz, LibMisc.PREFIX_MOD + key);
 	}
