@@ -43,8 +43,6 @@ public final class ModuleLoader {
 
 		registerModule(QuarkTweaks.class);
 		registerModule(QuarkWorld.class);
-		//		registerModule(QuarkExploration.class);
-		//		registerModule(QuarkCombat.class);
 		registerModule(QuarkVanity.class);
 		registerModule(QuarkDecoration.class);
 		registerModule(QuarkBuilding.class);
