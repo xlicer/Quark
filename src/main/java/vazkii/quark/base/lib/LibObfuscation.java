@@ -32,4 +32,7 @@ public final class LibObfuscation {
 	// NetHandlerPlayServer
 	public static final String[] CHAT_SPAM_TRESHOLD_COUNT = new String[] { "i", "field_147374_l", "chatSpamThresholdCount" };
 	
+	// GuiMainMenu
+	public static final String[] TITLE_PANORAMA_PATHS = new String[] { "C", "field_73978_o", "TITLE_PANORAMA_PATHS" };
+	
 }

@@ -10,6 +10,7 @@
  */
 package vazkii.quark.base.module;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,6 +60,7 @@ public final class ModuleLoader {
 	public static List<Module> enabledModules;
 
 	public static Configuration config;
+	public static File configFile;
 
 	public static void preInit(FMLPreInitializationEvent event) {
 		moduleClasses.forEach(clazz -> {
@@ -104,7 +106,8 @@ public final class ModuleLoader {
 	}
 
 	public static void setupConfig(FMLPreInitializationEvent event) {
-		config = new Configuration(event.getSuggestedConfigurationFile());
+		configFile = event.getSuggestedConfigurationFile();
+		config = new Configuration(configFile);
 		config.load();
 
 		forEachModule(module -> module.enabled = !module.canBeDisabled() || ConfigHelper.loadPropBool(module.name, "_modules", module.getModuleDescription(), module.isEnabledByDefault()));
