@@ -118,7 +118,7 @@ public final class ModuleLoader {
 	}
 
 	private static void loadModuleConfigs() {
-		forEachEnabled(module -> module.setupConfig());
+		forEachModule(module -> module.setupConfig());
 
 		if(config.hasChanged())
 			config.save();
