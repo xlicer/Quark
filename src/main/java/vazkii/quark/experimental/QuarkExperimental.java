@@ -11,6 +11,7 @@
 package vazkii.quark.experimental;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.experimental.features.BiggerCaves;
 import vazkii.quark.experimental.features.PanoramaMaker;
 
 public class QuarkExperimental extends Module {
@@ -18,6 +19,7 @@ public class QuarkExperimental extends Module {
 	@Override
 	public void addFeatures() {
 		registerFeature(new PanoramaMaker());
+		registerFeature(new BiggerCaves());
 	}
 	
 	@Override
