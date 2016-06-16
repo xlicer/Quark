@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import com.google.common.collect.ImmutableSet;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -47,26 +49,7 @@ public class AncientTomes extends Feature {
 
 	@Override
 	public void setupConfig() {
-		enchantNames = loadPropStringList("Valid Enchantments", "", new String[] {
-				Enchantments.FEATHER_FALLING.getRegistryName().toString(),
-				Enchantments.RESPIRATION.getRegistryName().toString(),
-				Enchantments.THORNS.getRegistryName().toString(),
-				Enchantments.DEPTH_STRIDER.getRegistryName().toString(),
-				Enchantments.SHARPNESS.getRegistryName().toString(),
-				Enchantments.SMITE.getRegistryName().toString(),
-				Enchantments.BANE_OF_ARTHROPODS.getRegistryName().toString(),
-				Enchantments.KNOCKBACK.getRegistryName().toString(),
-				Enchantments.FIRE_ASPECT.getRegistryName().toString(),
-				Enchantments.LOOTING.getRegistryName().toString(),
-				Enchantments.EFFICIENCY.getRegistryName().toString(),
-				Enchantments.UNBREAKING.getRegistryName().toString(),
-				Enchantments.FORTUNE.getRegistryName().toString(),
-				Enchantments.POWER.getRegistryName().toString(),
-				Enchantments.PUNCH.getRegistryName().toString(),
-				Enchantments.LUCK_OF_THE_SEA.getRegistryName().toString(),
-				Enchantments.LURE.getRegistryName().toString(),
-		});
-
+		enchantNames = loadPropStringList("Valid Enchantments", "", generateDefaultEnchantmentList());
 		dungeonWeight = loadPropInt("Dungeon loot weight", "", 8);
 		libraryWeight = loadPropInt("Stronghold Library loot weight", "", 12);
 		itemQuality = loadPropInt("Item quality for loot", "", 2);
@@ -146,6 +129,35 @@ public class AncientTomes extends Feature {
 		}
 	}
 
+	private String[] generateDefaultEnchantmentList() {
+		Enchantment[] enchants = new Enchantment[] {
+			Enchantments.FEATHER_FALLING,
+			Enchantments.RESPIRATION,
+			Enchantments.THORNS,
+			Enchantments.DEPTH_STRIDER,
+			Enchantments.SHARPNESS,
+			Enchantments.SMITE,
+			Enchantments.BANE_OF_ARTHROPODS,
+			Enchantments.KNOCKBACK,
+			Enchantments.FIRE_ASPECT,
+			Enchantments.LOOTING,
+			Enchantments.EFFICIENCY,
+			Enchantments.UNBREAKING,
+			Enchantments.FORTUNE,
+			Enchantments.POWER,
+			Enchantments.PUNCH,
+			Enchantments.LUCK_OF_THE_SEA,
+			Enchantments.LURE 
+		};
+		
+		List<String> strings = new ArrayList();
+		for(Enchantment e : enchants)
+			if(e != null && e.getRegistryName() != null)
+				strings.add(e.getRegistryName().toString());
+		
+		return strings.toArray(new String[strings.size()]);
+	}
+	
 	public static class EnchantTomeFunction extends LootFunction {
 
 		protected EnchantTomeFunction() {
