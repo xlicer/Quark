@@ -130,7 +130,7 @@ public class PanoramaMaker extends Feature {
 		if(takingPanorama)
 			return;
 
-		if(GuiScreen.isCtrlKeyDown() && GuiScreen.isShiftKeyDown()) {
+		if(GuiScreen.isCtrlKeyDown() && GuiScreen.isShiftKeyDown() && Minecraft.getMinecraft().currentScreen == null) {
 			takingPanorama = true;
 			panoramaStep = 0;
 
