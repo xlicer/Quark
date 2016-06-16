@@ -57,6 +57,7 @@ public class SlimeBucket extends Feature {
 							player.dropItem(outStack, false);
 					}
 					
+					player.swingArm(hand);
 					event.getTarget().setDead();
 				}
 			}

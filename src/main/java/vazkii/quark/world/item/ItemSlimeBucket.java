@@ -77,6 +77,7 @@ public class ItemSlimeBucket extends ItemMod {
 			slime.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
 			slime.setHealth(slime.getMaxHealth());
 			worldIn.spawnEntityInWorld(slime);
+			playerIn.swingArm(hand);
 		}
 		
 
