@@ -27,6 +27,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,14 +45,14 @@ public class FavoriteItems extends Feature {
 	public static boolean hovering;
 	boolean mouseDown = false;
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	@SideOnly(Side.CLIENT)
 	public void keyboardEvent(GuiScreenEvent.MouseInputEvent.Pre event) {
 		boolean wasMouseDown = mouseDown;
 		mouseDown = Mouse.isButtonDown(0);
 		boolean click = mouseDown && !wasMouseDown;
 
-		if(GuiScreen.isCtrlKeyDown() && click && event.getGui() instanceof GuiContainer) {
+		if(GuiScreen.isAltKeyDown() && click && event.getGui() instanceof GuiContainer) {
 			GuiContainer gui = (GuiContainer) event.getGui();
 			Slot slot = gui.getSlotUnderMouse();
 			if(slot != null) {
