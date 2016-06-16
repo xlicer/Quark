@@ -35,4 +35,7 @@ public final class LibObfuscation {
 	// GuiMainMenu
 	public static final String[] TITLE_PANORAMA_PATHS = new String[] { "C", "field_73978_o", "TITLE_PANORAMA_PATHS" };
 	
+	// GuardianSound
+	public static final String[] GUARDIAN = new String[] { "m", "field_174934_k", "guardian" };
+	
 }
