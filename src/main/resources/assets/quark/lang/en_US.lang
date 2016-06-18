@@ -221,6 +221,8 @@ quark.dye.brown=Brown
 quark.dye.green=Green
 quark.dye.red=Red
 quark.dye.black=Black
+generator.quark_realistic=Realistic
+generator.quark_realistic.info=[Quark] Realistic World Type by /u/Soniop
 
 # BANNER NAMES
 item.banner.quark_dragon.black=Black Dragon

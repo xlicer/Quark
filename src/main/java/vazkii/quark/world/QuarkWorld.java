@@ -20,6 +20,7 @@ import vazkii.quark.world.feature.DefaultWorldOptions;
 import vazkii.quark.world.feature.MushroomsInSwamps;
 import vazkii.quark.world.feature.NaturalBlazesInNether;
 import vazkii.quark.world.feature.OceanGuardians;
+import vazkii.quark.world.feature.RealisticWorldType;
 import vazkii.quark.world.feature.SlimeBucket;
 import vazkii.quark.world.feature.TreesInPlains;
 
@@ -37,6 +38,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new BuriedTreasure());
 		registerFeature(new AncientTomes());
 		registerFeature(new SlimeBucket());
+		registerFeature(new RealisticWorldType());
 		registerFeature(new DefaultWorldOptions());
 	}
 
