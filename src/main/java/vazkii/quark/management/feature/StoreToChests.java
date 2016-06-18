@@ -22,7 +22,9 @@ import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.GameRules.ValueType;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,6 +35,7 @@ import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDropoff;
 import vazkii.quark.management.client.gui.GuiButtonChest;
 import vazkii.quark.management.client.gui.GuiButtonChest.Action;
+import vazkii.quark.management.gamerule.DropoffGamerule;
 
 public class StoreToChests extends Feature {
 
@@ -46,6 +49,11 @@ public class StoreToChests extends Feature {
 		invert = loadPropBool("Invert button", "", false);
 	}
 
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(new DropoffGamerule());
+	}
+	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void initGui(GuiScreenEvent.InitGuiEvent.Post event) {
@@ -90,19 +98,6 @@ public class StoreToChests extends Feature {
 			NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(smart, false));
 			event.setCanceled(true);
 		}
-	}
-	
-	@SubscribeEvent
-	public void worldLoad(WorldEvent.Load event) {
-		GameRules rules = event.getWorld().getGameRules();
-		if(!rules.hasRule(GAME_RULE))
-			rules.addGameRule(GAME_RULE, "true", ValueType.BOOLEAN_VALUE);
-	}
-	
-	@SubscribeEvent
-	public void login(PlayerLoggedInEvent event) {
-		if(!event.player.worldObj.getGameRules().getBoolean(GAME_RULE))
-			DropoffHandler.disableClientDropoff(event.player);
 	}
 
 	@Override
