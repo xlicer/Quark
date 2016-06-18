@@ -18,6 +18,7 @@ import vazkii.quark.tweaks.feature.BabyZombiesBurn;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.EndermenTeleportYou;
+import vazkii.quark.tweaks.feature.FlintTools;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.GreenerGrass;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
@@ -62,6 +63,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new MinecartInteraction(), "Right click minecarts to add blocks to them");
 		registerFeature(new EndermenTeleportYou(), "Endermen teleport you to them if you're in a 2 high area");
 		registerFeature(new SheepArmor(), "Sheep have armor while wearing wool");
+		registerFeature(new FlintTools(), "Allow crafting stone tools using flint");
 	}
 
 }
