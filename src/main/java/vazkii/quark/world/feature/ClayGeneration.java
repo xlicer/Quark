@@ -21,8 +21,8 @@ public class ClayGeneration extends Feature {
 
 	@Override
 	public void setupConfig() {
-		clusterSize = loadPropInt("Cluster size", "", 33);
-		clusterCount = loadPropInt("Cluster count", "", 4);
+		clusterSize = loadPropInt("Cluster size", "", 20);
+		clusterCount = loadPropInt("Cluster count", "", 3);
 	}
 
 	@Override
