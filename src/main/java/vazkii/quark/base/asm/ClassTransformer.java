@@ -40,10 +40,14 @@ public class ClassTransformer implements IClassTransformer {
 		// For Emotes
 		transformers.put("net.minecraft.client.model.ModelBiped", ClassTransformer::transformModelBiped);
 		transformers.put("micdoodle8.mods.galacticraft.core.client.model.ModelPlayerGC", ClassTransformer::transformModelBiped);
-		
+
 		// For Color Runes
 		transformers.put("net.minecraft.client.renderer.RenderItem", ClassTransformer::transformRenderItem);
 		transformers.put("net.minecraft.client.renderer.entity.layers.LayerArmorBase", ClassTransformer::transformLayerArmorBase);
+
+		// For Boat Sails
+		transformers.put("net.minecraft.client.renderer.entity.RenderBoat", ClassTransformer::transformRenderBoat);
+		transformers.put("net.minecraft.entity.item.EntityBoat", ClassTransformer::transformEntityBoat);
 	}
 
 	@Override
@@ -77,20 +81,20 @@ public class ClassTransformer implements IClassTransformer {
 		MethodSignature sig2 = new MethodSignature("renderEffect", "func_180451_a", "a", "(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Lbxl;)V");
 
 		byte[] transClass = basicClass;
-		
+
 		transClass = transform(transClass, Pair.of(sig1, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return true;
 				}, (MethodNode method, AbstractInsnNode node) -> { // Action
 					InsnList newInstructions = new InsnList();
-					
+
 					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
 					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "setTargetStack", "(Lnet/minecraft/item/ItemStack;)V"));
 
 					method.instructions.insertBefore(node, newInstructions);
 					return true;
 				})));
-		
+
 		transClass = transform(transClass, Pair.of(sig2, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.LDC && ((LdcInsnNode) node).cst.equals(-8372020);
@@ -103,7 +107,7 @@ public class ClassTransformer implements IClassTransformer {
 					method.instructions.remove(node);
 					return false;
 				})));
-		
+
 		return transClass;
 	}
 
@@ -113,7 +117,7 @@ public class ClassTransformer implements IClassTransformer {
 		MethodSignature sig2 = new MethodSignature("renderEnchantedGlint", "func_188364_a", "a", "(Lnet/minecraft/client/renderer/entity/RenderLivingBase;Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/client/model/ModelBase;FFFFFFF)V", "(Lbsa;Lsa;Lbja;FFFFFFF)V");
 
 		byte[] transClass = basicClass;
-		
+
 		transClass = transform(transClass, Pair.of(sig1, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.ASTORE;
@@ -123,11 +127,11 @@ public class ClassTransformer implements IClassTransformer {
 
 					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 10));
 					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "setTargetStack", "(Lnet/minecraft/item/ItemStack;)V"));
-					
+
 					method.instructions.insert(node, newInstructions);
 					return true;
 				})));
-		
+
 		invokestaticCount = 0;
 		transClass = transform(transClass, Pair.of(sig2, combine(
 				(AbstractInsnNode node) -> { // Filter
@@ -137,21 +141,59 @@ public class ClassTransformer implements IClassTransformer {
 					invokestaticCount++;
 					if(invokestaticCount != 4 && invokestaticCount != 7)
 						return false;
-					
+
 					InsnList newInstructions = new InsnList();
 
 					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "applyColor", "(FFFF)V"));
-					
+
 					method.instructions.insertBefore(node, newInstructions);
 					method.instructions.remove(node);
 					return invokestaticCount == -7;
 				})));
-		
+
 		return transClass;
 	}
-	
+
+	private static byte[] transformEntityBoat(byte[] basicClass) {
+		MethodSignature sig = new MethodSignature("attackEntityFrom", "func_76986_a", "a", "(Lnet/minecraft/util/DamageSource;F)Z", "(Lrr;DDDFF)V");
+
+		return transform(basicClass, Pair.of(sig, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.POP;
+				}, 
+				(MethodNode method, AbstractInsnNode node) -> { // Action
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/vanity/feature/BoatSails", "dropBoatBanner", "(Lnet/minecraft/entity/item/EntityBoat;)V"));
+
+					method.instructions.insertBefore(node, newInstructions);
+					return true;
+				})));
+	}
+
+	private static byte[] transformRenderBoat(byte[] basicClass) {
+		MethodSignature sig = new MethodSignature("doRender", "func_70097_a", "a", "(Lnet/minecraft/entity/item/EntityBoat;DDDFF)V", "(Lrc;F)Z");
+
+		return transform(basicClass, Pair.of(sig, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.INVOKEVIRTUAL && ((MethodInsnNode) node).desc.equals("(Lnet/minecraft/entity/Entity;FFFFFF)V");
+				}, 
+				(MethodNode method, AbstractInsnNode node) -> { // Action
+					log("Patching " + method + " in node " + node);
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+					newInstructions.add(new VarInsnNode(Opcodes.FLOAD, 9));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/vanity/client/render/BoatBannerRenderer", "renderBanner", "(Lnet/minecraft/entity/item/EntityBoat;F)V"));
+
+					method.instructions.insert(node, newInstructions);
+					return true;
+				})));
+	}
+
 	// BOILERPLATE BELOW ==========================================================================================================================================
-	
+
 	private static byte[] transform(byte[] basicClass, Pair<MethodSignature, MethodAction>... methods) {
 		ClassReader reader = new ClassReader(basicClass);
 		ClassNode node = new ClassNode();

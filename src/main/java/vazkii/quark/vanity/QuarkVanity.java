@@ -11,6 +11,7 @@
 package vazkii.quark.vanity;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.vanity.feature.BoatSails;
 import vazkii.quark.vanity.feature.DyableElytra;
 import vazkii.quark.vanity.feature.EmoteSystem;
 import vazkii.quark.vanity.feature.FireworkCloning;
@@ -27,6 +28,7 @@ public class QuarkVanity extends Module {
 		registerFeature(new EmoteSystem());
 		registerFeature(new SitInStairs());
 		registerFeature(new WitchHat());
+		registerFeature(new BoatSails());
 		registerFeature(new PanoramaMaker());
 	}
 
