@@ -26,7 +26,7 @@ public class LessIntrusiveShields extends Feature {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
-		ModelHandler.registerModels(Items.SHIELD, new String[] { "shield_override" }, true);
+		ModelHandler.registerModels(Items.SHIELD, new String[] { "shield_override" }, null, true);
 
 		ModelLoader.setCustomMeshDefinition(Items.SHIELD, new ItemMeshDefinition() {
 			@Override

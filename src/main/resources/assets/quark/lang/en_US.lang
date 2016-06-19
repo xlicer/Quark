@@ -190,6 +190,22 @@ item.quark:ancient_tome.name=Ancient Tome
 item.quark:witch_hat.name=Witch Hat
 item.quark:slime_bucket_normal.name=Slime in a Bucket
 item.quark:slime_bucket_excited.name=Slime in a Bucket
+item.quark:rune_black.name=Black Rune
+item.quark:rune_blue.name=Blue Rune
+item.quark:rune_brown.name=Brown Rune
+item.quark:rune_cyan.name=Cyan Rune
+item.quark:rune_gray.name=Gray Rune
+item.quark:rune_green.name=Green Rune
+item.quark:rune_light_blue.name=Light Blue Rune
+item.quark:rune_lime.name=Lime Rune
+item.quark:rune_magenta.name=Magenta Rune
+item.quark:rune_orange.name=Orange Rune
+item.quark:rune_pink.name=Pink Rune
+item.quark:rune_purple.name=Purple Rune
+item.quark:rune_red.name=Red Rune
+item.quark:rune_silver.name=Light Gray Rune
+item.quark:rune_white.name=White Rune
+item.quark:rune_yellow.name=Yellow Rune
 
 # GUI STUFF
 quark.gui.emotes=Emotes

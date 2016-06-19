@@ -56,15 +56,16 @@ public class ModelHandler {
 			ModelLoader.setCustomMeshDefinition((Item) holder, def);
 		else {
 			Item i = (Item) holder;
-			registerModels(i, holder.getVariants(), false);
+			String unique = holder.getUniqueModel();
+			registerModels(i, holder.getVariants(), unique, false);
 			if(holder instanceof IExtraVariantHolder) {
 				IExtraVariantHolder extra = (IExtraVariantHolder) holder;
-				registerModels(i, extra.getExtraVariants(), true);
+				registerModels(i, extra.getExtraVariants(), unique, true);
 			}
 		}
 	}
 
-	public static void registerModels(Item item, String[] variants, boolean extra) {
+	public static void registerModels(Item item, String[] variants, String uniqueVariant, boolean extra) {
 		if(item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof IQuarkBlock) {
 			IQuarkBlock quarkBlock = (IQuarkBlock) ((ItemBlock) item).getBlock();
 			Class clazz = quarkBlock.getVariantEnum();
@@ -96,7 +97,11 @@ public class ModelHandler {
 		}
 
 		for(int i = 0; i < variants.length; i++) {
-			String name = LibMisc.PREFIX_MOD + variants[i];
+			String var = variants[i];
+			if(uniqueVariant != null)
+				var = uniqueVariant;
+			
+			String name = LibMisc.PREFIX_MOD + var;
 			ModelResourceLocation loc = new ModelResourceLocation(name, "inventory");
 			if(!extra) {
 				ModelLoader.setCustomModelResourceLocation(item, i, loc);
