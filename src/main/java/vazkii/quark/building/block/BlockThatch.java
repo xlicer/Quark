@@ -18,7 +18,7 @@ import vazkii.quark.base.block.BlockMod;
 public class BlockThatch extends BlockMod {
 
 	public BlockThatch() {
-		super("thatch", Material.PLANTS);
+		super("thatch", Material.GRASS);
 		setHardness(0.5F);
 		setSoundType(SoundType.PLANT);
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
