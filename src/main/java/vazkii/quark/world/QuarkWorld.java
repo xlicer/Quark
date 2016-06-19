@@ -17,6 +17,7 @@ import vazkii.quark.world.feature.Biotite;
 import vazkii.quark.world.feature.BuriedTreasure;
 import vazkii.quark.world.feature.ClayGeneration;
 import vazkii.quark.world.feature.DefaultWorldOptions;
+import vazkii.quark.world.feature.ColorRunes;
 import vazkii.quark.world.feature.MushroomsInSwamps;
 import vazkii.quark.world.feature.NaturalBlazesInNether;
 import vazkii.quark.world.feature.OceanGuardians;
@@ -38,6 +39,8 @@ public class QuarkWorld extends Module {
 		registerFeature(new BuriedTreasure());
 		registerFeature(new AncientTomes());
 		registerFeature(new SlimeBucket());
+		registerFeature(new ColorRunes());
+
 		registerFeature(new RealisticWorldType());
 		registerFeature(new DefaultWorldOptions());
 	}

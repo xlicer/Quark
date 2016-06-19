@@ -24,6 +24,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.LdcInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
@@ -36,8 +37,13 @@ public class ClassTransformer implements IClassTransformer {
 	private static final Map<String, Transformer> transformers = new HashMap();
 
 	static {
+		// For Emotes
 		transformers.put("net.minecraft.client.model.ModelBiped", ClassTransformer::transformModelBiped);
 		transformers.put("micdoodle8.mods.galacticraft.core.client.model.ModelPlayerGC", ClassTransformer::transformModelBiped);
+		
+		// For Color Runes
+		transformers.put("net.minecraft.client.renderer.RenderItem", ClassTransformer::transformRenderItem);
+		transformers.put("net.minecraft.client.renderer.entity.layers.LayerArmorBase", ClassTransformer::transformLayerArmorBase);
 	}
 
 	@Override
@@ -66,6 +72,86 @@ public class ClassTransformer implements IClassTransformer {
 				})));
 	}
 
+	private static byte[] transformRenderItem(byte[] basicClass) {
+		MethodSignature sig1 = new MethodSignature("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Ladq;Lbxl;)V");
+		MethodSignature sig2 = new MethodSignature("renderEffect", "func_180451_a", "a", "(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Lbxl;)V");
+
+		byte[] transClass = basicClass;
+		
+		transClass = transform(transClass, Pair.of(sig1, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return true;
+				}, (MethodNode method, AbstractInsnNode node) -> { // Action
+					InsnList newInstructions = new InsnList();
+					
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "setTargetStack", "(Lnet/minecraft/item/ItemStack;)V"));
+
+					method.instructions.insertBefore(node, newInstructions);
+					return true;
+				})));
+		
+		transClass = transform(transClass, Pair.of(sig2, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.LDC && ((LdcInsnNode) node).cst.equals(-8372020);
+				}, (MethodNode method, AbstractInsnNode node) -> { // Action
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "getColor", "()I"));
+
+					method.instructions.insertBefore(node, newInstructions);
+					method.instructions.remove(node);
+					return false;
+				})));
+		
+		return transClass;
+	}
+
+	static int invokestaticCount = 0;
+	private static byte[] transformLayerArmorBase(byte[] basicClass) {
+		MethodSignature sig1 = new MethodSignature("renderArmorLayer", "func_188361_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFFFLnet/minecraft/inventory/EntityEquipmentSlot;)V", "(Lsa;FFFFFFFLrw;)V");
+		MethodSignature sig2 = new MethodSignature("renderEnchantedGlint", "func_188364_a", "a", "(Lnet/minecraft/client/renderer/entity/RenderLivingBase;Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/client/model/ModelBase;FFFFFFF)V", "(Lbsa;Lsa;Lbja;FFFFFFF)V");
+
+		byte[] transClass = basicClass;
+		
+		transClass = transform(transClass, Pair.of(sig1, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.ASTORE;
+				}, 
+				(MethodNode method, AbstractInsnNode node) -> { // Action
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 10));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "setTargetStack", "(Lnet/minecraft/item/ItemStack;)V"));
+					
+					method.instructions.insert(node, newInstructions);
+					return true;
+				})));
+		
+		invokestaticCount = 0;
+		transClass = transform(transClass, Pair.of(sig2, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.INVOKESTATIC;
+				}, 
+				(MethodNode method, AbstractInsnNode node) -> { // Action
+					invokestaticCount++;
+					if(invokestaticCount != 4 && invokestaticCount != 7)
+						return false;
+					
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "applyColor", "(FFFF)V"));
+					
+					method.instructions.insertBefore(node, newInstructions);
+					method.instructions.remove(node);
+					return invokestaticCount == -7;
+				})));
+		
+		return transClass;
+	}
+	
+	// BOILERPLATE BELOW ==========================================================================================================================================
+	
 	private static byte[] transform(byte[] basicClass, Pair<MethodSignature, MethodAction>... methods) {
 		ClassReader reader = new ClassReader(basicClass);
 		ClassNode node = new ClassNode();
@@ -110,11 +196,11 @@ public class ClassTransformer implements IClassTransformer {
 			if(filter.test(anode)) {
 				didAny = true;
 				if(action.test(method, anode))
-					return true;	
+					break;	
 			}
 		}
 
-		return false;
+		return didAny;
 	}
 
 	private static void log(String str) {
@@ -133,11 +219,11 @@ public class ClassTransformer implements IClassTransformer {
 		}
 
 	}
-	
+
 	// Basic interface aliases to not have to clutter up the code with generics over and over again
 	private static interface Transformer extends Function<byte[], byte[]> { }
 	private static interface MethodAction extends Predicate<MethodNode> { }
 	private static interface NodeFilter extends Predicate<AbstractInsnNode> { }
 	private static interface NodeAction extends BiPredicate<MethodNode, AbstractInsnNode> { }
-	
+
 }
