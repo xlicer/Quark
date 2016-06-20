@@ -30,6 +30,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.storage.MapData;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.decoration.entity.EntityColoredItemFrame;
@@ -39,6 +40,8 @@ import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 	private static final ResourceLocation MAP_BACKGROUND_TEXTURES = new ResourceLocation("textures/map/map_background.png");
 	private final Minecraft mc = Minecraft.getMinecraft();
+	
+	public static final IRenderFactory FACTORY = (RenderManager manager) -> new RenderColoredItemFrame(manager);
 	
 	private RenderItem itemRenderer;
 

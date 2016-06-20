@@ -14,6 +14,8 @@ import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.handler.ICustomEnchantColor;
 import vazkii.quark.base.item.IColorProvider;
 import vazkii.quark.base.item.ItemMod;
@@ -62,6 +64,7 @@ public class ItemRune extends ItemMod implements IColorProvider, ICustomEnchantC
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IItemColor getColor() {
 		return new IItemColor() {
 			

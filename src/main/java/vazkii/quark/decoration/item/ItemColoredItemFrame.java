@@ -21,6 +21,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.item.IColorProvider;
 import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.ItemMod;
@@ -98,6 +100,7 @@ public class ItemColoredItemFrame extends ItemMod implements IColorProvider, IEx
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IItemColor getColor() {
 		return new IItemColor() {
 

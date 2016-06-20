@@ -17,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.Quark;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.lib.LibEntityIDs;
@@ -59,8 +61,9 @@ public class ColoredItemFrames extends Feature {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityColoredItemFrame.class, (RenderManager manager) -> new RenderColoredItemFrame(manager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityColoredItemFrame.class, RenderColoredItemFrame.FACTORY);
 	}
 
 }
