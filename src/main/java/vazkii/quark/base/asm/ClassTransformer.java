@@ -135,24 +135,30 @@ public class ClassTransformer implements IClassTransformer {
 					return true;
 				})));
 
-		invokestaticCount = 0;
-		transClass = transform(transClass, Pair.of(sig2, combine(
-				(AbstractInsnNode node) -> { // Filter
-					return node.getOpcode() == Opcodes.INVOKESTATIC;
-				}, 
-				(MethodNode method, AbstractInsnNode node) -> { // Action
-					invokestaticCount++;
-					if(invokestaticCount != 4 && invokestaticCount != 7)
-						return false;
+		try {
+			if(Class.forName("optifine.OptiFineTweaker") != null)
+				log("Optifine Detected. Disabling Patch for " + sig2);
+		} catch (ClassNotFoundException e) {
+			invokestaticCount = 0;
+			transClass = transform(transClass, Pair.of(sig2, combine(
+					(AbstractInsnNode node) -> { // Filter
+						return node.getOpcode() == Opcodes.INVOKESTATIC;
+					}, 
+					(MethodNode method, AbstractInsnNode node) -> { // Action
+						invokestaticCount++;
+						if(invokestaticCount != 4 && invokestaticCount != 7)
+							return false;
 
-					InsnList newInstructions = new InsnList();
+						InsnList newInstructions = new InsnList();
 
-					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "applyColor", "(FFFF)V"));
+						newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/world/feature/ColorRunes", "applyColor", "(FFFF)V"));
 
-					method.instructions.insertBefore(node, newInstructions);
-					method.instructions.remove(node);
-					return invokestaticCount == -7;
-				})));
+						method.instructions.insertBefore(node, newInstructions);
+						method.instructions.remove(node);
+						return invokestaticCount == -7;
+					})));
+		}
+		
 
 		return transClass;
 	}
