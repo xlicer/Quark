@@ -12,8 +12,11 @@ package vazkii.quark.decoration.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockCharcoal;
@@ -30,6 +33,15 @@ public class CharcoalBlock extends Feature {
 				"CCC", "CCC", "CCC",
 				'C', new ItemStack(Items.COAL, 1, 1));
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.COAL, 9, 1), new ItemStack(charcoal_block)); 
+		
+		GameRegistry.registerFuelHandler(new IFuelHandler() {
+			
+			@Override
+			public int getBurnTime(ItemStack stack) {
+				return stack != null && stack.getItem() == Item.getItemFromBlock(charcoal_block) ? 16000 : 0;
+			}
+			
+		});
 	}
 	
 }
