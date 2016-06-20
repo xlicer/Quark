@@ -167,6 +167,7 @@ tile.quark:red_sandstone_bricks_slab.name=Red Sandstone Brick Slab
 tile.quark:sandstone_bricks_stairs.name=Sandstone Brick Stairs
 tile.quark:red_sandstone_bricks_stairs.name=Red Sandstone Brick Slab
 tile.quark:nether_brick_fence_gate.name=Nether Brick Fence Gate
+tile.quark:charcoal_block.name=Block of Charcoal
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard

@@ -1,0 +1,35 @@
+/**
+ * This class was created by <Vazkii>. It's distributed as
+ * part of the Quark Mod. Get the Source Code in github:
+ * https://github.com/Vazkii/Quark
+ * 
+ * Quark is Open Source and distributed under the
+ * [ADD-LICENSE-HERE]
+ * 
+ * File Created @ [20/06/2016, 12:05:49 (GMT)]
+ */
+package vazkii.quark.decoration.feature;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.quark.base.module.Feature;
+import vazkii.quark.decoration.block.BlockCharcoal;
+
+public class CharcoalBlock extends Feature {
+
+	public static Block charcoal_block;
+
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		charcoal_block = new BlockCharcoal();
+		
+		RecipeHandler.addOreDictRecipe(new ItemStack(charcoal_block), 
+				"CCC", "CCC", "CCC",
+				'C', new ItemStack(Items.COAL, 1, 1));
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.COAL, 9, 1), new ItemStack(charcoal_block)); 
+	}
+	
+}
