@@ -58,6 +58,7 @@ public class ModelHandler {
 			Item i = (Item) holder;
 			String unique = holder.getUniqueModel();
 			registerModels(i, holder.getVariants(), unique, false);
+			
 			if(holder instanceof IExtraVariantHolder) {
 				IExtraVariantHolder extra = (IExtraVariantHolder) holder;
 				registerModels(i, extra.getExtraVariants(), unique, true);
@@ -98,7 +99,7 @@ public class ModelHandler {
 
 		for(int i = 0; i < variants.length; i++) {
 			String var = variants[i];
-			if(uniqueVariant != null)
+			if(!extra && uniqueVariant != null)
 				var = uniqueVariant;
 			
 			String name = LibMisc.PREFIX_MOD + var;

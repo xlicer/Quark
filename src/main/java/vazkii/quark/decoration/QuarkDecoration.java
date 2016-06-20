@@ -12,6 +12,7 @@ package vazkii.quark.decoration;
 
 import vazkii.quark.base.module.Module;
 import vazkii.quark.decoration.feature.BlazeLantern;
+import vazkii.quark.decoration.feature.ColoredItemFrames;
 import vazkii.quark.decoration.feature.LitLamp;
 import vazkii.quark.decoration.feature.MoreBanners;
 import vazkii.quark.decoration.feature.NetherBrickFenceGate;
@@ -28,6 +29,7 @@ public class QuarkDecoration extends Module {
 		registerFeature(new VariedTrapdoors());
 		registerFeature(new MoreBanners());
 		registerFeature(new NetherBrickFenceGate());
+		registerFeature(new ColoredItemFrames());
 	}
 
 }
