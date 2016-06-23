@@ -21,6 +21,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.quark.base.block.BlockModTrapdoor;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
@@ -49,6 +50,12 @@ public class VariedTrapdoors extends Feature {
 		jungle_trapdoor = new BlockModTrapdoor("jungle_trapdoor");
 		acacia_trapdoor = new BlockModTrapdoor("acacia_trapdoor");
 		dark_oak_trapdoor = new BlockModTrapdoor("dark_oak_trapdoor");
+		
+		OreDictionary.registerOre("trapdoorWood", spruce_trapdoor);
+		OreDictionary.registerOre("trapdoorWood", birch_trapdoor);
+		OreDictionary.registerOre("trapdoorWood", jungle_trapdoor);
+		OreDictionary.registerOre("trapdoorWood", acacia_trapdoor);
+		OreDictionary.registerOre("trapdoorWood", dark_oak_trapdoor);
 	}
 
 	@Override
