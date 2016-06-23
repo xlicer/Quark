@@ -18,18 +18,13 @@ public class QuarkExperimental extends Module {
 
 	@Override
 	public void addFeatures() {
-		registerFeature(new BiggerCaves());
+		registerFeature(new BiggerCaves(), false);
 		registerFeature(new Tabards(), false);
 	}
 	
 	@Override
 	public String getModuleDescription() {
-		return "Experimental Features. Disabled by default. Use at your own risk.";
-	}
-	
-	@Override
-	public boolean isEnabledByDefault() {
-		return false;
+		return "Experimental Features. All features in this module are disabled by default. Use at your own risk.";
 	}
 	
 }
