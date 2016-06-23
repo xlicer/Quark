@@ -132,9 +132,7 @@ public class AncientTomes extends Feature {
 	private String[] generateDefaultEnchantmentList() {
 		Enchantment[] enchants = new Enchantment[] {
 			Enchantments.FEATHER_FALLING,
-			Enchantments.RESPIRATION,
 			Enchantments.THORNS,
-			Enchantments.DEPTH_STRIDER,
 			Enchantments.SHARPNESS,
 			Enchantments.SMITE,
 			Enchantments.BANE_OF_ARTHROPODS,
