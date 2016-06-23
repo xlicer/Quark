@@ -116,8 +116,12 @@ public final class DropoffHandler {
 			String name = te.getClass().getSimpleName().toLowerCase();
 			accept = (name.contains("chest") || te instanceof TileEntityChest) && !name.contains("void") && !name.contains("trash");
 		}
-
-		accept &= (te != null && te.isUseableByPlayer(player));
+		
+		try {
+			accept &= (te != null && te.isUseableByPlayer(player));
+		} catch(AbstractMethodError err) {
+			return false; // Apparently this can happen with some mods? Not sure why but oh well
+		}
 
 		return accept;
 	}
