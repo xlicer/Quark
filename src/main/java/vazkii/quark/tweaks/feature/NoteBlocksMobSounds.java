@@ -72,10 +72,8 @@ public class NoteBlocksMobSounds extends Feature {
 					break;
 				}
 
-				if(sound != null) {
-					System.out.println("play");
+				if(sound != null)
 					event.getWorld().playSound(null, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, sound, SoundCategory.BLOCKS, 1F, 1F);
-				}
 			}
 		}
 	}

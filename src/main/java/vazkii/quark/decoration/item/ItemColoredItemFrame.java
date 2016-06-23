@@ -65,7 +65,6 @@ public class ItemColoredItemFrame extends ItemMod implements IColorProvider, IEx
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		BlockPos blockpos = pos.offset(facing);
 
-		System.out.println("on use");
 		if(facing != EnumFacing.DOWN && facing != EnumFacing.UP && playerIn.canPlayerEdit(blockpos, facing, stack)) {
 			EntityHanging entityhanging = createEntity(worldIn, blockpos, facing, stack.getItemDamage());
 
@@ -73,7 +72,6 @@ public class ItemColoredItemFrame extends ItemMod implements IColorProvider, IEx
 				if(!worldIn.isRemote) {
 					entityhanging.playPlaceSound();
 					worldIn.spawnEntityInWorld(entityhanging);
-					System.out.println("spawn");
 				}
 
 				--stack.stackSize;

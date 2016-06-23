@@ -106,7 +106,6 @@ public class BoatSails extends Feature {
 			return;
 		
 		ItemStack banner = getBanner(boat);
-		System.out.println(banner);
 		if(banner != null)
 			boat.entityDropItem(banner, 0F);
 	}
