@@ -21,7 +21,7 @@ import vazkii.quark.building.block.slab.BlockVanillaSlab;
 
 public class VanillaStairsAndSlabs extends Feature {
 
-	boolean stone, granite, diorite, andesite, endBricks, prismarine, prismarineBricks, darkPrismarine;
+	boolean stone, granite, diorite, andesite, endBricks, prismarine, prismarineBricks, darkPrismarine, redNetherBricks;
 
 	@Override
 	public void setupConfig() {
@@ -33,6 +33,7 @@ public class VanillaStairsAndSlabs extends Feature {
 		prismarine = loadPropBool("Prismarine", "", true);
 		prismarineBricks = loadPropBool("Prismarine Bricks", "", true);
 		darkPrismarine = loadPropBool("Dark Prismarine", "", true);
+		redNetherBricks = loadPropBool("Red Nether Brick", "", true);
 	}
 
 	@Override
@@ -45,6 +46,7 @@ public class VanillaStairsAndSlabs extends Feature {
 		add("prismarine", Blocks.PRISMARINE, 0, prismarine);
 		add("prismarine_bricks", Blocks.PRISMARINE, 1, prismarineBricks);
 		add("prismarine_dark", Blocks.PRISMARINE, 2, darkPrismarine);
+		add("red_nether_brick", Blocks.field_189879_dh, 0, redNetherBricks);
 	}
 
 	public void add(String name, Block block, int meta, boolean doit) {

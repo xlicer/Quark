@@ -57,7 +57,7 @@ public class DispensersPlaceSeeds extends Feature {
 
 		@Override
 		public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
-			EnumFacing facing = BlockDispenser.getFacing(par1IBlockSource.getBlockMetadata());
+	        EnumFacing facing = (EnumFacing) par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
 			BlockPos pos = par1IBlockSource.getBlockPos().offset(facing);
 			World world = par1IBlockSource.getWorld();
 
@@ -83,7 +83,7 @@ public class DispensersPlaceSeeds extends Feature {
 		public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
 			if(par2ItemStack.getItemDamage() == EnumDyeColor.BROWN.getDyeDamage()) {
 				Block block = Blocks.COCOA;
-				EnumFacing facing = BlockDispenser.getFacing(par1IBlockSource.getBlockMetadata());
+		        EnumFacing facing = (EnumFacing) par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
 				BlockPos pos = par1IBlockSource.getBlockPos().offset(facing);
 				World world = par1IBlockSource.getWorld();
 
