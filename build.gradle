@@ -29,7 +29,7 @@ group = "vazkii.quark" // http://maven.apache.org/guides/mini/guide-naming-conve
 archivesBaseName = config.mod_name
 
 minecraft {
-    version = "${config.mc_version}-${config.forge_version}-${config.mc_version}"
+    version = "${config.mc_version}-${config.forge_version}-${config.mc_version_suffix}"
     runDir = "eclipse/assets"
 
     coreMod = "vazkii.quark.base.asm.LoadingPlugin"
