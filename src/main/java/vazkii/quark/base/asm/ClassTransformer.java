@@ -60,7 +60,7 @@ public class ClassTransformer implements IClassTransformer {
 
 	private static byte[] transformModelBiped(byte[] basicClass) {
 		log("Transforming ModelBiped");
-		MethodSignature sig = new MethodSignature("setRotationAngles", "func_78087_a", "a", "(FFFFFFLnet/minecraft/entity/Entity;)V", "(FFFFFFLrr;)V");
+		MethodSignature sig = new MethodSignature("setRotationAngles", "func_78087_a", "a", "(FFFFFFLnet/minecraft/entity/Entity;)V", "(FFFFFFLrw;)V");
 
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
@@ -79,8 +79,8 @@ public class ClassTransformer implements IClassTransformer {
 
 	private static byte[] transformRenderItem(byte[] basicClass) {
 		log("Transforming RenderItem");
-		MethodSignature sig1 = new MethodSignature("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Ladq;Lbxl;)V");
-		MethodSignature sig2 = new MethodSignature("renderEffect", "func_180451_a", "a", "(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Lbxl;)V");
+		MethodSignature sig1 = new MethodSignature("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Ladz;Lbyl;)V");
+		MethodSignature sig2 = new MethodSignature("renderEffect", "func_180451_a", "a", "(Lnet/minecraft/client/renderer/block/model/IBakedModel;)V", "(Lbyl;)V");
 
 		byte[] transClass = basicClass;
 
@@ -116,8 +116,8 @@ public class ClassTransformer implements IClassTransformer {
 	static int invokestaticCount = 0;
 	private static byte[] transformLayerArmorBase(byte[] basicClass) {
 		log("Transforming LayerArmorBase");
-		MethodSignature sig1 = new MethodSignature("renderArmorLayer", "func_188361_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFFFLnet/minecraft/inventory/EntityEquipmentSlot;)V", "(Lsa;FFFFFFFLrw;)V");
-		MethodSignature sig2 = new MethodSignature("renderEnchantedGlint", "func_188364_a", "a", "(Lnet/minecraft/client/renderer/entity/RenderLivingBase;Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/client/model/ModelBase;FFFFFFF)V", "(Lbsa;Lsa;Lbja;FFFFFFF)V");
+		MethodSignature sig1 = new MethodSignature("renderArmorLayer", "func_188361_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFFFLnet/minecraft/inventory/EntityEquipmentSlot;)V", "(Lsf;FFFFFFFLsb;)V");
+		MethodSignature sig2 = new MethodSignature("renderEnchantedGlint", "func_188364_a", "a", "(Lnet/minecraft/client/renderer/entity/RenderLivingBase;Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/client/model/ModelBase;FFFFFFF)V", "(Lbsy;Lsf;Lbju;FFFFFFF)V");
 
 		byte[] transClass = basicClass;
 
@@ -165,7 +165,7 @@ public class ClassTransformer implements IClassTransformer {
 
 	private static byte[] transformEntityBoat(byte[] basicClass) {
 		log("Transforming EntityBoat");
-		MethodSignature sig = new MethodSignature("attackEntityFrom", "func_76986_a", "a", "(Lnet/minecraft/util/DamageSource;F)Z", "(Lrc;F)Z");
+		MethodSignature sig = new MethodSignature("attackEntityFrom", "func_76986_a", "a", "(Lnet/minecraft/util/DamageSource;F)Z", "(Lrh;F)Z");
 
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
@@ -184,11 +184,11 @@ public class ClassTransformer implements IClassTransformer {
 
 	private static byte[] transformRenderBoat(byte[] basicClass) {
 		log("Transforming RenderBoat");
-		MethodSignature sig = new MethodSignature("doRender", "func_76986_a", "a", "(Lnet/minecraft/entity/item/EntityBoat;DDDFF)V", "(Laag;DDDFF)V");
+		MethodSignature sig = new MethodSignature("doRender", "func_76986_a", "a", "(Lnet/minecraft/entity/item/EntityBoat;DDDFF)V", "(Laap;DDDFF)V");
 
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
-					return node.getOpcode() == Opcodes.INVOKEVIRTUAL && (((MethodInsnNode) node).desc.equals("(Lnet/minecraft/entity/Entity;FFFFFF)V") || ((MethodInsnNode) node).desc.equals("(Lrr;FFFFFF)V"));
+					return node.getOpcode() == Opcodes.INVOKEVIRTUAL && (((MethodInsnNode) node).desc.equals("(Lnet/minecraft/entity/Entity;FFFFFF)V") || ((MethodInsnNode) node).desc.equals("(Lrw;FFFFFF)V"));
 				}, 
 				(MethodNode method, AbstractInsnNode node) -> { // Action
 					log("Patching " + method + " in node " + node);
