@@ -229,6 +229,7 @@ item.quark:colored_item_frame_yellow.name=Yellow Item Frame
 
 # GUI STUFF
 quark.gui.emotes=Emotes
+quark.gui.emotesKeygroup=Quark Emotes
 quark.gui.favorited=Favorited
 quark.emote.wave=Wave
 quark.emote.yes=Yes

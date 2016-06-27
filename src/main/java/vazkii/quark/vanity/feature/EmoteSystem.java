@@ -18,11 +18,13 @@ import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.aurelienribon.tweenengine.Tween;
@@ -39,6 +41,7 @@ import vazkii.quark.vanity.client.emotes.EmoteShrug;
 import vazkii.quark.vanity.client.emotes.EmoteWave;
 import vazkii.quark.vanity.client.emotes.EmoteYes;
 import vazkii.quark.vanity.client.emotes.base.EmoteHandler;
+import vazkii.quark.vanity.client.emotes.base.EmoteKeybinds;
 import vazkii.quark.vanity.client.emotes.base.ModelAccessor;
 import vazkii.quark.vanity.client.gui.GuiButtonEmote;
 import vazkii.quark.vanity.command.CommandEmote;
@@ -47,6 +50,13 @@ public class EmoteSystem extends Feature {
 
 	private static final int EMOTE_BUTTON_START = 1800;
 	static boolean emotesVisible = false;
+	
+	private boolean enableKeybinds;
+	
+	@Override
+	public void setupConfig() {
+		enableKeybinds = loadPropBool("Enable Keybinds", "Should keybinds for emotes be generated? (They're all unbound by default)", true);
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -65,6 +75,9 @@ public class EmoteSystem extends Feature {
 		EmoteHandler.emoteMap.put("shrug", EmoteShrug.class);
 		EmoteHandler.emoteMap.put("facepalm", EmoteFacepalm.class);
 		EmoteHandler.emoteMap.put("headbang", EmoteHeadbang.class);
+		
+		if(enableKeybinds)
+			EmoteKeybinds.init();
 	}
 
 	@Override
@@ -114,6 +127,20 @@ public class EmoteSystem extends Feature {
 		} else if(button instanceof GuiButtonEmote) {
 			String emote = ((GuiButtonEmote) button).emote;
 			Minecraft.getMinecraft().thePlayer.sendChatMessage("/emote " + emote);
+		}
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onKeyInput(KeyInputEvent event) {
+		Minecraft mc = Minecraft.getMinecraft();
+		if(mc.inGameHasFocus && enableKeybinds) {
+			for(KeyBinding key : EmoteKeybinds.emoteKeys.keySet())
+				if(key.isKeyDown()) {
+					String emote = EmoteKeybinds.emoteKeys.get(key);
+					mc.thePlayer.sendChatMessage("/emote " + emote);
+					return;
+				}
 		}
 	}
 
