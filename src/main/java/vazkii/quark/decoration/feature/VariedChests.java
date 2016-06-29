@@ -11,7 +11,10 @@
 package vazkii.quark.decoration.feature;
 
 import net.minecraft.block.BlockChest.Type;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -31,8 +34,8 @@ public class VariedChests extends Feature {
 	public static final Type CUSTOM_TYPE_QUARK = EnumHelper.addEnum(Type.class, "QUARK", new Class[0]);
     public static final Type CUSTOM_TYPE_QUARK_TRAP = EnumHelper.addEnum(Type.class, "QUARK_TRAP", new Class[0]);
 	
-    public static final ResourceLocation TRAP_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/trap.png");
-    public static final ResourceLocation TRAP_DOUBLE_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/trap_double.png");
+    public static final ResourceLocation TRAP_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chests/trap.png");
+    public static final ResourceLocation TRAP_DOUBLE_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chests/trap_double.png");
     
     public static BlockCustomChest custom_chest;
     public static BlockCustomChest custom_chest_trap;
@@ -51,6 +54,13 @@ public class VariedChests extends Feature {
     @SideOnly(Side.CLIENT)
     public void preInitClient(FMLPreInitializationEvent event) {
         ClientRegistry.bindTileEntitySpecialRenderer(TileCustomChest.class, new RenderTileCustomChest());
+        
+        int i = 0;
+        for(ChestType type : ChestType.VALID_TYPES) {
+        	ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(custom_chest), i, type.normalModel);
+        	ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(custom_chest_trap), i, type.trapModel);
+        	i++;
+        }
     }
 
     public enum ChestType {
@@ -64,14 +74,19 @@ public class VariedChests extends Feature {
         public final String name;
         public final ResourceLocation nrmTex;
         public final ResourceLocation dblTex;
+        public final ModelResourceLocation normalModel;
+        public final ModelResourceLocation trapModel;
 
         public static final ChestType[] VALID_TYPES;
         public static final Map<String, ChestType> NAME_TO_TYPE;
 
-        ChestType(String name) {
+        private ChestType(String name) {
             this.name = name;
-            this.nrmTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/" + name + ".png");
-            this.dblTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/" + name + "_double.png");
+            nrmTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chests/" + name + ".png");
+            dblTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chests/" + name + "_double.png");
+            
+            normalModel = new ModelResourceLocation("quark", "custom_chest_" + name);
+            trapModel = new ModelResourceLocation("quark", "custom_chest_trap_" + name);
         }
 
         public static ChestType getType(String type) {

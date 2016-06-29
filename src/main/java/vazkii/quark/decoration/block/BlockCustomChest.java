@@ -10,18 +10,29 @@
  */
 package vazkii.quark.decoration.block;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -34,20 +45,17 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.reflect.internal.TreeGen.GetVarTraverser;
 import vazkii.quark.base.block.IQuarkBlock;
+import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.decoration.feature.VariedChests;
+import vazkii.quark.decoration.feature.VariedChests.ChestType;
 import vazkii.quark.decoration.item.ItemChestBlock;
 import vazkii.quark.decoration.tile.TileCustomChest;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
@@ -89,7 +97,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     public ItemMeshDefinition getCustomMeshDefinition() {
         return null;
     }
-
+    
     @Override
     public EnumRarity getBlockRarity(ItemStack stack) {
         return EnumRarity.COMMON;
@@ -97,7 +105,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
     @Override
     public IProperty[] getIgnoredProperties() {
-        return new IProperty[0];
+        return createBlockState().getProperties().toArray(new IProperty[0]);
     }
 
     @Override
@@ -353,4 +361,5 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         return setCustomType(new ItemStack(this, 1), getCustomType(world, pos));
     }
+    
 }

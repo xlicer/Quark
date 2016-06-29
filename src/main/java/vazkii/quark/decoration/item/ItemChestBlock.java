@@ -10,8 +10,12 @@
  */
 package vazkii.quark.decoration.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -20,12 +24,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import vazkii.quark.base.block.IQuarkBlock;
+import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.decoration.block.BlockCustomChest;
 import vazkii.quark.decoration.feature.VariedChests;
+import vazkii.quark.decoration.feature.VariedChests.ChestType;
 import vazkii.quark.decoration.tile.TileCustomChest;
-
-import java.util.List;
 
 public class ItemChestBlock extends ItemModBlock {
 
@@ -36,6 +41,18 @@ public class ItemChestBlock extends ItemModBlock {
     @Override
     public int getMetadata(int damage) {
         return 0;
+    }
+    
+    @Override
+    public ItemMeshDefinition getCustomMeshDefinition() {
+    	return new ItemMeshDefinition() {
+			
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				ChestType type = VariedChests.custom_chest.getCustomType(stack);
+				return type.normalModel;
+			}
+		};
     }
 
     @Override
@@ -75,4 +92,5 @@ public class ItemChestBlock extends ItemModBlock {
         for(VariedChests.ChestType type : VariedChests.ChestType.VALID_TYPES)
             subItems.add(chest.setCustomType(new ItemStack(itemIn, 1), type));
     }
+
 }

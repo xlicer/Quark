@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": {
+			"model": "quark:custom_chest",
+			"textures": {
+				"texture": "quark:chests/spruce"
+			}
+		}
+	}
+}
