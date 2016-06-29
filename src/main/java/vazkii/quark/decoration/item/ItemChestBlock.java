@@ -10,6 +10,7 @@
  */
 package vazkii.quark.decoration.item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -24,18 +25,19 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.ItemModBlock;
+import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.decoration.block.BlockCustomChest;
 import vazkii.quark.decoration.feature.VariedChests;
 import vazkii.quark.decoration.feature.VariedChests.ChestType;
 import vazkii.quark.decoration.tile.TileCustomChest;
 
-public class ItemChestBlock extends ItemModBlock {
+public class ItemChestBlock extends ItemModBlock implements IExtraVariantHolder {
 
     public ItemChestBlock(Block block) {
         super(block);
+        setHasSubtypes(true);
     }
 
     @Override
@@ -50,9 +52,16 @@ public class ItemChestBlock extends ItemModBlock {
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
 				ChestType type = VariedChests.custom_chest.getCustomType(stack);
-				return type.normalModel;
+				return getBlock() == VariedChests.custom_chest_trap ? type.trapModel : type.normalModel;
 			}
 		};
+    }
+    
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+		ChestType type = VariedChests.custom_chest.getCustomType(stack);
+    	String name = type.name + (getBlock() == VariedChests.custom_chest_trap ? "_trap" : ""); 
+		return "tile." + LibMisc.PREFIX_MOD + "custom_chest_" + name;
     }
 
     @Override
@@ -89,8 +98,19 @@ public class ItemChestBlock extends ItemModBlock {
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
     	BlockCustomChest chest = (BlockCustomChest) Block.getBlockFromItem(itemIn);
-        for(VariedChests.ChestType type : VariedChests.ChestType.VALID_TYPES)
+        for(ChestType type : VariedChests.ChestType.VALID_TYPES)
             subItems.add(chest.setCustomType(new ItemStack(itemIn, 1), type));
     }
+
+	@Override
+	public String[] getExtraVariants() {
+		List<String> variants = new ArrayList();
+        for(ChestType type : VariedChests.ChestType.VALID_TYPES) {
+        	variants.add("custom_chest_" + type.name);
+        	variants.add("custom_chest_trap_" + type.name);
+        }
+        	
+		return variants.toArray(new String[variants.size()]);
+	}
 
 }

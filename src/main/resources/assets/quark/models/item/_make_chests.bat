@@ -18,8 +18,8 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "%modid%:block/custom_chest",
 		echo 	"textures": {
-		echo 		"texture": "%modid%:chests/%%x",
-		echo 		"particle": "%modid%:chests/%%x"
+		echo 		"texture": "%modid%:blocks/chests/%%x",
+		echo 		"particle": "%modid%:blocks/chests/%%x"
 		echo 	}
 		echo }
 	) > custom_chest_%%x.json
@@ -29,9 +29,9 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "%modid%:block/custom_chest",
 		echo 	"textures": {
-		echo 		"texture": "%modid%:chests/%%x",
-		echo 		"particle": "%modid%:chests/%%x",
-		echo 		"overlay": "%modid%:chests/trap"
+		echo 		"texture": "%modid%:blocks/chests/%%x",
+		echo 		"particle": "%modid%:blocks/chests/%%x",
+		echo 		"overlay": "%modid%:blocks/chests/trap"
 		echo 	}
 		echo }
 	) > custom_chest_trap_%%x.json

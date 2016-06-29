@@ -17,6 +17,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import akka.dispatch.sysmsg.Create;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.SoundType;
@@ -26,6 +27,7 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityOcelot;
@@ -70,6 +72,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         setUnlocalizedName(name);
         setHardness(2.5F);
         setSoundType(SoundType.WOOD);
+        setCreativeTab(type == VariedChests.CUSTOM_TYPE_QUARK_TRAP ? CreativeTabs.REDSTONE : CreativeTabs.DECORATIONS);
     }
 
     @Override
@@ -295,6 +298,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
         nbt.setString("customType", type.name);
         stack.setTagCompound(nbt);
+        stack.setItemDamage(type.ordinal() - 1);
 
         return stack;
     }

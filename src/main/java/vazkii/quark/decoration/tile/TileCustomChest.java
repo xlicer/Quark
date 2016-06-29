@@ -10,6 +10,8 @@
  */
 package vazkii.quark.decoration.tile;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,10 +20,9 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import vazkii.quark.decoration.feature.VariedChests;
-
-import javax.annotation.Nullable;
 
 public class TileCustomChest extends TileEntityChest {
 
@@ -117,5 +118,10 @@ public class TileCustomChest extends TileEntityChest {
             TileEntity te = worldObj.getTileEntity(posIn);
             return block instanceof BlockChest && ((BlockChest) block).chestType == getChestType() && te instanceof TileCustomChest && ((TileCustomChest) te).chestType == chestType;
         }
+    }
+    
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        return new AxisAlignedBB(pos.getX() - 1, pos.getY(), pos.getZ() - 1, pos.getX() + 2, pos.getY() + 2, pos.getZ() + 2);
     }
 }

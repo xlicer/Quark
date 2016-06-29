@@ -2,7 +2,7 @@
     "parent": "block/block",
     "textures": {
         "texture": "minecraft:entity/chest/normal",
-        "overlay": "quark:chests/no_overlay"
+        "overlay": "quark:blocks/chests/no_overlay"
     },
     "elements": [
         {   "from": [ 1, 0, 1 ],

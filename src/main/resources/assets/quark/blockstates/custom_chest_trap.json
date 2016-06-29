@@ -1,46 +1,10 @@
 {
 	"variants": {
-		"normal": {
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/spruce"
-			}
-		},
-		"inventory": {
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/spruce"
-			}
-		},
-		"spruce": { 
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/spruce"
-			}
-		},
-		"birch": { 
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/birch"
-			}
-		},
-		"jungle": { 
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/jungle"
-			}
-		},
-		"acacia": { 
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/acacia"
-			}
-		},
-		"dark_oak": { 
-			"model": "quark:custom_chest",
-			"textures": {
-				"texture": "quark:models/chests/dark_oak"
-			}
-		}
+		"normal": { "model": "quark:custom_chest" },
+		"inventory": { "model": "quark:custom_chest" },
+		"facing=north": { "model": "quark:custom_chest" },
+		"facing=south": { "model": "quark:custom_chest" },
+		"facing=east": { "model": "quark:custom_chest" },
+		"facing=west": { "model": "quark:custom_chest" }
 	}
 }

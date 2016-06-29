@@ -51,18 +51,17 @@ public class ModelHandler {
 	}
 
 	public static void registerModels(IVariantHolder holder) {
+		String unique = holder.getUniqueModel();
+		Item i = (Item) holder;
+
 		ItemMeshDefinition def = holder.getCustomMeshDefinition();
 		if(def != null)
 			ModelLoader.setCustomMeshDefinition((Item) holder, def);
-		else {
-			Item i = (Item) holder;
-			String unique = holder.getUniqueModel();
-			registerModels(i, holder.getVariants(), unique, false);
-			
-			if(holder instanceof IExtraVariantHolder) {
-				IExtraVariantHolder extra = (IExtraVariantHolder) holder;
-				registerModels(i, extra.getExtraVariants(), unique, true);
-			}
+		else registerModels(i, holder.getVariants(), unique, false);
+		
+		if(holder instanceof IExtraVariantHolder) {
+			IExtraVariantHolder extra = (IExtraVariantHolder) holder;
+			registerModels(i, extra.getExtraVariants(), unique, true);
 		}
 	}
 
