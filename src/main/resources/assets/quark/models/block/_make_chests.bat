@@ -16,11 +16,24 @@ for %%x in (%*) do (
 	echo Making %%x.json chest
 	(
 		echo {
-		echo 	"parent": "block/cube_all",
+		echo 	"parent": "%modid%:block/custom_chest",
 		echo 	"textures": {
-		echo 		"all": "%modid%:blocks/%%x"
+		echo 		"texture": "%modid%:chests/%%x",
+		echo 		"particle": "%modid%:chests/%%x"
 		echo 	}
 		echo }
 	) > custom_chest_%%x.json
+
+	echo Making %%x.json chest_trap
+	(
+		echo {
+		echo 	"parent": "%modid%:block/custom_chest",
+		echo 	"textures": {
+		echo 		"texture": "%modid%:chests/%%x",
+		echo 		"particle": "%modid%:chests/%%x",
+		echo 		"overlay": "%modid%:chests/trap"
+		echo 	}
+		echo }
+	) > custom_chest_trap_%%x.json
 
 )

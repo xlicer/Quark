@@ -13,27 +13,29 @@ set modid=quark
 setlocal enabledelayedexpansion
 
 for %%x in (%*) do (
-	echo Making %%x.json chest
+	echo Making %%x.json block
 	(
 		echo {
-		echo 	"parent": "%modid%:block/custom_chest",
+		echo 	"parent": "block/cube_all",
 		echo 	"textures": {
-		echo 		"texture": "%modid%:chests/%%x",
-		echo 		"particle": "%modid%:chests/%%x"
+		echo 		"all": "%modid%:blocks/%%x"
 		echo 	}
 		echo }
-	) > custom_chest_%%x.json
+	) > %%x.json
 
-	echo Making %%x.json chest_trap
+	echo Making %%x.json item
 	(
 		echo {
-		echo 	"parent": "%modid%:block/custom_chest",
-		echo 	"textures": {
-		echo 		"texture": "%modid%:chests/%%x",
-		echo 		"particle": "%modid%:chests/%%x",
-		echo 		"overlay": "%modid%:chests/trap"
+		echo 	"parent": "%modid%:block/%%x"
+		echo }
+	) > ../item/%%x.json
+
+	echo Making %%x.json blockstate
+	(
+		echo {
+		echo 	"variants": {
+		echo 		"normal": { "model": "%modid%:%%x" }
 		echo 	}
 		echo }
-	) > custom_chest_trap_%%x.json
-
+	) > ../../blockstates/%%x.json
 )
