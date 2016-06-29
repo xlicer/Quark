@@ -12,6 +12,7 @@ package vazkii.quark.vanity.feature;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockStairs.EnumHalf;
 import net.minecraft.block.state.IBlockState;
@@ -33,16 +34,14 @@ public class SitInStairs extends Feature {
 		EntityPlayer player = event.getEntityPlayer();
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
-		BlockPos topPos = pos.up();
 		IBlockState state = world.getBlockState(pos);
-		IBlockState topState = world.getBlockState(topPos);
 
 		ItemStack stack1 = player.getHeldItemMainhand();
 		ItemStack stack2 = player.getHeldItemOffhand();
 		if(stack1 != null || stack2 != null)
 			return;
 
-		if(state.getBlock() instanceof BlockStairs && state.getValue(BlockStairs.HALF) == EnumHalf.BOTTOM && topState.getBlock().isAir(topState, world, topPos)) {
+		if(state.getBlock() instanceof BlockStairs && state.getValue(BlockStairs.HALF) == EnumHalf.BOTTOM && canBeAbove(world, pos)) {
 			List<Seat> seats = world.getEntitiesWithinAABB(Seat.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
 
 			if(seats.isEmpty()) {
@@ -58,6 +57,12 @@ public class SitInStairs extends Feature {
 		return true;
 	}
 
+	public static boolean canBeAbove(World world, BlockPos pos) {
+		BlockPos upPos = pos.up();
+		IBlockState state = world.getBlockState(upPos);
+		Block block = state.getBlock();
+		return block.getCollisionBoundingBox(state, world, upPos) == null;
+	}
 
 	public static class Seat extends Entity {
 
@@ -78,16 +83,11 @@ public class SitInStairs extends Feature {
 			super.onUpdate();
 
 			BlockPos pos = getPosition();
-			if(pos != null) {
-				BlockPos topPos = pos.up();
-				IBlockState topState = worldObj.getBlockState(topPos);
-				
-				if(!(worldObj.getBlockState(pos).getBlock() instanceof BlockStairs) || !topState.getBlock().isAir(topState, worldObj, topPos)) {
-					setDead();
-					return;
-				}
+			if(pos != null && !(worldObj.getBlockState(pos).getBlock() instanceof BlockStairs) || !canBeAbove(worldObj, pos)) {
+				setDead();
+				return;
 			}
-			
+
 			List<Entity> passangers = getPassengers();
 			if(passangers.isEmpty())
 				setDead();
