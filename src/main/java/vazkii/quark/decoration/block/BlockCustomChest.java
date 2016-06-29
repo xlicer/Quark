@@ -40,9 +40,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.base.lib.LibMisc;
-import vazkii.quark.decoration.feature.CustomChest;
+import vazkii.quark.decoration.feature.VariedChests;
 import vazkii.quark.decoration.item.ItemChestBlock;
-import vazkii.quark.decoration.tileentity.TileEntityCustomChest;
+import vazkii.quark.decoration.tile.TileCustomChest;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -53,14 +53,13 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
     private final String[] variants;
     private final String bareName;
-    private static final Type CUSTOM_TYPE_QUARK = EnumHelper.addEnum(Type.class, "CUSTOM_TYPE_QUARK", new Class[0]);
 
-    public BlockCustomChest() {
-        super(CUSTOM_TYPE_QUARK);
+    public BlockCustomChest(String name, Type type) {
+        super(type);
 
-        this.variants = new String[] { "custom_chest" };
-        this.bareName = "custom_chest";
-        setUnlocalizedName("custom_chest");
+        variants = new String[] { name };
+        bareName = name;
+        setUnlocalizedName(name);
         setHardness(2.5F);
         setSoundType(SoundType.WOOD);
     }
@@ -71,7 +70,6 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         setRegistryName(LibMisc.PREFIX_MOD + name);
         GameRegistry.register(this);
         GameRegistry.register(new ItemChestBlock(this), new ResourceLocation(LibMisc.PREFIX_MOD + name));
-        GameRegistry.registerTileEntity(TileEntityCustomChest.class, LibMisc.PREFIX_MOD + name);
 
         return this;
     }
@@ -114,7 +112,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        CustomChest.ChestType myType = getCustomType(source, pos);
+        VariedChests.ChestType myType = getCustomType(source, pos);
         return getCustomType(source, pos.north()) == myType ? NORTH_CHEST_AABB : (getCustomType(source, pos.south()) == myType ? SOUTH_CHEST_AABB : (getCustomType(source, pos.west()) == myType ? WEST_CHEST_AABB : (getCustomType(source, pos.east()) == myType ? EAST_CHEST_AABB : NOT_CONNECTED_AABB)));
     }
 
@@ -135,7 +133,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         BlockPos westPos = pos.west();
         BlockPos eastPos = pos.east();
 
-        CustomChest.ChestType myType = getCustomType(stack);
+        VariedChests.ChestType myType = getCustomType(stack);
 
         boolean northChest = myType == getCustomType(worldIn, northPos);
         boolean southChest = myType == getCustomType(worldIn, southPos);
@@ -163,8 +161,8 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         }
 
         TileEntity te = worldIn.getTileEntity(pos);
-        if(te instanceof TileEntityCustomChest) {
-            TileEntityCustomChest chest = (TileEntityCustomChest) te;
+        if(te instanceof TileCustomChest) {
+            TileCustomChest chest = (TileCustomChest) te;
             if( stack.hasDisplayName() )
                 chest.setCustomName(stack.getDisplayName());
 
@@ -192,10 +190,10 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     @Override
     @Deprecated
     public IBlockState correctFacing(World worldIn, BlockPos pos, IBlockState state) {
-        return correctFacing(worldIn, pos, state, CustomChest.ChestType.NONE);
+        return correctFacing(worldIn, pos, state, VariedChests.ChestType.NONE);
     }
 
-    public IBlockState correctFacing(World worldIn, BlockPos pos, IBlockState state, CustomChest.ChestType myType) {
+    public IBlockState correctFacing(World worldIn, BlockPos pos, IBlockState state, VariedChests.ChestType myType) {
         EnumFacing facing = null;
 
         for(EnumFacing horizFace : EnumFacing.Plane.HORIZONTAL) {
@@ -235,11 +233,11 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         return true;
     }
 
-    public boolean isDoubleChest(World worldIn, BlockPos pos, CustomChest.ChestType myType) {
+    public boolean isDoubleChest(World worldIn, BlockPos pos, VariedChests.ChestType myType) {
         if(getCustomType(worldIn, pos) != myType) {
             return false;
         } else {
-            CustomChest.ChestType theType = getCustomType(worldIn, pos);
+            VariedChests.ChestType theType = getCustomType(worldIn, pos);
             for(EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL)
                 if(getCustomType(worldIn, pos.offset(enumfacing)) == theType)
                     return true;
@@ -256,33 +254,33 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     @Override
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack) {
         super.harvestBlock(worldIn, player, pos, state, te, stack);
-        if(te instanceof TileEntityCustomChest)
+        if(te instanceof TileCustomChest)
             te.invalidate();
         worldIn.setBlockToAir(pos);
     }
 
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityCustomChest();
+        return new TileCustomChest();
     }
 
-    public CustomChest.ChestType getCustomType(IBlockAccess source, BlockPos pos) {
+    public VariedChests.ChestType getCustomType(IBlockAccess source, BlockPos pos) {
         if(source.getBlockState(pos).getBlock() == this) {
             TileEntity te = source.getTileEntity(pos);
-            if(te instanceof TileEntityCustomChest)
-                return ((TileEntityCustomChest) te).chestType;
+            if(te instanceof TileCustomChest)
+                return ((TileCustomChest) te).chestType;
         }
 
-        return CustomChest.ChestType.NONE;
+        return VariedChests.ChestType.NONE;
     }
 
-    public CustomChest.ChestType getCustomType(ItemStack stack) {
+    public VariedChests.ChestType getCustomType(ItemStack stack) {
         if(stack.hasTagCompound())
-            return CustomChest.ChestType.getType(stack.getTagCompound().getString("customType"));
+            return VariedChests.ChestType.getType(stack.getTagCompound().getString("customType"));
 
-        return CustomChest.ChestType.NONE;
+        return VariedChests.ChestType.NONE;
     }
 
-    public ItemStack setCustomType(ItemStack stack, CustomChest.ChestType type) {
+    public ItemStack setCustomType(ItemStack stack, VariedChests.ChestType type) {
         NBTTagCompound nbt = stack.getTagCompound();
         if(nbt == null)
             nbt = new NBTTagCompound();
@@ -297,11 +295,11 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     public ILockableContainer getContainer(World world, BlockPos pos, boolean locked) {
         TileEntity tile = world.getTileEntity(pos);
 
-        if(!(tile instanceof TileEntityCustomChest)) {
+        if(!(tile instanceof TileCustomChest)) {
             return null;
         } else {
-            ILockableContainer myChest = (TileEntityCustomChest) tile;
-            CustomChest.ChestType myType = ((TileEntityCustomChest) tile).chestType;
+            ILockableContainer myChest = (TileCustomChest) tile;
+            VariedChests.ChestType myType = ((TileCustomChest) tile).chestType;
 
             if(!locked && this.isBlocked(world, pos)) {
                 return null;
@@ -311,14 +309,14 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 
                     TileEntity adjTile = world.getTileEntity(adjPos);
 
-                    if(world.getBlockState(adjPos).getBlock() == this && adjTile instanceof TileEntityCustomChest && ((TileEntityCustomChest) adjTile).chestType == myType) {
+                    if(world.getBlockState(adjPos).getBlock() == this && adjTile instanceof TileCustomChest && ((TileCustomChest) adjTile).chestType == myType) {
                         if(this.isBlocked(world, adjPos))
                             return null;
 
                         if(facing != EnumFacing.WEST && facing != EnumFacing.NORTH)
-                            myChest = new InventoryLargeChest("container.chestDouble", myChest, (TileEntityCustomChest)adjTile);
+                            myChest = new InventoryLargeChest("container.chestDouble", myChest, (TileCustomChest)adjTile);
                         else
-                            myChest = new InventoryLargeChest("container.chestDouble", (TileEntityCustomChest)adjTile, myChest);
+                            myChest = new InventoryLargeChest("container.chestDouble", (TileCustomChest)adjTile, myChest);
                     }
                 }
 

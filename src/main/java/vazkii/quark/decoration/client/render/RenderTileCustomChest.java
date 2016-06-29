@@ -14,16 +14,18 @@ import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import org.lwjgl.opengl.GL11;
-import vazkii.quark.decoration.tileentity.TileEntityCustomChest;
+import vazkii.quark.decoration.feature.VariedChests;
+import vazkii.quark.decoration.tile.TileCustomChest;
 
-public class RenderTileEntityCustomChest extends TileEntitySpecialRenderer<TileEntityCustomChest> {
+import org.lwjgl.opengl.GL11;
+
+public class RenderTileCustomChest extends TileEntitySpecialRenderer<TileCustomChest> {
 
     private final ModelChest simpleChest = new ModelChest();
     private final ModelChest largeChest = new ModelLargeChest();
 
     @Override
-    public void renderTileEntityAt(TileEntityCustomChest te, double x, double y, double z, float partialTicks, int destroyStage) {
+    public void renderTileEntityAt(TileCustomChest te, double x, double y, double z, float partialTicks, int destroyStage) {
         GlStateManager.enableDepth();
         GlStateManager.depthFunc(GL11.GL_LEQUAL);
         GlStateManager.depthMask(true);
@@ -117,6 +119,20 @@ public class RenderTileEntityCustomChest extends TileEntitySpecialRenderer<TileE
             lidAngle = 1.0F - lidAngle * lidAngle * lidAngle;
             model.chestLid.rotateAngleX = -(lidAngle * ((float) Math.PI / 2F));
             model.renderAll();
+            
+            if(te.getChestType() == VariedChests.CUSTOM_TYPE_QUARK_TRAP) {
+            	if(model == simpleChest)
+            		bindTexture(VariedChests.TRAP_RESOURCE);
+            	else bindTexture(VariedChests.TRAP_DOUBLE_RESOURCE);
+
+            	GlStateManager.enableBlend();
+            	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+            	GlStateManager.translate(0F, 0F, -0.001F);
+                model.renderAll();
+                GlStateManager.translate(0F, 0F, 0.001F);
+                GlStateManager.disableBlend();
+            }
+            
             GlStateManager.disableRescaleNormal();
             GlStateManager.popMatrix();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

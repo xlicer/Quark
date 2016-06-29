@@ -8,7 +8,7 @@
  *
  * File Created @ [20/03/2016, 22:33:44 (GMT)]
  */
-package vazkii.quark.decoration.tileentity;
+package vazkii.quark.decoration.tile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -19,73 +19,74 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import vazkii.quark.decoration.feature.CustomChest;
+import vazkii.quark.decoration.feature.VariedChests;
 
 import javax.annotation.Nullable;
 
-public class TileEntityCustomChest extends TileEntityChest {
+public class TileCustomChest extends TileEntityChest {
 
-    public CustomChest.ChestType chestType = CustomChest.ChestType.NONE;
+    public VariedChests.ChestType chestType = VariedChests.ChestType.NONE;
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        nbt.setString("type", this.chestType.name);
+        nbt.setString("type", chestType.name);
         return nbt;
     }
 
     @Override
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound nbt = super.getUpdateTag();
-        nbt.setString("type", this.chestType.name);
+        nbt.setString("type", chestType.name);
         return nbt;
     }
 
     @Override
     public void handleUpdateTag(NBTTagCompound tag) {
         super.handleUpdateTag(tag);
-        this.chestType = CustomChest.ChestType.getType(tag.getString("type"));
+        chestType = VariedChests.ChestType.getType(tag.getString("type"));
     }
 
     @Nullable
     @Override
     public SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound nbt = new NBTTagCompound();
-        nbt.setString("type", this.chestType.name);
-        return new SPacketUpdateTileEntity(this.pos, this.getBlockMetadata(), nbt);
+        nbt.setString("type", chestType.name);
+        return new SPacketUpdateTileEntity(pos, getBlockMetadata(), nbt);
     }
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        this.chestType = CustomChest.ChestType.getType(pkt.getNbtCompound().getString("type"));
+        chestType = VariedChests.ChestType.getType(pkt.getNbtCompound().getString("type"));
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        this.chestType = CustomChest.ChestType.getType(nbt.getString("type"));
+        chestType = VariedChests.ChestType.getType(nbt.getString("type"));
     }
 
+    @SuppressWarnings("incomplete-switch")
     private void setNeighbor(TileEntityChest chestTe, EnumFacing side) {
         if( chestTe.isInvalid() ) {
-            this.adjacentChestChecked = false;
-        } else if( this.adjacentChestChecked ) {
+            adjacentChestChecked = false;
+        } else if( adjacentChestChecked ) {
             switch(side) {
                 case NORTH:
-                    if(this.adjacentChestZNeg != chestTe)
-                        this.adjacentChestChecked = false;
+                    if(adjacentChestZNeg != chestTe)
+                        adjacentChestChecked = false;
                     break;
                 case SOUTH:
-                    if(this.adjacentChestZPos != chestTe)
-                        this.adjacentChestChecked = false;
+                    if(adjacentChestZPos != chestTe)
+                        adjacentChestChecked = false;
                     break;
                 case EAST:
-                    if(this.adjacentChestXPos != chestTe)
-                        this.adjacentChestChecked = false;
+                    if(adjacentChestXPos != chestTe)
+                        adjacentChestChecked = false;
                     break;
                 case WEST:
-                    if(this.adjacentChestXNeg != chestTe)
-                        this.adjacentChestChecked = false;
+                    if(adjacentChestXNeg != chestTe)
+                        adjacentChestChecked = false;
             }
         }
     }
@@ -93,13 +94,13 @@ public class TileEntityCustomChest extends TileEntityChest {
     @Nullable
     @Override
     protected TileEntityChest getAdjacentChest(EnumFacing side) {
-        BlockPos blockpos = this.pos.offset(side);
+        BlockPos blockpos = pos.offset(side);
 
-        if(this.isChestAt(blockpos)) {
-            TileEntity tileentity = this.worldObj.getTileEntity(blockpos);
+        if(isChestAt(blockpos)) {
+            TileEntity tileentity = worldObj.getTileEntity(blockpos);
 
-            if(tileentity instanceof TileEntityCustomChest) {
-                TileEntityCustomChest tileentitychest = (TileEntityCustomChest)tileentity;
+            if(tileentity instanceof TileCustomChest) {
+                TileCustomChest tileentitychest = (TileCustomChest)tileentity;
                 tileentitychest.setNeighbor(this, side.getOpposite());
                 return tileentitychest;
             }
@@ -109,12 +110,12 @@ public class TileEntityCustomChest extends TileEntityChest {
     }
 
     private boolean isChestAt(BlockPos posIn) {
-        if( this.worldObj == null ) {
+        if(worldObj == null) {
             return false;
         } else {
-            Block block = this.worldObj.getBlockState(posIn).getBlock();
-            TileEntity te = this.worldObj.getTileEntity(posIn);
-            return block instanceof BlockChest && ((BlockChest) block).chestType == this.getChestType() && te instanceof TileEntityCustomChest && ((TileEntityCustomChest) te).chestType == chestType;
+            Block block = worldObj.getBlockState(posIn).getBlock();
+            TileEntity te = worldObj.getTileEntity(posIn);
+            return block instanceof BlockChest && ((BlockChest) block).chestType == getChestType() && te instanceof TileCustomChest && ((TileCustomChest) te).chestType == chestType;
         }
     }
 }

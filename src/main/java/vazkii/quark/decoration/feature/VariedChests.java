@@ -10,7 +10,9 @@
  */
 package vazkii.quark.decoration.feature;
 
+import net.minecraft.block.BlockChest.Type;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,37 +20,47 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockCustomChest;
-import vazkii.quark.decoration.client.render.RenderTileEntityCustomChest;
-import vazkii.quark.decoration.tileentity.TileEntityCustomChest;
+import vazkii.quark.decoration.client.render.RenderTileCustomChest;
+import vazkii.quark.decoration.tile.TileCustomChest;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomChest extends Feature {
+public class VariedChests extends Feature {
 
+	public static final Type CUSTOM_TYPE_QUARK = EnumHelper.addEnum(Type.class, "QUARK", new Class[0]);
+    public static final Type CUSTOM_TYPE_QUARK_TRAP = EnumHelper.addEnum(Type.class, "QUARK_TRAP", new Class[0]);
+	
+    public static final ResourceLocation TRAP_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/trap.png");
+    public static final ResourceLocation TRAP_DOUBLE_RESOURCE = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/trap_double.png");
+    
     public static BlockCustomChest custom_chest;
+    public static BlockCustomChest custom_chest_trap;
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
-        custom_chest = new BlockCustomChest();
+        custom_chest = new BlockCustomChest("custom_chest", CUSTOM_TYPE_QUARK);
+        custom_chest_trap = new BlockCustomChest("custom_chest_trap", CUSTOM_TYPE_QUARK_TRAP);
 
+        registerTile(TileCustomChest.class, "quark_chest");
+        
         //TODO: add crafting recipe
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void preInitClient(FMLPreInitializationEvent event) {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCustomChest.class, new RenderTileEntityCustomChest());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCustomChest.class, new RenderTileCustomChest());
     }
 
     public enum ChestType {
         NONE(""),
+        SPRUCE("spruce"),
+    	BIRCH("birch"),
+    	JUNGLE("jungle"),
         ACACIA("acacia"),
-        BIRCH("birch"),
-        DARKOAK("darkoak"),
-        JUNGLE("jungle"),
-        SPRUCE("spruce");
-
+        DARK_OAK("dark_oak");
+    	
         public final String name;
         public final ResourceLocation nrmTex;
         public final ResourceLocation dblTex;
@@ -58,8 +70,8 @@ public class CustomChest extends Feature {
 
         ChestType(String name) {
             this.name = name;
-            this.nrmTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chest/" + name + ".png");
-            this.dblTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/blocks/chest/" + name + "_double.png");
+            this.nrmTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/" + name + ".png");
+            this.dblTex = new ResourceLocation(LibMisc.PREFIX_MOD + "textures/models/chests/" + name + "_double.png");
         }
 
         public static ChestType getType(String type) {
@@ -67,7 +79,7 @@ public class CustomChest extends Feature {
         }
 
         static {
-            VALID_TYPES = new ChestType[] { ACACIA, BIRCH, DARKOAK, JUNGLE, SPRUCE };
+            VALID_TYPES = new ChestType[] { SPRUCE, BIRCH, JUNGLE, ACACIA, DARK_OAK };
             NAME_TO_TYPE = new HashMap<>();
             for( ChestType type : VALID_TYPES )
                 NAME_TO_TYPE.put(type.name, type);

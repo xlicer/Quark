@@ -21,8 +21,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import vazkii.quark.base.item.ItemModBlock;
-import vazkii.quark.decoration.feature.CustomChest;
-import vazkii.quark.decoration.tileentity.TileEntityCustomChest;
+import vazkii.quark.decoration.block.BlockCustomChest;
+import vazkii.quark.decoration.feature.VariedChests;
+import vazkii.quark.decoration.tile.TileCustomChest;
 
 import java.util.List;
 
@@ -46,21 +47,21 @@ public class ItemChestBlock extends ItemModBlock {
         BlockPos posW = pos.west();
         BlockPos posE = pos.east();
 
-        CustomChest.ChestType myType = CustomChest.custom_chest.getCustomType(stack);
+        VariedChests.ChestType myType = VariedChests.custom_chest.getCustomType(stack);
 
-        if(world.getBlockState(posN).getBlock() == this.block && CustomChest.custom_chest.getCustomType(world, posN) == myType)
-            typeCnt += CustomChest.custom_chest.isDoubleChest(world, posN, myType) ? 2 : 1;
-        if(world.getBlockState(posS).getBlock() == this.block && CustomChest.custom_chest.getCustomType(world, posS) == myType)
-            typeCnt += CustomChest.custom_chest.isDoubleChest(world, posS, myType) ? 2 : 1;
-        if(world.getBlockState(posW).getBlock() == this.block && CustomChest.custom_chest.getCustomType(world, posW) == myType)
-            typeCnt += CustomChest.custom_chest.isDoubleChest(world, posW, myType) ? 2 : 1;
-        if(world.getBlockState(posE).getBlock() == this.block && CustomChest.custom_chest.getCustomType(world, posE) == myType)
-            typeCnt += CustomChest.custom_chest.isDoubleChest(world, posE, myType) ? 2 : 1;
+        if(world.getBlockState(posN).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posN) == myType)
+            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posN, myType) ? 2 : 1;
+        if(world.getBlockState(posS).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posS) == myType)
+            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posS, myType) ? 2 : 1;
+        if(world.getBlockState(posW).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posW) == myType)
+            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posW, myType) ? 2 : 1;
+        if(world.getBlockState(posE).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posE) == myType)
+            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posE, myType) ? 2 : 1;
 
         if(typeCnt <= 1 && super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState)) {
             TileEntity te = world.getTileEntity(pos);
-            if(te instanceof TileEntityCustomChest) {
-                ((TileEntityCustomChest) te).chestType = myType;
+            if(te instanceof TileCustomChest) {
+                ((TileCustomChest) te).chestType = myType;
                 return true;
             }
         }
@@ -69,10 +70,9 @@ public class ItemChestBlock extends ItemModBlock {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        for( CustomChest.ChestType type : CustomChest.ChestType.VALID_TYPES ) {
-            subItems.add(CustomChest.custom_chest.setCustomType(new ItemStack(CustomChest.custom_chest, 1), type));
-        }
+    	BlockCustomChest chest = (BlockCustomChest) Block.getBlockFromItem(itemIn);
+        for(VariedChests.ChestType type : VariedChests.ChestType.VALID_TYPES)
+            subItems.add(chest.setCustomType(new ItemStack(itemIn, 1), type));
     }
 }
