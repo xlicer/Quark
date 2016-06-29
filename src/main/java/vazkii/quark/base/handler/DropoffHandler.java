@@ -76,22 +76,8 @@ public final class DropoffHandler {
 		boolean accept = isValidChest(player, te);
 		IItemHandler ret = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-		if(te instanceof TileEntityChest) {
-			Block chestBlock = world.getBlockState(pos).getBlock();
-			if(world.getBlockState(pos.west()).getBlock() == chestBlock)
-				ret = new InvWrapper(new InventoryLargeChest("Large chest", (ILockableContainer) world.getTileEntity(pos.west()), (ILockableContainer) te));
-			if(world.getBlockState(pos.east()).getBlock() == chestBlock)
-				ret = new InvWrapper(new InventoryLargeChest("Large chest", (ILockableContainer) te, (ILockableContainer) world.getTileEntity(pos.east())));
-			if(world.getBlockState(pos.north()).getBlock() == chestBlock)
-				ret = new InvWrapper(new InventoryLargeChest("Large chest", (ILockableContainer) world.getTileEntity(pos.north()), (ILockableContainer) te));
-			if(world.getBlockState(pos.south()).getBlock() == chestBlock)
-				ret = new InvWrapper(new InventoryLargeChest("Large chest", (ILockableContainer) te, (ILockableContainer) world.getTileEntity(pos.south())));
-		}
-
-		if(te instanceof IInventory) {
-			if(accept && ret == null)
-				ret = new InvWrapper((IInventory) te);
-		}
+		if(accept && ret == null && te instanceof IInventory)
+			ret = new InvWrapper((IInventory) te);
 
 		return accept ? ret : null;
 	}
