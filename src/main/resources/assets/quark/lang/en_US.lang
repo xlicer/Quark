@@ -170,6 +170,11 @@ tile.quark:nether_brick_fence_gate.name=Nether Brick Fence Gate
 tile.quark:charcoal_block.name=Block of Charcoal
 tile.quark:red_nether_brick_slab.name=Red Nether Brick Slab
 tile.quark:red_nether_brick_stairs.name=Red Nether Brick Stairs
+tile.quark:midori_block.name=Midori Block
+tile.quark:midori_pillar.name=Midori Pillar
+tile.quark:midori_block_slab.name=Midori Slab
+tile.quark:midori_block_stairs.name=Midori Stairs
+tile.quark:midori_block_wall.name=Midori Wall
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
