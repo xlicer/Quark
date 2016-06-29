@@ -25,6 +25,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
@@ -46,6 +48,7 @@ public class ItemChestBlock extends ItemModBlock implements IExtraVariantHolder 
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public ItemMeshDefinition getCustomMeshDefinition() {
     	return new ItemMeshDefinition() {
 			

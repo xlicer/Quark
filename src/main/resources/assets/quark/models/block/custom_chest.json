@@ -2,6 +2,7 @@
     "parent": "block/block",
     "textures": {
         "texture": "minecraft:entity/chest/normal",
+        "particle": "minecraft:blocks/planks_oak",
         "overlay": "quark:blocks/chests/no_overlay"
     },
     "elements": [
