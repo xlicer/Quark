@@ -103,11 +103,7 @@ public final class DropoffHandler {
 			accept = (name.contains("chest") || te instanceof TileEntityChest) && !name.contains("void") && !name.contains("trash");
 		}
 		
-		try {
-			accept &= (te != null && te.isUseableByPlayer(player));
-		} catch(AbstractMethodError err) {
-			return false; // Apparently this can happen with some mods? Not sure why but oh well
-		}
+		accept &= (te != null && te.isUseableByPlayer(player));
 
 		return accept;
 	}
