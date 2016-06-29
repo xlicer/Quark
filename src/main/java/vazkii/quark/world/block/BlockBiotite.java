@@ -65,6 +65,7 @@ public class BlockBiotite extends BlockQuartz implements IQuarkBlock {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ItemMeshDefinition getCustomMeshDefinition() {
 		return null;
 	}
