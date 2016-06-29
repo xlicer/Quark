@@ -14,6 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import vazkii.quark.automation.block.BlockEnderWatcher;
 import vazkii.quark.automation.tile.TileEnderWatcher;
@@ -30,12 +31,15 @@ public class EnderWatcher extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		ender_watcher = new BlockEnderWatcher();
 		registerTile(TileEnderWatcher.class, "ender_watcher");
-		
+	}
+
+	@Override
+	public void init(FMLInitializationEvent event) {
 		RecipeHandler.addOreDictRecipe(new ItemStack(ender_watcher),
-			"BRB", "RER", "BRB",
-			'R', "dustRedstone",
-			'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN)),
-			'E', new ItemStack(Items.ENDER_EYE));
+				"BRB", "RER", "BRB",
+				'R', new ItemStack(Items.REDSTONE),
+				'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN)),
+				'E', new ItemStack(Items.ENDER_EYE));
 	}
 	
 }
