@@ -276,9 +276,11 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     @Override
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack) {
         super.harvestBlock(worldIn, player, pos, state, te, stack);
+
+        worldIn.setBlockToAir(pos);
+
         if(te instanceof TileCustomChest)
             te.invalidate();
-        worldIn.setBlockToAir(pos);
     }
 
     public TileEntity createNewTileEntity(World worldIn, int meta) {
