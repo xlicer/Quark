@@ -116,6 +116,11 @@ public class VariedChests extends Feature {
 			RecipeHandler.addShapelessOreDictRecipe(outTrap, out.copy(), new ItemStack(Blocks.TRIPWIRE_HOOK));
 			i++;
 		}
+		
+		// Low priority ore dictionary recipe
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.CHEST),
+				"WWW", "W W", "WWW",
+				'W', "plankWood");
     }
 
     public enum ChestType {
