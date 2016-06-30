@@ -41,7 +41,7 @@ public class SitInStairs extends Feature {
 		if(stack1 != null || stack2 != null)
 			return;
 
-		if(state.getBlock() instanceof BlockStairs && state.getValue(BlockStairs.HALF) == EnumHalf.BOTTOM && canBeAbove(world, pos)) {
+		if(state.getBlock() instanceof BlockStairs && state.getValue(BlockStairs.HALF) == EnumHalf.BOTTOM && !state.getBlock().isSideSolid(state, world, pos, event.getFace()) && canBeAbove(world, pos)) {
 			List<Seat> seats = world.getEntitiesWithinAABB(Seat.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
 
 			if(seats.isEmpty()) {
