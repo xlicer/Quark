@@ -30,6 +30,7 @@ public class ItemPirateHat extends ItemModArmor {
 	
 	public ItemPirateHat() {
 		super("pirate_hat", ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.HEAD);
+		setMaxDamage(-1);
 	}
 
 	@Override

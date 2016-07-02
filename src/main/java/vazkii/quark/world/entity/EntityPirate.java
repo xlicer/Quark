@@ -26,6 +26,8 @@ public class EntityPirate extends EntitySkeleton {
 	public EntityPirate(World worldIn) {
 		super(worldIn);
 	}
+	
+	// TODO prevent hat from breaking
 
 	@Override
 	public String getName() {
@@ -35,6 +37,10 @@ public class EntityPirate extends EntitySkeleton {
 		return I18n.format("entity.Quark.pirate.name");
 	}
 	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
 
 	@Override
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {

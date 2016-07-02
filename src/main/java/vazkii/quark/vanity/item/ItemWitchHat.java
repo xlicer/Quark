@@ -44,6 +44,11 @@ public class ItemWitchHat extends ItemModArmor {
 	}
 	
 	@Override
+	public boolean hasColor(ItemStack stack) {
+		return false;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return "textures/entity/witch.png";

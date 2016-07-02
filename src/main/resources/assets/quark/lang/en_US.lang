@@ -246,6 +246,7 @@ item.quark:colored_item_frame_red.name=Red Item Frame
 item.quark:colored_item_frame_silver.name=Light Gray Item Frame
 item.quark:colored_item_frame_white.name=White Item Frame
 item.quark:colored_item_frame_yellow.name=Yellow Item Frame
+item.quark:pirate_hat.name=Pirate Hat
 
 # ENTITY NAMES
 entity.Quark.quark:colored_item_frame.name=Colored Item Frame
