@@ -128,7 +128,9 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
     }
 
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) { }
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) { 
+    	// NO-OP
+    }
 
     @Override
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
@@ -203,6 +205,11 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
         }
     }
 
+    @Override
+    public boolean canProvidePower(IBlockState state) {
+        return chestType == VariedChests.CUSTOM_TYPE_QUARK_TRAP;
+    }
+    
     @Override
     @Deprecated
     public IBlockState checkForSurroundingChests(World worldIn, BlockPos pos, IBlockState state) {
