@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
-import vazkii.quark.world.sound.GuardianSound2UnderwaterBoogaloo;
+import vazkii.quark.world.client.sound.GuardianSound2UnderwaterBoogaloo;
 
 public class OceanGuardians extends Feature {
 

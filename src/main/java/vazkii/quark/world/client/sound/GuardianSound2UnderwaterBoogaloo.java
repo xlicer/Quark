@@ -8,7 +8,7 @@
  * 
  * File Created @ [16/06/2016, 01:51:23 (GMT)]
  */
-package vazkii.quark.world.sound;
+package vazkii.quark.world.client.sound;
 
 import net.minecraft.client.audio.GuardianSound;
 import net.minecraft.entity.EntityLivingBase;
