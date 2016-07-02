@@ -247,6 +247,11 @@ item.quark:colored_item_frame_silver.name=Light Gray Item Frame
 item.quark:colored_item_frame_white.name=White Item Frame
 item.quark:colored_item_frame_yellow.name=Yellow Item Frame
 
+# ENTITY NAMES
+entity.Quark.quark:colored_item_frame.name=Colored Item Frame
+entity.Quark.dweller.name=Dweller
+entity.Quark.ashen.name=Ashen
+
 # GUI STUFF
 quark.gui.emotes=Emotes
 quark.gui.emotesKeygroup=Quark Emotes
