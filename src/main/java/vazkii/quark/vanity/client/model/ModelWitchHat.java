@@ -10,8 +10,6 @@
  */
 package vazkii.quark.vanity.client.model;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,9 +20,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
-import net.minecraft.util.datafix.fixes.EntityArmorAndHeld;
+import vazkii.quark.base.client.model.ModelQuarkArmor;
 
-public class ModelWitchHat extends ModelBiped {
+public class ModelWitchHat extends ModelQuarkArmor {
 
 	private ModelRenderer witchHat;
 	
@@ -60,78 +58,10 @@ public class ModelWitchHat extends ModelBiped {
         modelrenderer1.addChild(modelrenderer2);
 	}
 	
-	public void setModelParts() {
-		bipedHeadwear = witchHat;
-	}
-	
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		// Fixes rendering on armor stands
+	public void setModelParts() {
 		bipedHead.showModel = false;
 		bipedHeadwear = witchHat;
-		
-		GlStateManager.pushMatrix();
-		if(entity instanceof EntityArmorStand) {
-			f3 = 0;
-			GlStateManager.translate(0F, 0.15F, 0F);
-		}
-		prepareForRender(entity, f5);
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		GlStateManager.popMatrix();
-	}
-	
-	public void prepareForRender(Entity entity, float pticks) {
-		EntityLivingBase living = (EntityLivingBase) entity;
-		isSneak = living != null ? living.isSneaking() : false;
-		isChild = living != null ? living.isChild() : false;
-		if(living != null && living instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) living;
-			
-			swingProgress = player.getSwingProgress(pticks);
-			
-            ModelBiped.ArmPose modelbiped$armpose = ModelBiped.ArmPose.EMPTY;
-            ModelBiped.ArmPose modelbiped$armpose1 = ModelBiped.ArmPose.EMPTY;
-            ItemStack itemstack = player.getHeldItemMainhand();
-            ItemStack itemstack1 = player.getHeldItemOffhand();
-            
-            if(itemstack != null) {
-                modelbiped$armpose = ModelBiped.ArmPose.ITEM;
-
-                if(player.getItemInUseCount() > 0) {
-                    EnumAction enumaction = itemstack.getItemUseAction();
-
-                    if(enumaction == EnumAction.BLOCK)
-                        modelbiped$armpose = ModelBiped.ArmPose.BLOCK;
-                    else if(enumaction == EnumAction.BOW)
-                        modelbiped$armpose = ModelBiped.ArmPose.BOW_AND_ARROW;
-                }
-            }
-
-            if(itemstack1 != null) {
-                modelbiped$armpose1 = ModelBiped.ArmPose.ITEM;
-
-                if(player.getItemInUseCount() > 0) {
-                    EnumAction enumaction1 = itemstack1.getItemUseAction();
-
-                    if(enumaction1 == EnumAction.BLOCK)
-                        modelbiped$armpose1 = ModelBiped.ArmPose.BLOCK;
-                }
-            }
-
-            if(player.getPrimaryHand() == EnumHandSide.RIGHT) {
-                rightArmPose = modelbiped$armpose;
-                leftArmPose = modelbiped$armpose1;
-            } else {
-                rightArmPose = modelbiped$armpose1;
-                leftArmPose = modelbiped$armpose;
-            }
-		}
-	}
-
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
 	}
 	
 }

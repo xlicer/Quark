@@ -15,5 +15,6 @@ public final class LibEntityIDs {
 	public static final int COLORED_ITEM_FRAME = 0;
 	public static final int ASHEN = 1;
 	public static final int DWELLER = 2;
+	public static final int PIRATE = 3;
 
 }

@@ -251,6 +251,7 @@ item.quark:colored_item_frame_yellow.name=Yellow Item Frame
 entity.Quark.quark:colored_item_frame.name=Colored Item Frame
 entity.Quark.dweller.name=Dweller
 entity.Quark.ashen.name=Ashen
+entity.Quark.pirate.name=Pirate
 
 # GUI STUFF
 quark.gui.emotes=Emotes
