@@ -77,9 +77,8 @@ public class StairsMakeMore extends Feature {
 							outCopy.setItemDamage(0);
 
 						outCopy.stackSize = 24 / targetSize;
-						RecipeHandler.addOreDictRecipe(outCopy,
-								"BB", "BB",
-								'B', output.copy());
+						ItemStack in = output.copy();
+						RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in, in, in);
 					}
 				}
 			}

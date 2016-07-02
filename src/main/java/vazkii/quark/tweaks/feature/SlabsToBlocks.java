@@ -70,9 +70,8 @@ public class SlabsToBlocks extends Feature {
 						if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
 							outCopy.setItemDamage(0);
 
-						RecipeHandler.addOreDictRecipe(outCopy,
-								"B", "B",
-								'B', output.copy());
+						ItemStack in = output.copy();
+						RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in);
 					}
 				}
 			}
