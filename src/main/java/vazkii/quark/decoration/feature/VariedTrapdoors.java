@@ -89,5 +89,10 @@ public class VariedTrapdoors extends Feature {
 
 		if(renameVanillaTrapdoor)
 			Blocks.TRAPDOOR.setUnlocalizedName("oak_trapdoor");
+		
+		// Low priority ore dictionary recipe
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.TRAPDOOR, recipeOutput),
+				"WWW", "W W", "WWW",
+				'W', "plankWood");
 	}
 }
