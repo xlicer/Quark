@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.base.module.Feature;
@@ -63,6 +64,11 @@ public class VariedChests extends Feature {
         custom_chest_trap = new BlockCustomChest("custom_chest_trap", CUSTOM_TYPE_QUARK_TRAP);
 
         registerTile(TileCustomChest.class, "quark_chest");
+        
+		OreDictionary.registerOre("chest", new ItemStack(custom_chest, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chest", new ItemStack(custom_chest_trap, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chestWood", new ItemStack(custom_chest, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chestTrapped", new ItemStack(custom_chest_trap, OreDictionary.WILDCARD_VALUE));
     }
 
     @Override
