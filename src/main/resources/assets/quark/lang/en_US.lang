@@ -247,12 +247,14 @@ item.quark:colored_item_frame_silver.name=Light Gray Item Frame
 item.quark:colored_item_frame_white.name=White Item Frame
 item.quark:colored_item_frame_yellow.name=Yellow Item Frame
 item.quark:pirate_hat.name=Pirate Hat
+item.quark:soul_bead.name=Soul Bead
 
 # ENTITY NAMES
 entity.Quark.quark:colored_item_frame.name=Colored Item Frame
 entity.Quark.dweller.name=Dweller
 entity.Quark.ashen.name=Ashen
 entity.Quark.pirate.name=Pirate
+entity.Quark.wraith.name=Wraith
 
 # GUI STUFF
 quark.gui.emotes=Emotes

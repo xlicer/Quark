@@ -26,6 +26,7 @@ import vazkii.quark.world.feature.PirateShips;
 import vazkii.quark.world.feature.RealisticWorldType;
 import vazkii.quark.world.feature.SlimeBucket;
 import vazkii.quark.world.feature.TreesInPlains;
+import vazkii.quark.world.feature.Wraiths;
 
 public class QuarkWorld extends Module {
 
@@ -44,6 +45,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new ColorRunes());
 		registerFeature(new DepthMobs());
 		registerFeature(new PirateShips());
+		registerFeature(new Wraiths());
 
 		registerFeature(new RealisticWorldType());
 		registerFeature(new DefaultWorldOptions());

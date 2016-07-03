@@ -46,7 +46,7 @@ import vazkii.quark.world.feature.PirateShips;
 
 public class PirateShipGenerator implements IWorldGenerator {
 
-    private static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark:pirate_ship");
+    private static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark:chests/pirate_ship");
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
