@@ -13,6 +13,7 @@ package vazkii.quark.decoration.feature;
 import net.minecraft.block.BlockChest.Type;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -127,6 +128,12 @@ public class VariedChests extends Feature {
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.CHEST),
 				"WWW", "W W", "WWW",
 				'W', "plankWood");
+		
+		// Vanilla recipe replacement
+		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.HOPPER), 
+				"I I", "ICI", " I ", 
+				'I', Items.IRON_INGOT, 
+				'C', new ItemStack(custom_chest, 1, OreDictionary.WILDCARD_VALUE));
     }
 
     public enum ChestType {
