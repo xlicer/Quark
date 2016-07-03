@@ -25,6 +25,7 @@ public class ModelPirateHat extends ModelQuarkArmor {
 
     public ModelPirateHat() {
     	float modelOff = -6F;
+    	
         textureWidth = 64;
         textureHeight = 64;
         hatPart3 = new ModelRenderer(this, 0, 30);
@@ -33,11 +34,11 @@ public class ModelPirateHat extends ModelQuarkArmor {
         setRotateAngle(hatPart3, -0.08726646259971647F, 0.0F, -0.08726646259971647F);
         hat = new ModelRenderer(this, 0, 0);
         hat.setRotationPoint(0.0F, -8.53F, 0.0F);
-        hat.addBox(-5.0F, 0F + modelOff, -5.0F, 10, 1, 10, 0.0F);
+        hat.addBox(-5.0F, 0F + modelOff, -5.0F, 10, 1, 10, .0F);
         setRotateAngle(hat, 0.05235987755982988F, 0.08726646259971647F, 0.0F);
         hatPart1 = new ModelRenderer(this, 0, 11);
         hatPart1.setRotationPoint(0.0F, 0.0F, 0.0F);
-        hatPart1.addBox(-3.5F, -4.0F + modelOff, -3.5F, 7, 4, 8, 0.0F);
+        hatPart1.addBox(-3.5F, -4.0F + modelOff, -3.5F, 7, 4, 8, 1.0F);
         hatPart4 = new ModelRenderer(this, 0, 23);
         hatPart4.setRotationPoint(0.0F, 0.0F, 0.0F);
         hatPart4.addBox(-5.0F, -6.4F + modelOff, -5.0F, 10, 6, 1, 0.0F);
