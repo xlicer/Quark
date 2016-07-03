@@ -17,11 +17,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.handler.ICustomEnchantColor;
-import vazkii.quark.base.item.IColorProvider;
+import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.ItemMod;
 import vazkii.quark.world.feature.ColorRunes;
 
-public class ItemRune extends ItemMod implements IColorProvider, ICustomEnchantColor {
+public class ItemRune extends ItemMod implements IItemColorProvider, ICustomEnchantColor {
 
 	private static final String[] VARIANTS = {
 			"rune_white",
@@ -65,7 +65,7 @@ public class ItemRune extends ItemMod implements IColorProvider, ICustomEnchantC
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IItemColor getColor() {
+	public IItemColor getItemColor() {
 		return new IItemColor() {
 			
 			@Override

@@ -23,12 +23,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.item.IColorProvider;
+import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.item.ItemMod;
 import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 
-public class ItemColoredItemFrame extends ItemMod implements IColorProvider, IExtraVariantHolder {
+public class ItemColoredItemFrame extends ItemMod implements IItemColorProvider, IExtraVariantHolder {
 
 	private static final String[] VARIANTS = {
 			"colored_item_frame_white",
@@ -99,7 +99,7 @@ public class ItemColoredItemFrame extends ItemMod implements IColorProvider, IEx
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IItemColor getColor() {
+	public IItemColor getItemColor() {
 		return new IItemColor() {
 
 			@Override

@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -27,9 +28,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameData;
+import vazkii.quark.base.block.IBlockColorProvider;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.item.IColorProvider;
 import vazkii.quark.base.item.IExtraVariantHolder;
+import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.IVariantHolder;
 import vazkii.quark.base.item.ItemMod;
 import vazkii.quark.base.lib.LibMisc;
@@ -44,10 +46,19 @@ public class ModelHandler {
 	}
 
 	public static void init() {
-		ItemColors colors = Minecraft.getMinecraft().getItemColors();
-		for(IVariantHolder holder : ItemMod.variantHolders)
-			if(holder instanceof IColorProvider)
-				colors.registerItemColorHandler(((IColorProvider) holder).getColor(), (Item) holder);
+		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+		BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
+		
+		for(IVariantHolder holder : ItemMod.variantHolders) {
+			if(holder instanceof IItemColorProvider)
+				itemColors.registerItemColorHandler(((IItemColorProvider) holder).getItemColor(), (Item) holder);
+			
+			if(holder instanceof ItemBlock && ((ItemBlock) holder).getBlock() instanceof IBlockColorProvider) {
+				Block block = ((ItemBlock) holder).getBlock();
+				blockColors.registerBlockColorHandler(((IBlockColorProvider) block).getBlockColor(), block);
+				itemColors.registerItemColorHandler(((IBlockColorProvider) block).getItemColor(), block);
+			}
+		}
 	}
 
 	public static void registerModels(IVariantHolder holder) {

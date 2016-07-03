@@ -190,6 +190,12 @@ tile.quark:custom_chest_dark_oak_trap.name=Dark Oak Trapped Chest
 tile.quark:iron_plate.name=Iron Plate
 tile.quark:iron_plate_slab.name=Iron Plate Slab
 tile.quark:iron_plate_stairs.name=Iron Plate Stairs
+tile.quark:oak_leaf_carpet.name=Oak Leaf Carpet
+tile.quark:spruce_leaf_carpet.name=Spruce Leaf Carpet
+tile.quark:birch_leaf_carpet.name=Birch Leaf Carpet
+tile.quark:jungle_leaf_carpet.name=Jungle Leaf Carpet
+tile.quark:acacia_leaf_carpet.name=Acacia Leaf Carpet
+tile.quark:dark_oak_leaf_carpet.name=Dark Oak Leaf Carpet
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
