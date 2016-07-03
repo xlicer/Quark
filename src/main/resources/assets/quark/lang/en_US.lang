@@ -254,6 +254,22 @@ item.quark:colored_item_frame_white.name=White Item Frame
 item.quark:colored_item_frame_yellow.name=Yellow Item Frame
 item.quark:pirate_hat.name=Pirate Hat
 item.quark:soul_bead.name=Soul Bead
+item.red_bed.name=Red Bed
+item.quark:colored_bed_item_black.name=Black Bed
+item.quark:colored_bed_item_blue.name=Blue Bed
+item.quark:colored_bed_item_brown.name=Brown Bed
+item.quark:colored_bed_item_cyan.name=Cyan Bed
+item.quark:colored_bed_item_gray.name=Gray Bed
+item.quark:colored_bed_item_green.name=Green Bed
+item.quark:colored_bed_item_light_blue.name=Light Blue Bed
+item.quark:colored_bed_item_lime.name=Lime Bed
+item.quark:colored_bed_item_magenta.name=Magenta Bed
+item.quark:colored_bed_item_orange.name=Orange Bed
+item.quark:colored_bed_item_pink.name=Pink Bed
+item.quark:colored_bed_item_purple.name=Purple Bed
+item.quark:colored_bed_item_silver.name=Light Gray Bed
+item.quark:colored_bed_item_white.name=White Bed
+item.quark:colored_bed_item_yellow.name=Yellow Bed
 
 # ENTITY NAMES
 entity.Quark.quark:colored_item_frame.name=Colored Item Frame
