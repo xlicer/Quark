@@ -61,21 +61,16 @@ public class ColorRunes extends Feature {
 
 	@SubscribeEvent
 	public void onLootTableLoad(LootTableLoadEvent event) {
-		LootFunction[] funcs = new LootFunction[] {
-				new SetMetadata(new LootCondition[0], new RandomValueRange(0, 15)) };
+		LootFunction[] funcs = new LootFunction[] { new SetMetadata(new LootCondition[0], new RandomValueRange(0, 15)) };
 
-		if (event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON))
-			event.getTable().getPool("main").addEntry(
-					new LootEntryItem(rune, dungeonWeight, itemQuality, funcs, new LootCondition[0], "quark:rune"));
-		else if (event.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE))
-			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, netherFortressWeight, itemQuality, funcs,
-					new LootCondition[0], "quark:rune"));
-		else if (event.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE))
-			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, jungleTempleWeight, itemQuality, funcs,
-					new LootCondition[0], "quark:rune"));
-		else if (event.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID))
-			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, desertTempleWeight, itemQuality, funcs,
-					new LootCondition[0], "quark:rune"));
+		if(event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON))
+			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, dungeonWeight, itemQuality, funcs, new LootCondition[0], "quark:rune"));
+		else if(event.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE))
+			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, netherFortressWeight, itemQuality, funcs, new LootCondition[0], "quark:rune"));
+		else if(event.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE))
+			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, jungleTempleWeight, itemQuality, funcs, new LootCondition[0], "quark:rune"));
+		else if(event.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID))
+			event.getTable().getPool("main").addEntry(new LootEntryItem(rune, desertTempleWeight, itemQuality, funcs, new LootCondition[0], "quark:rune"));
 	}
 
 	@SubscribeEvent
@@ -104,7 +99,7 @@ public class ColorRunes extends Feature {
 
 	// Called from ASM. See ClassTransformer
 	public static int getColor() {
-		if(!ModuleLoader.isFeatureEnabled(ColorRunes.class) || !doesStackHaveRune(targetStack))
+		if(!ModuleLoader.isFeatureEnabled(ColorRunes.class) || (!doesStackHaveRune(targetStack) && targetStack != null && !(targetStack.getItem() instanceof ICustomEnchantColor)))
 			return 0xff8040cc;
 
 		return getColorFromStack(targetStack);
@@ -126,7 +121,7 @@ public class ColorRunes extends Feature {
 	}
 
 	public static int getColorFromStack(ItemStack stack) {
-		if (stack == null)
+		if(stack == null)
 			return 0xFFFFFF;
 
 		int retColor = 0xFFFFFF;
@@ -141,7 +136,7 @@ public class ColorRunes extends Feature {
 			retColor = 0xFF000000 | color;
 		}
 
-		if (truncate) {
+		if(truncate) {
 			int r = (retColor >> 16) & 0xFF;
 			int g = (retColor >> 8) & 0xFF;
 			int b = retColor & 0xFF;
