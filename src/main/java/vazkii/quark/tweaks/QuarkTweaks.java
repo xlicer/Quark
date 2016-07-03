@@ -29,6 +29,7 @@ import vazkii.quark.tweaks.feature.LookDownLadders;
 import vazkii.quark.tweaks.feature.MinecartInteraction;
 import vazkii.quark.tweaks.feature.NoPotionShift;
 import vazkii.quark.tweaks.feature.NoteBlocksMobSounds;
+import vazkii.quark.tweaks.feature.RemoveSnowLayers;
 import vazkii.quark.tweaks.feature.RightClickSignEdit;
 import vazkii.quark.tweaks.feature.ShearableChickens;
 import vazkii.quark.tweaks.feature.SheepArmor;
@@ -66,6 +67,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new SheepArmor(), "Sheep have armor while wearing wool");
 		registerFeature(new FlintTools(), "Allow crafting stone tools using flint");
 		registerFeature(new ConvertClay(), "Convert Clay Blocks to Clay");
+		registerFeature(new RemoveSnowLayers(), "Remove layers of snow by right clicking with a shovel");
 	}
 
 }
