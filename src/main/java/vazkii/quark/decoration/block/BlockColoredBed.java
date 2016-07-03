@@ -125,11 +125,13 @@ public class BlockColoredBed extends BlockBed implements IQuarkBlock, IBlockColo
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IItemColor getItemColor() {
 		return ((IItemColorProvider) ColoredBeds.colored_bed_item).getItemColor();
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IBlockColor getBlockColor() {
 		return new IBlockColor() {
 			

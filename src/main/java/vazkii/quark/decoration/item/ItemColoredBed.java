@@ -26,6 +26,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.ItemMod;
 import vazkii.quark.decoration.feature.ColoredBeds;
@@ -103,6 +105,7 @@ public class ItemColoredBed extends ItemMod implements IItemColorProvider {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IItemColor getItemColor() {
 		return new IItemColor() {
 			
