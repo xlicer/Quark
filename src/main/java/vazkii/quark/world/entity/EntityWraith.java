@@ -27,8 +27,10 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
@@ -129,11 +131,15 @@ public class EntityWraith extends EntityZombie {
 		
 		if(getSoundType() == -1)
 			dataManager.set(SOUND_TYPE, rand.nextInt(SOUNDS.length));
+	
 		
-		System.out.println(getPosition());
-		
-		// TODO particles
+		AxisAlignedBB aabb = getEntityBoundingBox();
+		double x = aabb.minX + Math.random() * (aabb.maxX - aabb.minX);
+		double y = aabb.minY + Math.random() * (aabb.maxY - aabb.minY);
+		double z = aabb.minZ + Math.random() * (aabb.maxZ - aabb.minZ);
+		worldObj.spawnParticle(EnumParticleTypes.TOWN_AURA, x, y, z, 0, 0, 0);
 	}
+	
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
@@ -192,4 +198,5 @@ public class EntityWraith extends EntityZombie {
 	}
 
 }
+
 

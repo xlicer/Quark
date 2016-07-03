@@ -256,6 +256,9 @@ entity.Quark.ashen.name=Ashen
 entity.Quark.pirate.name=Pirate
 entity.Quark.wraith.name=Wraith
 
+# POTION NAMES
+quark.potion.curse.name=Curse
+
 # GUI STUFF
 quark.gui.emotes=Emotes
 quark.gui.emotesKeygroup=Quark Emotes
