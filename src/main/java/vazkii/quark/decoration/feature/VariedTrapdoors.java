@@ -92,7 +92,7 @@ public class VariedTrapdoors extends Feature {
 		
 		// Low priority ore dictionary recipe
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.TRAPDOOR, recipeOutput),
-				"WWW", "W W", "WWW",
+				"WWW", "WWW",
 				'W', "plankWood");
 	}
 }
