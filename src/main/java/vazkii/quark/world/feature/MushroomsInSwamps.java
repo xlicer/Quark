@@ -4,7 +4,7 @@
  * https://github.com/Vazkii/Quark
  *
  * Quark is Open Source and distributed under the
- * [ADD-LICENSE-HERE]
+ * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
  *
  * File Created @ [24/03/2016, 16:04:11 (GMT)]
  */
