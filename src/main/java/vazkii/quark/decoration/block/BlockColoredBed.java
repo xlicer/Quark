@@ -24,6 +24,7 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -65,6 +66,11 @@ public class BlockColoredBed extends BlockBed implements IQuarkBlock, IBlockColo
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemModBlock(this), new ResourceLocation(LibMisc.PREFIX_MOD + name));
 		return this;
+	}
+	
+	@Override
+	public boolean isBed(IBlockState state, IBlockAccess world, BlockPos pos, Entity player) {
+		return true;
 	}
 	
 	@Override
