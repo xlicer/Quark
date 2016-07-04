@@ -54,6 +54,7 @@ public class ItemColoredBed extends ItemMod implements IItemColorProvider {
 	
 	public ItemColoredBed() {
 		super("colored_bed_item", VARIANTS);
+		setMaxStackSize(ColoredBeds.stackSize);
 		setCreativeTab(CreativeTabs.DECORATIONS);
 	}
 

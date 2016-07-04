@@ -37,11 +37,13 @@ public class ColoredBeds extends Feature {
 	
     boolean renameVanillaBed;
     int defaultColor;
+    public static int stackSize;
     
     @Override
     public void setupConfig() {
 		renameVanillaBed = loadPropBool("Rename vanilla bed to Red Bed", "", true);
 		defaultColor = loadPropInt("Default Color", "The default color of bed to be created if wool types are mixed. 0 is white, 15 is black, 14 is vanilla red bed.", 0);
+		stackSize = loadPropInt("Bed Stack Size", "This also changes the stack size of the vanilla bed.", 64);
     }
 	
 	@Override
@@ -62,6 +64,7 @@ public class ColoredBeds extends Feature {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		Items.BED.setUnlocalizedName("red_bed");
+		Items.BED.setMaxStackSize(stackSize);
 		
 		List<IRecipe> recipeList = new ArrayList(CraftingManager.getInstance().getRecipeList());
 		for(IRecipe recipe : recipeList) {
