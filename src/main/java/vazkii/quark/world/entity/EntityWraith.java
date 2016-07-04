@@ -10,9 +10,6 @@
  */
 package vazkii.quark.world.entity;
 
-import javax.vecmath.Vector3d;
-
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -33,9 +30,9 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 
 public class EntityWraith extends EntityZombie {
 
@@ -90,7 +87,7 @@ public class EntityWraith extends EntityZombie {
         if(hasCustomName()) 
         	return getCustomNameTag();
 
-		return I18n.format("entity.Quark.wraith.name");
+		return I18n.translateToLocal("entity.Quark.wraith.name");
 	}
 	
 	@Override

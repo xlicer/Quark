@@ -12,7 +12,6 @@ package vazkii.quark.world.entity;
 
 import com.google.common.collect.ImmutableSet;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.SkeletonType;
 import net.minecraft.init.Items;
@@ -21,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import vazkii.quark.world.feature.DepthMobs;
@@ -45,7 +45,7 @@ public class EntityAshen extends EntitySkeleton {
         if(hasCustomName()) 
         	return getCustomNameTag();
 
-		return I18n.format("entity.Quark.ashen.name");
+		return I18n.translateToLocal("entity.Quark.ashen.name");
 	}
 
 	@Override

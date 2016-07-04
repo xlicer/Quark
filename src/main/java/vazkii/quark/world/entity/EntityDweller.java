@@ -10,7 +10,6 @@
  */
 package vazkii.quark.world.entity;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -25,6 +24,7 @@ import net.minecraft.potion.PotionType;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import vazkii.quark.world.feature.DepthMobs;
@@ -47,7 +47,7 @@ public class EntityDweller extends EntityZombie {
         if(hasCustomName()) 
         	return getCustomNameTag();
 
-		return I18n.format("entity.Quark.dweller.name");
+		return I18n.translateToLocal("entity.Quark.dweller.name");
 	}
 	
 	@Override
