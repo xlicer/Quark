@@ -119,7 +119,7 @@ public class PirateShipGenerator implements IWorldGenerator {
         		world.setBlockState(dataPos, chestState);
         		
         		TileEntityChest chest = (TileEntityChest) world.getTileEntity(dataPos);
-        		chest.setLootTable(new ResourceLocation("quark", "pirate_chest"), random.nextLong());
+        		chest.setLootTable(new ResourceLocation("quark", "chests/pirate_chest"), random.nextLong());
         		break;
         	case "cannon":
         		String dispenserOrientation = tokens[1];
