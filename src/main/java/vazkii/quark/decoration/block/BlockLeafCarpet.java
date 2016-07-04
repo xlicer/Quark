@@ -73,6 +73,11 @@ public class BlockLeafCarpet extends BlockMetaVariants implements IBlockColorPro
 	}
 	
 	@Override
+	public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
+		return true;
+	}
+	
+	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
 		return null;
 	}
