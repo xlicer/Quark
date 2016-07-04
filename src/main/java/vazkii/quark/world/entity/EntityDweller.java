@@ -61,6 +61,11 @@ public class EntityDweller extends EntityZombie {
 	}
 	
 	@Override
+	public boolean isVillager() {
+		return false;
+	}
+	
+	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
 		addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, Integer.MAX_VALUE));
 		return super.onInitialSpawn(difficulty, livingdata);

@@ -196,7 +196,10 @@ public class EntityWraith extends EntityZombie {
 	public ZombieType func_189777_di() {
 		return ZombieType.NORMAL;
 	}
+	
+	@Override
+	public boolean isVillager() {
+		return false;
+	}
 
 }
-
-
