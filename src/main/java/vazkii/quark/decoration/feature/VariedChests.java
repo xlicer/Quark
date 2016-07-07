@@ -66,10 +66,10 @@ public class VariedChests extends Feature {
 
         registerTile(TileCustomChest.class, "quark_chest");
         
-		OreDictionary.registerOre("chest", new ItemStack(custom_chest, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("chest", new ItemStack(custom_chest_trap, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("chestWood", new ItemStack(custom_chest, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("chestTrapped", new ItemStack(custom_chest_trap, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chest", new ItemStack(custom_chest, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chest", new ItemStack(custom_chest_trap, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chestWood", new ItemStack(custom_chest, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("chestTrapped", new ItemStack(custom_chest_trap, 1, OreDictionary.WILDCARD_VALUE));
     }
 
     @Override
@@ -133,7 +133,7 @@ public class VariedChests extends Feature {
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.HOPPER), 
 				"I I", "ICI", " I ", 
 				'I', Items.IRON_INGOT, 
-				'C', new ItemStack(custom_chest, 1, OreDictionary.WILDCARD_VALUE));
+				'C', "chestWood");
     }
 
     public enum ChestType {
