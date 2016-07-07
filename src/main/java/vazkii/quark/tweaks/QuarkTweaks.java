@@ -14,6 +14,7 @@ import vazkii.quark.base.module.Module;
 import vazkii.quark.tweaks.feature.AngryCreepers;
 import vazkii.quark.tweaks.feature.ArmedArmorStands;
 import vazkii.quark.tweaks.feature.ArrowSafeMobs;
+import vazkii.quark.tweaks.feature.AutoJumpHotkey;
 import vazkii.quark.tweaks.feature.BabyZombiesBurn;
 import vazkii.quark.tweaks.feature.ChickensShedFeathers;
 import vazkii.quark.tweaks.feature.ConvertClay;
@@ -68,6 +69,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new FlintTools(), "Allow crafting stone tools using flint");
 		registerFeature(new ConvertClay(), "Convert Clay Blocks to Clay");
 		registerFeature(new RemoveSnowLayers(), "Remove layers of snow by right clicking with a shovel");
+		registerFeature(new AutoJumpHotkey());
 	}
 
 }

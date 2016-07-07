@@ -314,6 +314,9 @@ quark.dye.red=Red
 quark.dye.black=Black
 generator.quark_realistic=Realistic
 generator.quark_realistic.info=[Quark] Realistic World Type by /u/Soniop
+quark.keybind.toggleAutojump=Toggle Autojump
+quark.autojump0=Enabled Auto-jump.
+quark.autojump1=Disabled Auto-jump.
 
 # BANNER NAMES
 item.banner.quark_dragon.black=Black Dragon
