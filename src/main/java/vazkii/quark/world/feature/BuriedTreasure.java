@@ -41,7 +41,7 @@ public class BuriedTreasure extends Feature {
 	public static String TAG_TREASURE_MAP = "Quark:TreasureMap";
 	public static String TAG_TREASURE_MAP_DELEGATE = "Quark:TreasureMapDelegate";
 
-	ImmutableSet<ResourceLocation> tablesToEdit = ImmutableSet.of(LootTableList.CHESTS_DESERT_PYRAMID, LootTableList.CHESTS_JUNGLE_TEMPLE, LootTableList.CHESTS_STRONGHOLD_CORRIDOR);
+	ImmutableSet<ResourceLocation> tablesToEdit = ImmutableSet.of(LootTableList.CHESTS_DESERT_PYRAMID, LootTableList.CHESTS_JUNGLE_TEMPLE, LootTableList.CHESTS_STRONGHOLD_CORRIDOR, PirateShips.PIRATE_CHEST_LOOT_TABLE);
 	int rarity, quality;
 	
 	@Override
