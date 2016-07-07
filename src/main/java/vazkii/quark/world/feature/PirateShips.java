@@ -27,7 +27,7 @@ import vazkii.quark.world.world.PirateShipGenerator;
 public class PirateShips extends Feature {
 
 	public static final ResourceLocation PIRATE_CHEST_LOOT_TABLE = new ResourceLocation("quark", "chests/pirate_chest");
-    public static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark", "pirate_ship");
+	public static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark", "pirate_ship");
 	
 	public static Item pirate_hat;
 
