@@ -110,6 +110,11 @@ public class EntityWraith extends EntityZombie {
         return getSoundForIndex(2);
     }
 	
+	@Override
+	protected float getSoundPitch() {
+		return rand.nextFloat() * 0.1F + 0.75F;
+	}
+	
 	public int getSoundType() {
 		return dataManager.get(SOUND_TYPE);
 	}
