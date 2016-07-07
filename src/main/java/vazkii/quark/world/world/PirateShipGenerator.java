@@ -24,8 +24,9 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -46,7 +47,6 @@ import vazkii.quark.world.feature.PirateShips;
 
 public class PirateShipGenerator implements IWorldGenerator {
 
-    private static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark:pirate_ship");
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -70,7 +70,7 @@ public class PirateShipGenerator implements IWorldGenerator {
 	
 	public static void generateShipAt(WorldServer world, Random random, BlockPos pos) {
 		MinecraftServer server = world.getMinecraftServer();
-		Template template = world.getStructureTemplateManager().func_189942_b(server, SHIP_STRUCTURE);
+		Template template = world.getStructureTemplateManager().func_189942_b(server, PirateShips.SHIP_STRUCTURE);
         PlacementSettings settings = new PlacementSettings();
         settings.setRotation(Rotation.values()[random.nextInt(Rotation.values().length)]);
         template.addBlocksToWorld(world, pos, settings);
@@ -118,8 +118,9 @@ public class PirateShipGenerator implements IWorldGenerator {
         		IBlockState chestState = Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, chestFacing);
         		world.setBlockState(dataPos, chestState);
         		
-        		TileEntityChest chest = (TileEntityChest) world.getTileEntity(dataPos);
-        		chest.setLootTable(new ResourceLocation("quark", "chests/pirate_chest"), random.nextLong());
+        		TileEntity tile = world.getTileEntity(dataPos);
+        		if(tile != null && tile instanceof TileEntityLockableLoot)
+        			((TileEntityLockableLoot) tile).setLootTable(PirateShips.PIRATE_CHEST_LOOT_TABLE, random.nextLong());
         		break;
         	case "cannon":
         		String dispenserOrientation = tokens[1];

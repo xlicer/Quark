@@ -11,6 +11,7 @@
 package vazkii.quark.world.feature;
 
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -25,6 +26,9 @@ import vazkii.quark.world.world.PirateShipGenerator;
 
 public class PirateShips extends Feature {
 
+	public static final ResourceLocation PIRATE_CHEST_LOOT_TABLE = new ResourceLocation("quark", "chests/pirate_chest");
+    public static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark", "pirate_ship");
+	
 	public static Item pirate_hat;
 
 	public static int rarity;
