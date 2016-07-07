@@ -76,16 +76,17 @@ public class ItemChestBlock extends ItemModBlock implements IExtraVariantHolder 
         BlockPos posW = pos.west();
         BlockPos posE = pos.east();
 
-        VariedChests.ChestType myType = VariedChests.custom_chest.getCustomType(stack);
+        BlockCustomChest cChest = (BlockCustomChest) getBlock();
+        VariedChests.ChestType myType = cChest.getCustomType(stack);
 
-        if(world.getBlockState(posN).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posN) == myType)
-            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posN, myType) ? 2 : 1;
-        if(world.getBlockState(posS).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posS) == myType)
-            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posS, myType) ? 2 : 1;
-        if(world.getBlockState(posW).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posW) == myType)
-            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posW, myType) ? 2 : 1;
-        if(world.getBlockState(posE).getBlock() == this.block && VariedChests.custom_chest.getCustomType(world, posE) == myType)
-            typeCnt += VariedChests.custom_chest.isDoubleChest(world, posE, myType) ? 2 : 1;
+        if(world.getBlockState(posN).getBlock() == this.block && cChest.getCustomType(world, posN) == myType)
+            typeCnt += cChest.isDoubleChest(world, posN, myType) ? 2 : 1;
+        if(world.getBlockState(posS).getBlock() == this.block && cChest.getCustomType(world, posS) == myType)
+            typeCnt += cChest.isDoubleChest(world, posS, myType) ? 2 : 1;
+        if(world.getBlockState(posW).getBlock() == this.block && cChest.getCustomType(world, posW) == myType)
+            typeCnt += cChest.isDoubleChest(world, posW, myType) ? 2 : 1;
+        if(world.getBlockState(posE).getBlock() == this.block && cChest.getCustomType(world, posE) == myType)
+            typeCnt += cChest.isDoubleChest(world, posE, myType) ? 2 : 1;
 
         if(typeCnt <= 1 && super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState)) {
             TileEntity te = world.getTileEntity(pos);
