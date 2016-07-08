@@ -11,6 +11,8 @@
 package vazkii.quark.world.feature;
 
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import com.google.common.collect.ImmutableSet;
@@ -27,6 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.MapData;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootEntryItem;
+import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
@@ -41,7 +44,11 @@ public class BuriedTreasure extends Feature {
 	public static String TAG_TREASURE_MAP = "Quark:TreasureMap";
 	public static String TAG_TREASURE_MAP_DELEGATE = "Quark:TreasureMapDelegate";
 
-	ImmutableSet<ResourceLocation> tablesToEdit = ImmutableSet.of(LootTableList.CHESTS_DESERT_PYRAMID, LootTableList.CHESTS_JUNGLE_TEMPLE, LootTableList.CHESTS_STRONGHOLD_CORRIDOR, PirateShips.PIRATE_CHEST_LOOT_TABLE);
+	ImmutableSet<ResourceLocation> tablesToEdit = ImmutableSet.of(LootTableList.CHESTS_DESERT_PYRAMID, LootTableList.CHESTS_JUNGLE_TEMPLE, LootTableList.CHESTS_STRONGHOLD_CORRIDOR);
+	Map<ResourceLocation, String> customPools = new HashMap() {{
+		put(PirateShips.PIRATE_CHEST_LOOT_TABLE, "quark:pirate_ship");
+	}};
+	
 	int rarity, quality;
 	
 	@Override
@@ -52,8 +59,14 @@ public class BuriedTreasure extends Feature {
 	
 	@SubscribeEvent
 	public void onLootTableLoad(LootTableLoadEvent event) {
-		if(tablesToEdit.contains(event.getName()))
+		ResourceLocation res = event.getName();
+		if(tablesToEdit.contains(res)) {
+			String pool = "main";
+			if(customPools.containsKey(res))
+				pool = customPools.get(res);
+				
 			event.getTable().getPool("main").addEntry(new LootEntryItem(Items.FILLED_MAP, rarity, quality, new LootFunction[] { new SetAsTreasureFunction() }, new LootCondition[0], "quark:treasure_map"));
+		}
 	}
 
 	@SubscribeEvent
