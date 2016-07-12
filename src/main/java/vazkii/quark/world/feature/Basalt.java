@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.quark.base.block.BlockMod;
 import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.BlockModStairs;
@@ -59,6 +60,9 @@ public class Basalt extends Feature {
 			BlockModStairs.initStairs(basalt, 0, new BlockBasaltStairs());
 		}
 		VanillaWalls.add("basalt", basalt, 0, enableWalls);
+
+		OreDictionary.registerOre("stoneBasalt", new ItemStack(basalt, 1, 0));
+		OreDictionary.registerOre("stoneBasaltPolished", new ItemStack(basalt, 1, 1));
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 1),
 				"BB", "BB",
