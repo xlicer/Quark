@@ -250,8 +250,10 @@ public final class DropoffHandler {
 				ItemStack stackAt = inv.getStackInSlot(i);
 
 				if(stackAt != null) {
+					ItemStack copy = stackAt.copy();
 					ItemStack ret = insertInHandler(playerInv, stackAt, pred);
-					if(ret != stackAt) {
+
+					if(!ItemStack.areItemStacksEqual(copy, ret)) {
 						inv.extractItem(i, 64, false);
 						inv.insertItem(i, ret, false);
 					}
@@ -264,6 +266,14 @@ public final class DropoffHandler {
 
 		public PlayerInvWrapper(IInventory inv) {
 			super(inv);
+		}
+
+		@Override
+		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+			if(stack != null)
+				stack = stack.copy();
+
+			return super.insertItem(slot, stack, simulate);
 		}
 
 		@Override
