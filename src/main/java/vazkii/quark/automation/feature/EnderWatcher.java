@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [18/04/2016, 21:45:11 (GMT)]
  */
 package vazkii.quark.automation.feature;
@@ -26,7 +26,7 @@ import vazkii.quark.world.feature.Biotite;
 public class EnderWatcher extends Feature {
 
 	public static Block ender_watcher;
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		ender_watcher = new BlockEnderWatcher();
@@ -38,8 +38,8 @@ public class EnderWatcher extends Feature {
 		RecipeHandler.addOreDictRecipe(new ItemStack(ender_watcher),
 				"BRB", "RER", "BRB",
 				'R', new ItemStack(Items.REDSTONE),
-				'B', (ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN)),
-				'E', new ItemStack(Items.ENDER_EYE));
+				'B', ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN),
+						'E', new ItemStack(Items.ENDER_EYE));
 	}
-	
+
 }

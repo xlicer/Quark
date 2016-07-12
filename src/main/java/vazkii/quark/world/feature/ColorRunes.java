@@ -2,15 +2,13 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [19/06/2016, 01:13:02 (GMT)]
  */
 package vazkii.quark.world.feature;
-
-import java.awt.Color;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.Item;
@@ -20,7 +18,6 @@ import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
-import net.minecraft.world.storage.loot.conditions.LootConditionManager;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -31,7 +28,6 @@ import vazkii.quark.base.handler.ICustomEnchantColor;
 import vazkii.quark.base.handler.ItemNBTHelper;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.world.feature.AncientTomes.EnchantTomeFunction;
 import vazkii.quark.world.item.ItemRune;
 
 public class ColorRunes extends Feature {
@@ -99,7 +95,7 @@ public class ColorRunes extends Feature {
 
 	// Called from ASM. See ClassTransformer
 	public static int getColor() {
-		if(!ModuleLoader.isFeatureEnabled(ColorRunes.class) || (!doesStackHaveRune(targetStack) && targetStack != null && !(targetStack.getItem() instanceof ICustomEnchantColor)))
+		if(!ModuleLoader.isFeatureEnabled(ColorRunes.class) || !doesStackHaveRune(targetStack) && targetStack != null && !(targetStack.getItem() instanceof ICustomEnchantColor))
 			return 0xff8040cc;
 
 		return getColorFromStack(targetStack);
@@ -113,9 +109,9 @@ public class ColorRunes extends Feature {
 		}
 
 		int color = getColorFromStack(targetStack);
-		float r = (float) ((color >> 16) & 0xFF) / 255F;
-		float g = (float) ((color >> 8) & 0xFF) / 255F;
-		float b = (float) (color & 0xFF) / 255F;
+		float r = (color >> 16 & 0xFF) / 255F;
+		float g = (color >> 8 & 0xFF) / 255F;
+		float b = (color & 0xFF) / 255F;
 
 		GlStateManager.color(r, g, b, 1F);
 	}
@@ -137,16 +133,16 @@ public class ColorRunes extends Feature {
 		}
 
 		if(truncate) {
-			int r = (retColor >> 16) & 0xFF;
-			int g = (retColor >> 8) & 0xFF;
+			int r = retColor >> 16 & 0xFF;
+			int g = retColor >> 8 & 0xFF;
 			int b = retColor & 0xFF;
 
 			int t = r + g + b;
 			if (t > 396) {
-				float mul = 396F / (float) t;
-				r = (int) ((float) r * mul);
-				g = (int) ((float) g * mul);
-				b = (int) ((float) b * mul);
+				float mul = 396F / t;
+				r = (int) (r * mul);
+				g = (int) (g * mul);
+				b = (int) (b * mul);
 
 				retColor = (0xFF << 24) + (r << 16) + (g << 8) + b;
 			}

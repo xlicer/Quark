@@ -50,9 +50,9 @@ public class EmoteSystem extends Feature {
 
 	private static final int EMOTE_BUTTON_START = 1800;
 	static boolean emotesVisible = false;
-	
+
 	private boolean enableKeybinds;
-	
+
 	@Override
 	public void setupConfig() {
 		enableKeybinds = loadPropBool("Enable Keybinds", "Should keybinds for emotes be generated? (They're all unbound by default)", true);
@@ -75,7 +75,7 @@ public class EmoteSystem extends Feature {
 		EmoteHandler.emoteMap.put("shrug", EmoteShrug.class);
 		EmoteHandler.emoteMap.put("facepalm", EmoteFacepalm.class);
 		EmoteHandler.emoteMap.put("headbang", EmoteHeadbang.class);
-		
+
 		if(enableKeybinds)
 			EmoteKeybinds.init();
 	}
@@ -129,7 +129,7 @@ public class EmoteSystem extends Feature {
 			Minecraft.getMinecraft().thePlayer.sendChatMessage("/emote " + emote);
 		}
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onKeyInput(KeyInputEvent event) {

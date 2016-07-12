@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [18/04/2016, 17:45:33 (GMT)]
  */
 package vazkii.quark.world.block;
@@ -89,26 +89,26 @@ public class BlockBiotite extends BlockQuartz implements IQuarkBlock {
 	public Class getVariantEnum() {
 		return null;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IStateMapper getStateMapper() {
 		return new StateMapperBase() {
-			
+
 			@Override
-            public ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                BlockQuartz.EnumType blockquartz$enumtype = (BlockQuartz.EnumType)state.getValue(BlockQuartz.VARIANT);
-                ResourceLocation baseLocation = new ResourceLocation(LibMisc.MOD_ID.toLowerCase(), "biotite_block");
-                
-                switch (blockquartz$enumtype)  {
-                    case CHISELED: return new ModelResourceLocation(baseLocation, "chiseled");
-                    case LINES_Y: return new ModelResourceLocation(baseLocation, "axis=y");
-                    case LINES_X: return new ModelResourceLocation(baseLocation, "axis=x");
-                    case LINES_Z: return new ModelResourceLocation(baseLocation, "axis=z");
-                    default: return new ModelResourceLocation(baseLocation, "normal");
-                }
-            }
-        };
+			public ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				BlockQuartz.EnumType blockquartz$enumtype = state.getValue(BlockQuartz.VARIANT);
+				ResourceLocation baseLocation = new ResourceLocation(LibMisc.MOD_ID.toLowerCase(), "biotite_block");
+
+				switch (blockquartz$enumtype)  {
+				case CHISELED: return new ModelResourceLocation(baseLocation, "chiseled");
+				case LINES_Y: return new ModelResourceLocation(baseLocation, "axis=y");
+				case LINES_X: return new ModelResourceLocation(baseLocation, "axis=x");
+				case LINES_Z: return new ModelResourceLocation(baseLocation, "axis=z");
+				default: return new ModelResourceLocation(baseLocation, "normal");
+				}
+			}
+		};
 	}
 
 }

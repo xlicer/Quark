@@ -50,7 +50,7 @@ public class VariedTrapdoors extends Feature {
 		jungle_trapdoor = new BlockModTrapdoor("jungle_trapdoor");
 		acacia_trapdoor = new BlockModTrapdoor("acacia_trapdoor");
 		dark_oak_trapdoor = new BlockModTrapdoor("dark_oak_trapdoor");
-		
+
 		OreDictionary.registerOre("trapdoorWood", spruce_trapdoor);
 		OreDictionary.registerOre("trapdoorWood", birch_trapdoor);
 		OreDictionary.registerOre("trapdoorWood", jungle_trapdoor);
@@ -89,7 +89,7 @@ public class VariedTrapdoors extends Feature {
 
 		if(renameVanillaTrapdoor)
 			Blocks.TRAPDOOR.setUnlocalizedName("oak_trapdoor");
-		
+
 		// Low priority ore dictionary recipe
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.TRAPDOOR, recipeOutput),
 				"WWW", "WWW",

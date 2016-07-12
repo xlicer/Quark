@@ -26,102 +26,102 @@ import vazkii.quark.decoration.feature.VariedChests;
 
 public class TileCustomChest extends TileEntityChest {
 
-    public VariedChests.ChestType chestType = VariedChests.ChestType.NONE;
+	public VariedChests.ChestType chestType = VariedChests.ChestType.NONE;
 
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-        super.writeToNBT(nbt);
-        nbt.setString("type", chestType.name);
-        return nbt;
-    }
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setString("type", chestType.name);
+		return nbt;
+	}
 
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        NBTTagCompound nbt = super.getUpdateTag();
-        nbt.setString("type", chestType.name);
-        return nbt;
-    }
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		NBTTagCompound nbt = super.getUpdateTag();
+		nbt.setString("type", chestType.name);
+		return nbt;
+	}
 
-    @Override
-    public void handleUpdateTag(NBTTagCompound tag) {
-        super.handleUpdateTag(tag);
-        chestType = VariedChests.ChestType.getType(tag.getString("type"));
-    }
+	@Override
+	public void handleUpdateTag(NBTTagCompound tag) {
+		super.handleUpdateTag(tag);
+		chestType = VariedChests.ChestType.getType(tag.getString("type"));
+	}
 
-    @Nullable
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        NBTTagCompound nbt = new NBTTagCompound();
-        nbt.setString("type", chestType.name);
-        return new SPacketUpdateTileEntity(pos, getBlockMetadata(), nbt);
-    }
+	@Nullable
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("type", chestType.name);
+		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), nbt);
+	}
 
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        chestType = VariedChests.ChestType.getType(pkt.getNbtCompound().getString("type"));
-    }
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		chestType = VariedChests.ChestType.getType(pkt.getNbtCompound().getString("type"));
+	}
 
-    @Override
-    public void readFromNBT(NBTTagCompound nbt) {
-        super.readFromNBT(nbt);
-        chestType = VariedChests.ChestType.getType(nbt.getString("type"));
-    }
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		chestType = VariedChests.ChestType.getType(nbt.getString("type"));
+	}
 
-    @SuppressWarnings("incomplete-switch")
-    private void setNeighbor(TileEntityChest chestTe, EnumFacing side) {
-        if( chestTe.isInvalid() ) {
-            adjacentChestChecked = false;
-        } else if( adjacentChestChecked ) {
-            switch(side) {
-                case NORTH:
-                    if(adjacentChestZNeg != chestTe)
-                        adjacentChestChecked = false;
-                    break;
-                case SOUTH:
-                    if(adjacentChestZPos != chestTe)
-                        adjacentChestChecked = false;
-                    break;
-                case EAST:
-                    if(adjacentChestXPos != chestTe)
-                        adjacentChestChecked = false;
-                    break;
-                case WEST:
-                    if(adjacentChestXNeg != chestTe)
-                        adjacentChestChecked = false;
-            }
-        }
-    }
+	@SuppressWarnings("incomplete-switch")
+	private void setNeighbor(TileEntityChest chestTe, EnumFacing side) {
+		if( chestTe.isInvalid() ) {
+			adjacentChestChecked = false;
+		} else if( adjacentChestChecked ) {
+			switch(side) {
+			case NORTH:
+				if(adjacentChestZNeg != chestTe)
+					adjacentChestChecked = false;
+				break;
+			case SOUTH:
+				if(adjacentChestZPos != chestTe)
+					adjacentChestChecked = false;
+				break;
+			case EAST:
+				if(adjacentChestXPos != chestTe)
+					adjacentChestChecked = false;
+				break;
+			case WEST:
+				if(adjacentChestXNeg != chestTe)
+					adjacentChestChecked = false;
+			}
+		}
+	}
 
-    @Nullable
-    @Override
-    protected TileEntityChest getAdjacentChest(EnumFacing side) {
-        BlockPos blockpos = pos.offset(side);
+	@Nullable
+	@Override
+	protected TileEntityChest getAdjacentChest(EnumFacing side) {
+		BlockPos blockpos = pos.offset(side);
 
-        if(isChestAt(blockpos)) {
-            TileEntity tileentity = worldObj.getTileEntity(blockpos);
+		if(isChestAt(blockpos)) {
+			TileEntity tileentity = worldObj.getTileEntity(blockpos);
 
-            if(tileentity instanceof TileCustomChest) {
-                TileCustomChest tileentitychest = (TileCustomChest)tileentity;
-                tileentitychest.setNeighbor(this, side.getOpposite());
-                return tileentitychest;
-            }
-        }
+			if(tileentity instanceof TileCustomChest) {
+				TileCustomChest tileentitychest = (TileCustomChest)tileentity;
+				tileentitychest.setNeighbor(this, side.getOpposite());
+				return tileentitychest;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    private boolean isChestAt(BlockPos posIn) {
-        if(worldObj == null) {
-            return false;
-        } else {
-            Block block = worldObj.getBlockState(posIn).getBlock();
-            TileEntity te = worldObj.getTileEntity(posIn);
-            return block instanceof BlockChest && ((BlockChest) block).chestType == getChestType() && te instanceof TileCustomChest && ((TileCustomChest) te).chestType == chestType;
-        }
-    }
-    
-    @Override
-    public AxisAlignedBB getRenderBoundingBox() {
-        return new AxisAlignedBB(pos.getX() - 1, pos.getY(), pos.getZ() - 1, pos.getX() + 2, pos.getY() + 2, pos.getZ() + 2);
-    }
+	private boolean isChestAt(BlockPos posIn) {
+		if(worldObj == null) {
+			return false;
+		} else {
+			Block block = worldObj.getBlockState(posIn).getBlock();
+			TileEntity te = worldObj.getTileEntity(posIn);
+			return block instanceof BlockChest && ((BlockChest) block).chestType == getChestType() && te instanceof TileCustomChest && ((TileCustomChest) te).chestType == chestType;
+		}
+	}
+
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return new AxisAlignedBB(pos.getX() - 1, pos.getY(), pos.getZ() - 1, pos.getX() + 2, pos.getY() + 2, pos.getZ() + 2);
+	}
 }

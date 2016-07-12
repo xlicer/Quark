@@ -2,15 +2,14 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [19/06/2016, 22:33:48 (GMT)]
  */
 package vazkii.quark.decoration.feature;
 
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,7 +27,7 @@ import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 import vazkii.quark.decoration.item.ItemColoredItemFrame;
 
 public class ColoredItemFrames extends Feature {
-	
+
 	public static Item colored_item_frame;
 
 	@Override
@@ -36,26 +35,26 @@ public class ColoredItemFrames extends Feature {
 		colored_item_frame = new ItemColoredItemFrame();
 
 		EntityRegistry.registerModEntity(EntityColoredItemFrame.class, "quark:colored_item_frame", LibEntityIDs.COLORED_ITEM_FRAME, Quark.instance, 256, 64, false);
-		
-        String[] dyes = {
-            "Black",
-            "Red",
-            "Green",
-            "Brown",
-            "Blue",
-            "Purple",
-            "Cyan",
-            "LightGray",
-            "Gray",
-            "Pink",
-            "Lime",
-            "Yellow",
-            "LightBlue",
-            "Magenta",
-            "Orange",
-            "White"
-        };
-		
+
+		String[] dyes = {
+				"Black",
+				"Red",
+				"Green",
+				"Brown",
+				"Blue",
+				"Purple",
+				"Cyan",
+				"LightGray",
+				"Gray",
+				"Pink",
+				"Lime",
+				"Yellow",
+				"LightBlue",
+				"Magenta",
+				"Orange",
+				"White"
+		};
+
 		for(int i = 0; i < 16; i++)
 			RecipeHandler.addShapelessOreDictRecipe(new ItemStack(colored_item_frame, 1, i), new ItemStack(Items.ITEM_FRAME), "dye" + dyes[15 - i]);
 	}

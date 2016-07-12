@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [01/06/2016, 20:50:38 (GMT)]
  */
 package vazkii.quark.tweaks.feature;
@@ -25,12 +25,12 @@ import vazkii.quark.base.module.Feature;
 public class ShearableChickens extends Feature {
 
 	private static final String TAG_SHEARED = "quark:sheared";
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityInteract(EntityInteract event) {
 		Entity target = event.getTarget();
@@ -38,24 +38,24 @@ public class ShearableChickens extends Feature {
 			ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
 			if(stack == null || !(stack.getItem() instanceof ItemShears))
 				stack = event.getEntityPlayer().getHeldItemOffhand();
-			
+
 			if(stack != null && stack.getItem() instanceof ItemShears) {
 				if(!event.getWorld().isRemote) {
 					EntityItem item = new EntityItem(event.getEntity().worldObj, target.posX, target.posY, target.posZ, new ItemStack(Items.FEATHER, 1));
 					event.getWorld().spawnEntityInWorld(item);
 				}
-				
+
 				target.attackEntityFrom(DamageSource.generic, 1);
 				target.getEntityData().setBoolean(TAG_SHEARED, true);
 				stack.damageItem(1, event.getEntityPlayer());
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityDrops(LivingDropsEvent event) {
 		if(event.getEntity().getEntityData().getBoolean(TAG_SHEARED))
 			event.getDrops().removeIf((EntityItem e) -> e.getEntityItem().getItem() == Items.FEATHER);
 	}
-	
+
 }

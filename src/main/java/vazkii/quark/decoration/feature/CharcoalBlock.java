@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [20/06/2016, 12:05:49 (GMT)]
  */
 package vazkii.quark.decoration.feature;
@@ -28,20 +28,20 @@ public class CharcoalBlock extends Feature {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		charcoal_block = new BlockCharcoal();
-		
-		RecipeHandler.addOreDictRecipe(new ItemStack(charcoal_block), 
+
+		RecipeHandler.addOreDictRecipe(new ItemStack(charcoal_block),
 				"CCC", "CCC", "CCC",
 				'C', new ItemStack(Items.COAL, 1, 1));
-		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.COAL, 9, 1), new ItemStack(charcoal_block)); 
-		
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.COAL, 9, 1), new ItemStack(charcoal_block));
+
 		GameRegistry.registerFuelHandler(new IFuelHandler() {
-			
+
 			@Override
 			public int getBurnTime(ItemStack stack) {
 				return stack != null && stack.getItem() == Item.getItemFromBlock(charcoal_block) ? 16000 : 0;
 			}
-			
+
 		});
 	}
-	
+
 }

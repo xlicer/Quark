@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [02/07/2016, 21:09:04 (GMT)]
  */
 package vazkii.quark.world.client.render;
@@ -26,20 +26,20 @@ import vazkii.quark.world.client.layer.LayerAshenHeldItem;
 public class RenderAshen extends RenderSkeleton {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation("quark", "textures/entity/ashen.png");
-	
+
 	public static final IRenderFactory FACTORY = (RenderManager manager) -> new RenderAshen(manager);
-	
+
 	public RenderAshen(RenderManager renderManagerIn) {
 		super(renderManagerIn);
-		
+
 		List<LayerRenderer> removals = new ArrayList();
 		for(LayerRenderer layer : layerRenderers)
 			if(layer instanceof LayerHeldItem)
 				removals.add(layer);
-		
+
 		layerRenderers.remove(layerRenderers.size() - 1);
 		layerRenderers.removeAll(removals);
-		
+
 		addLayer(new LayerAshenHeldItem(this));
 		addLayer(new LayerAshenClothes(this));
 	}
@@ -48,5 +48,5 @@ public class RenderAshen extends RenderSkeleton {
 	protected ResourceLocation getEntityTexture(EntitySkeleton entity) {
 		return TEXTURE;
 	}
-	
+
 }

@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [19/06/2016, 22:34:03 (GMT)]
  */
 package vazkii.quark.decoration.item;
@@ -23,8 +23,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.IExtraVariantHolder;
+import vazkii.quark.base.item.IItemColorProvider;
 import vazkii.quark.base.item.ItemMod;
 import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 
@@ -55,7 +55,7 @@ public class ItemColoredItemFrame extends ItemMod implements IItemColorProvider,
 			"colored_item_frame_map",
 			"colored_item_frame_map_wood"
 	};
-	
+
 	public ItemColoredItemFrame() {
 		super("colored_item_frame", VARIANTS);
 		setCreativeTab(CreativeTabs.DECORATIONS);
@@ -96,7 +96,7 @@ public class ItemColoredItemFrame extends ItemMod implements IItemColorProvider,
 	public String[] getExtraVariants() {
 		return EXTRA_VARIANTS;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IItemColor getItemColor() {

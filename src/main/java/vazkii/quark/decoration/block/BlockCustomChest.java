@@ -13,20 +13,15 @@ package vazkii.quark.decoration.block;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import akka.dispatch.sysmsg.Create;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,9 +29,7 @@ import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -50,12 +43,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.reflect.internal.TreeGen.GetVarTraverser;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.item.IExtraVariantHolder;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.decoration.feature.VariedChests;
-import vazkii.quark.decoration.feature.VariedChests.ChestType;
 import vazkii.quark.decoration.item.ItemChestBlock;
 import vazkii.quark.decoration.tile.TileCustomChest;
 
@@ -124,22 +114,22 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		VariedChests.ChestType myType = getCustomType(source, pos);
-		return getCustomType(source, pos.north()) == myType ? NORTH_CHEST_AABB : (getCustomType(source, pos.south()) == myType ? SOUTH_CHEST_AABB : (getCustomType(source, pos.west()) == myType ? WEST_CHEST_AABB : (getCustomType(source, pos.east()) == myType ? EAST_CHEST_AABB : NOT_CONNECTED_AABB)));
+		return getCustomType(source, pos.north()) == myType ? NORTH_CHEST_AABB : getCustomType(source, pos.south()) == myType ? SOUTH_CHEST_AABB : getCustomType(source, pos.west()) == myType ? WEST_CHEST_AABB : getCustomType(source, pos.east()) == myType ? EAST_CHEST_AABB : NOT_CONNECTED_AABB;
 	}
 
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) { 
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		// NO-OP
 	}
 
 	@Override
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+		return getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
 	}
 
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		EnumFacing facing = EnumFacing.getHorizontal(MathHelper.floor_double((placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3).getOpposite();
+		EnumFacing facing = EnumFacing.getHorizontal(MathHelper.floor_double(placer.rotationYaw * 4.0F / 360.0F + 0.5D) & 3).getOpposite();
 		state = state.withProperty(FACING, facing);
 		BlockPos northPos = pos.north();
 		BlockPos southPos = pos.south();
@@ -193,7 +183,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 			chest.chestType = myType;
 		}
 
-		this.onBlockAdded(worldIn, pos, state);
+		onBlockAdded(worldIn, pos, state);
 	}
 
 	public void setState(World worldIn, BlockPos pos, IBlockState state, int flag) {
@@ -290,6 +280,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 			te.invalidate();
 	}
 
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCustomChest();
 	}
@@ -324,7 +315,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 			ILockableContainer myChest = (TileCustomChest) tile;
 			VariedChests.ChestType myType = ((TileCustomChest) tile).chestType;
 
-			if(!locked && this.isBlocked(world, pos)) {
+			if(!locked && isBlocked(world, pos)) {
 				return null;
 			} else {
 				for(EnumFacing facing : EnumFacing.Plane.HORIZONTAL) {
@@ -333,7 +324,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 					TileEntity adjTile = world.getTileEntity(adjPos);
 
 					if(world.getBlockState(adjPos).getBlock() == this && adjTile instanceof TileCustomChest && ((TileCustomChest) adjTile).chestType == myType) {
-						if(this.isBlocked(world, adjPos))
+						if(isBlocked(world, adjPos))
 							return null;
 
 						if(facing != EnumFacing.WEST && facing != EnumFacing.NORTH)
@@ -349,7 +340,7 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 	}
 
 	private boolean isBlocked(World worldIn, BlockPos pos) {
-		return this.isBelowSolidBlock(worldIn, pos) || this.isOcelotSittingOnChest(worldIn, pos);
+		return isBelowSolidBlock(worldIn, pos) || isOcelotSittingOnChest(worldIn, pos);
 	}
 
 	private boolean isBelowSolidBlock(World worldIn, BlockPos pos) {

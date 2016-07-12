@@ -13,7 +13,6 @@ package vazkii.quark.automation.feature;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
@@ -43,7 +42,7 @@ public class DispensersPlaceSeeds extends Feature {
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.MELON_SEEDS, new BehaviourSeeds(Blocks.MELON_STEM));
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.BEETROOT_SEEDS, new BehaviourSeeds(Blocks.BEETROOTS));
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Item.getItemFromBlock(Blocks.CHORUS_FLOWER), new BehaviourSeeds(Blocks.CHORUS_FLOWER));
-		
+
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.DYE, new BehaviourCocoaBeans(BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.DYE)));
 	}
 
@@ -57,7 +56,7 @@ public class DispensersPlaceSeeds extends Feature {
 
 		@Override
 		public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
-	        EnumFacing facing = (EnumFacing) par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
+			EnumFacing facing = par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
 			BlockPos pos = par1IBlockSource.getBlockPos().offset(facing);
 			World world = par1IBlockSource.getWorld();
 
@@ -71,19 +70,19 @@ public class DispensersPlaceSeeds extends Feature {
 		}
 
 	}
-	
+
 	public class BehaviourCocoaBeans extends BehaviorDefaultDispenseItem {
 
 		IBehaviorDispenseItem vanillaBehaviour;
 		public BehaviourCocoaBeans(IBehaviorDispenseItem vanilla) {
 			vanillaBehaviour = vanilla;
 		}
-		
+
 		@Override
 		public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
 			if(par2ItemStack.getItemDamage() == EnumDyeColor.BROWN.getDyeDamage()) {
 				Block block = Blocks.COCOA;
-		        EnumFacing facing = (EnumFacing) par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
+				EnumFacing facing = par1IBlockSource.func_189992_e().getValue(BlockDispenser.FACING);
 				BlockPos pos = par1IBlockSource.getBlockPos().offset(facing);
 				World world = par1IBlockSource.getWorld();
 
@@ -100,5 +99,5 @@ public class DispensersPlaceSeeds extends Feature {
 		}
 
 	}
-	
+
 }

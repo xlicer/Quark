@@ -32,7 +32,8 @@ public interface IQuarkBlock extends IVariantHolder, IVariantEnumHolder, IStateM
 	public default boolean shouldDisplayVariant(int variant) {
 		return true;
 	}
-	
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public default IStateMapper getStateMapper() {
 		return null;

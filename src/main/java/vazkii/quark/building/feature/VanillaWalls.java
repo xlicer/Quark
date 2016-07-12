@@ -69,7 +69,7 @@ public class VanillaWalls extends Feature {
 		String wallName = name + "_wall";
 		BlockModWall.initWall(block, meta, supplier.supply(wallName, state));
 	}
-	
+
 	public static interface WallSupplier {
 		public BlockModWall supply(String wallName, IBlockState state);
 	}

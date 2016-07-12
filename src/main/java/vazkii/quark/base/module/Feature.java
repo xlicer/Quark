@@ -65,19 +65,19 @@ public class Feature {
 	public boolean hasSubscriptions() {
 		return false;
 	}
-	
+
 	public boolean hasTerrainSubscriptions() {
 		return false;
 	}
-	
+
 	public boolean hasOreGenSubscriptions() {
 		return false;
 	}
-	
+
 	public String getFeatureDescription() {
 		return "";
 	}
-	
+
 	public static void registerTile(Class<? extends TileEntity> clazz, String key) {
 		GameRegistry.registerTileEntity(clazz, LibMisc.PREFIX_MOD + key);
 	}
@@ -101,7 +101,7 @@ public class Feature {
 	public final String loadPropString(String propName, String desc, String default_) {
 		return ConfigHelper.loadPropString(propName, category, desc, default_);
 	}
-	
+
 	public final String[] loadPropStringList(String propName, String desc, String[] default_) {
 		return ConfigHelper.loadPropStringList(propName, category, desc, default_);
 	}

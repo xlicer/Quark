@@ -41,7 +41,7 @@ public class ConfigHelper {
 
 		return prop.getString();
 	}
-	
+
 	public static String[] loadPropStringList(String propName, String category, String desc, String[] default_) {
 		Property prop = ModuleLoader.config.get(category, propName, default_);
 		prop.setComment(desc);

@@ -20,7 +20,7 @@ public interface IVariantHolder {
 
 	@SideOnly(Side.CLIENT)
 	public ItemMeshDefinition getCustomMeshDefinition();
-	
+
 	public default String getUniqueModel() {
 		return null;
 	}

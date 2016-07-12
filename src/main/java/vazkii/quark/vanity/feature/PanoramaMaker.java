@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [10/06/2016, 18:08:12 (GMT)]
  */
 package vazkii.quark.vanity.feature;
@@ -55,23 +55,23 @@ public class PanoramaMaker extends Feature {
 	boolean takingPanorama;
 	int currentWidth, currentHeight;
 	boolean overridenOnce;
-	
+
 	boolean overrideMainMenu;
-	
+
 	@Override
 	public void setupConfig() {
 		overrideMainMenu = loadPropBool("Use panorama screenshots on main menu", "", true);
 	}
-	
+
 	@SubscribeEvent
 	public void loadMainMenu(GuiOpenEvent event) {
 		if(overrideMainMenu && !overridenOnce && event.getGui() instanceof GuiMainMenu) {
 			File mcDir = ModuleLoader.configFile.getParentFile().getParentFile();
 			File panoramasDir = new File(mcDir, "/screenshots/panoramas");
 			List<File[]> validFiles = new ArrayList();
-			
+
 			ImmutableSet<String> set = ImmutableSet.of("panorama_0.png", "panorama_1.png", "panorama_2.png", "panorama_3.png", "panorama_4.png", "panorama_5.png");
-			
+
 			if(panoramasDir.exists()) {
 				File[] subDirs;
 
@@ -79,36 +79,36 @@ public class PanoramaMaker extends Feature {
 				if(mainMenu.exists())
 					subDirs = new File[] { mainMenu };
 				else subDirs = panoramasDir.listFiles((File f) -> f.isDirectory());
-				
+
 				for(File f : subDirs)
 					if(set.stream().allMatch((String s) -> new File(f, s).exists()))
 						validFiles.add(f.listFiles((File f1) -> set.contains(f1.getName())));
 			}
-			
+
 			if(!validFiles.isEmpty()) {
 				File[] files = validFiles.get(new Random().nextInt(validFiles.size()));
 				Arrays.sort(files);
-				
+
 				Minecraft mc = Minecraft.getMinecraft();
 				ResourceLocation[] resources = new ResourceLocation[6];
-				
+
 				for(int i = 0; i < resources.length; i++) {
 					File f = files[i];
 					try {
 						DynamicTexture tex = new DynamicTexture(ImageIO.read(f));
 						String name = "quark:" + f.getName();
-						
+
 						resources[i] = mc.getTextureManager().getDynamicTextureLocation(name, tex);
 					} catch (IOException e) {
 						e.printStackTrace();
 						return;
 					}
 				}
-				
+
 				try {
 					Field field = ReflectionHelper.findField(GuiMainMenu.class, LibObfuscation.TITLE_PANORAMA_PATHS);
 					field.setAccessible(true);
-					
+
 					if(Modifier.isFinal(field.getModifiers())) {
 						Field modfield = Field.class.getDeclaredField("modifiers");
 						modfield.setAccessible(true);
@@ -120,7 +120,7 @@ public class PanoramaMaker extends Feature {
 					e.printStackTrace();
 				}
 			}
-			
+
 			overridenOnce = true;
 		}
 	}
@@ -165,7 +165,7 @@ public class PanoramaMaker extends Feature {
 					currentHeight = mc.displayHeight;
 					rotationYaw = mc.thePlayer.rotationYaw;
 					rotationPitch = mc.thePlayer.rotationPitch;
-					mc.resize(256, 256);	
+					mc.resize(256, 256);
 				}
 
 				switch(panoramaStep) {
@@ -203,12 +203,12 @@ public class PanoramaMaker extends Feature {
 				if(panoramaStep == 7) {
 					mc.gameSettings.hideGUI = false;
 					takingPanorama = false;
-					
+
 					mc.thePlayer.rotationYaw = rotationYaw;
 					mc.thePlayer.rotationPitch = rotationYaw;
 					mc.thePlayer.prevRotationYaw = mc.thePlayer.rotationYaw;
 					mc.thePlayer.prevRotationPitch = mc.thePlayer.rotationPitch;
-					
+
 					mc.resize(currentWidth, currentHeight);
 				}
 			}
@@ -220,8 +220,8 @@ public class PanoramaMaker extends Feature {
 			BufferedImage bufferedimage = ScreenShotHelper.createScreenshot(width, height, buffer);
 			File file2 = new File(dir, screenshotName);
 
-			net.minecraftforge.client.event.ScreenshotEvent event = net.minecraftforge.client.ForgeHooksClient.onScreenshot(bufferedimage, file2);
-			ImageIO.write(bufferedimage, "png", (File)file2);
+			net.minecraftforge.client.ForgeHooksClient.onScreenshot(bufferedimage, file2);
+			ImageIO.write(bufferedimage, "png", file2);
 		} catch(Exception exception) { }
 	}
 
@@ -234,10 +234,10 @@ public class PanoramaMaker extends Feature {
 	public boolean hasSubscriptions() {
 		return isClient();
 	}
-	
+
 	@Override
 	public String getFeatureDescription() {
 		return "Shift-Ctrl-F12 for panorama screenshot.\nPanoramas show up in the main menu.\nRename a panorama folder to 'main_menu' and it'll always show that one.";
 	}
-	
+
 }

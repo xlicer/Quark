@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [02/07/2016, 21:19:43 (GMT)]
  */
 package vazkii.quark.world.client.layer;
@@ -39,30 +39,29 @@ public class LayerAshenHeldItem implements LayerRenderer<EntitySkeleton> {
 			GlStateManager.pushMatrix();
 
 			if(livingEntityRenderer.getMainModel().isChild) {
-				float f = 0.5F;
 				GlStateManager.translate(0.0F, 0.625F, 0.0F);
 				GlStateManager.rotate(-20.0F, -1.0F, 0.0F, 0.0F);
 				GlStateManager.scale(0.5F, 0.5F, 0.5F);
 			}
 
 			renderHeldItem(entitylivingbaseIn, itemstack1, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, EnumHandSide.RIGHT);
-//			renderHeldItem(entitylivingbaseIn, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, EnumHandSide.LEFT);
+			//			renderHeldItem(entitylivingbaseIn, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, EnumHandSide.LEFT);
 			GlStateManager.popMatrix();
 		}
-	}	
+	}
 	private void renderHeldItem(EntityLivingBase p_188358_1_, ItemStack p_188358_2_, ItemCameraTransforms.TransformType p_188358_3_, EnumHandSide handSide) {
 		if(p_188358_2_ != null) {
 			GlStateManager.pushMatrix();
 
 			if(p_188358_1_.isSneaking())
 				GlStateManager.translate(0.0F, 0.2F, 0.0F);
-			
+
 			// Forge: moved this call down, fixes incorrect offset while sneaking.
 			((ModelBiped)livingEntityRenderer.getMainModel()).postRenderArm(0.0625F, handSide);
 			GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
 			GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 			boolean flag = handSide == EnumHandSide.LEFT;
-			GlStateManager.translate((float)(flag ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+			GlStateManager.translate((flag ? -1 : 1) / 16.0F, 0.125F, -0.625F);
 			Minecraft.getMinecraft().getItemRenderer().renderItemSide(p_188358_1_, p_188358_2_, p_188358_3_, flag);
 			GlStateManager.popMatrix();
 		}

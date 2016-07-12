@@ -48,11 +48,11 @@ public class ModelHandler {
 	public static void init() {
 		ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
 		BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
-		
+
 		for(IVariantHolder holder : ItemMod.variantHolders) {
 			if(holder instanceof IItemColorProvider)
 				itemColors.registerItemColorHandler(((IItemColorProvider) holder).getItemColor(), (Item) holder);
-			
+
 			if(holder instanceof ItemBlock && ((ItemBlock) holder).getBlock() instanceof IBlockColorProvider) {
 				Block block = ((ItemBlock) holder).getBlock();
 				blockColors.registerBlockColorHandler(((IBlockColorProvider) block).getBlockColor(), block);
@@ -69,7 +69,7 @@ public class ModelHandler {
 		if(def != null)
 			ModelLoader.setCustomMeshDefinition((Item) holder, def);
 		else registerModels(i, holder.getVariants(), unique, false);
-		
+
 		if(holder instanceof IExtraVariantHolder) {
 			IExtraVariantHolder extra = (IExtraVariantHolder) holder;
 			registerModels(i, extra.getExtraVariants(), unique, true);
@@ -86,7 +86,7 @@ public class ModelHandler {
 
 			IStateMapper mapper = quarkBlock.getStateMapper();
 			IProperty[] ignored = quarkBlock.getIgnoredProperties();
-			if(mapper != null || (ignored != null && ignored.length > 0)) {
+			if(mapper != null || ignored != null && ignored.length > 0) {
 				if(mapper != null)
 					ModelLoader.setCustomStateMapper((Block) quarkBlock, mapper);
 				else {
@@ -111,7 +111,7 @@ public class ModelHandler {
 			String var = variants[i];
 			if(!extra && uniqueVariant != null)
 				var = uniqueVariant;
-			
+
 			String name = LibMisc.PREFIX_MOD + var;
 			ModelResourceLocation loc = new ModelResourceLocation(name, "inventory");
 			if(!extra) {

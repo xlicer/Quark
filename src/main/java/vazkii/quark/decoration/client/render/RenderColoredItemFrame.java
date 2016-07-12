@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [20/06/2016, 00:14:07 (GMT)]
  */
 package vazkii.quark.decoration.client.render;
@@ -40,29 +40,29 @@ import vazkii.quark.decoration.entity.EntityColoredItemFrame;
 public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 	private static final ResourceLocation MAP_BACKGROUND_TEXTURES = new ResourceLocation("textures/map/map_background.png");
 	private final Minecraft mc = Minecraft.getMinecraft();
-	
+
 	public static final IRenderFactory FACTORY = (RenderManager manager) -> new RenderColoredItemFrame(manager);
-	
+
 	private RenderItem itemRenderer;
 
 	public RenderColoredItemFrame(RenderManager renderManagerIn) {
 		super(renderManagerIn);
-		this.itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 	}
 
 	@Override
 	public void doRender(EntityColoredItemFrame entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		BlockPos blockpos = entity.getHangingPosition();
-		double d0 = (double)blockpos.getX() - entity.posX + x;
-		double d1 = (double)blockpos.getY() - entity.posY + y;
-		double d2 = (double)blockpos.getZ() - entity.posZ + z;
+		double d0 = blockpos.getX() - entity.posX + x;
+		double d1 = blockpos.getY() - entity.posY + y;
+		double d2 = blockpos.getZ() - entity.posZ + z;
 		GlStateManager.translate(d0 + 0.5D, d1 + 0.5D, d2 + 0.5D);
 		GlStateManager.rotate(180.0F - entity.rotationYaw, 0.0F, 1.0F, 0.0F);
-		this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		BlockRendererDispatcher blockrendererdispatcher = this.mc.getBlockRendererDispatcher();
+		renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+		BlockRendererDispatcher blockrendererdispatcher = mc.getBlockRendererDispatcher();
 		ModelManager modelmanager = blockrendererdispatcher.getBlockModelShapes().getModelManager();
-		
+
 		IBakedModel ibakedmodel1, ibakedmodel2;
 
 		if (entity.getDisplayedItem() != null && entity.getDisplayedItem().getItem() == Items.FILLED_MAP)
@@ -79,22 +79,22 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 
-		if (this.renderOutlines)
+		if (renderOutlines)
 		{
 			GlStateManager.enableColorMaterial();
-			GlStateManager.enableOutlineMode(this.getTeamColor(entity));
+			GlStateManager.enableOutlineMode(getTeamColor(entity));
 		}
 
 		blockrendererdispatcher.getBlockModelRenderer().renderModelBrightnessColor(ibakedmodel1, 1.0F, 1.0F, 1.0F, 1.0F);
 
 		int color = ItemDye.DYE_COLORS[15 - entity.getColor()];
-		float r = (float) ((color >> 16) & 0xFF) / 255F;
-		float g = (float) ((color >> 8) & 0xFF) / 255F;
-		float b = (float) (color & 0xFF) / 255F;
-		
+		float r = (color >> 16 & 0xFF) / 255F;
+		float g = (color >> 8 & 0xFF) / 255F;
+		float b = (color & 0xFF) / 255F;
+
 		blockrendererdispatcher.getBlockModelRenderer().renderModelBrightnessColor(ibakedmodel2, 1.0F, r, g, b);
-		
-		if (this.renderOutlines)
+
+		if (renderOutlines)
 		{
 			GlStateManager.disableOutlineMode();
 			GlStateManager.disableColorMaterial();
@@ -102,9 +102,9 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 
 		GlStateManager.popMatrix();
 		GlStateManager.translate(0.0F, 0.0F, 0.4375F);
-		this.renderItem(entity);
+		renderItem(entity);
 		GlStateManager.popMatrix();
-		this.renderName(entity, x + (double)((float)entity.facingDirection.getFrontOffsetX() * 0.3F), y - 0.25D, z + (double)((float)entity.facingDirection.getFrontOffsetZ() * 0.3F));
+		renderName(entity, x + entity.facingDirection.getFrontOffsetX() * 0.3F, y - 0.25D, z + entity.facingDirection.getFrontOffsetZ() * 0.3F);
 	}
 
 	@Override
@@ -130,14 +130,14 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 				i = i % 4 * 2;
 			}
 
-			GlStateManager.rotate((float)i * 360.0F / 8.0F, 0.0F, 0.0F, 1.0F);
+			GlStateManager.rotate(i * 360.0F / 8.0F, 0.0F, 0.0F, 1.0F);
 
 			//            net.minecraftforge.client.event.RenderItemInFrameEvent event = new net.minecraftforge.client.event.RenderItemInFrameEvent(itemFrame, this);
 			//            if (!net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event))
 			//            {
 			if (item instanceof net.minecraft.item.ItemMap)
 			{
-				this.renderManager.renderEngine.bindTexture(MAP_BACKGROUND_TEXTURES);
+				renderManager.renderEngine.bindTexture(MAP_BACKGROUND_TEXTURES);
 				GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
 				float f = 0.0078125F;
 				GlStateManager.scale(f, f, f);
@@ -147,21 +147,21 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 
 				if (mapdata != null)
 				{
-					this.mc.entityRenderer.getMapItemRenderer().renderMap(mapdata, true);
+					mc.entityRenderer.getMapItemRenderer().renderMap(mapdata, true);
 				}
 			}
 			else
 			{
 				GlStateManager.scale(0.5F, 0.5F, 0.5F);
 
-				if (!this.itemRenderer.shouldRenderItemIn3D(entityitem.getEntityItem()) || item instanceof ItemSkull)
+				if (!itemRenderer.shouldRenderItemIn3D(entityitem.getEntityItem()) || item instanceof ItemSkull)
 				{
 					GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 				}
 
 				GlStateManager.pushAttrib();
 				RenderHelper.enableStandardItemLighting();
-				this.itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.FIXED);
+				itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.FIXED);
 				RenderHelper.disableStandardItemLighting();
 				GlStateManager.popAttrib();
 			}
@@ -174,15 +174,15 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 
 	@Override
 	protected void renderName(EntityColoredItemFrame entity, double x, double y, double z) {
-		if (Minecraft.isGuiEnabled() && entity.getDisplayedItem() != null && entity.getDisplayedItem().hasDisplayName() && this.renderManager.pointedEntity == entity)
+		if (Minecraft.isGuiEnabled() && entity.getDisplayedItem() != null && entity.getDisplayedItem().hasDisplayName() && renderManager.pointedEntity == entity)
 		{
-			double d0 = entity.getDistanceSqToEntity(this.renderManager.renderViewEntity);
+			double d0 = entity.getDistanceSqToEntity(renderManager.renderViewEntity);
 			float f = entity.isSneaking() ? 32.0F : 64.0F;
 
-			if (d0 < (double)(f * f))
+			if (d0 < f * f)
 			{
 				String s = entity.getDisplayedItem().getDisplayName();
-				this.renderLivingLabel(entity, s, x, y, z, 64);
+				renderLivingLabel(entity, s, x, y, z, 64);
 			}
 		}
 	}

@@ -10,8 +10,6 @@
  */
 package vazkii.quark.vanity.client.gui;
 
-import org.lwjgl.opengl.GLSync;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;

@@ -70,12 +70,12 @@ public class Basalt extends Feature {
 
 		GameRegistry.registerWorldGenerator(new BasaltGenerator(nether, overworld, clusterSizeOverworld, clusterSizeNether, clusterCountOverworld, clusterCountNether), 0);
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent event) {
 		ItemStack blackItem = new ItemStack(Items.COAL);
 		if(ModuleLoader.isFeatureEnabled(Biotite.class))
-			blackItem = new ItemStack(Biotite.biotite); 
+			blackItem = new ItemStack(Biotite.biotite);
 
 		RecipeHandler.addOreDictRecipe(new ItemStack(basalt, 4, 0),
 				"BI", "IB",

@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [02/07/2016, 23:09:15 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -28,28 +28,28 @@ public class PirateShips extends Feature {
 
 	public static final ResourceLocation PIRATE_CHEST_LOOT_TABLE = new ResourceLocation("quark", "chests/pirate_chest");
 	public static final ResourceLocation SHIP_STRUCTURE = new ResourceLocation("quark", "pirate_ship");
-	
+
 	public static Item pirate_hat;
 
 	public static int rarity;
-	
+
 	@Override
 	public void setupConfig() {
 		rarity = loadPropInt("Pirate Ship Rarity", "Given this value as X, 1 ship will spawn in X ocean biome chunks", 500);
 	}
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		pirate_hat = new ItemPirateHat();
-		
+
 		EntityRegistry.registerModEntity(EntityPirate.class, "pirate", LibEntityIDs.PIRATE, Quark.instance, 80, 3, true, 0x4d1d14, 0xac9617);
-		
+
 		GameRegistry.registerWorldGenerator(new PirateShipGenerator(), 0);
 	}
-	
+
 	@Override
 	public void preInitClient(FMLPreInitializationEvent event) {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, RenderPirate.FACTORY);
 	}
-	
+
 }

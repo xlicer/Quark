@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [18/04/2016, 21:48:06 (GMT)]
  */
 package vazkii.quark.automation.block;
@@ -28,7 +28,7 @@ import vazkii.quark.base.block.BlockModContainer;
 public class BlockEnderWatcher extends BlockModContainer {
 
 	public static PropertyBool WATCHED = PropertyBool.create("watched");
-	
+
 	public BlockEnderWatcher() {
 		super("ender_watcher", Material.IRON);
 		setHardness(3F);
@@ -37,32 +37,32 @@ public class BlockEnderWatcher extends BlockModContainer {
 		setDefaultState(blockState.getBaseState().withProperty(WATCHED, false));
 		setCreativeTab(CreativeTabs.REDSTONE);
 	}
-	
+
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { WATCHED });
 	}
-	
-    @Override
-    public boolean canProvidePower(IBlockState state) {
-        return true;
-    }
-	
+
+	@Override
+	public boolean canProvidePower(IBlockState state) {
+		return true;
+	}
+
 	@Override
 	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return blockState.getValue(WATCHED) ? 15 : 0;
 	}
-	
+
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(WATCHED) ? 1 : 0;
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(WATCHED, meta != 0);
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEnderWatcher();

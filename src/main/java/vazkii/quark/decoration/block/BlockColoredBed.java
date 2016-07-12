@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [03/07/2016, 21:47:19 (GMT)]
  */
 package vazkii.quark.decoration.block;
@@ -17,7 +17,6 @@ import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -25,7 +24,6 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -67,27 +65,27 @@ public class BlockColoredBed extends BlockBed implements IQuarkBlock, IBlockColo
 		GameRegistry.register(new ItemModBlock(this), new ResourceLocation(LibMisc.PREFIX_MOD + name));
 		return this;
 	}
-	
+
 	@Override
 	public boolean isBed(IBlockState state, IBlockAccess world, BlockPos pos, Entity player) {
 		return true;
 	}
-	
+
 	@Override
-    @Nullable
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return state.getValue(PART) == BlockBed.EnumPartType.HEAD ? null : ColoredBeds.colored_bed_item;
-    }
-    
+	@Nullable
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return state.getValue(PART) == BlockBed.EnumPartType.HEAD ? null : ColoredBeds.colored_bed_item;
+	}
+
 	@Override
 	public int damageDropped(IBlockState state) {
 		return color;
 	}
-	
-    @Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(ColoredBeds.colored_bed_item, 1, color);
-    }
+
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+		return new ItemStack(ColoredBeds.colored_bed_item, 1, color);
+	}
 
 	@Override
 	public String getBareName() {
@@ -140,7 +138,7 @@ public class BlockColoredBed extends BlockBed implements IQuarkBlock, IBlockColo
 	@SideOnly(Side.CLIENT)
 	public IBlockColor getBlockColor() {
 		return new IBlockColor() {
-			
+
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
 				return ColoredBeds.getColor(color);

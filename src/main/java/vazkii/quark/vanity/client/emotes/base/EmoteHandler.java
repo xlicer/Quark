@@ -50,7 +50,7 @@ public final class EmoteHandler {
 	public static void putEmote(AbstractClientPlayer player, Class<? extends EmoteBase> clazz) {
 		if(playerEmotes.containsKey(player))
 			return;
-		
+
 		ModelBiped model = getPlayerModel(player);
 		ModelBiped armorModel = getPlayerArmorModel(player);
 		ModelBiped armorLegModel = getPlayerArmorLegModel(player);
@@ -73,7 +73,7 @@ public final class EmoteHandler {
 			if(playerEmotes.containsKey(player)) {
 				EmoteBase emote = playerEmotes.get(player);
 				boolean done = emote.isDone();
-				
+
 				if(player.swingProgress > 0 || player.hurtTime > 0)
 					done = true;
 

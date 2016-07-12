@@ -16,19 +16,16 @@ import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -46,7 +43,7 @@ public final class DropoffHandler {
 	public static void dropoff(EntityPlayer player, boolean smart, boolean useContainer) {
 		if(!ModuleLoader.isFeatureEnabled(useContainer ? ChestButtons.class : StoreToChests.class))
 			return;
-		
+
 		if(!useContainer && !player.worldObj.getWorldInfo().getGameRulesInstance().getBoolean(StoreToChests.GAME_RULE)) {
 			disableClientDropoff(player);
 			return;
@@ -66,7 +63,7 @@ public final class DropoffHandler {
 		if(player instanceof EntityPlayerMP)
 			NetworkHandler.INSTANCE.sendTo(new MessageDisableDropoffClient(), (EntityPlayerMP) player);
 	}
-	
+
 	public static IItemHandler getInventory(EntityPlayer player, World world, BlockPos pos) {
 		TileEntity te = world.getTileEntity(pos);
 
@@ -102,8 +99,8 @@ public final class DropoffHandler {
 			String name = te.getClass().getSimpleName().toLowerCase();
 			accept = (name.contains("chest") || te instanceof TileEntityChest) && !name.contains("void") && !name.contains("trash");
 		}
-		
-		accept &= (te != null && te.isUseableByPlayer(player));
+
+		accept &= te != null && te.isUseableByPlayer(player);
 
 		return accept;
 	}

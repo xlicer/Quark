@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [19/06/2016, 03:03:47 (GMT)]
  */
 package vazkii.quark.world.item;
@@ -41,23 +41,23 @@ public class ItemRune extends ItemMod implements IItemColorProvider, ICustomEnch
 			"rune_red",
 			"rune_black"
 	};
-	
+
 	public ItemRune() {
 		super("rune", VARIANTS);
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.MISC);
 	}
-	
+
 	@Override
 	public boolean hasEffect(ItemStack stack) {
 		return true;
 	}
-	
+
 	@Override
 	public String getUniqueModel() {
 		return "rune";
 	}
-	
+
 	@Override
 	public int getEnchantEffectColor(ItemStack stack) {
 		return ItemDye.DYE_COLORS[15 - Math.min(15, stack.getItemDamage())];
@@ -67,12 +67,12 @@ public class ItemRune extends ItemMod implements IItemColorProvider, ICustomEnch
 	@SideOnly(Side.CLIENT)
 	public IItemColor getItemColor() {
 		return new IItemColor() {
-			
+
 			@Override
 			public int getColorFromItemstack(ItemStack stack, int tintIndex) {
 				return tintIndex == 1 ? ColorRunes.getColorFromStack(stack) : 0xFFFFFF;
 			}
 		};
 	}
-	
+
 }

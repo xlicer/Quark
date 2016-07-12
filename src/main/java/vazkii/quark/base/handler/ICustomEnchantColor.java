@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [19/06/2016, 03:39:21 (GMT)]
  */
 package vazkii.quark.base.handler;
@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 public interface ICustomEnchantColor {
 
 	public int getEnchantEffectColor(ItemStack stack);
-	
+
 	/**
 	 * Due to how enchantment color blending works, by default, the brightness of the effect
 	 * color is truncated so the sum of RGB is less or equal to 396, the sum of the RGB
@@ -26,5 +26,5 @@ public interface ICustomEnchantColor {
 	public default boolean shouldTruncateColorBrightness(ItemStack stack) {
 		return true;
 	}
-	
+
 }

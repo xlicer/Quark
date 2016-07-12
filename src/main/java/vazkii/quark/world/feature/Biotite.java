@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [18/04/2016, 17:34:10 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -37,16 +37,16 @@ public class Biotite extends Feature {
 
 	public static Block biotite_ore;
 	public static Block biotite_block;
-	
+
 	public static Item biotite;
-	
+
 	public static boolean generateNatually;
 	boolean generateByDragon;
 	boolean enableWalls;
 	int clusterSize, clusterCount;
 	int generationDelay;
 	int clustersPerTick;
-	
+
 	@Override
 	public void setupConfig() {
 		enableWalls = loadPropBool("Enable walls", "", true);
@@ -57,45 +57,45 @@ public class Biotite extends Feature {
 		generationDelay = loadPropInt("Generation delay on dragon death", "", 1);
 		clustersPerTick = loadPropInt("Clusters generated per dragon death tick", "", 16);
 	}
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		biotite_ore = new BlockBiotiteOre();
 		biotite_block = new BlockBiotite();
 
 		biotite = new ItemBiotite();
-		
+
 		BlockModSlab singleSlab = new BlockBiotiteSlab(false);
 		BlockModSlab.initSlab(biotite_block, 0, singleSlab, new BlockBiotiteSlab(true));
 		BlockModStairs.initStairs(biotite_block, 0, new BlockBiotiteStairs());
-		
+
 		VanillaWalls.add("biotite", biotite_block, 0, enableWalls);
-		
-		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block), 
+
+		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block),
 				"BB", "BB",
 				'B', new ItemStack(biotite));
-		
-		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block, 2, 1), 
+
+		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block, 2, 1),
 				"B", "B",
 				'B', new ItemStack(singleSlab));
-		
-		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block, 2, 2), 
+
+		RecipeHandler.addOreDictRecipe(new ItemStack(biotite_block, 2, 2),
 				"B", "B",
 				'B', new ItemStack(biotite_block));
-		
+
 		GameRegistry.registerWorldGenerator(new BiotiteGenerator(clusterSize, clusterCount), 0);
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityTick(LivingUpdateEvent event) {
 		if(generateByDragon && event.getEntityLiving() instanceof EntityDragon && !event.getEntity().worldObj.isRemote) {
 			EntityDragon dragon = (EntityDragon) event.getEntity();
-			
+
 			if(dragon.deathTicks > 0 && dragon.deathTicks % generationDelay == 0) {
 				Random rand = dragon.worldObj.rand;
 				BlockPos basePos = dragon.getPosition();
 				basePos = new BlockPos(basePos.getX() - 128, 0, basePos.getZ() -128);
-				
+
 				for(int i = 0; i < clustersPerTick; i++) {
 					BlockPos pos = basePos.add(rand.nextInt(256), rand.nextInt(64), rand.nextInt(256));
 					BiotiteGenerator.generator.generate(dragon.worldObj, rand, pos);
@@ -103,10 +103,10 @@ public class Biotite extends Feature {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 }

@@ -23,7 +23,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.tools.nsc.settings.Milestone;
 
 public class Module {
 
@@ -39,7 +38,7 @@ public class Module {
 	public void registerFeature(Feature feature) {
 		registerFeature(feature, convertName(feature.getClass().getSimpleName()));
 	}
-	
+
 	public void registerFeature(Feature feature, boolean enabledByDefault) {
 		registerFeature(feature, convertName(feature.getClass().getSimpleName()), enabledByDefault);
 	}
@@ -112,7 +111,7 @@ public class Module {
 	public boolean canBeDisabled() {
 		return true;
 	}
-	
+
 	public boolean isEnabledByDefault() {
 		return true;
 	}
@@ -120,7 +119,7 @@ public class Module {
 	String makeName() {
 		return getClass().getSimpleName().replaceAll("Quark", "").toLowerCase();
 	}
-	
+
 	public String getModuleDescription() {
 		return "";
 	}

@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [03/07/2016, 03:48:53 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -40,13 +40,13 @@ public class Wraiths extends Feature {
 	public static Item soul_bead;
 
 	public static Potion curse;
-	
+
 	public static int curseTime;
 	public static boolean enableCurse;
-	
+
 	int weight, min, max;
 	int curseRange;
-	
+
 	@Override
 	public void setupConfig() {
 		weight = loadPropInt("Spawn Weight", "", 60);
@@ -56,23 +56,23 @@ public class Wraiths extends Feature {
 		curseTime = loadPropInt("Curse Time", "How long the curse effect lasts for (in ticks)", 24000);
 		enableCurse = loadPropBool("Enable Curse", "", true);
 	}
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		soul_bead = new ItemSoulBead();
-		
+
 		if(enableCurse)
 			curse = new PotionMod("curse", true, 0x000000, 0);
-		
+
 		EntityRegistry.registerModEntity(EntityWraith.class, "wraith", LibEntityIDs.WRAITH, Quark.instance, 80, 3, true, 0xececec, 0xbdbdbd);
 		EntityRegistry.addSpawn(EntityWraith.class, weight, min, max, EnumCreatureType.MONSTER, Biomes.HELL);
 	}
-	
+
 	@Override
 	public void preInitClient(FMLPreInitializationEvent event) {
 		RenderingRegistry.registerEntityRenderingHandler(EntityWraith.class, RenderWraith.FACTORY);
 	}
-	
+
 	@SubscribeEvent
 	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
 		if(event.getResult() != Result.ALLOW && event.getEntityLiving() instanceof IMob) {
@@ -85,10 +85,10 @@ public class Wraiths extends Feature {
 				}
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 }

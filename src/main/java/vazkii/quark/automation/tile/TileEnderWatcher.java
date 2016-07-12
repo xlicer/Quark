@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [18/04/2016, 21:51:27 (GMT)]
  */
 package vazkii.quark.automation.tile;
@@ -55,7 +55,7 @@ public class TileEnderWatcher extends TileMod implements ITickable {
 
 		if(looking != wasLooking && !worldObj.isRemote)
 			worldObj.setBlockState(getPos(), worldObj.getBlockState(getPos()).withProperty(BlockEnderWatcher.WATCHED, looking), 1 | 2);
-		
+
 		if(looking) {
 			double x = getPos().getX() - 0.1 + Math.random() * 1.2;
 			double y = getPos().getY() - 0.1 + Math.random() * 1.2;
@@ -64,7 +64,7 @@ public class TileEnderWatcher extends TileMod implements ITickable {
 			((WorldServer) worldObj).spawnParticle(EnumParticleTypes.REDSTONE, false, x, y, z, 0, 1.0D, 0.0D, 0.0D, 1.0D);
 		}
 	}
-	
+
 	public static RayTraceResult raytraceFromEntity(World world, Entity player, boolean par3, double range) {
 		float f = 1.0F;
 		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
@@ -85,5 +85,5 @@ public class TileEnderWatcher extends TileMod implements ITickable {
 		Vec3d vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
 		return world.rayTraceBlocks(vec3, vec31, par3);
 	}
-	
+
 }

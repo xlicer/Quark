@@ -2,15 +2,13 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [05/06/2016, 20:33:17 (GMT)]
  */
 package vazkii.quark.base.item;
-
-import java.util.List;
 
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +18,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import vazkii.quark.base.handler.TooltipHandler;
 import vazkii.quark.base.lib.LibMisc;
 
 public class ItemModArmor extends ItemArmor implements IVariantHolder {
@@ -29,7 +26,7 @@ public class ItemModArmor extends ItemArmor implements IVariantHolder {
 
 	public ItemModArmor(String name, ItemArmor.ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
-		
+
 		setUnlocalizedName(name);
 		bareName = name;
 		ItemMod.variantHolders.add(this);
@@ -46,7 +43,7 @@ public class ItemModArmor extends ItemArmor implements IVariantHolder {
 
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int dmg = par1ItemStack.getItemDamage();
+		par1ItemStack.getItemDamage();
 
 		return "item." + LibMisc.PREFIX_MOD + bareName;
 	}

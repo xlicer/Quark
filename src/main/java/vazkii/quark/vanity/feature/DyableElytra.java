@@ -86,11 +86,11 @@ public class DyableElytra extends Feature {
 		list.remove(remove);
 		list.add(new LayerBetterElytra(render));
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onTooltip(ItemTooltipEvent event) {
-		ItemStack stack = event.getItemStack(); 
+		ItemStack stack = event.getItemStack();
 		if(stack != null && stack.getItem() == Items.ELYTRA) {
 			int color = ItemNBTHelper.getInt(stack, TAG_ELYTRA_DYE, 15);
 			EnumDyeColor dye = EnumDyeColor.byDyeDamage(color);
@@ -98,7 +98,7 @@ public class DyableElytra extends Feature {
 				event.getToolTip().add(I18n.format("quark.dyedElytra", I18n.format("quark.dye." + dye.getUnlocalizedName())));
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return isClient();

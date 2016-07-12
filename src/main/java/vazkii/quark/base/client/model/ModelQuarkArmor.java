@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [02/07/2016, 23:16:57 (GMT)]
  */
 package vazkii.quark.base.client.model;
@@ -24,11 +24,11 @@ import net.minecraft.util.EnumHandSide;
 public abstract class ModelQuarkArmor extends ModelBiped {
 
 	public abstract void setModelParts();
-	
+
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		setModelParts();
-		
+
 		GlStateManager.pushMatrix();
 		if(entity instanceof EntityArmorStand) { // Fixes rendering on armor stands
 			f3 = 0;
@@ -39,52 +39,52 @@ public abstract class ModelQuarkArmor extends ModelBiped {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		GlStateManager.popMatrix();
 	}
-	
+
 	public void prepareForRender(Entity entity, float pticks) {
 		EntityLivingBase living = (EntityLivingBase) entity;
 		isSneak = living != null ? living.isSneaking() : false;
 		isChild = living != null ? living.isChild() : false;
 		if(living != null && living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
-			
+
 			swingProgress = player.getSwingProgress(pticks);
-			
-            ModelBiped.ArmPose modelbiped$armpose = ModelBiped.ArmPose.EMPTY;
-            ModelBiped.ArmPose modelbiped$armpose1 = ModelBiped.ArmPose.EMPTY;
-            ItemStack itemstack = player.getHeldItemMainhand();
-            ItemStack itemstack1 = player.getHeldItemOffhand();
-            
-            if(itemstack != null) {
-                modelbiped$armpose = ModelBiped.ArmPose.ITEM;
 
-                if(player.getItemInUseCount() > 0) {
-                    EnumAction enumaction = itemstack.getItemUseAction();
+			ModelBiped.ArmPose modelbiped$armpose = ModelBiped.ArmPose.EMPTY;
+			ModelBiped.ArmPose modelbiped$armpose1 = ModelBiped.ArmPose.EMPTY;
+			ItemStack itemstack = player.getHeldItemMainhand();
+			ItemStack itemstack1 = player.getHeldItemOffhand();
 
-                    if(enumaction == EnumAction.BLOCK)
-                        modelbiped$armpose = ModelBiped.ArmPose.BLOCK;
-                    else if(enumaction == EnumAction.BOW)
-                        modelbiped$armpose = ModelBiped.ArmPose.BOW_AND_ARROW;
-                }
-            }
+			if(itemstack != null) {
+				modelbiped$armpose = ModelBiped.ArmPose.ITEM;
 
-            if(itemstack1 != null) {
-                modelbiped$armpose1 = ModelBiped.ArmPose.ITEM;
+				if(player.getItemInUseCount() > 0) {
+					EnumAction enumaction = itemstack.getItemUseAction();
 
-                if(player.getItemInUseCount() > 0) {
-                    EnumAction enumaction1 = itemstack1.getItemUseAction();
+					if(enumaction == EnumAction.BLOCK)
+						modelbiped$armpose = ModelBiped.ArmPose.BLOCK;
+					else if(enumaction == EnumAction.BOW)
+						modelbiped$armpose = ModelBiped.ArmPose.BOW_AND_ARROW;
+				}
+			}
 
-                    if(enumaction1 == EnumAction.BLOCK)
-                        modelbiped$armpose1 = ModelBiped.ArmPose.BLOCK;
-                }
-            }
+			if(itemstack1 != null) {
+				modelbiped$armpose1 = ModelBiped.ArmPose.ITEM;
 
-            if(player.getPrimaryHand() == EnumHandSide.RIGHT) {
-                rightArmPose = modelbiped$armpose;
-                leftArmPose = modelbiped$armpose1;
-            } else {
-                rightArmPose = modelbiped$armpose1;
-                leftArmPose = modelbiped$armpose;
-            }
+				if(player.getItemInUseCount() > 0) {
+					EnumAction enumaction1 = itemstack1.getItemUseAction();
+
+					if(enumaction1 == EnumAction.BLOCK)
+						modelbiped$armpose1 = ModelBiped.ArmPose.BLOCK;
+				}
+			}
+
+			if(player.getPrimaryHand() == EnumHandSide.RIGHT) {
+				rightArmPose = modelbiped$armpose;
+				leftArmPose = modelbiped$armpose1;
+			} else {
+				rightArmPose = modelbiped$armpose1;
+				leftArmPose = modelbiped$armpose;
+			}
 		}
 	}
 
@@ -93,5 +93,5 @@ public abstract class ModelQuarkArmor extends ModelBiped {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-	
+
 }

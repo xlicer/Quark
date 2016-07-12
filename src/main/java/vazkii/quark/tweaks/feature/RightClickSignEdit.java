@@ -36,7 +36,7 @@ public class RightClickSignEdit extends Feature {
 			TileEntitySign sign = (TileEntitySign) tile;
 			sign.setPlayer(event.getEntityPlayer());
 			ReflectionHelper.setPrivateValue(TileEntitySign.class, sign, true, LibObfuscation.IS_EDITABLE);
-			
+
 			event.getEntityPlayer().openGui(Quark.instance, LibGuiIDs.SIGN, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
 		}
 	}

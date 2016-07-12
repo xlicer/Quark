@@ -37,83 +37,83 @@ import vazkii.quark.decoration.tile.TileCustomChest;
 
 public class ItemChestBlock extends ItemModBlock implements IExtraVariantHolder {
 
-    public ItemChestBlock(Block block) {
-        super(block);
-        setHasSubtypes(true);
-    }
+	public ItemChestBlock(Block block) {
+		super(block);
+		setHasSubtypes(true);
+	}
 
-    @Override
-    public int getMetadata(int damage) {
-        return 0;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public ItemMeshDefinition getCustomMeshDefinition() {
-    	return new ItemMeshDefinition() {
-			
+	@Override
+	public int getMetadata(int damage) {
+		return 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ItemMeshDefinition getCustomMeshDefinition() {
+		return new ItemMeshDefinition() {
+
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
 				ChestType type = VariedChests.custom_chest.getCustomType(stack);
 				return getBlock() == VariedChests.custom_chest_trap ? type.trapModel : type.normalModel;
 			}
 		};
-    }
-    
-    @Override
-    public String getUnlocalizedName(ItemStack stack) {
+	}
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
 		ChestType type = VariedChests.custom_chest.getCustomType(stack);
-    	String name = type.name + (getBlock() == VariedChests.custom_chest_trap ? "_trap" : ""); 
+		String name = type.name + (getBlock() == VariedChests.custom_chest_trap ? "_trap" : "");
 		return "tile." + LibMisc.PREFIX_MOD + "custom_chest_" + name;
-    }
+	}
 
-    @Override
-    public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
-        int typeCnt = 0;
+	@Override
+	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
+		int typeCnt = 0;
 
-        BlockPos posN = pos.north();
-        BlockPos posS = pos.south();
-        BlockPos posW = pos.west();
-        BlockPos posE = pos.east();
+		BlockPos posN = pos.north();
+		BlockPos posS = pos.south();
+		BlockPos posW = pos.west();
+		BlockPos posE = pos.east();
 
-        BlockCustomChest cChest = (BlockCustomChest) getBlock();
-        VariedChests.ChestType myType = cChest.getCustomType(stack);
+		BlockCustomChest cChest = (BlockCustomChest) getBlock();
+		VariedChests.ChestType myType = cChest.getCustomType(stack);
 
-        if(world.getBlockState(posN).getBlock() == this.block && cChest.getCustomType(world, posN) == myType)
-            typeCnt += cChest.isDoubleChest(world, posN, myType) ? 2 : 1;
-        if(world.getBlockState(posS).getBlock() == this.block && cChest.getCustomType(world, posS) == myType)
-            typeCnt += cChest.isDoubleChest(world, posS, myType) ? 2 : 1;
-        if(world.getBlockState(posW).getBlock() == this.block && cChest.getCustomType(world, posW) == myType)
-            typeCnt += cChest.isDoubleChest(world, posW, myType) ? 2 : 1;
-        if(world.getBlockState(posE).getBlock() == this.block && cChest.getCustomType(world, posE) == myType)
-            typeCnt += cChest.isDoubleChest(world, posE, myType) ? 2 : 1;
+		if(world.getBlockState(posN).getBlock() == block && cChest.getCustomType(world, posN) == myType)
+			typeCnt += cChest.isDoubleChest(world, posN, myType) ? 2 : 1;
+		if(world.getBlockState(posS).getBlock() == block && cChest.getCustomType(world, posS) == myType)
+			typeCnt += cChest.isDoubleChest(world, posS, myType) ? 2 : 1;
+		if(world.getBlockState(posW).getBlock() == block && cChest.getCustomType(world, posW) == myType)
+			typeCnt += cChest.isDoubleChest(world, posW, myType) ? 2 : 1;
+		if(world.getBlockState(posE).getBlock() == block && cChest.getCustomType(world, posE) == myType)
+			typeCnt += cChest.isDoubleChest(world, posE, myType) ? 2 : 1;
 
-        if(typeCnt <= 1 && super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState)) {
-            TileEntity te = world.getTileEntity(pos);
-            if(te instanceof TileCustomChest) {
-                ((TileCustomChest) te).chestType = myType;
-                return true;
-            }
-        }
+		if(typeCnt <= 1 && super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState)) {
+			TileEntity te = world.getTileEntity(pos);
+			if(te instanceof TileCustomChest) {
+				((TileCustomChest) te).chestType = myType;
+				return true;
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-    	BlockCustomChest chest = (BlockCustomChest) Block.getBlockFromItem(itemIn);
-        for(ChestType type : VariedChests.ChestType.VALID_TYPES)
-            subItems.add(chest.setCustomType(new ItemStack(itemIn, 1), type));
-    }
+	@Override
+	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+		BlockCustomChest chest = (BlockCustomChest) Block.getBlockFromItem(itemIn);
+		for(ChestType type : VariedChests.ChestType.VALID_TYPES)
+			subItems.add(chest.setCustomType(new ItemStack(itemIn, 1), type));
+	}
 
 	@Override
 	public String[] getExtraVariants() {
 		List<String> variants = new ArrayList();
-        for(ChestType type : VariedChests.ChestType.VALID_TYPES) {
-        	variants.add("custom_chest_" + type.name);
-        	variants.add("custom_chest_trap_" + type.name);
-        }
-        	
+		for(ChestType type : VariedChests.ChestType.VALID_TYPES) {
+			variants.add("custom_chest_" + type.name);
+			variants.add("custom_chest_trap_" + type.name);
+		}
+
 		return variants.toArray(new String[variants.size()]);
 	}
 

@@ -65,7 +65,7 @@ public class ClassTransformer implements IClassTransformer {
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.RETURN;
-				}, 
+				},
 				(MethodNode method, AbstractInsnNode node) -> { // Action
 					InsnList newInstructions = new InsnList();
 
@@ -124,7 +124,7 @@ public class ClassTransformer implements IClassTransformer {
 		transClass = transform(transClass, Pair.of(sig1, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.ASTORE;
-				}, 
+				},
 				(MethodNode method, AbstractInsnNode node) -> { // Action
 					InsnList newInstructions = new InsnList();
 
@@ -143,7 +143,7 @@ public class ClassTransformer implements IClassTransformer {
 			transClass = transform(transClass, Pair.of(sig2, combine(
 					(AbstractInsnNode node) -> { // Filter
 						return node.getOpcode() == Opcodes.INVOKESTATIC;
-					}, 
+					},
 					(MethodNode method, AbstractInsnNode node) -> { // Action
 						invokestaticCount++;
 						if(invokestaticCount != 4 && invokestaticCount != 7)
@@ -158,7 +158,7 @@ public class ClassTransformer implements IClassTransformer {
 						return invokestaticCount == -7;
 					})));
 		}
-		
+
 
 		return transClass;
 	}
@@ -170,7 +170,7 @@ public class ClassTransformer implements IClassTransformer {
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.POP;
-				}, 
+				},
 				(MethodNode method, AbstractInsnNode node) -> { // Action
 					InsnList newInstructions = new InsnList();
 
@@ -189,7 +189,7 @@ public class ClassTransformer implements IClassTransformer {
 		return transform(basicClass, Pair.of(sig, combine(
 				(AbstractInsnNode node) -> { // Filter
 					return node.getOpcode() == Opcodes.INVOKEVIRTUAL && (((MethodInsnNode) node).desc.equals("(Lnet/minecraft/entity/Entity;FFFFFF)V") || ((MethodInsnNode) node).desc.equals("(Lrw;FFFFFF)V"));
-				}, 
+				},
 				(MethodNode method, AbstractInsnNode node) -> { // Action
 					log("Patching " + method + " in node " + node);
 					InsnList newInstructions = new InsnList();
@@ -237,7 +237,7 @@ public class ClassTransformer implements IClassTransformer {
 
 				boolean finish = pred.test(method);
 				log("Patch result: " + finish);
-				
+
 				return finish;
 			}
 		}
@@ -258,7 +258,7 @@ public class ClassTransformer implements IClassTransformer {
 			if(filter.test(anode)) {
 				didAny = true;
 				if(action.test(method, anode))
-					break;	
+					break;
 			}
 		}
 
@@ -279,7 +279,7 @@ public class ClassTransformer implements IClassTransformer {
 			this.funcDesc = funcDesc;
 			this.obfDesc = obfDesc;
 		}
-		
+
 		@Override
 		public String toString() {
 			return "Names [" + funcName + ", " + srgName + ", " + obfName + "] Descriptor " + funcDesc + " / " + obfDesc;

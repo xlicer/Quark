@@ -16,10 +16,8 @@ import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.client.audio.GuardianSound;
 import net.minecraft.client.audio.ISound;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityGuardian;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
@@ -38,7 +36,7 @@ public class OceanGuardians extends Feature {
 	boolean deepOceanOnly;
 	int weight, min, max;
 	boolean tweakSound;
-	
+
 	@Override
 	public void setupConfig() {
 		deepOceanOnly = loadPropBool("Deep ocean only", "", false);
@@ -55,13 +53,13 @@ public class OceanGuardians extends Feature {
 		for(Biome b : set)
 			b.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(new SpawnListEntry(EntityGuardian.class, weight, min, max));
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onSound(PlaySoundEvent event) {
 		if(!tweakSound)
 			return;
-		
+
 		ISound sound = event.getSound();
 		if(sound instanceof GuardianSound) {
 			GuardianSound gsound = (GuardianSound) sound;
@@ -69,7 +67,7 @@ public class OceanGuardians extends Feature {
 			event.setResultSound(new GuardianSound2UnderwaterBoogaloo(guardian));
 		}
 	}
-	
+
 	@Override
 	public boolean hasSubscriptions() {
 		return isClient();

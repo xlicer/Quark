@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [01/06/2016, 19:41:33 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
@@ -44,7 +42,7 @@ public class AncientTomes extends Feature {
 	public static Item ancient_tome;
 	public static List<Enchantment> validEnchants = new ArrayList();
 	private String[] enchantNames;
-	
+
 	int dungeonWeight, libraryWeight, itemQuality;
 
 	@Override
@@ -59,7 +57,7 @@ public class AncientTomes extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		ancient_tome = new ItemAncientTome();
 	}
-	
+
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
 		validEnchants.clear();
@@ -131,31 +129,31 @@ public class AncientTomes extends Feature {
 
 	private String[] generateDefaultEnchantmentList() {
 		Enchantment[] enchants = new Enchantment[] {
-			Enchantments.FEATHER_FALLING,
-			Enchantments.THORNS,
-			Enchantments.SHARPNESS,
-			Enchantments.SMITE,
-			Enchantments.BANE_OF_ARTHROPODS,
-			Enchantments.KNOCKBACK,
-			Enchantments.FIRE_ASPECT,
-			Enchantments.LOOTING,
-			Enchantments.EFFICIENCY,
-			Enchantments.UNBREAKING,
-			Enchantments.FORTUNE,
-			Enchantments.POWER,
-			Enchantments.PUNCH,
-			Enchantments.LUCK_OF_THE_SEA,
-			Enchantments.LURE 
+				Enchantments.FEATHER_FALLING,
+				Enchantments.THORNS,
+				Enchantments.SHARPNESS,
+				Enchantments.SMITE,
+				Enchantments.BANE_OF_ARTHROPODS,
+				Enchantments.KNOCKBACK,
+				Enchantments.FIRE_ASPECT,
+				Enchantments.LOOTING,
+				Enchantments.EFFICIENCY,
+				Enchantments.UNBREAKING,
+				Enchantments.FORTUNE,
+				Enchantments.POWER,
+				Enchantments.PUNCH,
+				Enchantments.LUCK_OF_THE_SEA,
+				Enchantments.LURE
 		};
-		
+
 		List<String> strings = new ArrayList();
 		for(Enchantment e : enchants)
 			if(e != null && e.getRegistryName() != null)
 				strings.add(e.getRegistryName().toString());
-		
+
 		return strings.toArray(new String[strings.size()]);
 	}
-	
+
 	public static class EnchantTomeFunction extends LootFunction {
 
 		protected EnchantTomeFunction() {

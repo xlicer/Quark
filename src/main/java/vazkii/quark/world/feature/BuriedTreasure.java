@@ -2,10 +2,10 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- * 
+ *
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- * 
+ *
  * File Created @ [30/04/2016, 18:34:27 (GMT)]
  */
 package vazkii.quark.world.feature;
@@ -29,7 +29,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.MapData;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootEntryItem;
-import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
@@ -48,23 +47,22 @@ public class BuriedTreasure extends Feature {
 	Map<ResourceLocation, String> customPools = new HashMap() {{
 		put(PirateShips.PIRATE_CHEST_LOOT_TABLE, "quark:pirate_ship");
 	}};
-	
+
 	int rarity, quality;
-	
+
 	@Override
 	public void setupConfig() {
 		rarity = loadPropInt("Treasure map Rarity", "", 10);
 		quality = loadPropInt("Treasure map item quality", "This is used for the luck attribute in loot tables. It doesn't affect the loot you get from the map itself.", 2);
 	}
-	
+
 	@SubscribeEvent
 	public void onLootTableLoad(LootTableLoadEvent event) {
 		ResourceLocation res = event.getName();
 		if(tablesToEdit.contains(res)) {
-			String pool = "main";
 			if(customPools.containsKey(res))
-				pool = customPools.get(res);
-				
+				customPools.get(res);
+
 			event.getTable().getPool("main").addEntry(new LootEntryItem(Items.FILLED_MAP, rarity, quality, new LootFunction[] { new SetAsTreasureFunction() }, new LootCondition[0], "quark:treasure_map"));
 		}
 	}
@@ -78,7 +76,7 @@ public class BuriedTreasure extends Feature {
 				if(stack != null && stack.hasTagCompound()) {
 					if(ItemNBTHelper.getBoolean(stack, TAG_TREASURE_MAP_DELEGATE, false))
 						makeMap(stack, player.worldObj, player.getPosition());
-					
+
 					if(ItemNBTHelper.getBoolean(stack, TAG_TREASURE_MAP, false)) {
 						MapData data = (MapData) player.worldObj.loadItemData(MapData.class, "map_" + stack.getItemDamage());
 						if(data != null) {
@@ -118,7 +116,7 @@ public class BuriedTreasure extends Feature {
 			if(tries > 100)
 				return null;
 
-			int distance = 400 + r.nextInt(200);		
+			int distance = 400 + r.nextInt(200);
 			double angle = r.nextFloat() * (Math.PI * 2);
 			int x = (int) (sourcePos.getX() + Math.cos(angle) * distance);
 			int z = (int) (sourcePos.getZ() + Math.sin(angle) * distance);
@@ -141,7 +139,7 @@ public class BuriedTreasure extends Feature {
 
 		world.setBlockState(treasurePos, Blocks.CHEST.getDefaultState());
 		TileEntityChest chest = (TileEntityChest) world.getTileEntity(treasurePos);
-		
+
 		chest.setLootTable(LootTableList.CHESTS_SIMPLE_DUNGEON, r.nextLong());
 
 		ItemNBTHelper.setBoolean(itemstack, TAG_TREASURE_MAP, true);
@@ -158,7 +156,7 @@ public class BuriedTreasure extends Feature {
 	public boolean hasSubscriptions() {
 		return true;
 	}
-	
+
 	public static class SetAsTreasureFunction extends LootFunction {
 
 		protected SetAsTreasureFunction() {
@@ -170,7 +168,7 @@ public class BuriedTreasure extends Feature {
 			ItemNBTHelper.setBoolean(stack, TAG_TREASURE_MAP_DELEGATE, true);
 			return stack;
 		}
-		
+
 	}
 
 }
