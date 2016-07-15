@@ -74,4 +74,17 @@ public class ConfigCommand extends Feature {
 		}
 	}
 	
+	@Override
+	public String getFeatureDescription() {
+		return "Adds a /quarkconfig command which allows for modification of the Quark config file through any means that can run commands at permission 2 (command block level) or higher."
+				+ "\n"
+				+ "\nAn example syntax of the command would be /quarkconfig management \"store to chests\" \"B:Invert button\" true nosave playerdude"
+				+ "\nDoing this would set the dropoff button for playerdude to be inverted. "
+				+ "\"save\" means it should save the changes to the config file on disk. Using \"nosave\" won't save."
+				+ "\n"
+				+ "\nAnother example can be /quarkconfig tweaks - \"Shearable chickens\" false"
+				+ "\nThis disables shearable chickens for everybody on the server. \"nosave\" doesn't need to be included, as it's the default."
+				+ "\n\"nosave\" does need to be there if a player name is used. Lastly, - signifies no subcategory inside the module.";
+	}
+	
 }

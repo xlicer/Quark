@@ -38,7 +38,7 @@ public class CommandConfig extends CommandBase {
 
 	@Override
 	public String getCommandUsage(ICommandSender p_71518_1_) {
-		return "<config file> <category> <key> <value>";
+		return "<module> <category> <key> <value> [save?] [player]";
 	}
 
 	@Override
