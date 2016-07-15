@@ -46,7 +46,6 @@ import vazkii.quark.world.feature.PirateShips;
 
 public class PirateShipGenerator implements IWorldGenerator {
 
-
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if(!(world instanceof WorldServer))
