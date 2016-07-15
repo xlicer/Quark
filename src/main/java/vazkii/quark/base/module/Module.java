@@ -56,25 +56,51 @@ public class Module {
 		ModuleLoader.featureInstances.put(feature.getClass(), feature);
 		features.put(name, feature);
 
-		feature.enabled = loadPropBool(name, feature.getFeatureDescription(), enabledByDefault) && enabled;
+		feature.enabledByDefault = enabledByDefault;
+		feature.prevEnabled = false;
+		
 		feature.module = this;
-		feature.category = this.name + "." + name;
-		if(feature.enabled) {
-			enabledFeatures.add(feature);
-
-			if(feature.hasSubscriptions())
-				MinecraftForge.EVENT_BUS.register(feature);
-			if(feature.hasTerrainSubscriptions())
-				MinecraftForge.TERRAIN_GEN_BUS.register(feature);
-			if(feature.hasOreGenSubscriptions())
-				MinecraftForge.ORE_GEN_BUS.register(feature);
-		}
+		feature.configName = name;
+		feature.configCategory = this.name + "." + name;
 	}
 
 	public void setupConfig() {
 		if(features.isEmpty())
 			addFeatures();
-		forEachFeature(feature -> feature.setupConfig());
+		
+		forEachFeature(feature -> { 
+			feature.enabled = loadPropBool(feature.configName, feature.getFeatureDescription(), feature.enabledByDefault) && enabled;
+
+			if(!feature.loadtimeDone) {
+				feature.enabledAtLoadtime = feature.enabled;
+				feature.loadtimeDone = true;
+			}
+			
+			if(feature.enabled && !enabledFeatures.contains(feature))
+				enabledFeatures.add(feature);
+			else if(!feature.enabled && enabledFeatures.contains(feature))
+				enabledFeatures.remove(feature);
+			
+			feature.setupConfig();
+			
+			if(!feature.enabled && feature.prevEnabled) {
+				if(feature.hasSubscriptions())
+					MinecraftForge.EVENT_BUS.unregister(feature);
+				if(feature.hasTerrainSubscriptions())
+					MinecraftForge.TERRAIN_GEN_BUS.unregister(feature);
+				if(feature.hasOreGenSubscriptions())
+					MinecraftForge.ORE_GEN_BUS.unregister(feature);
+			} else if(feature.enabled && feature.enabledAtLoadtime && !feature.prevEnabled) {
+				if(feature.hasSubscriptions())
+					MinecraftForge.EVENT_BUS.register(feature);
+				if(feature.hasTerrainSubscriptions())
+					MinecraftForge.TERRAIN_GEN_BUS.register(feature);
+				if(feature.hasOreGenSubscriptions())
+					MinecraftForge.ORE_GEN_BUS.register(feature);
+			}
+			
+			feature.prevEnabled = feature.enabled;
+		});
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {

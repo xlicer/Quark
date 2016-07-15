@@ -24,9 +24,16 @@ import vazkii.quark.base.lib.LibMisc;
 public class Feature {
 
 	public Module module;
+	
+	public boolean loadtimeDone;
+	public boolean enabledAtLoadtime;
+	
+	public boolean enabledByDefault;
 	public boolean enabled;
-	public String category;
-
+	public boolean prevEnabled;
+	public String configCategory;
+	public String configName;
+	
 	public void setupConfig() {
 		// NO-OP
 	}
@@ -87,22 +94,22 @@ public class Feature {
 	}
 
 	public final int loadPropInt(String propName, String desc, int default_) {
-		return ConfigHelper.loadPropInt(propName, category, desc, default_);
+		return ConfigHelper.loadPropInt(propName, configCategory, desc, default_);
 	}
 
 	public final double loadPropDouble(String propName, String desc, double default_) {
-		return ConfigHelper.loadPropDouble(propName, category, desc, default_);
+		return ConfigHelper.loadPropDouble(propName, configCategory, desc, default_);
 	}
 
 	public final boolean loadPropBool(String propName, String desc, boolean default_) {
-		return ConfigHelper.loadPropBool(propName, category, desc, default_);
+		return ConfigHelper.loadPropBool(propName, configCategory, desc, default_);
 	}
 
 	public final String loadPropString(String propName, String desc, String default_) {
-		return ConfigHelper.loadPropString(propName, category, desc, default_);
+		return ConfigHelper.loadPropString(propName, configCategory, desc, default_);
 	}
 
 	public final String[] loadPropStringList(String propName, String desc, String[] default_) {
-		return ConfigHelper.loadPropStringList(propName, category, desc, default_);
+		return ConfigHelper.loadPropStringList(propName, configCategory, desc, default_);
 	}
 }
