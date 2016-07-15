@@ -11,12 +11,13 @@
 package vazkii.quark.building.block.stairs;
 
 import vazkii.quark.base.block.BlockModStairs;
+import vazkii.quark.building.feature.IronPlates;
 import vazkii.quark.building.feature.MidoriBlocks;
 
 public class BlockIronPlateStairs extends BlockModStairs {
 
 	public BlockIronPlateStairs() {
-		super("iron_plate_stairs", MidoriBlocks.midori_block.getDefaultState());
+		super("iron_plate_stairs", IronPlates.iron_plate.getDefaultState());
 	}
 
 }
