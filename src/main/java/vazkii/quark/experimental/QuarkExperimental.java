@@ -11,7 +11,9 @@
 package vazkii.quark.experimental;
 
 import vazkii.quark.base.module.Module;
+import vazkii.quark.experimental.command.CommandConfig;
 import vazkii.quark.experimental.features.BiggerCaves;
+import vazkii.quark.experimental.features.ConfigCommand;
 import vazkii.quark.experimental.features.PrintSuppressor;
 import vazkii.quark.experimental.features.Tabards;
 
@@ -22,6 +24,7 @@ public class QuarkExperimental extends Module {
 		registerFeature(new BiggerCaves(), false);
 		registerFeature(new Tabards(), false);
 		registerFeature(new PrintSuppressor(), false);
+		registerFeature(new ConfigCommand(), false);
 	}
 
 	@Override

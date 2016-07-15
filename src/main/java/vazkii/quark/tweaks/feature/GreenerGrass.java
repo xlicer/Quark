@@ -42,7 +42,7 @@ public class GreenerGrass extends Feature {
 	@Override
 	public void setupConfig() {
 		affectFolliage = loadPropBool("Should affect folliage", "", true);
-		alphaGrass = loadPropBool("Alpha grass (will override manual values)", "", false);
+		alphaGrass = loadPropBool("Alpha grass", "Sets the grass color to be a \"Minecraft Alpha\" tone.\nThis will override all manual shift values.", false);
 		absoluteValues = loadPropBool("Treat shifts as absolute and ignore biome colors", "", false);
 		redShift = loadPropInt("Shift reds by", "", -30);
 		greenShift = loadPropInt("Shift greens by", "", 30);

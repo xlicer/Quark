@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import vazkii.quark.base.lib.LibMisc;
+import vazkii.quark.base.network.message.MessageChangeConfig;
 import vazkii.quark.base.network.message.MessageDisableDropoffClient;
 import vazkii.quark.base.network.message.MessageDoEmote;
 import vazkii.quark.base.network.message.MessageDropoff;
@@ -36,6 +37,7 @@ public class NetworkHandler {
 		register(MessageFavoriteItem.class, Side.SERVER);
 		register(MessageDisableDropoffClient.class, Side.CLIENT);
 		register(MessageLinkItem.class, Side.SERVER);
+		register(MessageChangeConfig.class, Side.CLIENT);
 	}
 
 	private static void register(Class clazz, Side handlerSide) {
