@@ -23,6 +23,7 @@ import vazkii.quark.tweaks.feature.EndermenTeleportYou;
 import vazkii.quark.tweaks.feature.FlintTools;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.GreenerGrass;
+import vazkii.quark.tweaks.feature.HoeSickle;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
@@ -70,6 +71,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new ConvertClay(), "Convert Clay Blocks to Clay");
 		registerFeature(new RemoveSnowLayers(), "Remove layers of snow by right clicking with a shovel");
 		registerFeature(new AutoJumpHotkey());
+		registerFeature(new HoeSickle(), "Hoes break a 5x5 of plants");
 	}
 
 }
