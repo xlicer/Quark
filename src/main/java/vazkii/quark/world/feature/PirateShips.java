@@ -35,7 +35,7 @@ public class PirateShips extends Feature {
 
 	@Override
 	public void setupConfig() {
-		rarity = loadPropInt("Pirate Ship Rarity", "Given this value as X, 1 ship will spawn in X ocean biome chunks", 1000);
+		rarity = loadPropInt("Pirate Ship Rarity", "Given this value as X, 1 ship will spawn in X ocean biome chunks", 1500);
 	}
 
 	@Override
