@@ -36,6 +36,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.common.BiomeDictionary;
@@ -71,6 +72,17 @@ public class PirateShipGenerator implements IWorldGenerator {
 		Template template = world.getStructureTemplateManager().func_189942_b(server, PirateShips.SHIP_STRUCTURE);
 		PlacementSettings settings = new PlacementSettings();
 		settings.setRotation(Rotation.values()[random.nextInt(Rotation.values().length)]);
+		
+		BlockPos size = template.getSize();
+		for(int x = 0; x < size.getX(); x++)
+			for(int y = 0; y < size.getY(); y++)
+				for(int z = 0; z < size.getZ(); z++) {
+					BlockPos checkPos = pos.add(template.transformedBlockPos(settings, new BlockPos(x, y, z)));
+					IBlockState checkState = world.getBlockState(checkPos);
+					if(!checkState.getBlock().isAir(checkState, world, checkPos) && checkState.getBlock() != Blocks.WATER)
+						return; // Obstructed, can't generate here
+				}
+		
 		template.addBlocksToWorld(world, pos, settings);
 
 		Map<BlockPos, String> dataBlocks = template.getDataBlocks(pos, settings);
