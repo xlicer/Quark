@@ -17,5 +17,8 @@ public final class LibEntityIDs {
 	public static final int DWELLER = 2;
 	public static final int PIRATE = 3;
 	public static final int WRAITH = 4;
+	public static final int ARROW_ENDER = 5;
+	public static final int ARROW_EXPLOSIVE = 6;
+	public static final int ARROW_TORCH = 7;
 
 }

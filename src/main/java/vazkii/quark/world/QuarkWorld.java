@@ -19,6 +19,7 @@ import vazkii.quark.world.feature.ClayGeneration;
 import vazkii.quark.world.feature.ColorRunes;
 import vazkii.quark.world.feature.DefaultWorldOptions;
 import vazkii.quark.world.feature.DepthMobs;
+import vazkii.quark.world.feature.ExtraArrows;
 import vazkii.quark.world.feature.MushroomsInSwamps;
 import vazkii.quark.world.feature.NaturalBlazesInNether;
 import vazkii.quark.world.feature.OceanGuardians;
@@ -46,6 +47,7 @@ public class QuarkWorld extends Module {
 		registerFeature(new DepthMobs());
 		registerFeature(new PirateShips());
 		registerFeature(new Wraiths());
+		registerFeature(new ExtraArrows());
 
 		registerFeature(new RealisticWorldType());
 		registerFeature(new DefaultWorldOptions());

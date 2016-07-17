@@ -270,6 +270,9 @@ item.quark:colored_bed_item_purple.name=Purple Bed
 item.quark:colored_bed_item_silver.name=Light Gray Bed
 item.quark:colored_bed_item_white.name=White Bed
 item.quark:colored_bed_item_yellow.name=Yellow Bed
+item.quark:arrow_ender.name=Ender Arrow
+item.quark:arrow_explosive.name=Explosive Arrow
+item.quark:arrow_torch.name=Torch Arrow
 
 # ENTITY NAMES
 entity.Quark.quark:colored_item_frame.name=Colored Item Frame
