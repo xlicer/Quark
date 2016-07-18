@@ -17,8 +17,8 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -67,7 +67,7 @@ public class EntityArrowTorch extends EntityArrow {
 			BlockPos finalPos = pos.offset(raytraceResultIn.sideHit);
 			IBlockState state = worldObj.getBlockState(finalPos);
 			Block block = state.getBlock();
-			if(block.isAir(state, worldObj, finalPos) || block.isReplaceable(worldObj, finalPos)) {
+			if((block.isAir(state, worldObj, finalPos) || block.isReplaceable(worldObj, finalPos)) && raytraceResultIn.sideHit != EnumFacing.DOWN) {
 				worldObj.setBlockState(finalPos, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, raytraceResultIn.sideHit));
 				setDead();
 			}
