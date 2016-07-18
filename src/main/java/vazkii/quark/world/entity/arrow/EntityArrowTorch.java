@@ -62,8 +62,14 @@ public class EntityArrowTorch extends EntityArrow {
 	protected void onHit(RayTraceResult raytraceResultIn) {
 		super.onHit(raytraceResultIn);
 
+		if(isDead)
+			return;
+		
 		if(!worldObj.isRemote) {
 			BlockPos pos = raytraceResultIn.getBlockPos();
+			if(pos == null)
+				return;
+			
 			BlockPos finalPos = pos.offset(raytraceResultIn.sideHit);
 			IBlockState state = worldObj.getBlockState(finalPos);
 			Block block = state.getBlock();
