@@ -19,6 +19,7 @@ import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -58,9 +59,13 @@ public class PirateShipGenerator implements IWorldGenerator {
 
 		BlockPos xzPos = new BlockPos(x, 1, z);
 		Biome biome = world.getBiomeForCoordsBody(xzPos);
-		if(Arrays.asList(BiomeDictionary.getTypesForBiome(biome)).contains(Type.OCEAN)) {
+		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN) {
 			if(random.nextInt(PirateShips.rarity) == 0) {
 				BlockPos pos = getTopLiquidBlock(world, new BlockPos(x, 0, z));
+				IBlockState state = world.getBlockState(pos.down());
+				if(state.getBlock() != Blocks.WATER)
+					return;
+				
 				pos = new BlockPos(pos.getX(), pos.getY() - 3, pos.getZ());
 				generateShipAt(sWorld, random, pos);
 			}
