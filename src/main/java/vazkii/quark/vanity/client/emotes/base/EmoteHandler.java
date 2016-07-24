@@ -24,7 +24,7 @@ import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.entity.layers.LayerArmorBase;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
+import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -104,13 +104,21 @@ public final class EmoteHandler {
 	}
 
 	private static ModelBiped getPlayerArmorModel(AbstractClientPlayer player) {
-		List<LayerRenderer> list = ReflectionHelper.getPrivateValue(RenderLivingBase.class, getRenderPlayer(player), LibObfuscation.LAYER_RENDERERS);
-		return ReflectionHelper.getPrivateValue(LayerArmorBase.class, (LayerArmorBase) list.get(0), LibObfuscation.MODEL_ARMOR);
+		List list = ReflectionHelper.getPrivateValue(RenderLivingBase.class, getRenderPlayer(player), LibObfuscation.LAYER_RENDERERS);
+		for(int i = 0; i < list.size(); i++)
+			if(list.get(i) instanceof LayerBipedArmor)
+				return ReflectionHelper.getPrivateValue(LayerArmorBase.class, (LayerArmorBase) list.get(i), LibObfuscation.MODEL_ARMOR);
+
+		return null;
 	}
 
 	private static ModelBiped getPlayerArmorLegModel(AbstractClientPlayer player) {
-		List<LayerRenderer> list = ReflectionHelper.getPrivateValue(RenderLivingBase.class, getRenderPlayer(player), LibObfuscation.LAYER_RENDERERS);
-		return ReflectionHelper.getPrivateValue(LayerArmorBase.class, (LayerArmorBase) list.get(0), LibObfuscation.MODEL_LEGGINGS);
+		List list = ReflectionHelper.getPrivateValue(RenderLivingBase.class, getRenderPlayer(player), LibObfuscation.LAYER_RENDERERS);
+		for(int i = 0; i < list.size(); i++)
+			if(list.get(i) instanceof LayerBipedArmor)
+				return ReflectionHelper.getPrivateValue(LayerArmorBase.class, (LayerArmorBase) list.get(i), LibObfuscation.MODEL_LEGGINGS);
+		
+		return null;
 	}
 
 	private static void resetModel(ModelBiped model) {
