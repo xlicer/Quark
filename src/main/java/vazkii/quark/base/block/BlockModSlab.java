@@ -26,9 +26,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import vazkii.quark.base.block.BlockMetaVariants.EnumBase;
@@ -160,7 +162,15 @@ public class BlockModSlab extends BlockSlab implements IQuarkBlock {
 	public boolean isDouble() {
 		return doubleSlab;
 	}
-
+	
+	@Override
+    public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+            IBlockState state = getActualState(base_state, world, pos);
+            return isDouble()
+                  || (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.TOP && side == EnumFacing.UP)
+                  || (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.BOTTOM && side == EnumFacing.DOWN);
+    }
+        
 	@Override
 	public IProperty<?> getVariantProp() {
 		return prop;
