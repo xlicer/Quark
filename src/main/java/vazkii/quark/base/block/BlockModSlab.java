@@ -162,15 +162,15 @@ public class BlockModSlab extends BlockSlab implements IQuarkBlock {
 	public boolean isDouble() {
 		return doubleSlab;
 	}
-	
+
 	@Override
-    public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-            IBlockState state = getActualState(base_state, world, pos);
-            return isDouble()
-                  || (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.TOP && side == EnumFacing.UP)
-                  || (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.BOTTOM && side == EnumFacing.DOWN);
-    }
-        
+	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		IBlockState state = getActualState(base_state, world, pos);
+		return isDouble()
+				|| (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.TOP && side == EnumFacing.UP)
+				|| (state.getValue(BlockSlab.HALF) == BlockSlab.EnumBlockHalf.BOTTOM && side == EnumFacing.DOWN);
+	}
+
 	@Override
 	public IProperty<?> getVariantProp() {
 		return prop;
