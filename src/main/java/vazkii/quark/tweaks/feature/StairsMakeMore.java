@@ -72,13 +72,15 @@ public class StairsMakeMore extends Feature {
 							}
 						}
 
-						ItemStack outCopy = outStack.copy();
-						if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
-							outCopy.setItemDamage(0);
+						if(reversionRecipe) {
+							ItemStack outCopy = outStack.copy();
+							if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
+								outCopy.setItemDamage(0);
 
-						outCopy.stackSize = 24 / targetSize;
-						ItemStack in = output.copy();
-						RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in, in, in);
+							outCopy.stackSize = 24 / targetSize;
+							ItemStack in = output.copy();
+							RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in, in, in);
+						}
 					}
 				}
 			}
