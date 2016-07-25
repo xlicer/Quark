@@ -62,7 +62,7 @@ public class EntityArrowExplosive extends EntityArrow {
 		super.onHit(raytraceResultIn);
 
 		if(!worldObj.isRemote)
-			worldObj.createExplosion(this, posX, posY, posZ, 2.5F, true);
+			worldObj.createExplosion(this, posX, posY, posZ, 2F, true);
 		setDead();
 	}
 
