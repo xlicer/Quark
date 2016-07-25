@@ -192,6 +192,9 @@ public class BlockCustomChest extends BlockChest implements IQuarkBlock {
 		if(te != null) {
 			te.validate();
 			worldIn.setTileEntity(pos, te);
+			
+			if(te instanceof TileCustomChest)
+				((TileCustomChest) te).adjacentChestChecked = false;
 		}
 	}
 
