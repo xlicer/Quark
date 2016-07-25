@@ -87,7 +87,7 @@ public class VariedChests extends Feature {
 		List<IRecipe> recipeList = new ArrayList(CraftingManager.getInstance().getRecipeList());
 		for(IRecipe recipe : recipeList) {
 			ItemStack out = recipe.getRecipeOutput();
-			if(out != null && out.getItem() == Item.getItemFromBlock(Blocks.CHEST))
+			if(out != null && (out.getItem() == Item.getItemFromBlock(Blocks.CHEST) || out.getItem() == Item.getItemFromBlock(Blocks.TRAPPED_CHEST)))
 				CraftingManager.getInstance().getRecipeList().remove(recipe);
 		}
 
@@ -123,10 +123,11 @@ public class VariedChests extends Feature {
 			i++;
 		}
 
-		// Low priority ore dictionary recipe
+		// Low priority ore dictionary recipes
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.CHEST),
 				"WWW", "W W", "WWW",
 				'W', "plankWood");
+		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.TRAPPED_CHEST), "chestWood", new ItemStack(Blocks.TRIPWIRE_HOOK));
 
 		// Vanilla recipe replacement
 		RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.HOPPER),
