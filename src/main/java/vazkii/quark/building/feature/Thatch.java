@@ -27,10 +27,12 @@ public class Thatch extends Feature {
 	public static Block thatch;
 
 	boolean enableStairsAndSlabs;
+	public static float fallDamageMultiplier;
 
 	@Override
 	public void setupConfig() {
 		enableStairsAndSlabs = loadPropBool("Enable stairs and slabs", "", true);
+		fallDamageMultiplier = (float) loadPropDouble("Fall damage multiplier", "", 0.5);
 	}
 
 	@Override

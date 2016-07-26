@@ -13,7 +13,11 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import vazkii.quark.base.block.BlockMod;
+import vazkii.quark.building.feature.Thatch;
 
 public class BlockThatch extends BlockMod {
 
@@ -23,5 +27,10 @@ public class BlockThatch extends BlockMod {
 		setSoundType(SoundType.PLANT);
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
+	
+	@Override
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+        entityIn.fall(fallDistance, Thatch.fallDamageMultiplier);
+    }
 
 }
