@@ -40,6 +40,7 @@ public class BlockMetaVariants<T extends Enum<T> & IStringSerializable> extends 
 		setUnlocalizedName(name);
 	}
 
+	@Override
 	public boolean registerInConstruction() {
 		return false;
 	}
