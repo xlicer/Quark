@@ -36,8 +36,14 @@ public class BlockMetaVariants<T extends Enum<T> & IStringSerializable> extends 
 		this.variantsEnum = variantsEnum;
 		this.variantProp = temporaryVariantProp;
 		setDefaultState(blockState.getBaseState().withProperty(variantProp, variantsEnum.getEnumConstants()[0]));
+		
+		setUnlocalizedName(name);
 	}
 
+	public boolean registerInConstruction() {
+		return false;
+	}
+	
 	@Override
 	public BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, temporaryVariantProp);

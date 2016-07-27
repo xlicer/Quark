@@ -37,7 +37,8 @@ public class BlockMod extends Block implements IQuarkBlock {
 		bareName = name;
 		this.variants = variants;
 
-		setUnlocalizedName(name);
+		if(registerInConstruction())
+			setUnlocalizedName(name);
 	}
 
 	@Override
@@ -48,7 +49,11 @@ public class BlockMod extends Block implements IQuarkBlock {
 		GameRegistry.register(new ItemModBlock(this), new ResourceLocation(LibMisc.PREFIX_MOD + name));
 		return this;
 	}
-
+	
+	public boolean registerInConstruction() {
+		return true;
+	}
+	
 	@Override
 	public String getBareName() {
 		return bareName;
