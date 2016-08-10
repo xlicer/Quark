@@ -103,6 +103,16 @@ public class AncientTomes extends Feature {
 						ItemStack out = left.copy();
 
 						Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.getEnchantments(out);
+						for(Enchantment enchCompare : currentEnchants.keySet()) {
+							if(enchCompare == ench)
+								continue;
+							
+							if(!enchCompare.canApplyTogether(ench) || !ench.canApplyTogether(enchCompare)) {
+								event.setCanceled(true);
+								return;
+							}
+						}
+						
 						currentEnchants.put(ench, level);
 						EnchantmentHelper.setEnchantments(currentEnchants, out);
 
@@ -117,7 +127,7 @@ public class AncientTomes extends Feature {
 	private void handleTome(ItemStack book, ItemStack tome, AnvilUpdateEvent event) {
 		Map<Enchantment, Integer> enchantsLeft = EnchantmentHelper.getEnchantments(book);
 		Map<Enchantment, Integer> enchantsRight = EnchantmentHelper.getEnchantments(tome);
-
+		
 		if(enchantsLeft.equals(enchantsRight)) {
 			Enchantment ench = enchantsRight.keySet().iterator().next();
 			ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
