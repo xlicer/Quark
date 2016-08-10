@@ -31,10 +31,12 @@ public class PirateShips extends Feature {
 
 	public static Item pirate_hat;
 
+	boolean onlyHat;
 	public static int rarity;
 
 	@Override
 	public void setupConfig() {
+		onlyHat = loadPropBool("Only hat", "Disables the pirate mob and generator, only adds the hat", false);
 		rarity = loadPropInt("Pirate Ship Rarity", "Given this value as X, 1 ship will spawn in X ocean biome chunks", 1200);
 	}
 
@@ -42,6 +44,9 @@ public class PirateShips extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		pirate_hat = new ItemPirateHat();
 
+		if(onlyHat)
+			return;
+		
 		EntityRegistry.registerModEntity(EntityPirate.class, "pirate", LibEntityIDs.PIRATE, Quark.instance, 80, 3, true, 0x4d1d14, 0xac9617);
 
 		GameRegistry.registerWorldGenerator(new PirateShipGenerator(), 0);
@@ -49,7 +54,8 @@ public class PirateShips extends Feature {
 
 	@Override
 	public void preInitClient(FMLPreInitializationEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, RenderPirate.FACTORY);
+		if(!onlyHat)
+			RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, RenderPirate.FACTORY);
 	}
 
 }
