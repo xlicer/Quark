@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,8 +33,17 @@ public class SitInStairs extends Feature {
 	@SubscribeEvent
 	public void onInteract(PlayerInteractEvent.RightClickBlock event) {
 		EntityPlayer player = event.getEntityPlayer();
+		if(player.getRidingEntity() != null)
+			return;
+		
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
+		
+		Vec3d vec = new Vec3d(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+		double maxDist = 2;
+		if((vec.xCoord - player.posX) * (vec.xCoord - player.posX) + (vec.yCoord - player.posY) * (vec.yCoord - player.posY) + (vec.zCoord - player.posZ) * (vec.zCoord - player.posZ) > maxDist * maxDist)
+			return;
+		
 		IBlockState state = world.getBlockState(pos);
 
 		ItemStack stack1 = player.getHeldItemMainhand();
