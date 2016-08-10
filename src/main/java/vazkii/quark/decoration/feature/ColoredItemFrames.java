@@ -21,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.base.Quark;
 import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.lib.LibEntityIDs;
+import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.client.render.RenderColoredItemFrame;
 import vazkii.quark.decoration.entity.EntityColoredItemFrame;
@@ -36,27 +37,8 @@ public class ColoredItemFrames extends Feature {
 
 		EntityRegistry.registerModEntity(EntityColoredItemFrame.class, "quark:colored_item_frame", LibEntityIDs.COLORED_ITEM_FRAME, Quark.instance, 256, 64, false);
 
-		String[] dyes = {
-				"Black",
-				"Red",
-				"Green",
-				"Brown",
-				"Blue",
-				"Purple",
-				"Cyan",
-				"LightGray",
-				"Gray",
-				"Pink",
-				"Lime",
-				"Yellow",
-				"LightBlue",
-				"Magenta",
-				"Orange",
-				"White"
-		};
-
 		for(int i = 0; i < 16; i++)
-			RecipeHandler.addShapelessOreDictRecipe(new ItemStack(colored_item_frame, 1, i), new ItemStack(Items.ITEM_FRAME), "dye" + dyes[15 - i]);
+			RecipeHandler.addShapelessOreDictRecipe(new ItemStack(colored_item_frame, 1, i), new ItemStack(Items.ITEM_FRAME), LibMisc.OREDICT_DYES.get(15 - i));
 	}
 
 	@Override

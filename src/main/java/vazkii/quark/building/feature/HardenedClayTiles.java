@@ -17,6 +17,7 @@ import vazkii.quark.base.block.BlockMod;
 import vazkii.quark.base.block.BlockModSlab;
 import vazkii.quark.base.block.BlockModStairs;
 import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockHardenedClayTiles;
 import vazkii.quark.building.block.BlockStainedClayTiles;
@@ -62,10 +63,15 @@ public class HardenedClayTiles extends Feature {
 					BlockModSlab.initSlab(stained_clay_tiles, variant.ordinal(), new BlockStainedClayTilesSlab(variant, false), new BlockStainedClayTilesSlab(variant, true));
 			}
 
-			for(int i = 0; i < 16; i++)
+			for(int i = 0; i < 16; i++) {
 				RecipeHandler.addOreDictRecipe(new ItemStack(stained_clay_tiles, 4, i),
 						"BB", "BB",
 						'B', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i));
+				RecipeHandler.addOreDictRecipe(new ItemStack(stained_clay_tiles, 8, i),
+						"BBB", "BDB", "BBB",
+						'B', new ItemStack(hardened_clay_tiles, 1),
+						'D', LibMisc.OREDICT_DYES.get(15 - i));
+			}
 		}
 	}
 
