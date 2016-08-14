@@ -196,6 +196,12 @@ tile.quark:birch_leaf_carpet.name=Birch Leaf Carpet
 tile.quark:jungle_leaf_carpet.name=Jungle Leaf Carpet
 tile.quark:acacia_leaf_carpet.name=Acacia Leaf Carpet
 tile.quark:dark_oak_leaf_carpet.name=Dark Oak Leaf Carpet
+tile.oak_bookshelf.name=Oak Bookshelf
+tile.quark:bookshelf_spruce.name=Spruce Bookshelf
+tile.quark:bookshelf_birch.name=Birch Bookshelf
+tile.quark:bookshelf_jungle.name=Jungle Bookshelf
+tile.quark:bookshelf_acacia.name=Acacia Bookshelf
+tile.quark:bookshelf_dark_oak.name=Dark Oak Bookshelf
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
