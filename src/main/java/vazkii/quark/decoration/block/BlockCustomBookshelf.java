@@ -46,6 +46,11 @@ public class BlockCustomBookshelf extends BlockMetaVariants {
         return 3;
     }
 
+	@Override
+	public int damageDropped(IBlockState state) {
+		return super.damageDropped(state);
+	}
+	
     @Override
     @Nullable
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
