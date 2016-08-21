@@ -201,7 +201,7 @@ tile.quark:bookshelf_spruce.name=Libreria de Abeto
 tile.quark:bookshelf_birch.name=Libreria de Abedul
 tile.quark:bookshelf_jungle.name=Libreria de Jungla
 tile.quark:bookshelf_acacia.name=Libreria de Acacia
-tile.quark:bookshelf_dark_oak.name=Libreria de Roble Oscuro
+tile.quark:bookshelf_dark_oak.name=Libreria de Roble Oscuro.
 
 # ITEM NAMES
 item.quark:glass_shard.name=Fragmento de Cristal
