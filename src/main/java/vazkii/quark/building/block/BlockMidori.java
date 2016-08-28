@@ -13,9 +13,10 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockMidori extends BlockMod {
+public class BlockMidori extends BlockMod implements IQuarkBlock {
 
 	public BlockMidori() {
 		super("midori_block", Material.ROCK);

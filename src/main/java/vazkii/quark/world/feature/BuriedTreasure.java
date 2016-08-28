@@ -35,7 +35,7 @@ import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.base.module.Feature;
 
 public class BuriedTreasure extends Feature {

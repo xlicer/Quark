@@ -14,7 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockLitLamp;
 

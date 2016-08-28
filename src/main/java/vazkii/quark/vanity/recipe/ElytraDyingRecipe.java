@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.vanity.feature.DyableElytra;
 
 public class ElytraDyingRecipe implements IRecipe {

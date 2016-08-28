@@ -31,9 +31,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.block.BlockMod;
+import vazkii.arl.util.RecipeHandler;
 
-public class BlockModWall extends BlockMod {
+public class BlockQuarkWall extends BlockMod implements IQuarkBlock {
 
 	public static final PropertyBool UP = PropertyBool.create("up");
 	public static final PropertyBool NORTH = PropertyBool.create("north");
@@ -44,7 +45,7 @@ public class BlockModWall extends BlockMod {
 	protected static final AxisAlignedBB[] field_185751_g = new AxisAlignedBB[] {new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D), new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D), new AxisAlignedBB(0.0D, 0.0D, 0.25D, 0.75D, 1.0D, 1.0D), new AxisAlignedBB(0.25D, 0.0D, 0.0D, 0.75D, 1.0D, 0.75D), new AxisAlignedBB(0.3125D, 0.0D, 0.0D, 0.6875D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.75D, 1.0D, 0.75D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.75D, 1.0D, 1.0D), new AxisAlignedBB(0.25D, 0.0D, 0.25D, 1.0D, 1.0D, 0.75D), new AxisAlignedBB(0.25D, 0.0D, 0.25D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.3125D, 1.0D, 0.875D, 0.6875D), new AxisAlignedBB(0.0D, 0.0D, 0.25D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.25D, 0.0D, 0.0D, 1.0D, 1.0D, 0.75D), new AxisAlignedBB(0.25D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.75D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
 	protected static final AxisAlignedBB[] field_185750_B = new AxisAlignedBB[] {field_185751_g[0].setMaxY(1.5D), field_185751_g[1].setMaxY(1.5D), field_185751_g[2].setMaxY(1.5D), field_185751_g[3].setMaxY(1.5D), field_185751_g[4].setMaxY(1.5D), field_185751_g[5].setMaxY(1.5D), field_185751_g[6].setMaxY(1.5D), field_185751_g[7].setMaxY(1.5D), field_185751_g[8].setMaxY(1.5D), field_185751_g[9].setMaxY(1.5D), field_185751_g[10].setMaxY(1.5D), field_185751_g[11].setMaxY(1.5D), field_185751_g[12].setMaxY(1.5D), field_185751_g[13].setMaxY(1.5D), field_185751_g[14].setMaxY(1.5D), field_185751_g[15].setMaxY(1.5D)};
 
-	public BlockModWall(String name, IBlockState state) {
+	public BlockQuarkWall(String name, IBlockState state) {
 		super(name, state.getMaterial());
 
 		setHardness(state.getBlockHardness(null, new BlockPos(0, 0, 0)));
@@ -119,7 +120,7 @@ public class BlockModWall extends BlockMod {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 		Block block = iblockstate.getBlock();
 		Material material = iblockstate.getMaterial();
-		return block == Blocks.BARRIER ? false : block != this && !(block instanceof BlockFenceGate) ? material.isOpaque() && iblockstate.isFullCube() ? material != Material.GOURD : block instanceof BlockModWall ? true : false : true;
+		return block == Blocks.BARRIER ? false : block != this && !(block instanceof BlockFenceGate) ? material.isOpaque() && iblockstate.isFullCube() ? material != Material.GOURD : block instanceof BlockQuarkWall ? true : false : true;
 	}
 
 	@Override

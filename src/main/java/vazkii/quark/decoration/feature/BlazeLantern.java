@@ -13,8 +13,8 @@ package vazkii.quark.decoration.feature;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.block.BlockMod;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.block.BlockMod;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockBlazeLantern;
 

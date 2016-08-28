@@ -10,10 +10,10 @@
  */
 package vazkii.quark.world.block;
 
-import vazkii.quark.base.block.BlockModStairs;
+import vazkii.quark.base.block.BlockQuarkStairs;
 import vazkii.quark.world.feature.Biotite;
 
-public class BlockBiotiteStairs extends BlockModStairs {
+public class BlockBiotiteStairs extends BlockQuarkStairs {
 
 	public BlockBiotiteStairs() {
 		super("biotite_stairs", Biotite.biotite_block.getDefaultState());

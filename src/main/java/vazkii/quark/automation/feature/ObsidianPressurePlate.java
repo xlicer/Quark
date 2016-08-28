@@ -14,8 +14,8 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.automation.block.BlockObsidianPressurePlate;
-import vazkii.quark.base.handler.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 
 public class ObsidianPressurePlate extends Feature {

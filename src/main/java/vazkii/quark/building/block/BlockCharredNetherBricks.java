@@ -13,9 +13,10 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockCharredNetherBricks extends BlockMod {
+public class BlockCharredNetherBricks extends BlockMod implements IQuarkBlock {
 
 	public BlockCharredNetherBricks() {
 		super("charred_nether_bricks", Material.ROCK);

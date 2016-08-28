@@ -12,9 +12,10 @@ package vazkii.quark.world.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.oredict.OreDictionary;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 
-public class ItemBiotite extends ItemMod {
+public class ItemBiotite extends ItemMod implements IQuarkItem {
 
 	public ItemBiotite() {
 		super("biotite");

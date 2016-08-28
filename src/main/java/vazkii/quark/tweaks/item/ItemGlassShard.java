@@ -12,9 +12,10 @@ package vazkii.quark.tweaks.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.oredict.OreDictionary;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 
-public class ItemGlassShard extends ItemMod {
+public class ItemGlassShard extends ItemMod implements IQuarkItem {
 
 	private static final String[] VARIANTS = {
 			"glass_shard",

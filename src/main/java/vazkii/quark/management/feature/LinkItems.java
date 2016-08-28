@@ -24,10 +24,10 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageLinkItem;
 
 public class LinkItems extends Feature {

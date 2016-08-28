@@ -15,9 +15,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockModPane;
+import vazkii.quark.base.block.BlockQuarkPane;
 
-public class BlockPaperWall extends BlockModPane {
+public class BlockPaperWall extends BlockQuarkPane {
 
 	public BlockPaperWall() {
 		super("paper_wall", Material.CLOTH);

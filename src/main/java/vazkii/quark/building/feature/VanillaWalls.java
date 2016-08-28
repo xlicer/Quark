@@ -14,7 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.block.BlockModWall;
+import vazkii.quark.base.block.BlockQuarkWall;
 import vazkii.quark.base.module.Feature;
 
 public class VanillaWalls extends Feature {
@@ -58,7 +58,7 @@ public class VanillaWalls extends Feature {
 	}
 
 	public static void add(String name, Block block, int meta, boolean doit) {
-		add(name, block, meta, doit, (wallName, state) -> new BlockModWall(wallName, state));
+		add(name, block, meta, doit, (wallName, state) -> new BlockQuarkWall(wallName, state));
 	}
 
 	public static void add(String name, Block block, int meta, boolean doit, WallSupplier supplier) {
@@ -67,10 +67,10 @@ public class VanillaWalls extends Feature {
 
 		IBlockState state = block.getStateFromMeta(meta);
 		String wallName = name + "_wall";
-		BlockModWall.initWall(block, meta, supplier.supply(wallName, state));
+		BlockQuarkWall.initWall(block, meta, supplier.supply(wallName, state));
 	}
 
 	public static interface WallSupplier {
-		public BlockModWall supply(String wallName, IBlockState state);
+		public BlockQuarkWall supply(String wallName, IBlockState state);
 	}
 }

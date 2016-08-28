@@ -23,10 +23,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.world.feature.Biotite;
 
-public class BlockBiotiteOre extends BlockMod {
+public class BlockBiotiteOre extends BlockMod implements IQuarkBlock  {
 
 	public BlockBiotiteOre() {
 		super("biotite_ore", Material.ROCK);

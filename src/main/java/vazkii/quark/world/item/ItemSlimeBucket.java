@@ -28,9 +28,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.oredict.OreDictionary;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 
-public class ItemSlimeBucket extends ItemMod {
+public class ItemSlimeBucket extends ItemMod implements IQuarkItem {
 
 	public static final String[] VARIANTS = new String[] {
 			"slime_bucket_normal",

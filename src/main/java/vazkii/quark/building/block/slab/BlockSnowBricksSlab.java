@@ -17,9 +17,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 
-public class BlockSnowBricksSlab extends BlockModSlab {
+public class BlockSnowBricksSlab extends BlockQuarkSlab {
 
 	public BlockSnowBricksSlab(boolean doubleSlab) {
 		super("snow_bricks_slab", Material.CRAFTED_SNOW, doubleSlab);

@@ -28,11 +28,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.item.IItemColorProvider;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.interf.IItemColorProvider;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 import vazkii.quark.decoration.feature.ColoredBeds;
 
-public class ItemColoredBed extends ItemMod implements IItemColorProvider {
+public class ItemColoredBed extends ItemMod implements IItemColorProvider, IQuarkItem {
 
 	private static final String[] VARIANTS = {
 			"colored_bed_item_white",

@@ -31,10 +31,10 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.network.NetworkHandler;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageFavoriteItem;
 import vazkii.quark.management.client.gui.GuiButtonChest;
 

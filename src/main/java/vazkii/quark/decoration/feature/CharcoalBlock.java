@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockCharcoal;
 

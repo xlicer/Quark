@@ -10,10 +10,10 @@
  */
 package vazkii.quark.world.block;
 
-import vazkii.quark.base.block.BlockModStairs;
+import vazkii.quark.base.block.BlockQuarkStairs;
 import vazkii.quark.world.feature.Basalt;
 
-public class BlockBasaltStairs extends BlockModStairs {
+public class BlockBasaltStairs extends BlockQuarkStairs {
 
 	public BlockBasaltStairs() {
 		super("stone_basalt_stairs", Basalt.basalt.getDefaultState());

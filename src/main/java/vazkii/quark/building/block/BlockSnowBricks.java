@@ -20,9 +20,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockSnowBricks extends BlockMod {
+public class BlockSnowBricks extends BlockMod implements IQuarkBlock {
 
 	public BlockSnowBricks() {
 		super("snow_bricks", Material.CRAFTED_SNOW);

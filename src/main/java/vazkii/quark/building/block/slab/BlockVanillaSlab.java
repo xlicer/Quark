@@ -13,9 +13,9 @@ package vazkii.quark.building.block.slab;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.math.BlockPos;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 
-public class BlockVanillaSlab extends BlockModSlab {
+public class BlockVanillaSlab extends BlockQuarkSlab {
 
 	public BlockVanillaSlab(String name, IBlockState state, boolean doubleSlab) {
 		super(name, state.getMaterial(), doubleSlab);

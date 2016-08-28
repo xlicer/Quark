@@ -11,9 +11,9 @@
 package vazkii.quark.decoration.block;
 
 import net.minecraft.block.SoundType;
-import vazkii.quark.base.block.BlockModFenceGate;
+import vazkii.quark.base.block.BlockQuarkFenceGate;
 
-public class BlockNetherBrickFenceGate extends BlockModFenceGate {
+public class BlockNetherBrickFenceGate extends BlockQuarkFenceGate {
 
 	public BlockNetherBrickFenceGate() {
 		super("nether_brick_fence_gate");

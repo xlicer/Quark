@@ -15,10 +15,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.Quark;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.GuiHandler;
-import vazkii.quark.base.network.NetworkHandler;
+import vazkii.quark.base.network.MessageRegister;
 
 public class CommonProxy {
 
@@ -26,7 +27,7 @@ public class CommonProxy {
 		ModuleLoader.preInit(event);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(Quark.instance, new GuiHandler());
-		NetworkHandler.init();
+		MessageRegister.init();
 	}
 
 	public void init(FMLInitializationEvent event) {

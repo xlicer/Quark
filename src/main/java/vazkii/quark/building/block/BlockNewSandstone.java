@@ -12,9 +12,10 @@ package vazkii.quark.building.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockNewSandstone extends BlockMetaVariants {
+public class BlockNewSandstone extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockNewSandstone() {
 		super("sandstone_new", Material.ROCK, Variants.class);

@@ -13,8 +13,8 @@ package vazkii.quark.building.feature;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.block.BlockMod;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.block.BlockMod;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.BlockCarvedWood;
 

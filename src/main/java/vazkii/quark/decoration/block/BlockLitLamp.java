@@ -13,9 +13,10 @@ package vazkii.quark.decoration.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockLitLamp extends BlockMod {
+public class BlockLitLamp extends BlockMod implements IQuarkBlock {
 
 	public BlockLitLamp() {
 		super("lit_lamp", Material.GLASS);

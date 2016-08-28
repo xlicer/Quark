@@ -6,18 +6,17 @@
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
  * 
- * File Created @ [28/08/2016, 00:23:31 (GMT)]
+ * File Created @ [28/08/2016, 00:46:22 (GMT)]
  */
 package vazkii.quark.base.block;
 
-import vazkii.arl.interf.IModBlock;
-import vazkii.quark.base.lib.LibMisc;
+import net.minecraft.block.material.Material;
+import vazkii.arl.block.BlockModSlab;
 
-public interface IQuarkBlock extends IModBlock {
+public class BlockQuarkSlab extends BlockModSlab implements IQuarkBlock {
 
-	@Override
-	default String getModNamespace() {
-		return LibMisc.RESOURCE_NAMESPACE;
+	public BlockQuarkSlab(String name, Material materialIn, boolean doubleSlab) {
+		super(name, materialIn, doubleSlab);
 	}
-	
+
 }

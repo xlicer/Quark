@@ -14,7 +14,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 
 public class FlintTools extends Feature {

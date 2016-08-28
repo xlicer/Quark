@@ -27,8 +27,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import vazkii.arl.interf.IModBlock;
+import vazkii.arl.item.ItemModBlock;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
 
 public class BlockObsidianPressurePlate extends BlockPressurePlate implements IQuarkBlock {

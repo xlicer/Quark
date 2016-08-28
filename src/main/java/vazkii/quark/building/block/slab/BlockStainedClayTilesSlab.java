@@ -15,10 +15,10 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 import vazkii.quark.building.block.BlockStainedClayTiles;
 
-public class BlockStainedClayTilesSlab extends BlockModSlab {
+public class BlockStainedClayTilesSlab extends BlockQuarkSlab {
 
 	public BlockStainedClayTilesSlab(BlockStainedClayTiles.Variants variant, boolean doubleSlab) {
 		super(variant.getName() + "_slab", Material.ROCK, doubleSlab);

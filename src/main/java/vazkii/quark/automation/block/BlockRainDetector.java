@@ -26,10 +26,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import vazkii.arl.block.BlockModContainer;
 import vazkii.quark.automation.tile.TileRainDetector;
-import vazkii.quark.base.block.BlockModContainer;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockRainDetector extends BlockModContainer {
+public class BlockRainDetector extends BlockModContainer implements IQuarkBlock {
 
 	protected static final AxisAlignedBB RAIN_DETECTOR_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D);
 

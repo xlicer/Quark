@@ -16,10 +16,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 import vazkii.quark.building.feature.Thatch;
 
-public class BlockThatchSlab extends BlockModSlab {
+public class BlockThatchSlab extends BlockQuarkSlab {
 
 	public BlockThatchSlab(boolean doubleSlab) {
 		super("thatch_slab", Material.PLANTS, doubleSlab);

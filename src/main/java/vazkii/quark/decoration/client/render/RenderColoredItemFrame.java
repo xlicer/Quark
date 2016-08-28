@@ -67,13 +67,13 @@ public class RenderColoredItemFrame extends Render<EntityColoredItemFrame> {
 
 		if (entity.getDisplayedItem() != null && entity.getDisplayedItem().getItem() == Items.FILLED_MAP)
 		{
-			ibakedmodel1 = modelmanager.getModel(vazkii.quark.base.handler.ModelHandler.resourceLocations.get("colored_item_frame_map_wood"));
-			ibakedmodel2 = modelmanager.getModel(vazkii.quark.base.handler.ModelHandler.resourceLocations.get("colored_item_frame_map"));
+			ibakedmodel1 = modelmanager.getModel(vazkii.arl.util.ModelHandler.resourceLocations.get("colored_item_frame_map_wood"));
+			ibakedmodel2 = modelmanager.getModel(vazkii.arl.util.ModelHandler.resourceLocations.get("colored_item_frame_map"));
 		}
 		else
 		{
-			ibakedmodel1 = modelmanager.getModel(vazkii.quark.base.handler.ModelHandler.resourceLocations.get("colored_item_frame_wood"));
-			ibakedmodel2 = modelmanager.getModel(vazkii.quark.base.handler.ModelHandler.resourceLocations.get("colored_item_frame_normal"));
+			ibakedmodel1 = modelmanager.getModel(vazkii.arl.util.ModelHandler.resourceLocations.get("colored_item_frame_wood"));
+			ibakedmodel2 = modelmanager.getModel(vazkii.arl.util.ModelHandler.resourceLocations.get("colored_item_frame_normal"));
 		}
 
 		GlStateManager.pushMatrix();

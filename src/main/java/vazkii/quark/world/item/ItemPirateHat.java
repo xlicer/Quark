@@ -18,10 +18,11 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.item.ItemModArmor;
+import vazkii.arl.item.ItemModArmor;
+import vazkii.quark.base.item.IQuarkItem;
 import vazkii.quark.world.client.model.ModelPirateHat;
 
-public class ItemPirateHat extends ItemModArmor {
+public class ItemPirateHat extends ItemModArmor implements IQuarkItem {
 
 	@SideOnly(Side.CLIENT)
 	public static ModelBiped headModel;

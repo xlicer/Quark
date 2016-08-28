@@ -17,10 +17,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockModStairs;
+import vazkii.arl.block.BlockModStairs;
+import vazkii.quark.base.block.BlockQuarkStairs;
 import vazkii.quark.building.feature.SnowBricks;
 
-public class BlockSnowBricksStairs extends BlockModStairs {
+public class BlockSnowBricksStairs extends BlockQuarkStairs {
 
 	public BlockSnowBricksStairs() {
 		super("snow_bricks_stairs", SnowBricks.snow_bricks.getDefaultState());

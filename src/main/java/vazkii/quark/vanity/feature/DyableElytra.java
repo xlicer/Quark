@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.RecipeSorter;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.vanity.client.layer.LayerBetterElytra;

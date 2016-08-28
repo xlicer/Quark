@@ -13,11 +13,12 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.world.feature.Basalt;
 
-public class BlockWorldStoneBricks extends BlockMetaVariants {
+public class BlockWorldStoneBricks extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockWorldStoneBricks() {
 		super("world_stone_bricks", Material.ROCK, Variants.class);

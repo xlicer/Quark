@@ -15,9 +15,9 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 
-public class BlockHardenedClayTilesSlab extends BlockModSlab {
+public class BlockHardenedClayTilesSlab extends BlockQuarkSlab {
 
 	public BlockHardenedClayTilesSlab(boolean doubleSlab) {
 		super("hardened_clay_tiles_slab", Material.ROCK, doubleSlab);

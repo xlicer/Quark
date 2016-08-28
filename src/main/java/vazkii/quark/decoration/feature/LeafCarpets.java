@@ -13,7 +13,7 @@ package vazkii.quark.decoration.feature;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.decoration.block.BlockLeafCarpet;
 import vazkii.quark.decoration.block.BlockLeafCarpet.Variants;

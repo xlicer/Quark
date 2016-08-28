@@ -2,21 +2,22 @@
  * This class was created by <Vazkii>. It's distributed as
  * part of the Quark Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Quark
- *
+ * 
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- *
- * File Created @ [18/04/2016, 17:51:13 (GMT)]
+ * 
+ * File Created @ [28/08/2016, 00:25:35 (GMT)]
  */
 package vazkii.quark.base.item;
 
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.arl.interf.IVariantHolder;
+import vazkii.quark.base.lib.LibMisc;
 
-public interface IStateMapperProvider {
-
-	@SideOnly(Side.CLIENT)
-	public IStateMapper getStateMapper();
+public interface IQuarkItem extends IVariantHolder {
+	
+	@Override
+	default String getModNamespace() {
+		return LibMisc.RESOURCE_NAMESPACE;
+	}
 
 }

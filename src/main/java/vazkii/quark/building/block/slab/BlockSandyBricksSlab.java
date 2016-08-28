@@ -13,9 +13,9 @@ package vazkii.quark.building.block.slab;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockModSlab;
+import vazkii.quark.base.block.BlockQuarkSlab;
 
-public class BlockSandyBricksSlab extends BlockModSlab {
+public class BlockSandyBricksSlab extends BlockQuarkSlab {
 
 	public BlockSandyBricksSlab(boolean doubleSlab) {
 		super("sandy_bricks_slab", Material.ROCK, doubleSlab);

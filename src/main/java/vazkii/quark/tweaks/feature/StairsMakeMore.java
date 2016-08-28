@@ -23,7 +23,7 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import vazkii.quark.base.handler.RecipeHandler;
+import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
 
 public class StairsMakeMore extends Feature {

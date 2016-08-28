@@ -16,9 +16,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockCharcoal extends BlockMod {
+public class BlockCharcoal extends BlockMod implements IQuarkBlock {
 
 	public BlockCharcoal() {
 		super("charcoal_block", Material.ROCK);

@@ -14,8 +14,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.block.BlockModSlab;
-import vazkii.quark.base.block.BlockModStairs;
+import vazkii.arl.block.BlockModSlab;
+import vazkii.arl.block.BlockModStairs;
+import vazkii.quark.base.block.BlockQuarkStairs;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.building.block.slab.BlockVanillaSlab;
 
@@ -62,7 +63,7 @@ public class VanillaStairsAndSlabs extends Feature {
 		String slabName = name + "_slab";
 
 		if(stairs)
-			BlockModStairs.initStairs(block, meta, new BlockModStairs(stairsName, state));
+			BlockModStairs.initStairs(block, meta, new BlockQuarkStairs(stairsName, state));
 		if(slab)
 			BlockModSlab.initSlab(block, meta, new BlockVanillaSlab(slabName, state, false), new BlockVanillaSlab(slabName, state, true));
 	}

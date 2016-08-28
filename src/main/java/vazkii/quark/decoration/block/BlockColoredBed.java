@@ -34,10 +34,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.block.IBlockColorProvider;
+import vazkii.arl.interf.IBlockColorProvider;
+import vazkii.arl.interf.IItemColorProvider;
+import vazkii.arl.item.ItemModBlock;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.item.IItemColorProvider;
-import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
 import vazkii.quark.decoration.feature.ColoredBeds;
 

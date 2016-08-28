@@ -13,9 +13,10 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockCarvedWood extends BlockMetaVariants {
+public class BlockCarvedWood extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockCarvedWood() {
 		super("carved_wood", Material.WOOD, Variants.class);

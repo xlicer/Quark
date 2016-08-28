@@ -20,9 +20,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.base.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageSwapItems;
 
 public class FToSwitchItems extends Feature {

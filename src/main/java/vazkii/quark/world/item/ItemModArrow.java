@@ -10,10 +10,7 @@
  */
 package vazkii.quark.world.item;
 
-import java.util.List;
-
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -23,12 +20,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import vazkii.quark.base.handler.TooltipHandler;
-import vazkii.quark.base.item.IVariantHolder;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.interf.IVariantHolder;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 import vazkii.quark.base.lib.LibMisc;
 
-public class ItemModArrow extends ItemArrow implements IVariantHolder {
+public class ItemModArrow extends ItemArrow implements IVariantHolder, IQuarkItem {
 
 	private final String bareName;
 	private final ArrowProvider provider; 

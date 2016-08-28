@@ -21,10 +21,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 import vazkii.quark.world.feature.Wraiths;
 
-public class ItemSoulBead extends ItemMod {
+public class ItemSoulBead extends ItemMod implements IQuarkItem {
 
 	public ItemSoulBead() {
 		super("soul_bead");

@@ -25,8 +25,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.arl.item.ItemModBlock;
 import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
 
 public class BlockBiotite extends BlockQuartz implements IQuarkBlock {

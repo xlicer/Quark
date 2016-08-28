@@ -26,7 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.vanity.feature.DyableElytra;
 
 @SideOnly(Side.CLIENT)

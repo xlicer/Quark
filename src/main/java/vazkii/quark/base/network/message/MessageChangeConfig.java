@@ -12,10 +12,10 @@ package vazkii.quark.base.network.message;
 
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import vazkii.quark.base.network.Message;
+import vazkii.arl.network.NetworkMessage;
 import vazkii.quark.experimental.features.ConfigCommand;
 
-public class MessageChangeConfig extends Message {
+public class MessageChangeConfig extends NetworkMessage {
 	
 	public String moduleName;
 	public String category;

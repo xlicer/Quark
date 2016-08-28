@@ -1,44 +1,43 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
- * part of the Psi Mod. Get the Source Code in github:
- * https://github.com/Vazkii/Psi
+ * part of the Quark Mod. Get the Source Code in github:
+ * https://github.com/Vazkii/Quark
  *
- * Psi is Open Source and distributed under the
- * Psi License: http://psi.vazkii.us/license.php
+ * Quark is Open Source and distributed under the
+ * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
  *
- * File Created @ [09/01/2016, 22:43:48 (GMT)]
+ * File Created @ [19/06/2016, 04:01:54 (GMT)]
  */
 package vazkii.quark.base.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockFenceGate;
+import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.item.ItemModBlock;
+import vazkii.arl.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
 
-public class BlockMod extends Block implements IQuarkBlock {
+public class BlockQuarkFenceGate extends BlockFenceGate implements IQuarkBlock {
 
 	private final String[] variants;
 	private final String bareName;
 
-	public BlockMod(String name, Material materialIn, String... variants) {
-		super(materialIn);
+	public BlockQuarkFenceGate(String name) {
+		super(BlockPlanks.EnumType.DARK_OAK);
 
-		if(variants.length == 0)
-			variants = new String[] { name };
+		setHardness(3.0F);
+		setSoundType(SoundType.WOOD);
 
+		variants = new String[] { name };
 		bareName = name;
-		this.variants = variants;
 
-		if(registerInConstruction())
-			setUnlocalizedName(name);
+		setUnlocalizedName(name);
 	}
 
 	@Override
@@ -49,11 +48,7 @@ public class BlockMod extends Block implements IQuarkBlock {
 		GameRegistry.register(new ItemModBlock(this), new ResourceLocation(LibMisc.PREFIX_MOD + name));
 		return this;
 	}
-	
-	public boolean registerInConstruction() {
-		return true;
-	}
-	
+
 	@Override
 	public String getBareName() {
 		return bareName;
@@ -65,7 +60,6 @@ public class BlockMod extends Block implements IQuarkBlock {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public ItemMeshDefinition getCustomMeshDefinition() {
 		return null;
 	}
@@ -77,7 +71,7 @@ public class BlockMod extends Block implements IQuarkBlock {
 
 	@Override
 	public IProperty[] getIgnoredProperties() {
-		return new IProperty[0];
+		return new IProperty[] { POWERED };
 	}
 
 	@Override

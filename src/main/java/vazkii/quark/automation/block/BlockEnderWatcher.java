@@ -22,10 +22,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import vazkii.arl.block.BlockModContainer;
 import vazkii.quark.automation.tile.TileEnderWatcher;
-import vazkii.quark.base.block.BlockModContainer;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockEnderWatcher extends BlockModContainer {
+public class BlockEnderWatcher extends BlockModContainer implements IQuarkBlock {
 
 	public static PropertyBool WATCHED = PropertyBool.create("watched");
 

@@ -16,10 +16,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.BlockMod;
+import vazkii.arl.block.BlockMod;
+import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.building.feature.Thatch;
 
-public class BlockThatch extends BlockMod {
+public class BlockThatch extends BlockMod implements IQuarkBlock {
 
 	public BlockThatch() {
 		super("thatch", Material.GRASS);

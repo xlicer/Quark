@@ -18,7 +18,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import vazkii.quark.base.handler.ItemNBTHelper;
+import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.base.module.Feature;
 
 public class SnowGolemPlayerHeads extends Feature {

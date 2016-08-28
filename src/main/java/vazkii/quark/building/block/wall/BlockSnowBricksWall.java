@@ -17,9 +17,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import vazkii.quark.base.block.BlockModWall;
+import vazkii.quark.base.block.BlockQuarkWall;
 
-public class BlockSnowBricksWall extends BlockModWall {
+public class BlockSnowBricksWall extends BlockQuarkWall {
 
 	public BlockSnowBricksWall(String name, IBlockState state) {
 		super(name, state);

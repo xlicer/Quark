@@ -22,12 +22,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import vazkii.quark.base.block.BlockMetaVariants;
-import vazkii.quark.base.block.BlockMod;
-import vazkii.quark.base.block.BlockMetaVariants.EnumBase;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMod;
+import vazkii.arl.block.BlockMetaVariants.EnumBase;
+import vazkii.quark.base.block.IQuarkBlock;
 import vazkii.quark.building.block.BlockCarvedWood.Variants;
 
-public class BlockCustomBookshelf extends BlockMetaVariants {
+public class BlockCustomBookshelf extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockCustomBookshelf() {
 		super("custom_bookshelf", Material.WOOD, Variants.class);

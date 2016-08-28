@@ -30,10 +30,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import vazkii.quark.base.block.BlockMetaVariants;
-import vazkii.quark.base.block.IBlockColorProvider;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.arl.interf.IBlockColorProvider;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockLeafCarpet extends BlockMetaVariants implements IBlockColorProvider {
+public class BlockLeafCarpet extends BlockMetaVariants implements IBlockColorProvider, IQuarkBlock {
 
 	protected static final AxisAlignedBB CARPET_AABB = new AxisAlignedBB(0, 0, 0, 1, 0.0625, 1);
 

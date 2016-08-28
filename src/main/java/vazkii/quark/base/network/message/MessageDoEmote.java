@@ -12,10 +12,10 @@ package vazkii.quark.base.network.message;
 
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import vazkii.arl.network.NetworkMessage;
 import vazkii.quark.base.Quark;
-import vazkii.quark.base.network.Message;
 
-public class MessageDoEmote extends Message {
+public class MessageDoEmote extends NetworkMessage {
 
 	public String emoteName;
 	public String playerName;

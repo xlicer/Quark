@@ -20,8 +20,9 @@ public final class LibMisc {
 	public static final String MOD_NAME = MOD_ID;
 	public static final String BUILD = "GRADLE:BUILD";
 	public static final String VERSION = "GRADLE:VERSION-" + BUILD;
-	public static final String DEPENDENCIES = "required-after:Forge@[12.17.0.1909,);";
-	public static final String PREFIX_MOD = MOD_ID.toLowerCase() + ":";
+	public static final String DEPENDENCIES = "required-after:Forge@[12.17.0.1909,);required-after:AutoRegLib;";
+	public static final String RESOURCE_NAMESPACE = MOD_ID.toLowerCase();
+	public static final String PREFIX_MOD = RESOURCE_NAMESPACE + ":";
 
 	// Proxy Constants
 	public static final String PROXY_COMMON = "vazkii.quark.base.proxy.CommonProxy";

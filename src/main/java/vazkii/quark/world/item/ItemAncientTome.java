@@ -16,10 +16,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import vazkii.quark.base.item.ItemMod;
+import vazkii.arl.item.ItemMod;
+import vazkii.quark.base.item.IQuarkItem;
 import vazkii.quark.world.feature.AncientTomes;
 
-public class ItemAncientTome extends ItemMod {
+public class ItemAncientTome extends ItemMod implements IQuarkItem {
 
 	public ItemAncientTome() {
 		super("ancient_tome");

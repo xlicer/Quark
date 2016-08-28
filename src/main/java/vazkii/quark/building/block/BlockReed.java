@@ -13,9 +13,9 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockModPillar;
+import vazkii.quark.base.block.BlockQuarkPillar;
 
-public class BlockReed extends BlockModPillar {
+public class BlockReed extends BlockQuarkPillar {
 
 	public BlockReed() {
 		super("reed_block", Material.WOOD);

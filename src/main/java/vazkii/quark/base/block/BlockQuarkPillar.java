@@ -22,10 +22,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import vazkii.arl.block.BlockMod;
 
-public class BlockModPillar extends BlockMod {
+public class BlockQuarkPillar extends BlockMod implements IQuarkBlock {
 
-	public BlockModPillar(String name, Material materialIn, String... variants) {
+	public BlockQuarkPillar(String name, Material materialIn, String... variants) {
 		super(name, materialIn, variants);
 	}
 

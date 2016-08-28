@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import vazkii.quark.base.handler.ModelHandler;
+import vazkii.arl.util.ModelHandler;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.vanity.client.emotes.base.EmoteHandler;
 

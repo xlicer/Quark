@@ -11,9 +11,9 @@
 package vazkii.quark.vanity.client.model;
 
 import net.minecraft.client.model.ModelRenderer;
-import vazkii.quark.base.client.model.ModelQuarkArmor;
+import vazkii.arl.item.ModelModArmor;
 
-public class ModelWitchHat extends ModelQuarkArmor {
+public class ModelWitchHat extends ModelModArmor {
 
 	private ModelRenderer witchHat;
 

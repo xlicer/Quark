@@ -13,9 +13,10 @@ package vazkii.quark.world.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockBasalt extends BlockMetaVariants {
+public class BlockBasalt extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockBasalt() {
 		super("basalt", Material.ROCK, Variants.class);

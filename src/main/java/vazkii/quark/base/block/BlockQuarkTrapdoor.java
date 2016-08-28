@@ -6,30 +6,31 @@
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
  *
- * File Created @ [19/06/2016, 04:01:54 (GMT)]
+ * File Created @ [24/03/2016, 16:54:45 (GMT)]
  */
 package vazkii.quark.base.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import vazkii.quark.base.item.ItemModBlock;
+import vazkii.arl.interf.IModBlock;
+import vazkii.arl.item.ItemModBlock;
 import vazkii.quark.base.lib.LibMisc;
 
-public class BlockModFenceGate extends BlockFenceGate implements IQuarkBlock {
+public class BlockQuarkTrapdoor extends BlockTrapDoor implements IQuarkBlock {
 
 	private final String[] variants;
 	private final String bareName;
 
-	public BlockModFenceGate(String name) {
-		super(BlockPlanks.EnumType.DARK_OAK);
+	public BlockQuarkTrapdoor(String name) {
+		super(Material.WOOD);
 
 		setHardness(3.0F);
 		setSoundType(SoundType.WOOD);
@@ -38,6 +39,7 @@ public class BlockModFenceGate extends BlockFenceGate implements IQuarkBlock {
 		bareName = name;
 
 		setUnlocalizedName(name);
+		useNeighborBrightness = true;
 	}
 
 	@Override
@@ -71,7 +73,7 @@ public class BlockModFenceGate extends BlockFenceGate implements IQuarkBlock {
 
 	@Override
 	public IProperty[] getIgnoredProperties() {
-		return new IProperty[] { POWERED };
+		return new IProperty[0];
 	}
 
 	@Override

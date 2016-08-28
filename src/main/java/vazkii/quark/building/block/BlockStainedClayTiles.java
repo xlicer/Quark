@@ -13,9 +13,10 @@ package vazkii.quark.building.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import vazkii.quark.base.block.BlockMetaVariants;
+import vazkii.arl.block.BlockMetaVariants;
+import vazkii.quark.base.block.IQuarkBlock;
 
-public class BlockStainedClayTiles extends BlockMetaVariants {
+public class BlockStainedClayTiles extends BlockMetaVariants implements IQuarkBlock {
 
 	public BlockStainedClayTiles() {
 		super("stained_clay_tiles", Material.ROCK, Variants.class);

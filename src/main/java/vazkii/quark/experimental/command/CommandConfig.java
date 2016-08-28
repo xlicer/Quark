@@ -23,7 +23,7 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
-import vazkii.quark.base.network.NetworkHandler;
+import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageChangeConfig;
 import vazkii.quark.experimental.features.ConfigCommand;
 

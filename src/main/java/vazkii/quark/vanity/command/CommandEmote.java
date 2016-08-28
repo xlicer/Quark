@@ -15,7 +15,7 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
-import vazkii.quark.base.network.NetworkHandler;
+import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageDoEmote;
 
 public class CommandEmote extends CommandBase {
