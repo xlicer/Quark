@@ -57,8 +57,9 @@ public class StairsMakeMore extends Feature {
 						else recipeItems = ((ShapedOreRecipe) recipe).getInput();
 
 						ItemStack outStack = null;
+						int inputItems = 0;
 
-						for (Object recipeItem2 : recipeItems) {
+						for(Object recipeItem2 : recipeItems) {
 							Object recipeItem = recipeItem2;
 							if(recipeItem instanceof List) {
 								List<ItemStack> ores = (List<ItemStack>) recipeItem;
@@ -67,12 +68,20 @@ public class StairsMakeMore extends Feature {
 							}
 
 							if(recipeItem != null) {
-								outStack = (ItemStack) recipeItem;
-								break;
+								ItemStack recipeStack = (ItemStack) recipeItem;
+								if(outStack == null)
+									outStack = recipeStack;
+								
+								if(ItemStack.areItemsEqual(outStack, recipeStack))
+									inputItems++;
+								else {
+									outStack = null;
+									break;
+								}
 							}
 						}
 
-						if(reversionRecipe) {
+						if(reversionRecipe && outStack != null && inputItems == 6) {
 							ItemStack outCopy = outStack.copy();
 							if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
 								outCopy.setItemDamage(0);

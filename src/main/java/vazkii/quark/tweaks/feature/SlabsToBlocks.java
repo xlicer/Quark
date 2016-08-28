@@ -51,8 +51,9 @@ public class SlabsToBlocks extends Feature {
 					Block outputBlock = Block.getBlockFromItem(outputItem);
 					if(outputBlock != null && outputBlock instanceof BlockSlab) {
 						ItemStack outStack = null;
+						int inputItems = 0;
 
-						for (Object recipeItem2 : recipeItems) {
+						for(Object recipeItem2 : recipeItems) {
 							Object recipeItem = recipeItem2;
 							if(recipeItem instanceof List) {
 								List<ItemStack> ores = (List<ItemStack>) recipeItem;
@@ -61,17 +62,27 @@ public class SlabsToBlocks extends Feature {
 							}
 
 							if(recipeItem != null) {
-								outStack = (ItemStack) recipeItem;
-								break;
+								ItemStack recipeStack = (ItemStack) recipeItem;
+								if(outStack == null)
+									outStack = recipeStack;
+								
+								if(ItemStack.areItemsEqual(outStack, recipeStack))
+									inputItems++;
+								else {
+									outStack = null;
+									break;
+								}
 							}
 						}
 
-						ItemStack outCopy = outStack.copy();
-						if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
-							outCopy.setItemDamage(0);
+						if(outStack != null && inputItems == 3) {
+							ItemStack outCopy = outStack.copy();
+							if(outCopy.getItemDamage() == OreDictionary.WILDCARD_VALUE)
+								outCopy.setItemDamage(0);
 
-						ItemStack in = output.copy();
-						RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in);
+							ItemStack in = output.copy();
+							RecipeHandler.addShapelessOreDictRecipe(outCopy, in, in);
+						}
 					}
 				}
 			}
