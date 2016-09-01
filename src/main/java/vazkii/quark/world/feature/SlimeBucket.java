@@ -36,7 +36,7 @@ public class SlimeBucket extends Feature {
 	public void entityInteract(PlayerInteractEvent.EntityInteract event) {
 		if(event.getTarget() != null) {
 			String name = EntityList.getEntityString(event.getTarget());
-			if(name != null && name.equals("Slime") && ((EntitySlime) event.getTarget()).getSlimeSize() == 1) {
+			if(name != null && name.equals("Slime") && ((EntitySlime) event.getTarget()).getSlimeSize() == 1 && !event.getTarget().isDead) {
 				EntityPlayer player = event.getEntityPlayer();
 				EnumHand hand = EnumHand.MAIN_HAND;
 				ItemStack stack = player.getHeldItemMainhand();
