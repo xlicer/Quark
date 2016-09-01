@@ -125,12 +125,15 @@ public class RenderTileCustomChest extends TileEntitySpecialRenderer<TileCustomC
 					bindTexture(VariedChests.TRAP_RESOURCE);
 				else bindTexture(VariedChests.TRAP_DOUBLE_RESOURCE);
 
+				float scale = 1.002F;
+				GlStateManager.pushMatrix();
 				GlStateManager.enableBlend();
 				GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				GlStateManager.translate(0F, 0F, -0.001F);
+				GlStateManager.scale(scale, scale, scale);
+				GlStateManager.translate(model == largeChest ? -0.002F : -0.001F, -0.001F, -0.001F);
 				model.renderAll();
-				GlStateManager.translate(0F, 0F, 0.001F);
 				GlStateManager.disableBlend();
+				GlStateManager.popMatrix();
 			}
 
 			GlStateManager.disableRescaleNormal();
