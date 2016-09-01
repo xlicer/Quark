@@ -49,7 +49,7 @@ public class BlockCustomBookshelf extends BlockMetaVariants implements IQuarkBlo
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return super.damageDropped(state);
+		return 0;
 	}
 	
     @Override
