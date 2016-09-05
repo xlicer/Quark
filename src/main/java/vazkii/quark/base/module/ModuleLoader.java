@@ -21,6 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -30,6 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.quark.automation.QuarkAutomation;
 import vazkii.quark.base.lib.LibMisc;
+import vazkii.quark.biomes.QuarkBiomes;
 import vazkii.quark.building.QuarkBuilding;
 import vazkii.quark.decoration.QuarkDecoration;
 import vazkii.quark.experimental.QuarkExperimental;
@@ -40,7 +42,15 @@ import vazkii.quark.world.QuarkWorld;
 
 public final class ModuleLoader {
 
-	static {
+	private static List<Class<? extends Module>> moduleClasses;
+	public static Map<Class<? extends Module>, Module> moduleInstances = new HashMap();
+	public static Map<Class<? extends Feature>, Feature> featureInstances = new HashMap();
+	public static List<Module> enabledModules;
+
+	public static Configuration config;
+	public static File configFile;
+
+	public static void preInit(FMLPreInitializationEvent event) {
 		moduleClasses = new ArrayList();
 
 		registerModule(QuarkTweaks.class);
@@ -51,17 +61,10 @@ public final class ModuleLoader {
 		registerModule(QuarkAutomation.class);
 		registerModule(QuarkManagement.class);
 		registerModule(QuarkExperimental.class);
-	}
-
-	private static List<Class<? extends Module>> moduleClasses;
-	public static Map<Class<? extends Module>, Module> moduleInstances = new HashMap();
-	public static Map<Class<? extends Feature>, Feature> featureInstances = new HashMap();
-	public static List<Module> enabledModules;
-
-	public static Configuration config;
-	public static File configFile;
-
-	public static void preInit(FMLPreInitializationEvent event) {
+		
+		if(Loader.isModLoaded("QuarkBiomes"))
+			registerModule(QuarkBiomes.class);
+		
 		moduleClasses.forEach(clazz -> {
 			try {
 				moduleInstances.put(clazz, clazz.newInstance());
