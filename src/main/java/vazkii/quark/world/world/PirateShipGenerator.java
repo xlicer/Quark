@@ -144,7 +144,8 @@ public class PirateShipGenerator implements IWorldGenerator {
 				world.setBlockState(dataPos, dispenserState);
 
 				TileEntityDispenser dispenser = (TileEntityDispenser) world.getTileEntity(dataPos);
-				dispenser.setInventorySlotContents(random.nextInt(9), new ItemStack(Items.FIRE_CHARGE, 5 + random.nextInt(20)));
+				if(dispenser != null)
+					dispenser.setInventorySlotContents(random.nextInt(9), new ItemStack(Items.FIRE_CHARGE, 5 + random.nextInt(20)));
 				break;
 			}
 		}
