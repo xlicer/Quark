@@ -42,11 +42,17 @@ public class ExtraArrows extends Feature {
 
 	boolean enableEnder, enableExplosive, enableTorch;
 	
+	public static double explosiveArrowPower;
+	public static boolean explosiveArrowDestroysBlocks;
+	
 	@Override
 	public void setupConfig() {
 		enableEnder = loadPropBool("Enable Ender Arrow", "", true);
 		enableExplosive = loadPropBool("Enable Explosive Arrow", "", true);
 		enableTorch = loadPropBool("Enable Torch Arrow", "", true);
+		
+		explosiveArrowPower = loadPropDouble("Explosive Arrow Power", "", 2.0);
+		explosiveArrowDestroysBlocks = loadPropBool("Explosive Arrow Destroys Blocks", "", true);
 	}
 	
 	@Override
