@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -70,7 +72,21 @@ public class Module {
 		
 		forEachFeature(feature -> { 
 			feature.enabled = loadPropBool(feature.configName, feature.getFeatureDescription(), feature.enabledByDefault) && enabled;
+			
+			String[] incompatibilities = feature.getIncompatibleMods();
+			if(incompatibilities != null) {
+				List<String> failiures = new ArrayList();
 
+				for(String s : incompatibilities)
+					if(Loader.isModLoaded(s)) {
+						feature.enabled = false;
+						failiures.add(s);
+					}
+				
+				if(!failiures.isEmpty())
+					FMLLog.info("[Quark] '" + feature.configName + "' is forcefully disabled as it's incompatible with the following loaded mods: " + failiures);
+			}
+			
 			if(!feature.loadtimeDone) {
 				feature.enabledAtLoadtime = feature.enabled;
 				feature.loadtimeDone = true;

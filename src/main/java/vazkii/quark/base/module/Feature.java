@@ -68,6 +68,10 @@ public class Feature {
 	public void serverStarting(FMLServerStartingEvent event) {
 		// NO-OP
 	}
+	
+	public String[] getIncompatibleMods() {
+		return null;
+	}
 
 	public boolean hasSubscriptions() {
 		return false;

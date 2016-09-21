@@ -45,6 +45,11 @@ public class DispensersPlaceSeeds extends Feature {
 
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(Items.DYE, new BehaviourCocoaBeans(BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Items.DYE)));
 	}
+	
+	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "Botania" };
+	}
 
 	public class BehaviourSeeds extends BehaviorDefaultDispenseItem {
 
