@@ -26,7 +26,6 @@ import vazkii.quark.world.feature.OceanGuardians;
 import vazkii.quark.world.feature.PirateShips;
 import vazkii.quark.world.feature.RealisticWorldType;
 import vazkii.quark.world.feature.SlimeBucket;
-import vazkii.quark.world.feature.TreesInPlains;
 import vazkii.quark.world.feature.Wraiths;
 
 public class QuarkWorld extends Module {
@@ -38,7 +37,6 @@ public class QuarkWorld extends Module {
 		registerFeature(new OceanGuardians(), "Guardians spawn in oceans");
 		registerFeature(new NaturalBlazesInNether(), "Blazes spawn naturally in the nether");
 		registerFeature(new MushroomsInSwamps(), "Big mushrooms generate in swamps");
-		registerFeature(new TreesInPlains(), "Big trees generate in plains");
 		registerFeature(new Biotite());
 		registerFeature(new BuriedTreasure());
 		registerFeature(new AncientTomes());
