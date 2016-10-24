@@ -47,9 +47,9 @@ public class FavoriteItems extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	@SideOnly(Side.CLIENT)
-	public void keyboardEvent(GuiScreenEvent.MouseInputEvent.Pre event) {
+	public void mouseEvent(GuiScreenEvent.MouseInputEvent.Pre event) {
 		boolean wasMouseDown = mouseDown;
-		mouseDown = Mouse.isButtonDown(0);
+		mouseDown = Mouse.isButtonDown(1);
 		boolean click = mouseDown && !wasMouseDown;
 
 		if(GuiScreen.isAltKeyDown() && click && event.getGui() instanceof GuiContainer) {
