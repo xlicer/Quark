@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import vazkii.arl.block.BlockMod;
 import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
@@ -61,6 +62,15 @@ public class VariedBookshelves extends Feature {
 				"WWW", "BBB", "WWW",
 				'W', "plankWood",
 				'B', new ItemStack(Items.BOOK));
+		
+		OreDictionary.registerOre("bookshelf", new ItemStack(custom_bookshelf, 1, OreDictionary.WILDCARD_VALUE));
+		
+		OreDictionary.registerOre("bookshelfSpruce", new ItemStack(custom_bookshelf, 1, 0));
+		OreDictionary.registerOre("bookshelfBirch", new ItemStack(custom_bookshelf, 1, 1));
+		OreDictionary.registerOre("bookshelfJungle", new ItemStack(custom_bookshelf, 1, 2));
+		OreDictionary.registerOre("bookshelfAcacia", new ItemStack(custom_bookshelf, 1, 3));
+		OreDictionary.registerOre("bookshelfDarkOak", new ItemStack(custom_bookshelf, 1, 4));
+
 	}
 	
 }
