@@ -26,8 +26,6 @@ public class EntityPirate extends EntitySkeleton {
 		super(worldIn);
 	}
 
-	// TODO prevent hat from breaking
-
 	@Override
 	public String getName() {
 		if(hasCustomName())
