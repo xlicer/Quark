@@ -41,5 +41,10 @@ public class EnderWatcher extends Feature {
 				'B', ModuleLoader.isFeatureEnabled(Biotite.class) ? new ItemStack(Biotite.biotite_block) : new ItemStack(Blocks.OBSIDIAN),
 						'E', new ItemStack(Items.ENDER_EYE));
 	}
+	
+	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "Botania" };
+	}
 
 }
