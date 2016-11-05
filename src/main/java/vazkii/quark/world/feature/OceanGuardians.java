@@ -51,7 +51,7 @@ public class OceanGuardians extends Feature {
 		Set<Biome> set = deepOceanOnly ? ImmutableSet.of(Biomes.DEEP_OCEAN) : ImmutableSet.of(Biomes.OCEAN, Biomes.DEEP_OCEAN);
 
 		for(Biome b : set)
-			b.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(new SpawnListEntry(EntityGuardian.class, weight, min, max));
+			b.getSpawnableList(EnumCreatureType.MONSTER).add(new SpawnListEntry(EntityGuardian.class, weight, min, max));
 	}
 
 	@SubscribeEvent
