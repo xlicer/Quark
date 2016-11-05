@@ -1,3 +1,10 @@
+# MISC
+quarkmisc.chestButton.restock=Restock
+quarkmisc.chestButton.deposit=Deposit
+quarkmisc.chestButton.smart_deposit=Merge
+quarkmisc.chestButton.dropoff=Deposit to nearby Chests
+quarkmisc.chestButton.dropoff.shift=Merge to nearby Chests
+
 # BLOCK NAMES
 tile.quark:hardened_clay_tiles.name=Hardened Clay Tiles
 tile.quark:hardened_clay_tiles_slab.name=Hardened Clay Tiles Slab

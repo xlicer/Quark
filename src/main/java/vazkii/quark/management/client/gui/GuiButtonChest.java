@@ -11,12 +11,16 @@
 package vazkii.quark.management.client.gui;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
+import scala.actors.threadpool.Arrays;
+import vazkii.arl.util.RenderHelper;
 import vazkii.quark.management.feature.FavoriteItems;
 import vazkii.quark.management.feature.StoreToChests;
 
@@ -51,9 +55,6 @@ public class GuiButtonChest<T extends GuiScreen> extends GuiButton {
 			int u = 0;
 			int v = 0;
 
-			if(k == 2 && action != Action.RESTOCK)
-				FavoriteItems.hovering = true;
-
 			switch(action) {
 			case DROPOFF:
 				if(GuiScreen.isShiftKeyDown() != StoreToChests.invert) {
@@ -86,6 +87,23 @@ public class GuiButtonChest<T extends GuiScreen> extends GuiButton {
 			par1Minecraft.renderEngine.bindTexture(chest_icons);
 			GlStateManager.color(1F, 1F, 1F, 1F);
 			drawTexturedModalRect(xPosition, yPosition, u, v, 16, 16);
+			
+			if(k == 2) {
+				if(action != Action.RESTOCK)
+					FavoriteItems.hovering = true;
+				
+				GlStateManager.pushMatrix();
+				String tooltip; 
+				if(action == Action.DROPOFF && GuiScreen.isShiftKeyDown())
+					tooltip = I18n.translateToLocal("quarkmisc.chestButton." + action.name().toLowerCase() + ".shift");
+					else tooltip = I18n.translateToLocal("quarkmisc.chestButton." + action.name().toLowerCase());
+				int len = Minecraft.getMinecraft().fontRendererObj.getStringWidth(tooltip);
+				
+				
+				int tooltipShift = action == Action.DROPOFF ? 0 : -len - 24;
+				RenderHelper.renderTooltip(par2 + tooltipShift, par3 + 8, Arrays.asList(new String[] { tooltip }));
+				GlStateManager.popMatrix();
+			}
 		}
 	}
 
