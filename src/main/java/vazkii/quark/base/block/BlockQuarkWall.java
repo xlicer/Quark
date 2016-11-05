@@ -122,13 +122,6 @@ public class BlockQuarkWall extends BlockMod implements IQuarkBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-		for(BlockWall.EnumType blockwall$enumtype : BlockWall.EnumType.values())
-			list.add(new ItemStack(itemIn, 1, blockwall$enumtype.getMetadata()));
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN ? super.shouldSideBeRendered(blockState, blockAccess, pos, side) : true;
 	}
