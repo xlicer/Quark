@@ -34,12 +34,15 @@ import vazkii.quark.management.client.gui.GuiButtonChest.Action;
 public class ChestButtons extends Feature {
 
 	boolean deposit, smartDeposit, restock;
+	int xShift, yShift;
 
 	@Override
 	public void setupConfig() {
 		deposit = loadPropBool("Enable Deposit Button", "", true);
 		smartDeposit = loadPropBool("Enable Smart Deposit Button", "", true);
 		restock = loadPropBool("Enable Restock Button", "", true);
+		xShift = loadPropInt("Horizontal Icon Shift", "", -18);
+		yShift = loadPropInt("Vertical Icon Shift", "", 0);
 	}
 
 	@SubscribeEvent
@@ -69,11 +72,11 @@ public class ChestButtons extends Feature {
 			for(Slot s : container.inventorySlots)
 				if(s.inventory == player.inventory && s.getSlotIndex() == 9) {
 					if(restock)
-						event.getButtonList().add(new GuiButtonChest(guiInv, Action.RESTOCK, 13211, guiLeft - 18, guiTop + s.yDisplayPosition));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.RESTOCK, 13211, guiLeft + xShift, guiTop + s.yDisplayPosition + yShift));
 					if(deposit)
-						event.getButtonList().add(new GuiButtonChest(guiInv, Action.DEPOSIT, 13212, guiLeft - 18, guiTop + s.yDisplayPosition + 18));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.DEPOSIT, 13212, guiLeft + xShift, guiTop + s.yDisplayPosition + 18 + yShift));
 					if(smartDeposit)
-						event.getButtonList().add(new GuiButtonChest(guiInv, Action.SMART_DEPOSIT, 13213, guiLeft - 18, guiTop + s.yDisplayPosition + 36));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.SMART_DEPOSIT, 13213, guiLeft + xShift, guiTop + s.yDisplayPosition + 36 + yShift));
 
 					break;
 				}
