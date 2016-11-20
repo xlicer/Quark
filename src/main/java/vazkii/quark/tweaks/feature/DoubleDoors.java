@@ -47,5 +47,10 @@ public class DoubleDoors extends Feature {
 	public boolean hasSubscriptions() {
 		return true;
 	}
+	
+	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "malisisdoors" };
+	}
 
 }
