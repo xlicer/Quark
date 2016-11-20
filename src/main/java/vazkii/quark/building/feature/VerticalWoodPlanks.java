@@ -18,8 +18,12 @@ public class VerticalWoodPlanks extends Feature {
 		vertical_planks = new BlockVerticalPlanks();
 		
 		for(int i = 0; i < 6; i++) {
-			RecipeHandler.addShapelessOreDictRecipe(new ItemStack(vertical_planks, 1, i), new ItemStack(Blocks.PLANKS, 1, i));
-			RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.PLANKS, 1, i), new ItemStack(vertical_planks, 1, i));
+			RecipeHandler.addOreDictRecipe(new ItemStack(vertical_planks, 3, i),
+					"W", "W", "W",
+					'W', new ItemStack(Blocks.PLANKS, 1, i));
+			RecipeHandler.addOreDictRecipe(new ItemStack(Blocks.PLANKS, 3, i),
+					"W", "W", "W",
+					'W', new ItemStack(vertical_planks, 1, i));		
 		}
 		OreDictionary.registerOre("plankWood", new ItemStack(vertical_planks, 1, OreDictionary.WILDCARD_VALUE));
 	}
