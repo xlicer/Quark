@@ -25,6 +25,7 @@ import vazkii.quark.building.feature.SnowBricks;
 import vazkii.quark.building.feature.Thatch;
 import vazkii.quark.building.feature.VanillaStairsAndSlabs;
 import vazkii.quark.building.feature.VanillaWalls;
+import vazkii.quark.building.feature.VerticalWoodPlanks;
 import vazkii.quark.building.feature.WorldStoneBricks;
 
 public class QuarkBuilding extends Module {
@@ -46,6 +47,7 @@ public class QuarkBuilding extends Module {
 		registerFeature(new MoreSandstone());
 		registerFeature(new MidoriBlocks());
 		registerFeature(new IronPlates());
+		registerFeature(new VerticalWoodPlanks());
 	}
 
 }

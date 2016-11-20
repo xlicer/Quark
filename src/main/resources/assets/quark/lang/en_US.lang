@@ -209,6 +209,12 @@ tile.quark:bookshelf_birch.name=Birch Bookshelf
 tile.quark:bookshelf_jungle.name=Jungle Bookshelf
 tile.quark:bookshelf_acacia.name=Acacia Bookshelf
 tile.quark:bookshelf_dark_oak.name=Dark Oak Bookshelf
+tile.quark:vertical_oak_planks.name=Vertical Oak Wood Planks
+tile.quark:vertical_spruce_planks.name=Vertical Spruce Wood Planks
+tile.quark:vertical_birch_planks.name=Vertical Birch Wood Planks
+tile.quark:vertical_jungle_planks.name=Vertical Jungle Wood Planks
+tile.quark:vertical_acacia_planks.name=Vertical Acacia Wood Planks
+tile.quark:vertical_dark_oak_planks.name=Vertical Dark Oak Wood Planks
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
