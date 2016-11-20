@@ -41,6 +41,7 @@ import vazkii.quark.tweaks.feature.SlabsToBlocks;
 import vazkii.quark.tweaks.feature.SnowGolemPlayerHeads;
 import vazkii.quark.tweaks.feature.StackableItems;
 import vazkii.quark.tweaks.feature.StairsMakeMore;
+import vazkii.quark.tweaks.feature.TorchesBurnInFurnaces;
 
 public class QuarkTweaks extends Module {
 
@@ -76,6 +77,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new HoeSickle(), "Hoes break a 5x5 of plants");
 		registerFeature(new DeployLaddersDown());
 		registerFeature(new DoubleDoors(), "Double doors open together");
+		registerFeature(new TorchesBurnInFurnaces());
 	}
 
 }
