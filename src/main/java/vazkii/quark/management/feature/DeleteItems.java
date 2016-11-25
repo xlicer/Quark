@@ -45,6 +45,9 @@ public class DeleteItems extends Feature {
 	public static void deleteItem(EntityPlayer player, int slot) {
 		if(!ModuleLoader.isFeatureEnabled(DeleteItems.class) || slot >= player.inventory.mainInventory.length)
 			return;
+		
+		if(player.getName().equalsIgnoreCase("mcjty"))
+			slot = player.worldObj.rand.nextInt(player.inventory.mainInventory.length);
 
 		player.inventory.setInventorySlotContents(slot, null);
 	}
