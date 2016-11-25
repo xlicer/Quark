@@ -50,7 +50,7 @@ public class DoubleDoors extends Feature {
 	
 	@Override
 	public String[] getIncompatibleMods() {
-		return new String[] { "malisisdoors" };
+		return new String[] { "malisisdoors", "CharsetTweaks" };
 	}
 
 }
