@@ -31,4 +31,9 @@ public class FlintTools extends Feature {
 					'#', new ItemStack(Items.STICK));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

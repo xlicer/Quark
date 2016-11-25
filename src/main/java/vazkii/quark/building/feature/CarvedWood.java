@@ -31,5 +31,10 @@ public class CarvedWood extends Feature {
 					"WW", "WW",
 					'W', new ItemStack(Blocks.WOODEN_SLAB, 1, i));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

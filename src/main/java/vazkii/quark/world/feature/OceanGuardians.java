@@ -72,5 +72,10 @@ public class OceanGuardians extends Feature {
 	public boolean hasSubscriptions() {
 		return isClient();
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

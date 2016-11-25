@@ -103,5 +103,10 @@ public class AutoJumpHotkey extends Feature {
 	public boolean hasSubscriptions() {
 		return isClient();
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

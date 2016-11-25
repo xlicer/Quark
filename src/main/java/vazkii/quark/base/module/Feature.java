@@ -88,6 +88,10 @@ public class Feature {
 	public String getFeatureDescription() {
 		return "";
 	}
+	
+	public boolean requiresMinecraftRestartToEnable() {
+		return false;
+	}
 
 	public static void registerTile(Class<? extends TileEntity> clazz, String key) {
 		GameRegistry.registerTileEntity(clazz, LibMisc.PREFIX_MOD + key);

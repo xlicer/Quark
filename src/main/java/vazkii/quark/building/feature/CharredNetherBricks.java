@@ -45,5 +45,10 @@ public class CharredNetherBricks extends Feature {
 			BlockModSlab.initSlab(charred_nether_bricks, 0, new BlockCharredNetherBrickSlab(false), new BlockCharredNetherBrickSlab(true));
 		}
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

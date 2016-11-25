@@ -23,5 +23,10 @@ public class ConvertClay extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.CLAY_BALL, 4), new ItemStack(Blocks.CLAY));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

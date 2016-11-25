@@ -71,6 +71,11 @@ public class DepthMobs extends Feature {
 		if(enableAshen)
 			RenderingRegistry.registerEntityRenderingHandler(EntityAshen.class, RenderAshen.FACTORY);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	private Biome[] getBiomesWithMob(Class<? extends Entity> clazz) {
 		List<Biome> biomes = new ArrayList();

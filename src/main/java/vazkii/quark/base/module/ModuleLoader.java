@@ -109,7 +109,13 @@ public final class ModuleLoader {
 		config = new Configuration(configFile);
 		config.load();
 
-		forEachModule(module -> module.enabled = !module.canBeDisabled() || ConfigHelper.loadPropBool(module.name, "_modules", module.getModuleDescription(), module.isEnabledByDefault()));
+		forEachModule(module -> {
+			module.enabled = true;
+			if(module.canBeDisabled()) {
+				ConfigHelper.needsRestart = true;
+				module.enabled = ConfigHelper.loadPropBool(module.name, "_modules", module.getModuleDescription(), module.isEnabledByDefault());
+			}
+		});
 
 		enabledModules = new ArrayList(moduleInstances.values());
 		enabledModules.removeIf(module -> !module.enabled);

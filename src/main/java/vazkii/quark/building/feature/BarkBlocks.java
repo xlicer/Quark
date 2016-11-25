@@ -48,5 +48,10 @@ public class BarkBlocks extends Feature {
 			VanillaWalls.add(name, bark, variant.ordinal(), enableWalls);
 		}
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

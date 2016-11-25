@@ -90,5 +90,10 @@ public class WorldStoneBricks extends Feature {
 					"SS", "SS",
 					'S', new ItemStack(Basalt.basalt, 1, 1));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

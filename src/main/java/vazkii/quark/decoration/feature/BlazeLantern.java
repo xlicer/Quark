@@ -31,5 +31,10 @@ public class BlazeLantern extends Feature {
 				'B', new ItemStack(Items.BLAZE_ROD),
 				'P', new ItemStack(Items.BLAZE_POWDER));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

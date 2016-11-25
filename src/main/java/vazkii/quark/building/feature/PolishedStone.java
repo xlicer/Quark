@@ -34,4 +34,9 @@ public class PolishedStone extends Feature {
 				'S', new ItemStack(polished_stone));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

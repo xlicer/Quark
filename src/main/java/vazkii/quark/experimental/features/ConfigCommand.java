@@ -87,4 +87,9 @@ public class ConfigCommand extends Feature {
 				+ "\n\"nosave\" does need to be there if a player name is used. Lastly, - signifies no subcategory inside the module.";
 	}
 	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

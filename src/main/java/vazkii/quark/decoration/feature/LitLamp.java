@@ -28,5 +28,10 @@ public class LitLamp extends Feature {
 
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(lit_lamp), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.REDSTONE_TORCH));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

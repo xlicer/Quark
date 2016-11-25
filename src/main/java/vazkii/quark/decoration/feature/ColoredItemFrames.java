@@ -46,5 +46,10 @@ public class ColoredItemFrames extends Feature {
 	public void preInitClient(FMLPreInitializationEvent event) {
 		RenderingRegistry.registerEntityRenderingHandler(EntityColoredItemFrame.class, RenderColoredItemFrame.FACTORY);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

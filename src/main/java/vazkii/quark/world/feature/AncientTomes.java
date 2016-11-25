@@ -164,6 +164,11 @@ public class AncientTomes extends Feature {
 		return strings.toArray(new String[strings.size()]);
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 	public static class EnchantTomeFunction extends LootFunction {
 
 		protected EnchantTomeFunction() {

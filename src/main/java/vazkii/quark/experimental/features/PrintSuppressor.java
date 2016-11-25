@@ -57,5 +57,10 @@ public class PrintSuppressor extends Feature {
 				+ "\nUse this if some mod left behind debug messages and you don't want to see them."
 				+ "\nIf important messages end up being disabled by this, tell the modders in case to switch to a proper logger.";
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

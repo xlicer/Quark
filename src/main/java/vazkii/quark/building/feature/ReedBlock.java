@@ -51,4 +51,9 @@ public class ReedBlock extends Feature {
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.REEDS, 9), new ItemStack(reed_block));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

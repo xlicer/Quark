@@ -87,6 +87,11 @@ public class ColorRunes extends Feature {
 	public boolean hasSubscriptions() {
 		return true;
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	// Called from ASM. See ClassTransformer
 	public static void setTargetStack(ItemStack stack) {

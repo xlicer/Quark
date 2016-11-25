@@ -54,4 +54,9 @@ public class MidoriBlocks extends Feature {
 				'S', new ItemStack(slab));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

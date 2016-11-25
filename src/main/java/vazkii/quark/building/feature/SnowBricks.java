@@ -50,5 +50,10 @@ public class SnowBricks extends Feature {
 				"SS", "SS",
 				'S', new ItemStack(Blocks.SNOW));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

@@ -24,4 +24,9 @@ public class FireworkCloning extends Feature {
 		RecipeSorter.register("quark:fireworkCloning", FireworkCloningRecipe.class, RecipeSorter.Category.SHAPELESS, "");
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

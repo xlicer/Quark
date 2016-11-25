@@ -32,5 +32,10 @@ public class NaturalBlazesInNether extends Feature {
 	public void init(FMLInitializationEvent event) {
 		Biomes.HELL.getSpawnableList(EnumCreatureType.MONSTER).add(new SpawnListEntry(EntityBlaze.class, weight, min, max));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

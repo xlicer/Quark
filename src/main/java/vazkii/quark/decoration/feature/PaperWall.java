@@ -32,4 +32,9 @@ public class PaperWall extends Feature {
 				'P', new ItemStack(Items.PAPER));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

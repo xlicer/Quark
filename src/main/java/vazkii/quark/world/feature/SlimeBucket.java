@@ -68,5 +68,10 @@ public class SlimeBucket extends Feature {
 	public boolean hasSubscriptions() {
 		return true;
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

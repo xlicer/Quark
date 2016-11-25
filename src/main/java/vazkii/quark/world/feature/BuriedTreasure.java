@@ -156,6 +156,11 @@ public class BuriedTreasure extends Feature {
 	public boolean hasSubscriptions() {
 		return true;
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	public static class SetAsTreasureFunction extends LootFunction {
 

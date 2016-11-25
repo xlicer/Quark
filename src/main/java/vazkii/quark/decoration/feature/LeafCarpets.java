@@ -34,5 +34,10 @@ public class LeafCarpets extends Feature {
 					'L', stack.copy());
 		}
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

@@ -90,6 +90,11 @@ public class ExtraArrows extends Feature {
 		if(enableTorch)
 			RenderingRegistry.registerEntityRenderingHandler(EntityArrowTorch.class, RenderExtraArrow.FACTORY_TORCH);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	public static class ArrowBehaviour extends BehaviorProjectileDispense {
 

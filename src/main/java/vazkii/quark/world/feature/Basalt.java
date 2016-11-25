@@ -84,4 +84,9 @@ public class Basalt extends Feature {
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Blocks.STONE, 1, 5), new ItemStack(basalt), new ItemStack(Items.QUARTZ));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

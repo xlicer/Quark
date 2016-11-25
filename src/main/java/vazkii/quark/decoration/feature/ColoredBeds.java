@@ -102,6 +102,11 @@ public class ColoredBeds extends Feature {
 
 		return ItemDye.DYE_COLORS[15 -  colorIndex];
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }
 

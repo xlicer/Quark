@@ -20,5 +20,10 @@ public class DragonsBreathBottleless extends Feature {
 	public void postInit(FMLPostInitializationEvent event) {
 		Items.DRAGON_BREATH.setContainerItem(null);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

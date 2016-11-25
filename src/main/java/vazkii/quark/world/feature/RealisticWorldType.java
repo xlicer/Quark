@@ -27,5 +27,10 @@ public class RealisticWorldType extends Feature {
 				+ "https://www.reddit.com/r/Minecraft/comments/4nfw3t/more_realistic_generation_preset_in_comment/\n"
 				+ "If you want to use it in multiplayer, set the world type to \"quark_realistic\"";
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

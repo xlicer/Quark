@@ -29,5 +29,10 @@ public class ClayGeneration extends Feature {
 	public void preInit(FMLPreInitializationEvent event) {
 		GameRegistry.registerWorldGenerator(new ClayGenerator(clusterSize, clusterCount), 0);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

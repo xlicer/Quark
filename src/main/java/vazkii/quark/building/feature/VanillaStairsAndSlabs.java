@@ -68,5 +68,10 @@ public class VanillaStairsAndSlabs extends Feature {
 			BlockModSlab.initSlab(block, meta, new BlockVanillaSlab(slabName, state, false), new BlockVanillaSlab(slabName, state, true));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }
 

@@ -69,6 +69,11 @@ public class VanillaWalls extends Feature {
 		String wallName = name + "_wall";
 		BlockQuarkWall.initWall(block, meta, supplier.supply(wallName, state));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	public static interface WallSupplier {
 		public BlockQuarkWall supply(String wallName, IBlockState state);

@@ -49,5 +49,10 @@ public class Thatch extends Feature {
 				'W', new ItemStack(Items.WHEAT));
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(Items.WHEAT, 4), new ItemStack(thatch));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

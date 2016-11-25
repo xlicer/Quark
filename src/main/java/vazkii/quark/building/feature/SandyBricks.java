@@ -48,4 +48,9 @@ public class SandyBricks extends Feature {
 		RecipeHandler.addShapelessOreDictRecipe(new ItemStack(sandy_bricks), new ItemStack(Blocks.BRICK_BLOCK), new ItemStack(Blocks.SAND));
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

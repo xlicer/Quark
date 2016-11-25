@@ -31,5 +31,10 @@ public class NetherBrickFenceGate extends Feature {
 				'N', new ItemStack(Blocks.NETHER_BRICK_FENCE),
 				'B', new ItemStack(Blocks.NETHER_BRICK));
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

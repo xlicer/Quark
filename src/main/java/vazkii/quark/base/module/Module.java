@@ -70,7 +70,8 @@ public class Module {
 		if(features.isEmpty())
 			addFeatures();
 		
-		forEachFeature(feature -> { 
+		forEachFeature(feature -> {
+			ConfigHelper.needsRestart = feature.requiresMinecraftRestartToEnable();
 			feature.enabled = loadPropBool(feature.configName, feature.getFeatureDescription(), feature.enabledByDefault) && enabled;
 			
 			String[] incompatibilities = feature.getIncompatibleMods();
@@ -106,7 +107,7 @@ public class Module {
 					MinecraftForge.TERRAIN_GEN_BUS.unregister(feature);
 				if(feature.hasOreGenSubscriptions())
 					MinecraftForge.ORE_GEN_BUS.unregister(feature);
-			} else if(feature.enabled && feature.enabledAtLoadtime && !feature.prevEnabled) {
+			} else if(feature.enabled && (feature.enabledAtLoadtime || !feature.requiresMinecraftRestartToEnable()) && !feature.prevEnabled) {
 				if(feature.hasSubscriptions())
 					MinecraftForge.EVENT_BUS.register(feature);
 				if(feature.hasTerrainSubscriptions())

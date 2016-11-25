@@ -59,4 +59,9 @@ public class GlassShards extends Feature {
 		return true;
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

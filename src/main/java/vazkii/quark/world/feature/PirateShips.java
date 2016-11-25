@@ -57,5 +57,10 @@ public class PirateShips extends Feature {
 		if(!onlyHat)
 			RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, RenderPirate.FACTORY);
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

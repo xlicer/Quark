@@ -95,4 +95,9 @@ public class VariedTrapdoors extends Feature {
 				"WWW", "WWW",
 				'W', "plankWood");
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 }

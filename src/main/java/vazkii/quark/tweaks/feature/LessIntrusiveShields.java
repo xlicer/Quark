@@ -37,4 +37,9 @@ public class LessIntrusiveShields extends Feature {
 		});
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

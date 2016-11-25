@@ -135,6 +135,11 @@ public class VariedChests extends Feature {
 				'I', Items.IRON_INGOT,
 				'C', "chestWood");
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 	public enum ChestType {
 		NONE(""),
@@ -173,4 +178,6 @@ public class VariedChests extends Feature {
 				NAME_TO_TYPE.put(type.name, type);
 		}
 	}
+	
+	
 }

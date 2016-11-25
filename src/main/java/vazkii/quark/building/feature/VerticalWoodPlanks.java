@@ -28,4 +28,9 @@ public class VerticalWoodPlanks extends Feature {
 		OreDictionary.registerOre("plankWood", new ItemStack(vertical_planks, 1, OreDictionary.WILDCARD_VALUE));
 	}
 	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }

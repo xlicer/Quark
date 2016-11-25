@@ -45,5 +45,10 @@ public class IronPlates extends Feature {
 				"III", "I I", "III",
 				'I', "ingotIron");
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

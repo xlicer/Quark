@@ -95,5 +95,10 @@ public class StairsMakeMore extends Feature {
 			}
 		}
 	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
 
 }

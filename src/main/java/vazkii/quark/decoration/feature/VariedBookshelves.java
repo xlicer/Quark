@@ -70,7 +70,11 @@ public class VariedBookshelves extends Feature {
 		OreDictionary.registerOre("bookshelfJungle", new ItemStack(custom_bookshelf, 1, 2));
 		OreDictionary.registerOre("bookshelfAcacia", new ItemStack(custom_bookshelf, 1, 3));
 		OreDictionary.registerOre("bookshelfDarkOak", new ItemStack(custom_bookshelf, 1, 4));
-
+	}
+	
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
 	}
 	
 }

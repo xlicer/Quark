@@ -89,4 +89,9 @@ public class SlabsToBlocks extends Feature {
 		}
 	}
 
+	@Override
+	public boolean requiresMinecraftRestartToEnable() {
+		return true;
+	}
+	
 }
