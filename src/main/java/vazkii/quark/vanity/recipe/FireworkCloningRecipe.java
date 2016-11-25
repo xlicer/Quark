@@ -57,14 +57,18 @@ public class FireworkCloningRecipe implements IRecipe {
 				else target = stack;
 			}
 		}
+		
+		if(source != null && target != null) {
+			ItemStack copy = target.copy();
+			NBTTagCompound cmp = new NBTTagCompound();
+			cmp.setTag("Fireworks", source.getTagCompound().getTag("Fireworks"));
+			copy.setTagCompound(cmp);
+			copy.stackSize = 1;
 
-		ItemStack copy = target.copy();
-		NBTTagCompound cmp = new NBTTagCompound();
-		cmp.setTag("Fireworks", source.getTagCompound().getTag("Fireworks"));
-		copy.setTagCompound(cmp);
-		copy.stackSize = 1;
+			return copy;
+		}
 
-		return copy;
+		return null;
 	}
 
 	@Override

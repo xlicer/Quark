@@ -50,7 +50,7 @@ public class NoteBlocksMobSounds extends Feature {
 			}
 		}
 
-		if(can) {
+		if(can && tile != null) {
 			int type = ((TileEntitySkull) tile).getSkullType();
 			if(type != 3) {
 				event.setCanceled(true);

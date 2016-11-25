@@ -59,9 +59,13 @@ public class ElytraDyingRecipe implements IRecipe {
 			}
 		}
 
-		ItemStack copy = target.copy();
-		ItemNBTHelper.setInt(copy, DyableElytra.TAG_ELYTRA_DYE, source);
-		return copy;
+		if(target != null) {
+			ItemStack copy = target.copy();
+			ItemNBTHelper.setInt(copy, DyableElytra.TAG_ELYTRA_DYE, source);
+			return copy;
+		}
+
+		return null;
 	}
 
 	@Override
