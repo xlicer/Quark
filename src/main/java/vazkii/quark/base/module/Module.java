@@ -74,18 +74,22 @@ public class Module {
 			ConfigHelper.needsRestart = feature.requiresMinecraftRestartToEnable();
 			feature.enabled = loadPropBool(feature.configName, feature.getFeatureDescription(), feature.enabledByDefault) && enabled;
 			
-			String[] incompatibilities = feature.getIncompatibleMods();
-			if(incompatibilities != null) {
-				List<String> failiures = new ArrayList();
+			feature.setupConstantConfig();
+			
+			if(!feature.forceLoad) {
+				String[] incompatibilities = feature.getIncompatibleMods();
+				if(incompatibilities != null) {
+					List<String> failiures = new ArrayList();
 
-				for(String s : incompatibilities)
-					if(Loader.isModLoaded(s)) {
-						feature.enabled = false;
-						failiures.add(s);
-					}
-				
-				if(!failiures.isEmpty())
-					FMLLog.info("[Quark] '" + feature.configName + "' is forcefully disabled as it's incompatible with the following loaded mods: " + failiures);
+					for(String s : incompatibilities)
+						if(Loader.isModLoaded(s)) {
+							feature.enabled = false;
+							failiures.add(s);
+						}
+					
+					if(!failiures.isEmpty())
+						FMLLog.info("[Quark] '" + feature.configName + "' is forcefully disabled as it's incompatible with the following loaded mods: " + failiures);
+				}
 			}
 			
 			if(!feature.loadtimeDone) {
