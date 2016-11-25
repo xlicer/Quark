@@ -13,6 +13,7 @@ package vazkii.quark.base.network;
 import net.minecraftforge.fml.relauncher.Side;
 import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.network.message.MessageChangeConfig;
+import vazkii.quark.base.network.message.MessageDeleteItem;
 import vazkii.quark.base.network.message.MessageDisableDropoffClient;
 import vazkii.quark.base.network.message.MessageDoEmote;
 import vazkii.quark.base.network.message.MessageDropoff;
@@ -32,6 +33,7 @@ public class MessageRegister {
 		NetworkHandler.register(MessageDisableDropoffClient.class, Side.CLIENT);	
 		NetworkHandler.register(MessageLinkItem.class, Side.SERVER);
 		NetworkHandler.register(MessageChangeConfig.class, Side.CLIENT);
+		NetworkHandler.register(MessageDeleteItem.class, Side.SERVER);
 	}
 	
 }
