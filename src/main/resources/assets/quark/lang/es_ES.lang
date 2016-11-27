@@ -1,3 +1,10 @@
+# MISC
+quarkmisc.chestButton.restock=Repoblar
+quarkmisc.chestButton.deposit=Depositar 
+quarkmisc.chestButton.smart_deposit=Unir
+quarkmisc.chestButton.dropoff=Depositar a Cofres Cercanos
+quarkmisc.chestButton.dropoff.shift=Unir a Cofres Cercanos
+
 # BLOCK NAMES
 tile.quark:hardened_clay_tiles.name=Teja de Arcilla Endurecida
 tile.quark:hardened_clay_tiles_slab.name=Losa de Teja de Arcilla Endurecida
@@ -202,6 +209,12 @@ tile.quark:bookshelf_birch.name=Libreria de Abedul
 tile.quark:bookshelf_jungle.name=Libreria de Jungla
 tile.quark:bookshelf_acacia.name=Libreria de Acacia
 tile.quark:bookshelf_dark_oak.name=Libreria de Roble Oscuro
+tile.quark:vertical_oak_planks.name=Madera de Roble Vertical
+tile.quark:vertical_spruce_planks.name=Madera de Abeto Vertical
+tile.quark:vertical_birch_planks.name=Madera de Abedul Vertical
+tile.quark:vertical_jungle_planks.name=Madera de Jungla Vertical
+tile.quark:vertical_acacia_planks.name=Madera de Acacia Vertical
+tile.quark:vertical_dark_oak_planks.name=Madera de Roble Oscuro Vertical
 
 # ITEM NAMES
 item.quark:glass_shard.name=Fragmento de Cristal
