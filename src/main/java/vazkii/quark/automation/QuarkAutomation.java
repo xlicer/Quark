@@ -13,6 +13,7 @@ package vazkii.quark.automation;
 import vazkii.quark.automation.feature.DispensersPlaceSeeds;
 import vazkii.quark.automation.feature.EnderWatcher;
 import vazkii.quark.automation.feature.ObsidianPressurePlate;
+import vazkii.quark.automation.feature.PistonSpikes;
 import vazkii.quark.automation.feature.RainDetector;
 import vazkii.quark.base.module.Module;
 
@@ -24,6 +25,7 @@ public class QuarkAutomation extends Module {
 		registerFeature(new DispensersPlaceSeeds());
 		registerFeature(new RainDetector());
 		registerFeature(new EnderWatcher());
+		registerFeature(new PistonSpikes(), "Ender Rods as Block Breakers");
 	}
 
 }

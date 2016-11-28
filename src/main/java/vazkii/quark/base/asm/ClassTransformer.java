@@ -24,9 +24,13 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.JumpInsnNode;
+import org.objectweb.asm.tree.LabelNode;
 import org.objectweb.asm.tree.LdcInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.TypeInsnNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -48,6 +52,9 @@ public class ClassTransformer implements IClassTransformer {
 		// For Boat Sails
 		transformers.put("net.minecraft.client.renderer.entity.RenderBoat", ClassTransformer::transformRenderBoat);
 		transformers.put("net.minecraft.entity.item.EntityBoat", ClassTransformer::transformEntityBoat);
+		
+		// For Piston Spikes
+		transformers.put("net.minecraft.block.BlockPistonBase", ClassTransformer::transformBlockPistonBase);
 	}
 
 	@Override
@@ -197,6 +204,45 @@ public class ClassTransformer implements IClassTransformer {
 					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
 					newInstructions.add(new VarInsnNode(Opcodes.FLOAD, 9));
 					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/vanity/client/render/BoatBannerRenderer", "renderBanner", "(Lnet/minecraft/entity/item/EntityBoat;F)V"));
+
+					method.instructions.insert(node, newInstructions);
+					return true;
+				})));
+	}
+	
+	private static byte[] transformBlockPistonBase(byte[] basicClass) {
+		log("Transforming BlockPistonBase");
+		MethodSignature sig = new MethodSignature("doMove", "func_176319_a", "a", "(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumFacing;Z)Z", "(Laid;Lcm;Lct;Z)Z");
+
+		return transform(basicClass, Pair.of(sig, combine(
+				(AbstractInsnNode node) -> { // Filter
+					return node.getOpcode() == Opcodes.ASTORE && ((VarInsnNode) node).var == 11;
+				},
+				(MethodNode method, AbstractInsnNode node) -> { // Action
+					log("Patching " + method + " in node " + node);
+					InsnList newInstructions = new InsnList();
+
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 6));
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 8));
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 11));
+					newInstructions.add(new VarInsnNode(Opcodes.ILOAD, 4));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "vazkii/quark/automation/feature/PistonSpikes", "breakStuffWithSpikes", "(Lnet/minecraft/world/World;Ljava/util/List;Ljava/util/List;Lnet/minecraft/util/EnumFacing;Z)Z"));
+					
+					// recalculate the list and array sizes
+					LabelNode label = new LabelNode();
+					newInstructions.add(new JumpInsnNode(Opcodes.IFEQ, label));
+					
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 6));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKEINTERFACE, "java/util/List", "size", "()I"));
+					newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 8));
+					newInstructions.add(new MethodInsnNode(Opcodes.INVOKEINTERFACE, "java/util/List", "size", "()I"));
+					newInstructions.add(new InsnNode(Opcodes.IADD));
+					newInstructions.add(new VarInsnNode(Opcodes.ISTORE, 9));
+					newInstructions.add(new VarInsnNode(Opcodes.ILOAD, 9));
+					newInstructions.add(new TypeInsnNode(Opcodes.ANEWARRAY, "net/minecraft/block/state/IBlockState"));
+					newInstructions.add(new VarInsnNode(Opcodes.ASTORE, 10));
+					newInstructions.add(label);
 
 					method.instructions.insert(node, newInstructions);
 					return true;
