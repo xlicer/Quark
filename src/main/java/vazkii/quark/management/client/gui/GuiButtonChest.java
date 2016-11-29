@@ -67,6 +67,8 @@ public class GuiButtonChest<T extends GuiScreen> extends GuiButton {
 					else u = 0;
 				}
 				break;
+			case SORT:
+				v = 16;
 			case DEPOSIT:
 				if(k == 2)
 					u = 16;
@@ -112,7 +114,8 @@ public class GuiButtonChest<T extends GuiScreen> extends GuiButton {
 		DROPOFF,
 		DEPOSIT,
 		SMART_DEPOSIT,
-		RESTOCK
+		RESTOCK,
+		SORT
 
 	}
 

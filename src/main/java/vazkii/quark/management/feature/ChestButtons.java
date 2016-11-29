@@ -94,16 +94,17 @@ public class ChestButtons extends Feature {
 			switch(action) {
 			case SMART_DEPOSIT:
 				NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(true, true));
+				event.setCanceled(true);
 				break;
 			case DEPOSIT:
 				NetworkHandler.INSTANCE.sendToServer(new MessageDropoff(false, true));
+				event.setCanceled(true);
 				break;
 			case RESTOCK:
 				NetworkHandler.INSTANCE.sendToServer(new MessageRestock());
+				event.setCanceled(true);
 				break;
 			}
-
-			event.setCanceled(true);
 		}
 	}
 

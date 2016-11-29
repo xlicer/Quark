@@ -20,6 +20,7 @@ import vazkii.quark.base.network.message.MessageDropoff;
 import vazkii.quark.base.network.message.MessageFavoriteItem;
 import vazkii.quark.base.network.message.MessageLinkItem;
 import vazkii.quark.base.network.message.MessageRestock;
+import vazkii.quark.base.network.message.MessageSortInventory;
 import vazkii.quark.base.network.message.MessageSwapItems;
 
 public class MessageRegister {
@@ -34,6 +35,7 @@ public class MessageRegister {
 		NetworkHandler.register(MessageLinkItem.class, Side.SERVER);
 		NetworkHandler.register(MessageChangeConfig.class, Side.CLIENT);
 		NetworkHandler.register(MessageDeleteItem.class, Side.SERVER);
+		NetworkHandler.register(MessageSortInventory.class, Side.SERVER);
 	}
 	
 }
