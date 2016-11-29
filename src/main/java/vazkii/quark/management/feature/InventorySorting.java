@@ -1,5 +1,6 @@
 package vazkii.quark.management.feature;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.arl.network.NetworkHandler;
+import vazkii.quark.base.handler.SortingHandler;
 import vazkii.quark.base.module.Feature;
 import vazkii.quark.base.network.message.MessageSortInventory;
 import vazkii.quark.management.client.gui.GuiButtonChest;
@@ -55,6 +57,7 @@ public class InventorySorting extends Feature {
 	public void performAction(GuiScreenEvent.ActionPerformedEvent.Pre event) {
 		if(event.getButton() instanceof GuiButtonChest && ((GuiButtonChest) event.getButton()).action == Action.SORT) {
 			NetworkHandler.INSTANCE.sendToServer(new MessageSortInventory());
+			SortingHandler.sortInventory(Minecraft.getMinecraft().thePlayer);
 			event.setCanceled(true);
 		}
 	}
@@ -62,6 +65,11 @@ public class InventorySorting extends Feature {
 	@Override
 	public boolean hasSubscriptions() {
 		return isClient();
+	}
+	
+	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "inventorytweaks", "inventorysorter" };
 	}
 
 	

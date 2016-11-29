@@ -26,6 +26,7 @@ import vazkii.arl.network.NetworkHandler;
 import vazkii.quark.base.handler.DropoffHandler;
 import vazkii.quark.base.lib.LibObfuscation;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.base.network.message.MessageDropoff;
 import vazkii.quark.base.network.message.MessageRestock;
 import vazkii.quark.management.client.gui.GuiButtonChest;
@@ -33,7 +34,7 @@ import vazkii.quark.management.client.gui.GuiButtonChest.Action;
 
 public class ChestButtons extends Feature {
 
-	boolean deposit, smartDeposit, restock;
+	boolean deposit, smartDeposit, restock, sort;
 	int xShift, yShift;
 
 	@Override
@@ -41,6 +42,7 @@ public class ChestButtons extends Feature {
 		deposit = loadPropBool("Enable Deposit Button", "", true);
 		smartDeposit = loadPropBool("Enable Smart Deposit Button", "", true);
 		restock = loadPropBool("Enable Restock Button", "", true);
+		sort = loadPropBool("Enable Sort Button", "The Sort button is only available if the Inventory Sorting feature is enabled", true);
 		xShift = loadPropInt("Horizontal Icon Shift", "", -18);
 		yShift = loadPropInt("Vertical Icon Shift", "", 0);
 	}
@@ -71,13 +73,15 @@ public class ChestButtons extends Feature {
 
 			for(Slot s : container.inventorySlots)
 				if(s.inventory == player.inventory && s.getSlotIndex() == 9) {
+					if(sort && ModuleLoader.isFeatureEnabled(InventorySorting.class))
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.SORT, 13210, guiLeft + xShift, guiTop + s.yDisplayPosition - 60 + yShift));
 					if(restock)
-						event.getButtonList().add(new GuiButtonChest(guiInv, Action.RESTOCK, 13211, guiLeft + xShift, guiTop + s.yDisplayPosition + yShift));
+						event.getButtonList().add(new GuiButtonChest(guiInv, Action.RESTOCK, 13211, guiLeft + xShift, guiTop + s.yDisplayPosition - 40 + yShift));
 					if(deposit)
 						event.getButtonList().add(new GuiButtonChest(guiInv, Action.DEPOSIT, 13212, guiLeft + xShift, guiTop + s.yDisplayPosition + 18 + yShift));
 					if(smartDeposit)
 						event.getButtonList().add(new GuiButtonChest(guiInv, Action.SMART_DEPOSIT, 13213, guiLeft + xShift, guiTop + s.yDisplayPosition + 36 + yShift));
-
+					
 					break;
 				}
 		}

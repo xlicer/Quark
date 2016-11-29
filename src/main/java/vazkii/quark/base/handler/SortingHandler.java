@@ -44,10 +44,10 @@ import vazkii.quark.management.feature.InventorySorting;
 public final class SortingHandler {
 	
 	private static final Comparator<ItemStack> FALLBACK_COMPARATOR = jointComparator(
-			(ItemStack s1, ItemStack s2) -> s2.getDisplayName().compareTo(s1.getDisplayName()),
-			(ItemStack s1, ItemStack s2) -> Item.getIdFromItem(s2.getItem()) - Item.getIdFromItem(s1.getItem()),
+			(ItemStack s1, ItemStack s2) -> Item.getIdFromItem(s1.getItem()) - Item.getIdFromItem(s2.getItem()),
 			SortingHandler::damageCompare,
 			(ItemStack s1, ItemStack s2) -> s2.stackSize - s1.stackSize,
+			(ItemStack s1, ItemStack s2) -> s2.getDisplayName().compareTo(s1.getDisplayName()),
 			(ItemStack s1, ItemStack s2) -> s2.hashCode() - s1.hashCode());
 
 	private static final Comparator<ItemStack> FOOD_COMPARATOR = jointComparator(
