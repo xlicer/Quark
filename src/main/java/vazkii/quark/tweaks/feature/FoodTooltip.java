@@ -46,6 +46,11 @@ public class FoodTooltip extends Feature {
 			GlStateManager.popMatrix();
 		}
 	}
+	
+	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "appleskin" };
+	}
 
 	@Override
 	public boolean hasSubscriptions() {
