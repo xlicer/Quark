@@ -14,6 +14,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import vazkii.arl.block.BlockMetaVariants;
 import vazkii.quark.base.block.IQuarkBlock;
+import vazkii.quark.base.module.ModuleLoader;
+import vazkii.quark.building.feature.SoulSandstone;
+import vazkii.quark.world.feature.Basalt;
 
 public class BlockNewSandstone extends BlockMetaVariants implements IQuarkBlock {
 
@@ -23,11 +26,18 @@ public class BlockNewSandstone extends BlockMetaVariants implements IQuarkBlock 
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 
+	@Override
+	public boolean shouldDisplayVariant(int variant) {
+		return ModuleLoader.isFeatureEnabled(SoulSandstone.class) || variant < 4;
+	}
+	
 	public static enum Variants implements EnumBase {
 		SANDSTONE_SMOOTH(false, true),
 		SANDSTONE_BRICKS(true, true),
 		RED_SANDSTONE_SMOOTH(false, true),
-		RED_SANDSTONE_BRICKS(true, true);
+		RED_SANDSTONE_BRICKS(true, true),
+		SOUL_SANDSTONE_SMOOTH(false, true),
+		SOUL_SANDSTONE_BRICKS(true, true);
 
 		private Variants(boolean stairs, boolean slabs) {
 			this.stairs = stairs;

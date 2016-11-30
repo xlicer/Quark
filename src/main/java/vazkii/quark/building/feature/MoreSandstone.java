@@ -13,12 +13,14 @@ package vazkii.quark.building.feature;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import vazkii.arl.block.BlockMod;
 import vazkii.arl.block.BlockModSlab;
 import vazkii.arl.block.BlockModStairs;
 import vazkii.arl.util.RecipeHandler;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.building.block.BlockNewSandstone;
 import vazkii.quark.building.block.slab.BlockVanillaSlab;
 import vazkii.quark.building.block.stairs.BlockVanillaStairs;
@@ -37,7 +39,7 @@ public class MoreSandstone extends Feature {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		sandstone_new = new BlockNewSandstone();
-
+		
 		RecipeHandler.addOreDictRecipe(new ItemStack(sandstone_new, 8, 0),
 				"SSS", "S S", "SSS",
 				'S', new ItemStack(Blocks.SANDSTONE));
@@ -52,9 +54,13 @@ public class MoreSandstone extends Feature {
 				'S', new ItemStack(sandstone_new, 1, 2));
 
 		if(enableStairsAndSlabs) {
+			boolean soulSandstone = ModuleLoader.isFeatureEnabled(SoulSandstone.class);
+			
 			for(BlockNewSandstone.Variants variant : BlockNewSandstone.Variants.class.getEnumConstants()) {
 				if(!variant.stairs)
 					continue;
+				if(variant.ordinal() > 3 && !soulSandstone)
+					break;
 
 				IBlockState state = sandstone_new.getDefaultState().withProperty(sandstone_new.getVariantProp(), variant);
 				String name = variant.getName() + "_stairs";
@@ -64,12 +70,26 @@ public class MoreSandstone extends Feature {
 			for(BlockNewSandstone.Variants variant : BlockNewSandstone.Variants.class.getEnumConstants()) {
 				if(!variant.slabs)
 					continue;
+				if(variant.ordinal() > 3 && !soulSandstone)
+					break;
 
 				IBlockState state = sandstone_new.getDefaultState().withProperty(sandstone_new.getVariantProp(), variant);
 				String name = variant.getName() + "_slab";
 				BlockModSlab.initSlab(sandstone_new, variant.ordinal(), new BlockVanillaSlab(name , state, false), new BlockVanillaSlab(name, state, true));
 			}
 		}
+	}
+	
+	@Override
+	public void init(FMLInitializationEvent event) {
+		boolean soulSandstone = ModuleLoader.isFeatureEnabled(SoulSandstone.class);
+		
+		RecipeHandler.addOreDictRecipe(new ItemStack(sandstone_new, 8, 4),
+				"SSS", "S S", "SSS",
+				'S', new ItemStack(SoulSandstone.soul_sandstone));
+		RecipeHandler.addOreDictRecipe(new ItemStack(sandstone_new, 4, 5),
+				"SS", "SS",
+				'S', new ItemStack(sandstone_new, 1, 4));
 	}
 	
 	@Override

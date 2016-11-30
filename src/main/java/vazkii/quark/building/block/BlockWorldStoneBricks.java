@@ -30,7 +30,7 @@ public class BlockWorldStoneBricks extends BlockMetaVariants implements IQuarkBl
 
 	@Override
 	public boolean shouldDisplayVariant(int variant) {
-		return !ModuleLoader.isFeatureEnabled(Basalt.class) ? variant != 3 : true;
+		return ModuleLoader.isFeatureEnabled(Basalt.class) || variant != 3;
 	}
 
 	public enum Variants implements EnumBase {
