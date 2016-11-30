@@ -26,6 +26,7 @@ import vazkii.quark.tweaks.feature.FlintTools;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.GreenerGrass;
 import vazkii.quark.tweaks.feature.HoeSickle;
+import vazkii.quark.tweaks.feature.ImprovedMountHUD;
 import vazkii.quark.tweaks.feature.JumpBoostStepAssist;
 import vazkii.quark.tweaks.feature.KnockOnDoors;
 import vazkii.quark.tweaks.feature.LessIntrusiveShields;
@@ -78,6 +79,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new DeployLaddersDown());
 		registerFeature(new DoubleDoors(), "Double doors open together");
 		registerFeature(new TorchesBurnInFurnaces());
+		registerFeature(new ImprovedMountHUD());
 	}
 
 }
