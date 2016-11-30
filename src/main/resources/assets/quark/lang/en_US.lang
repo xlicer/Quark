@@ -216,6 +216,12 @@ tile.quark:vertical_birch_planks.name=Vertical Birch Wood Planks
 tile.quark:vertical_jungle_planks.name=Vertical Jungle Wood Planks
 tile.quark:vertical_acacia_planks.name=Vertical Acacia Wood Planks
 tile.quark:vertical_dark_oak_planks.name=Vertical Dark Oak Wood Planks
+tile.quark:soul_sandstone.name=Soul Sandstone
+tile.quark:chiseled_soul_sandstone.name=Chiseled Soul Sandstone
+tile.quark:smooth_soul_sandstone.name=Smooth Soul Sandstone
+tile.quark:soul_sandstone_slab.name=Soul Sandstone Slab
+tile.quark:soul_sandstone_stairs.name=Soul Sandstone Stairs
+tile.quark:soul_sandstone_wall.name=Soul Sandstone Wall
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
