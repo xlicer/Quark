@@ -23,6 +23,7 @@ import vazkii.quark.tweaks.feature.DoubleDoors;
 import vazkii.quark.tweaks.feature.DragonsBreathBottleless;
 import vazkii.quark.tweaks.feature.EndermenTeleportYou;
 import vazkii.quark.tweaks.feature.FlintTools;
+import vazkii.quark.tweaks.feature.FoodTooltip;
 import vazkii.quark.tweaks.feature.GlassShards;
 import vazkii.quark.tweaks.feature.GreenerGrass;
 import vazkii.quark.tweaks.feature.HoeSickle;
@@ -80,6 +81,7 @@ public class QuarkTweaks extends Module {
 		registerFeature(new DoubleDoors(), "Double doors open together");
 		registerFeature(new TorchesBurnInFurnaces());
 		registerFeature(new ImprovedMountHUD());
+		registerFeature(new FoodTooltip());
 	}
 
 }
