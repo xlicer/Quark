@@ -15,6 +15,7 @@ import vazkii.quark.decoration.feature.BlazeLantern;
 import vazkii.quark.decoration.feature.CharcoalBlock;
 import vazkii.quark.decoration.feature.ColoredBeds;
 import vazkii.quark.decoration.feature.ColoredItemFrames;
+import vazkii.quark.decoration.feature.IronLadders;
 import vazkii.quark.decoration.feature.LeafCarpets;
 import vazkii.quark.decoration.feature.LitLamp;
 import vazkii.quark.decoration.feature.MoreBanners;
@@ -40,6 +41,7 @@ public class QuarkDecoration extends Module {
 		registerFeature(new LeafCarpets());
 		registerFeature(new ColoredBeds());
 		registerFeature(new VariedBookshelves());
+		registerFeature(new IronLadders());
 	}
 
 }

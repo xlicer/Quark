@@ -10,6 +10,10 @@
  */
 package vazkii.quark.tweaks.feature;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLadder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +27,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import vazkii.quark.base.module.Feature;
+import vazkii.quark.base.module.ModuleLoader;
+import vazkii.quark.decoration.feature.IronLadders;
 
 public class DeployLaddersDown extends Feature {
 
@@ -32,21 +38,27 @@ public class DeployLaddersDown extends Feature {
 		EnumHand hand = event.getHand();
 		ItemStack stack = player.getHeldItem(hand);
 
-		if(stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.LADDER)) {
+		List<Item> items = new ArrayList();
+		items.add(Item.getItemFromBlock(Blocks.LADDER));
+		if(ModuleLoader.isFeatureEnabled(IronLadders.class))
+			items.add(Item.getItemFromBlock(IronLadders.iron_ladder));
+		
+		if(stack != null && items.contains(stack.getItem())) {
+			Block block = Block.getBlockFromItem(stack.getItem());
 			World world = event.getWorld();
 			BlockPos pos = event.getPos();
-			while(world.getBlockState(pos).getBlock() == Blocks.LADDER) {
+			while(world.getBlockState(pos).getBlock() == block) {
 				BlockPos posDown = pos.down();
 				IBlockState stateDown = world.getBlockState(posDown);
 
-				if(stateDown.getBlock() == Blocks.LADDER)
+				if(stateDown.getBlock() == block)
 					pos = posDown;
 				else {
 					if(stateDown.getBlock().isAir(stateDown, world, posDown)) {
 						IBlockState copyState = world.getBlockState(pos);
 
 						EnumFacing facing = copyState.getValue(BlockLadder.FACING);
-						if(world.getBlockState(posDown.offset(facing.getOpposite())).isSideSolid(world, posDown.offset(facing.getOpposite()), facing)) {
+						if(block.canPlaceBlockOnSide(world, posDown, facing)) {
 							world.setBlockState(posDown, copyState);
 
 							event.setCanceled(true);

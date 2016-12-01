@@ -227,6 +227,7 @@ tile.quark:smooth_soul_sandstone.name=Smooth Soul Sandstone
 tile.quark:soul_sandstone_slab.name=Soul Sandstone Slab
 tile.quark:soul_sandstone_stairs.name=Soul Sandstone Stairs
 tile.quark:soul_sandstone_wall.name=Soul Sandstone Wall
+tile.quark:iron_ladder.name=Iron Ladder
 
 # ITEM NAMES
 item.quark:glass_shard.name=Glass Shard
