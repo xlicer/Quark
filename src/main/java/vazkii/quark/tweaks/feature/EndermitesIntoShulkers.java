@@ -9,7 +9,7 @@ import vazkii.quark.tweaks.ai.AIFormShulker;
 
 public class EndermitesIntoShulkers extends Feature {
 
-	public static int chance = 100;
+	public static int chance = 200;
 
 	@Override
 	public void setupConfig() {
