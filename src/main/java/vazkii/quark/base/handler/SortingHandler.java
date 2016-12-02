@@ -1,6 +1,7 @@
 package vazkii.quark.base.handler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -37,7 +38,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import scala.actors.threadpool.Arrays;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.management.feature.InventorySorting;
 
