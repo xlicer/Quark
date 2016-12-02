@@ -240,7 +240,16 @@ public class ClassTransformer implements IClassTransformer {
 					newInstructions.add(new InsnNode(Opcodes.IADD));
 					newInstructions.add(new VarInsnNode(Opcodes.ISTORE, 9));
 					newInstructions.add(new VarInsnNode(Opcodes.ILOAD, 9));
-					newInstructions.add(new TypeInsnNode(Opcodes.ANEWARRAY, "net/minecraft/block/state/IBlockState"));
+					
+					AbstractInsnNode newNode = node.getPrevious();
+					while(true) {
+						if(newNode.getOpcode() == Opcodes.ANEWARRAY) {
+							newInstructions.add(new TypeInsnNode(Opcodes.ANEWARRAY, ((TypeInsnNode) newNode).desc));
+							break;
+						}
+						newNode = newNode.getPrevious();
+					}
+					
 					newInstructions.add(new VarInsnNode(Opcodes.ASTORE, 10));
 					newInstructions.add(label);
 
