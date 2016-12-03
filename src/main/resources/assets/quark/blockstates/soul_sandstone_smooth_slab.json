@@ -3,9 +3,9 @@
   "defaults": {
     "model": "minecraft:half_slab",
     "textures": {
-      "bottom": "quark:blocks/soul_sandstone_smooth",
-      "top": "quark:blocks/soul_sandstone_smooth",
-      "side": "quark:blocks/soul_sandstone_smooth"
+      "bottom": "quark:blocks/soul_sandstone_top",
+      "top": "quark:blocks/soul_sandstone_top",
+      "side": "quark:blocks/soul_sandstone_top"
     },
     "transform": "forge:default-block"
   },
