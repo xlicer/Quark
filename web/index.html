@@ -49,7 +49,7 @@
 				<div class="mdl-layout__content">
 					<section class="mdl-layout__tab-panel is-active" id="module-info">
 						<div class="page-content">
-							<b>Quark</b> is a mod for Minecraft. It aims to create an experience akin to the "vanilla" experience, by having a very simple motto: <i>anything that would be added to Quark could also be added to the default game without compromising its gameplay style.</i>
+							<b>Quark</b> is a mod for Minecraft. It aims to create an experience akin to the "vanilla" experience, by having a very simple motto: <i>anything that would be added to Quark could also be added to the default game without compromising its gameplay style.</i> Quark has over 100 features to spice up your game, all of which fitting the previous motto.
 							<br><br>
 							To that end, every feature added to Quark is simple and small. Hence the name of the mod, Quark, as a Quark is a very small thing. Quark is a <i>Modular</i> mod. Which means that its features are split within various modules. All of the modules can be disabled, and all the features can also be disabled individually if one wants to. Many of the features even have extra configuration options.
 							<br><br>
@@ -104,7 +104,8 @@
 								<li>/u/Martwaza for the trapdoor textures.</li>
 								<li>/u/FelitonC and /u/origamidragon412 for the banner textures.</li>
 								<li>/u/kopasz7 for the Midori block textures.</li>
-								<li>/u/robotthunder500 for the bookshelf textures.</li>
+								<li>/u/robotthunder500 for the Bookshelf textures.</li>
+								<li>/u/darwinpatrick for the Soul Sandstone textures.</li>
 								<li>The creators of all the awesome suggestions I found in /r/MinecraftSuggestions that I implemented here.</li>
 							</ul>
 							<hr>
@@ -157,6 +158,17 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/automation/piston-block-breakers.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">End Rods as Block Breakers</div>
+									<div class="feature-desc">
+										Pistons that push an End Rod will have it work as a drill of sorts, breaking any blocks in front in the direction the rod is facing.<br><br>
+										These can break anything the piston can push.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/automation/weather-sensor.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">Weather Sensor</div>
@@ -174,6 +186,16 @@
 									<div class="feature-desc">
 										The Ender Watcher is a new redstone input block. It emits a full redstone signal if a player is looking directly at it.<br><br>
 										It's crafted with an Eye of Ender, Redstone and Blocks of Biotite (from the World module, or Obsidian if not enabled).
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
+								<img class="feature-image" src="img/automation/floor-food-eating.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Hungry Animals</div>
+									<div class="feature-desc">
+										Animals that have a breeding food assigned to them will eat it from the floor at any time they can have it fed manually, provided the food is nearby.
 									</div>
 								</div>
 							</div>
@@ -322,12 +344,25 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/building/soul-sandstone.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Soul Sandstone</div>
+									<div class="feature-desc">
+										Sandstone made of Soul Sand. All recipes are as expected.<br><br>
+										Soul Sandstone can be turned into Stairs, Slabs, and Walls.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/building/new-sandstone.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">More Sandstone</div>
 									<div class="feature-desc">
 										(Red) Sandstone was begging for more variants, so now we have Polished Sandstone and Sandstone Bricks. Polished Sandstone is crafted with a square shape of Sandstone, whereas Sandstone Bricks are crafted with the standard brick recipe using Polished Sandstone. Of course these recipes are the same for Red Sandstone.<br><br>
-										Polished Sandstone can be used for slabs, whereas Sandstone Bricks can be used for slabs and stairs.
+										Polished Sandstone can be used for slabs, whereas Sandstone Bricks can be used for slabs and stairs.<br><br>
+
+										(not pictured, variants for Soul Sandstone as well, if it's enabled)
 									</div>
 								</div>
 							</div>
@@ -448,6 +483,16 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/decoration/iron-ladders.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Iron Ladders</div>
+									<div class="feature-desc">
+										Iron Ladders can be crafted with the H shape of Iron Ingots. They work like normal ladders, except that they can stand by themselves as long as there is an Iron Ladder on top of them, like in the picture.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/decoration/colored-beds.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">Colored Beds</div>
@@ -511,12 +556,24 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/management/sorting-button.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Sorting Button</div>
+									<div class="feature-desc">
+										A "Sort" button is added to the inventory screen. Pressing this button sorts your inventory, excepting your hotbar.<br><br>
+										Sorting is done via a category system, in which items are placed based on what category they fit in (food, tool, armor, block, etc.). Each category also has its own sorting rules, e.g. food will get sorted based on which is more filling; tools will get sorted based on which one is the best, or has more durability.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/management/chest-buttons.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">Chest Buttons</div>
 									<div class="feature-desc">
 										Three buttons are added to Chest interfaces. From top to bottom, they do the following:
 										<ul>
+											<li>(not pictured) Sort the chest, if the Sorting Button feature is enabled.</li>
 											<li>Extract all items from the chest that you have at least one of in your inventory.</li>
 											<li>Deposit your entire inventory (not hotbar, armor or off-hand) in the chest.</li>
 											<li>Same as the previous, but in "smart" mode.</li>
@@ -531,6 +588,17 @@
 									<div class="feature-title">Favorite Items</div>
 									<div class="feature-desc">
 										Alt-clicking an item will make it a "Favorite Item". Favorite items are not deposited by the Dropoff button or the last two Chest buttons.
+									</div>
+								</div>
+							</div>
+							
+							<div class="feature">
+								<img class="feature-image" src="img/management/delete-items.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Delete Items</div>
+									<div class="feature-desc">
+										Pressing Ctrl+DELETE while hovering over an item will delete that item from your inventory. The item is deleted forever, this can't be undone.<br><br>
+										<i>How do you even make an image for this?</i>
 									</div>
 								</div>
 							</div>
@@ -577,6 +645,16 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/tweaks/mount-hud.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Improved Mount HUD</div>
+									<div class="feature-desc">
+										While on a mount, your food display is still shown. Furthermore, while on a horse, the jump bar is only shown while holding down the jump key, the XP bar is shown otherwise.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/tweaks/chicken-shed.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">Chicken Shedding</div>
@@ -602,6 +680,16 @@
 									<div class="feature-title">Sheep Armor</div>
 									<div class="feature-desc">
 										Sheep that have wool also have a bit of armor added to them, making them take less damage.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
+								<img class="feature-image" src="img/tweaks/endermites-into-shulkers.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Endermites into Shulkers</div>
+									<div class="feature-desc">
+										Endermites will rarely bury into Purpur Blocks, much like how Silverfish bury into stone. When they do, they fuse with the block, forming a Shulker.
 									</div>
 								</div>
 							</div>
@@ -803,6 +891,16 @@
 							</div>
 
 							<div class="feature">
+								<img class="feature-image" src="img/tweaks/food-tooltip.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Food Tooltip</div>
+									<div class="feature-desc">
+										Food items show how much they heal in their tooltip.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
 								<img class="feature-image" src="img/tweaks/snowman-heads.jpg"></img>
 								<div class="feature-info">
 									<div class="feature-title">Snow Golem Heads</div>
@@ -941,6 +1039,16 @@
 									<div class="feature-title">Firework Duplication</div>
 									<div class="feature-desc">
 										Empty Fireworks can be crafted with already made ones to duplicate them. This works like Banners, in which the origin firework will not get used up.
+									</div>
+								</div>
+							</div>
+
+							<div class="feature">
+								<img class="feature-image" src="img/vanity/dyed-item-names.jpg"></img>
+								<div class="feature-info">
+									<div class="feature-title">Dyed Item Names</div>
+									<div class="feature-desc">
+										Combining an item with a dye in an anvil has the item's tooltip name take that dye's color. This costs 3 levels.
 									</div>
 								</div>
 							</div>
@@ -1179,6 +1287,6 @@
 			copyright lololol
 		</div>
 
-		<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 	</body>
 </html>
