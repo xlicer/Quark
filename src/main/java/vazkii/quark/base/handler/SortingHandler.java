@@ -101,11 +101,8 @@ public final class SortingHandler {
 				stacks.add(stackAt.copy());
 		}
 
-		System.out.println("BEFORE " + stacks);
 		mergeStacks(stacks);
-		System.out.println("MERGED " + stacks);
 		sortStackList(stacks);
-		System.out.println("SORTED " + stacks);
 		
 		for(int i = iStart; i < handler.getSlots(); i++) {
 			int j = i - iStart;
@@ -171,10 +168,8 @@ public final class SortingHandler {
 		ItemType type1 = getType(stack1);
 		ItemType type2 = getType(stack2);
 		
-		if(type1 == type2) {
-			System.out.println("same type " + stack1 + " " + stack2 + " (" + type1 + " " + type2 + ")");
+		if(type1 == type2)
 			return type1.comparator.compare(stack1, stack2);
-		}
 		
 		return type1.ordinal() - type2.ordinal();
 	}
