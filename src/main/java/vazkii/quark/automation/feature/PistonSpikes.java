@@ -21,30 +21,46 @@ public class PistonSpikes extends Feature {
 			return false;
 		
 		boolean did = false;
-		List<BlockPos> moveListCopy = new ArrayList(moveList);
-		for(BlockPos pos : moveListCopy) {
+		List<BlockPos> newMoveList = new ArrayList(moveList);
+		List<BlockPos> newDestroyList = new ArrayList(destroyList);
+		
+		for(BlockPos pos : moveList) {
 			IBlockState state = world.getBlockState(pos);
 			if(state.getBlock() == Blocks.END_ROD && state.getValue(BlockDirectional.FACING) == facing) {
 				BlockPos off = pos.offset(facing);
-				destroyList.add(off);
-				if(moveList.contains(off))
-					moveList.remove(off);
 				
 				for(int i = 0; i < 12; i++) {
-					off = off.offset(facing);
 					IBlockState stateAt = world.getBlockState(off);
 					Block blockAt = stateAt.getBlock();
-					if(blockAt.isAir(stateAt, world, off) || blockAt == Blocks.SLIME_BLOCK)
+					if(blockAt.isAir(stateAt, world, off))
 						break;
 					
-					if(moveList.contains(off))
-						moveList.remove(off);
-					else if(destroyList.contains(off))
-						destroyList.remove(off);
+					if(blockAt == Blocks.SLIME_BLOCK)
+						return false;
+					
+					if(i == 0) {
+						newDestroyList.add(off);
+						if(newMoveList.contains(off))
+							newMoveList.remove(off);
+					} else {
+						if(newMoveList.contains(off))
+							newMoveList.remove(off);
+						else if(newDestroyList.contains(off))
+							newDestroyList.remove(off);
+					}
+
+					off = off.offset(facing);
 				}
 				
 				did = true;
 			}
+		}
+		
+		if(did) {
+			moveList.clear();
+			moveList.addAll(newMoveList);
+			destroyList.clear();
+			destroyList.addAll(newDestroyList);
 		}
 		
 		return did;
