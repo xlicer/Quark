@@ -36,6 +36,11 @@ public class AnimalsEatFloorFood extends Feature {
 	}
 	
 	@Override
+	public String[] getIncompatibleMods() {
+		return new String[] { "betterwithmods", "easyBreeding" };
+	}
+	
+	@Override
 	public boolean hasSubscriptions() {
 		return true;
 	}
