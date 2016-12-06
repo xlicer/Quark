@@ -305,8 +305,8 @@ public final class SortingHandler {
 		ItemArmor armor1 = (ItemArmor) stack1.getItem();
 		ItemArmor armor2 = (ItemArmor) stack2.getItem();
 		
-		EntityEquipmentSlot slot1 = armor1.getEquipmentSlot();
-		EntityEquipmentSlot slot2 = armor2.getEquipmentSlot();
+		EntityEquipmentSlot slot1 = armor1.armorType;
+		EntityEquipmentSlot slot2 = armor2.armorType;
 		
 		if(slot1 == slot2)
 			return armor2.getArmorMaterial().getDamageReductionAmount(slot2) - armor2.getArmorMaterial().getDamageReductionAmount(slot1);
