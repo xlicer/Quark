@@ -86,16 +86,27 @@ public final class SortingHandler {
 		for(Slot s : c.inventorySlots) {
 			IInventory inv = s.inventory;
 			if((inv == player.inventory) == playerContainer) {
-				sortInventory(new InvWrapper(inv), playerContainer ? 9 : 0);
+				InvWrapper wrapper = new InvWrapper(inv);
+				if(playerContainer)
+					sortInventory(wrapper, 9, 36);
+				else sortInventory(wrapper);
 				break;
 			}
 		}
 	}
 	
+	public static void sortInventory(IItemHandler handler) {
+		sortInventory(handler, 0);
+	}
+	
 	public static void sortInventory(IItemHandler handler, int iStart) {
+		sortInventory(handler, iStart, handler.getSlots());
+	}
+
+	public static void sortInventory(IItemHandler handler, int iStart, int iEnd) {
 		List<ItemStack> stacks = new ArrayList();
 
-		for(int i = iStart; i < handler.getSlots(); i++) {
+		for(int i = iStart; i < iEnd; i++) {
 			ItemStack stackAt = handler.getStackInSlot(i);
 			if(stackAt != null)
 				stacks.add(stackAt.copy());
