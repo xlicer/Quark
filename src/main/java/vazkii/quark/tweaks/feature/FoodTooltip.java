@@ -30,6 +30,7 @@ public class FoodTooltip extends Feature {
 	public void renderTooltip(RenderTooltipEvent.PostText event) {
 		if(event.getStack() != null && event.getStack().getItem() instanceof ItemFood) {
 			GlStateManager.pushMatrix();
+			GlStateManager.color(1F, 1F, 1F);
 			Minecraft mc = Minecraft.getMinecraft();
 			mc.getTextureManager().bindTexture(GuiIngameForge.ICONS);
 			int pips = ((ItemFood) event.getStack().getItem()).getHealAmount(event.getStack());
