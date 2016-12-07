@@ -115,7 +115,7 @@ public final class SortingHandler {
 		mergeStacks(stacks);
 		sortStackList(stacks);
 		
-		for(int i = iStart; i < handler.getSlots(); i++) {
+		for(int i = iStart; i < iEnd; i++) {
 			int j = i - iStart;
 			ItemStack stack = j >= stacks.size() ? null : stacks.get(j);
 
